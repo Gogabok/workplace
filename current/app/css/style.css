@@ -12,6 +12,77 @@ a:hover {
 img {
 	pointer-events: none;
 }
+.table-players {
+	max-width: 800px;
+	margin: 20px auto 0 auto;
+	height: 200px;
+	overflow-y: scroll;
+}
+.table-head {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 15px 0px;
+}
+.table-subhead {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0px;
+}
+.table-content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0px;
+}
+.table-head-item {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0px 30px;
+	color: #9098A3;
+}
+.table-subhead-item {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #F1CD5B;
+	margin: 0px 10px;
+	width: 15%;
+	justify-content: center;
+}
+.table-content-item {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0px 10px;
+	width: 15%;
+	justify-content: center;
+}
+.table-colored:nth-child(even) {
+	background: rgba(16, 29, 46, 0.7);
+}
+.table-colored:nth-child(odd) {
+	background: rgba(19, 34, 52, 0.7);
+}
 #header {
 	background: #101B28;
 	margin: 0;
