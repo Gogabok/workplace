@@ -1,0 +1,44 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+.rules-page {
+  background: url("../img/fon.jpg") 100% 50% no-repeat;
+  width: 100%;
+  padding: 40px 0px;
+}
+
+.game-rule {
+  width: 500px;
+  margin: 0px auto;
+  background: #132234;
+  border: 1px solid #F1CD5B;
+  box-sizing: border-box;
+}
+
+.game-rule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #101B28;
+  padding: 16px 25px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+}
+
+.game-title-rules {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #F1CD5B;
+  margin: 0px;
+}
