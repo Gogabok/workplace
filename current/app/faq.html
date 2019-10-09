@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Правила</title>
+  <title>FAQ</title>
+	<link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/jquery-ui.theme.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&amp;subset=cyrillic-ext"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/menuPagesRules.css">
+  <link rel="stylesheet" href="css/menuPagesFAQ.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap&subset=cyrillic" rel="stylesheet">
 </head>
 <body>
@@ -158,7 +160,7 @@
       </div>
       <div class="rules">
         <a href="#" class="rules-title">Правила</a>
-        <a href="#" class="rules-title">Честность</a>
+        <a href="#" class="rules-title" id="honestGame">Честность</a>
         <a href="#" id="gamesRouter" class="rules-title rules-title-game">Игры</a>
       </div>
     </div>
@@ -186,99 +188,124 @@
     </div>
   </div>
 </section>
-<div class="rules-page">
+<div class="faq-page">
   <div class="game-rule">
     <div class="game-rule-head">
       <div class="game-title">
-        <img src="img/game-1-nonactive.png" alt="">
-        <p class="games-item-text">Dice</p>
+        <p class="games-item-text games-item-title">Faq</p>
       </div>
-      <p class="game-title-rules">Правила игры</p>
+      <p class="game-title-rules">Ответы на частые вопросы</p>
     </div>
     <div class="game-rule-content">
-      <p class="game-rule-content-text">Установите СТАВКУ. Это сумма TRX, на которую вы будете делать ставки.</p>
-      <ul class="game-rule-content-list">
-        <li class="game-rule-content-list-item">
-          <div class="game-rule-content-list-item-counter">1</div>
-          <p class="game-rule-content-text">Вы можете отрегулировать ползунок или ввести прогнозируемое число.</p>
-        </li>
-        <li class="game-rule-content-list-item">
-          <div class="game-rule-content-list-item-counter">2</div>
-          <p class="game-rule-content-text">Когда вы перемещаете ползунок, ваши выплаты и шансы на выигрыш будут
-            корректироваться автоматически</p>
-        </li>
-        <li class="game-rule-content-list-item">
-          <div class="game-rule-content-list-item-counter">3</div>
-          <p class="game-rule-content-text">Нажмите ROLL, чтобы сделать ставку. Smart contract случайным образом будет
-            генерировать число LUCKY от 0 до 99.</p>
-        </li>
-        <li class="game-rule-content-list-item">
-          <div class="game-rule-content-list-item-counter">4</div>
-          <p class="game-rule-content-text">Если счастливое число окажется выше вашего прогноза, вы <span
-              class="game-rule-content-text-bold">Выигрываете!</span></p>
-        </li>
-      </ul>
-      <p class="game-rule-content-text">Вы можете выставить автоматические ставки использовав кнопку AUTO.</p>
-      <p class="game-rule-content-text">Каждая сделанная ставка дает вам токены LEX, для получения дополнительной
-        информации ознакомьтесь с нашим разделом
-        Dividends.</p>
-    </div>
-  </div>
-
-
-  <div class="game-rule">
-    <div class="game-rule-head">
-      <div class="game-title">
-        <img src="img/game-2.png" alt="">
-        <p class="games-item-text">x50</p>
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Что такое Crypto Casino?</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">Ключевое слово «Крипто» привносит два аспекта в систему онлайн-казино. Криптографические
+            хеш-функции, используемые в
+            технологии Blockchain, гарантируют доказанную справедливость в системе казино. В ставках используются известные
+            криптовалюты (TRON и BTT) вместо реальных или виртуальных денег, которые принесут огромную пользу игрокам.</p>
+        </div>
       </div>
-      <p class="game-title-rules">Правила игры</p>
-    </div>
-    <div class="game-rule-content">
-      <p class="game-rule-content-text">В каждом раунде, игрок может сделать до 5 ставок на один цвет или сделать ставку
-        на несколько цветов. Каждый цвет
-        представляет собой множитель и имеет ограничение максимальной ставки.</p>
-    </div>
-  </div>
-
-  <div class="game-rule">
-    <div class="game-rule-head">
-      <div class="game-title">
-        <img src="img/game-5.png" alt="">
-        <p class="games-item-text">Space</p>
+    
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Как мне залогинится чтоб играть на сайте?</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">Установите приложение Tronlink
+          <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec">(https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec)</a>.
+          Наш сайт использует Tronlink. Происходит автоматическая авторизация, без емейлов и паролей.</p>
+        </div>
       </div>
-      <p class="game-title-rules">Правила игры</p>
-    </div>
-    <div class="game-rule-content">
-      <p class="game-rule-content-text">Каждый раз, когда вы играете, вы должны ввести значение в auto-spice (Mин 1.01,
-        Maкс =
-        100,000/ставка < 9999x). Значение Spice независимо и случайно между 1.00 x и 9999x. Количество и/или # игроки не
-          влияют на результат.</p> <p class="game-rule-content-text">Пользователи также имеют возможность нажать на кнопку
-          стоп. Если пользователь не нажмет вручную, включится функция
-          автостопа.</p>
-      <p class="game-rule-content-text">Если вы успешно spiced, выплата будет в соответствии со значением Spice. Потери
-        будут вычтены соответственно.</p>
-    </div>
-  </div>
 
-  <div class="game-rule">
-    <div class="game-rule-head">
-      <div class="game-title">
-        <img src="img/game-4.png" alt="">
-        <p class="games-item-text">Slots</p>
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Что такое токен LEX и для чего он используется?</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">Token LEX - это токен TRC20 в блокчейне TRON (Вы можете добавить свои LEX токены в Tron
+            Link. Выберите раздел токенов и нажмите добавить адрес («TTUoJ8mXhyXxK1UdFnm5B5aLWKJa8NTkzj»). Как только ваши
+            токены LEX будут добавлены, вы можете использовать их на свое усмотрение.</p>
+          <p class="item-content-text">Всего может быть добыто 100 000 000 токенов. Владельцам токенов LEX будут выплачиваться
+            дивиденды в TRX в зависимости от количества принадлежащих им токенов LEX.</p>
+        </div>
       </div>
-      <p class="game-title-rules">Правила игры</p>
-    </div>
-    <div class="game-rule-content">
-      <p class="game-rule-content-text">Ставки в слотах делаются из слотового кошелька, расположенного на смарт-контракте. Вы можете пополнять и снимать
-      средства со своего кошелька в любое время.</p>
-      <p class="game-rule-content-text">Чтобы начать игру, мы делаем ставку (размер ставки) и выбираем количество выигрышных линий - «линия». В игре
-      используются игровые линии от 1 до 20, которые увеличивают шансы на выигрыш.</p>
-      <p class="game-rule-content-text">При нажатии кнопки «Вращение» барабан начинает вращаться и выпадает в случайном
-        порядке.</p>
-      <p class="game-rule-content-text">Ваши выигрыши по каждой линии будут суммироваться и отображаться на игровом поле в строке «Всего выигрышей»</p>
+
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Как получить LEX?</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">LEX можно получить, просто играя на платформе BITLEX. Используя TRX для игр на платформе BITLEX, вы сможете получить LEX
+          независимо от того, выиграете вы или проиграете. Играй на 900 TRX и получай 1 LEX. 5% от общей эмисси токенов LEX
+          продаются на ICO для получения инвесторми дивидентов с биржи и ставок на спорт. Токены с ICO будут разморожены ровно
+          через 100 дней после старта ICO.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Почему токены LEX в перспективе будут стоить дороже?</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">Мы молодая и сильная команда по разработке TRON DAAps приложений. У нас есть видение как наша компания будет развиватся
+          и где мы будем через год.Мы будем внедрять в нашу платформу много новый интересных и популярных игр в сфере гемблинга,
+          ставки на спорт и мощную биржу, что будет толкать цену наших токенов LEX вверх.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="game-rule-content-item">
+          <p class="game-rule-content-text">Реферальная программа</p>
+          <img src="img/faq-arrow.svg" alt="">
+        </div>
+        <div class="item-content">
+          <p class="item-content-text">Получайте вознаграждение просто обратившись к своим друзям!
+          Получайте 0.2% всех их ставок. Все вознаграждения оправляются автоматически через наши смарт-контракты.
+          
+          <a target="_blank" href="https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of">https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of</a>
+        </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
+<div class="blur" id="honestGameModal">
+  <div class="modal">
+    <div class="game-rule-head">
+      <div class="game-title">
+        <p class="games-item-text games-item-title">Честная игра</p>
+      </div>
+      <img class="close" src="img/close.svg" alt="">
+    </div>
+  </div>
+</div>
+
+<script src="js/scripts.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".item-content").hide()
+    $(".game-rule-content-item").on("click", function (e) {
+      $(".item-content").not($(this).next()).slideUp("slow")
+      $(this).next().stop()
+      $(this).next().slideToggle("slow")
+    })
+  })
+  $(document).ready(function () {
+    $("#honestGame").on("click", function () {
+      $("#honestGameModal").show()
+    })
+  })
+</script>
 </body>
 </html>

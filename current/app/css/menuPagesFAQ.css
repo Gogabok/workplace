@@ -1,0 +1,124 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  height: 100vh !important;
+  overflow: hidden;
+}
+.faq-page {
+  background: url("../img/fon.jpg") 50% 50% no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 20px 0px;
+  height: 100%;
+}
+
+.game-rule {
+  width: 90%;
+  max-width: 520px;
+  margin: 100px auto 10px auto;
+  background: #101B28;
+  border: 1px solid #F1CD5B;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
+
+.game-rule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #101B28;
+  padding: 16px 25px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+}
+
+.game-title-rules {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #F1CD5B;
+  margin: 0px;
+}
+.games-item-text {
+  margin-left: 0px;
+}
+.games-item-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+.game-rule-content {
+  box-sizing: border-box;
+}
+
+.game-rule-content-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin: 0px;
+}
+.game-rule-content-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  padding: 14px 25px;
+  cursor: pointer;
+  background: #101B28;
+}
+
+.faq-item {
+  
+}
+
+.game-rule-content-item img {
+  pointer-events: none;
+  transform: rotateX(180deg);
+  margin-left: 10px;
+}
+
+.item-content {
+  background: #132234;
+}
+
+.item-content-text {
+  margin: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  color: #FFFFFF;
+  padding: 14px 25px;
+  word-wrap: break-word;
+}
+
+.item-content-text a {
+  word-wrap: break-word;
+  width: 100%;
+}
+
+@media screen and (max-height: 850px) {
+  body {
+    overflow: auto;
+  }
+}
