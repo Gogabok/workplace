@@ -165,6 +165,7 @@ body {
 	color: #FFFFFF;
 	text-decoration: none;
 	margin: 0px;
+	cursor: pointer;
 }
 .navigation-scnd-item-container-text-boldText {
 	font-family: Roboto;
@@ -321,6 +322,10 @@ body {
 	margin: 10px 0px;
 	text-decoration: none;
 	display: block;
+	cursor: pointer;
+}
+.header-scnd-menu-item:hover {
+ color:#fff !important;
 }
 #header-scnd-menu-2 {
 	position: absolute;
@@ -486,16 +491,88 @@ body {
 
 
 
+.game-rule {
+  width: 90%;
+  max-width: 520px;
+  margin: 100px auto 10px auto;
+  background: #101B28;
+  border: 1px solid #F1CD5B;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
 
+.game-rule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #101B28;
+  padding: 16px 25px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+}
+
+.game-title-rules {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #F1CD5B;
+  margin: 0px;
+}
+.games-item-text {
+  margin-left: 0px;
+}
+.games-item-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+.game-rule-content {
+  box-sizing: border-box;
+}
+
+.game-rule-content-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin: 0px;
+}
+.game-rule-content-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  padding: 14px 25px;
+  cursor: pointer;
+  background: #101B28;
+}
 
 .blur {
 	width: 100%;
 	height:	100vh;
-	background: rgba(0, 0, 0, 0.55);
+	background: rgba(0, 0, 0, 0.7);
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	display: none;
+	z-index: 99999;
 }
 .modal {
 	width: 90%;
@@ -506,10 +583,497 @@ body {
   background: #101B28;
   border: 1px solid #F1CD5B;
   box-sizing: border-box;
-	padding-bottom: 20px;
 	position: absolute;
+	z-index: 999999;
 }
 .close {
 	cursor: pointer !important;
 	pointer-events: all !important;
+}
+
+.honestGame-content {
+	background: #132234;
+	padding: 10px 0px;
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+.honestGame-content .item-content-text {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin: 15px 0px;
+}
+
+.honestGame-input {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: #FFFFFF;
+	padding: 12px 15px;
+	width: 100%;
+	background: #131C2D;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+	outline: none;
+	margin: 7.5px 0px;
+}
+
+.honestGame-input::-webkit-input-placeholder {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: #FFFFFF;
+}
+
+.honestGame-input:focus {
+	border: 1px solid #F1CD5B;
+}
+
+.honestGame-inputs {
+	padding: 0px 25px;
+	margin-top: 20px;
+}
+
+.honestGame-btn {
+	outline: none;
+	background: #F1CD5B;
+	width: 45%;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	color: #101B28;
+	border: none;
+	padding: 12px 0px;
+	text-align: center;
+	margin: 7.5px 0px;
+	display: block;
+	margin-left: auto;
+	cursor: pointer;
+}
+
+.honestGame-inputs-flex {
+	margin-top: 20px;
+	display: flex;
+	width: 100%;
+	/* align-items: flex-start; */
+	justify-content: space-between;
+}
+
+.inputs-slash {
+	width: 23%;
+	background: transparent;
+}
+
+.honestGame-inputs-flex-item {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #131C2D;
+	padding: 12px 15px;
+	cursor: pointer;
+}
+
+.honestGame-inputs-flex-item:nth-child(2) {
+	
+	padding: 20px 15px;
+}
+
+.honestGame-inputs-flex-item-name {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: #9098A3;
+	margin: 0px;
+	text-transform: uppercase;
+}
+
+.honestGame-inputs-flex-item img {
+	transform: rotateX(180deg)
+}
+
+@media screen and (max-width: 400px) {
+	.honestGame-inputs-flex {
+		display: block;
+	}
+	.honestGame-inputs-flex-item:nth-child(3) {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.inputs-slash {
+		display: none;
+	}
+	.honestGame-inputs-flex-item {
+		margin: 10px 0px;
+		max-width: 90%;
+	}
+	.honestGame-btn {
+		width: 100%;
+	}
+}
+
+.dividend-content {
+	background: #132234;
+	padding: 20px 25px;
+	padding-bottom: 20px;
+}
+
+.progress-line {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.progress-level-left {
+	width: 30px !important;
+	height: 30px !important;
+	line-height: 0px;
+	background: #101B28;
+	border-radius: 50%;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #F1CD5B;
+	justify-content: center;
+	z-index: 999;
+}
+
+.progress-line-item {
+	width: calc(100% - 40px);
+	height: 25px;
+	background: #101B28;
+}
+
+.progress-line-fill {
+	background: linear-gradient(270deg, #F1CD5B 0%, #101B28 100%);
+	width: calc(60% + 20px);
+	margin-left: -10px;
+	margin-right: -10px;
+	height: 100%;
+}
+
+.progress-level-right {
+	width: 30px !important;
+	height: 30px !important;
+	line-height: 0px;
+	background:#F1CD5B;
+	border-radius: 50%;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #101B28;
+	justify-content: center;
+	z-index: 999;
+}
+
+.progress-numbers {
+	display: flex;
+	align-items: center;
+	width: 50%;
+	margin: 20px auto;
+}
+
+.progress-numbers-item {
+	display: flex;
+	align-items: center;
+}
+
+.progress-numbers-item-counter {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #FFFFFF;
+	margin: 0px;
+	margin-right: 10px;
+}
+
+.progress-numbers-item img {
+	width: 23px;
+}
+
+.progress-numbers-slash {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #FFFFFF;
+	margin: 0px 20px;
+	margin-right: 10px;
+}
+
+.dividend-table {
+	width: 100%;
+	margin: 20px 0px;
+}
+
+.dividend-table-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #101B28;
+	padding: 15px 0px;
+}
+
+.dividend-table-item-name {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	color: #F1CD5B;
+	margin: 0px;
+	text-align: center;
+}
+
+.dividend-table-item-name:nth-child(1) {
+	width: 30%;
+}
+.dividend-table-item-name:nth-child(2) {
+	width: 70%;
+}
+
+.dividend-table-item-1 {
+	background: #EBC859;
+}
+.dividend-table-item-1 .dividend-table-item-name {
+	color: #101B28;
+}
+
+.dividend-table-item-2 .dividend-table-item-name {
+	color: #fff;
+}
+
+.table-more {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.table-more-text {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FFFFFF;
+	margin-right: 15px;
+	cursor: pointer;
+}
+.dividend-pool {
+	background: #101B28;
+	padding: 25px;
+}
+
+.dividend-pool-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.dividend-pool-head-caption {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #F1CD5B;
+}
+
+.dividend-pool-head-coof {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 14px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 0px;
+}
+
+.dividend-pool-btns {
+	margin: 20px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dividend-pool-btns-item {
+	border: 1px solid #EBC859;
+	box-sizing: border-box;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 28px;
+	text-align: center;
+	color: #F1CD5B;
+	margin: 0px 2.5px;
+	padding: 6px 0px;
+	width: 70px;
+}
+
+.dividend-pool-btns-item img {
+	width: 22px;
+	position: relative;
+	top: 3px;
+}
+
+.dividend-pool-desc {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dividend-pool-desc-name {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #FFFFFF;
+	margin: 0px;
+	margin-right: 10px;
+}
+
+.dividend-footer {
+	margin-top: 30px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.dividend-footer-leftSide {
+	width: 65%;
+}
+
+.dividend-footer-leftSide-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.dividend-footer-leftSide-title-item {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #F1CD5B;
+	margin: 0px;
+}
+
+.dividend-footer-leftSide-title-balance {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	color: #FFFFFF;
+	margin: 0px;
+}
+
+.dividend-balance {
+	display: flex;
+	align-items: center;
+	padding: 12px 16px;
+	justify-content: space-between;
+	background: #131C2D;
+	margin-top: 15px;
+}
+
+.dividend-balance-item {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 16px;
+	color: #FFFFFF;
+	margin: 0px;
+}
+
+.dividend-balance-item-valute {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 16px;
+	color: #FFFFFF;
+	margin: 0px;
+}
+
+.dividend-footer-rightSide {
+	width: 25%;
+}
+
+.dividend-footer-rightSide .honestGame-btn {
+	width: 100%;
+	margin: 0px;
+	padding: 11.5px 0px;
+}
+
+@media screen and (max-width: 510px) {
+	.dividend-table-item {
+		padding: 15px 10px;
+	}
+	.dividend-footer {
+		display: block;
+	}
+	.dividend-footer-leftSide, .dividend-footer-rightSide {
+		width: 100%;
+	}
+	.dividend-footer-rightSide .honestGame-btn {
+		margin: 10px 0px;
+	}
+	.dividend-pool-head-coof {
+		font-size: 9px;
+	}
+	.dividend-pool-head-caption {
+		font-size: 12px;
+	}
+	.progress-numbers {
+		width: 100%;
+		justify-content: center;
+	}
+	.dividend-pool-btns-item {
+		padding: 3px 0px;
+		width: 50px;
+		font-size: 18px;
+	}
 }

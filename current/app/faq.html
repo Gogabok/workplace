@@ -24,7 +24,7 @@
         <a href="#" class="navigation-item-container-item">
           Road map
         </a>
-        <a href="#" class="navigation-item-container-item">
+        <a href="faq.html" class="navigation-item-container-item">
           FAQ
         </a>
       </div>
@@ -81,7 +81,7 @@
           <img src="img/logo.png" alt="">
         </div>
         <div class="navigation-scnd-item-container">
-          <a href="#" class="navigation-scnd-item-container-text">Дивиденты</a>
+          <p class="navigation-scnd-item-container-text dividend">Дивиденты</p>
         </div>
       </div>
       <div class="navigation-item-container container-block-balance">
@@ -126,7 +126,7 @@
     </div>
     <div id="header-scnd-menu-1">
       <a href="#" class="header-scnd-menu-item">Профиль</a>
-      <a href="#" class="header-scnd-menu-item">Дивиденты</a>
+      <p class="header-scnd-menu-item dividend">Дивиденты</p>
       <a href="#" class="header-scnd-menu-item">Whitepaper</a>
       <a href="#" class="header-scnd-menu-item">Road map</a>
       <a href="#" class="header-scnd-menu-item">FAQ</a>
@@ -286,7 +286,120 @@
       <div class="game-title">
         <p class="games-item-text games-item-title">Честная игра</p>
       </div>
-      <img class="close" src="img/close.svg" alt="">
+      <img class="close" id="honestModalClose" src="img/close.svg" alt="">
+    </div>
+    <div class="honestGame-content">
+      <p class="item-content-text">Все транзакции(операции) на BITLEX производятся через надёжные смарт контракты в сети
+        TRON. Это гарантирует то что все
+        данные абсолютно достоверны.</p>
+      <p class="item-content-text">Выигрышные номера являются случайными и никому не известны заранее. Используется
+        генератор случайных чисел, основанный
+        на хэш-блоке TRON и работающий по смарт-контракту в TRON.network. Вы можете использовать адрес игрока и номер
+        блока для
+        проверки выигрышных номеров.</p>
+      <div class="honestGame-inputs">
+        <input type="text" class="honestGame-input" placeholder="Ввожу адрес игрока">
+        <input type="text" class="honestGame-input" placeholder="Номер блока">
+        <button class="honestGame-btn">Отправить</button>
+        <div class="honestGame-inputs-flex">
+          <div class="honestGame-inputs-flex-item">
+            <div class="honestGame-inputs-flex-item-name">Dice</div>
+            <img src="img/faq-arrow.svg" alt="">
+          </div>
+          <div class="inputs-slash"></div>
+          <div class="honestGame-inputs-flex-item">
+            <div class="honestGame-inputs-flex-item-name"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="blur" id="dividendModal">
+  <div class="modal">
+    <div class="game-rule-head">
+      <div class="game-title">
+        <p class="games-item-text games-item-title">Дивиденты</p>
+      </div>
+      <img class="close" id="dividendModalClose" src="img/close.svg" alt="">
+    </div>
+    <div class="dividend-content">
+      <div class="progress-bar">
+        <div class="progress-line">
+          <div class="progress-level-left">1</div>
+          <div class="progress-line-item">
+            <div class="progress-line-fill"></div>
+          </div>
+          <div class="progress-level-right">2</div>
+        </div>
+        <div class="progress-numbers">
+          <div class="progress-numbers-item">
+            <p class="progress-numbers-item-counter">1,230,473</p>
+            <img src="img/lex.png" alt="">
+          </div>
+          <div class="progress-numbers-slash">
+            /
+          </div>
+          <div class="progress-numbers-item">
+            <p class="progress-numbers-item-counter">100,000,000</p>
+            <img src="img/lex.png" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="dividend-table">
+        <div class="dividend-table-item">
+          <p class="dividend-table-item-name">Уровень</p>
+          <p class="dividend-table-item-name">Условие</p>
+        </div>
+        <div class="dividend-table-item dividend-table-item-1">
+          <p class="dividend-table-item-name">Уровень 1</p>
+          <p class="dividend-table-item-name">Сыграв на 900 TRX будет добыто: 1 LEX</p>
+        </div>
+        <div class="dividend-table-item dividend-table-item-2">
+          <p class="dividend-table-item-name">Уровень 2</p>
+          <p class="dividend-table-item-name">Сыграв на 990 TRX будет добыто: 1 LEX</p>
+        </div>
+        <div class="table-more">
+          <p class="table-more-text">Полный список уровней</p>
+          <img src="img/arrow-btn.png" alt="">
+        </div>
+      </div>
+      <div class="dividend-pool">
+        <div class="dividend-pool-head">
+          <p class="dividend-pool-head-caption">Дивидентный пул</p>
+          <p class="dividend-pool-head-coof">Коэффициент дивидентов: 60%</p>
+        </div>
+        <div class="dividend-pool-btns">
+          <div class="dividend-pool-btns-item">100</div>
+          <div class="dividend-pool-btns-item">000</div>
+          <div class="dividend-pool-btns-item">000</div>
+          <div class="dividend-pool-btns-item">000</div>
+          <div class="dividend-pool-btns-item">
+            <img src="img/trx.png" alt="">
+          </div>
+        </div>
+        <div class="dividend-pool-desc">
+          <p class="dividend-pool-desc-name">Дивиденты начисляются ежескундно</p>
+          <img src="img/time.png" alt="">
+        </div>
+      </div>
+      <div class="dividend-footer">
+        <div class="dividend-footer-leftSide">
+          <div class="dividend-footer-leftSide-title">
+            <p class="dividend-footer-leftSide-title-item">Мои дивиденты</p>
+            <p class="dividend-footer-leftSide-title-balance">Баланс: 9000000 TRX</p>
+          </div>
+          <div class="dividend-balance">
+            <p class="dividend-balance-item">1000</p>
+            <p class="dividend-balance-item-valute">TRX</p>
+          </div>
+        </div>
+        <div class="dividend-footer-rightSide">
+          <button class="honestGame-btn">Получить</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -303,8 +416,33 @@
   })
   $(document).ready(function () {
     $("#honestGame").on("click", function () {
-      $("#honestGameModal").show()
+      $("#honestGameModal").fadeIn()
     })
+    $("#honestModalClose").on("click", function () {
+      $("#honestGameModal").fadeOut()
+    })
+    $("#honestGameModal").on("click", function (e) {
+      $("#honestGameModal").fadeOut()
+    })
+    $(".modal").click(function (e) {
+      e.stopImmediatePropagation();
+    });
+  })
+</script>
+<script>
+  $(document).ready(function () {
+    $(".dividend").on("click", function () {
+      $("#dividendModal").fadeIn()
+    })
+    $("#dividendModalClose").on("click", function () {
+      $("#dividendModal").fadeOut()
+    })
+    $("#dividendModal").on("click", function (e) {
+      $("#dividendModal").fadeOut()
+    })
+    $(".modal").click(function (e) {
+      e.stopImmediatePropagation();
+    });
   })
 </script>
 </body>
