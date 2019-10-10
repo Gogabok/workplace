@@ -24,7 +24,7 @@
         <a href="#" class="navigation-item-container-item">
           Road map
         </a>
-        <a href="faq.html" class="navigation-item-container-item">
+        <a href="faq.html" target="_blank" class="navigation-item-container-item">
           FAQ
         </a>
       </div>
@@ -74,12 +74,12 @@
   <div class="container-nav">
     <div class="navigation-scnd">
       <div class="navigation-item-container">
-        <div class="navigation-scnd-item-container">
+        <a href="index.html" class="navigation-scnd-item-container">
           <img src="img/arrow-back-btn.png" alt="">
-        </div>
-        <div class="navigation-scnd-item-container logo">
+        </a>
+        <a href="index.html" class="navigation-scnd-item-container logo">
           <img src="img/logo.png" alt="">
-        </div>
+        </a>
         <div class="navigation-scnd-item-container">
           <p class="navigation-scnd-item-container-text dividend">Дивиденты</p>
         </div>
@@ -114,7 +114,7 @@
         </div>
         <div class="navigation-item-container-wrapper-user">
           <img class="navigation-item-container-wrapper-user-image" src="img/user-logo.png" alt="">
-          <p class="navigation-item-container-wrapper-user-name">TMtvWDsassa...dJvhvgasaxsqsfd</p>
+          <a href="profile.html" class="navigation-item-container-wrapper-user-name">TMtvWDsassa...dJvhvgasaxsqsfd</a>
         </div>
       </div>
       <div class="navigation-item-container-menu-2">
@@ -125,11 +125,11 @@
 
     </div>
     <div id="header-scnd-menu-1">
-      <a href="#" class="header-scnd-menu-item">Профиль</a>
+      <a href="profile.html" target="_blank" class="header-scnd-menu-item">Профиль</a>
       <p class="header-scnd-menu-item dividend">Дивиденты</p>
       <a href="#" class="header-scnd-menu-item">Whitepaper</a>
       <a href="#" class="header-scnd-menu-item">Road map</a>
-      <a href="#" class="header-scnd-menu-item">FAQ</a>
+      <a href="faq.html" target="_blank" class="header-scnd-menu-item">FAQ</a>
     </div>
   </div>
 </section>
@@ -137,55 +137,55 @@
   <div class="container-nav">
     <div class="games-wrapper">
       <div class="games">
-        <div class="games-item games-item-active">
+        <a href="index.html" class="games-item">
           <img src="img/game-1.png" alt="">
           <p class="games-item-text">Dice</p>
-        </div>
-        <div class="games-item">
+        </a>
+        <a href="x50.html" class="games-item">
           <img src="img/game-2.png" alt="">
           <p class="games-item-text">x50</p>
-        </div>
-        <div class="games-item">
+        </a>
+        <a href="moon.html" class="games-item">
           <img src="img/game-5.png" alt="">
           <p class="games-item-text">Moon</p>
-        </div>
-        <div class="games-item">
+        </a>
+        <a href="roulette.html" class="games-item">
           <img src="img/game-3.png" alt="">
           <p class="games-item-text">Roulette</p>
-        </div>
-        <div class="games-item">
+        </a>
+        <a href="slots.html" class="games-item">
           <img src="img/game-4.png" alt="">
           <p class="games-item-text">Slots</p>
-        </div>
+        </a>
       </div>
       <div class="rules">
-        <a href="#" class="rules-title">Правила</a>
+        <a href="rules.html" target="_blank" class="rules-title">Правила</a>
         <a href="#" class="rules-title" id="honestGame">Честность</a>
         <a href="#" id="gamesRouter" class="rules-title rules-title-game">Игры</a>
       </div>
     </div>
   </div>
   <div id="header-scnd-menu-2">
-    <div class="games-item-menu-2">
+    <a href="index.html" class="games-item-menu-2">
       <img src="img/game-1.png" alt="">
       <p class="games-item-text-menu-2">Dice</p>
-    </div>
-    <div class="games-item-menu-2">
+    </a>
+    <a href="x50.html" class="games-item-menu-2">
       <img src="img/game-2.png" alt="">
       <p class="games-item-text-menu-2">x50</p>
-    </div>
-    <div class="games-item-menu-2">
+    </a>
+    <a href="moon.html" class="games-item-menu-2">
       <img src="img/game-5.png" alt="">
       <p class="games-item-text-menu-2">MOON</p>
-    </div>
-    <div class="games-item-menu-2">
+    </a>
+    <a href="roulette.html" class="games-item-menu-2">
       <img src="img/game-3.png" alt="">
       <p class="games-item-text-menu-2">ROULETTE</p>
-    </div>
-    <div class="games-item-menu-2">
+    </a>
+    <a href="slots.html" class="games-item-menu-2">
       <img src="img/game-4.png" alt="">
       <p class="games-item-text-menu-2">SLOTS</p>
-    </div>
+    </a>
   </div>
 </section>
 <div class="faq-page">
@@ -281,7 +281,7 @@
 </div>
 
 <div class="blur" id="honestGameModal">
-  <div class="modal">
+  <div class="modal1">
     <div class="game-rule-head">
       <div class="game-title">
         <p class="games-item-text games-item-title">Честная игра</p>
@@ -318,7 +318,7 @@
 
 
 <div class="blur" id="dividendModal">
-  <div class="modal">
+  <div class="modal1">
     <div class="game-rule-head">
       <div class="game-title">
         <p class="games-item-text games-item-title">Дивиденты</p>
@@ -424,7 +424,7 @@
     $("#honestGameModal").on("click", function (e) {
       $("#honestGameModal").fadeOut()
     })
-    $(".modal").click(function (e) {
+    $(".modal1").click(function (e) {
       e.stopImmediatePropagation();
     });
   })
@@ -440,7 +440,7 @@
     $("#dividendModal").on("click", function (e) {
       $("#dividendModal").fadeOut()
     })
-    $(".modal").click(function (e) {
+    $(".modal1").click(function (e) {
       e.stopImmediatePropagation();
     });
   })
