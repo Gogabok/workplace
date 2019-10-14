@@ -1,28 +1,38 @@
 body {
-  margin: 0px;
+  /* margin: 0px;
   padding: 0px;
   display: block;
   height: 100vh !important;
-  overflow: hidden;
+  overflow: hidden; */
 }
 .faq-page {
-  background: url("../img/fon.jpg") 50% 50% no-repeat;
+  /* background: url("../img/fon.jpg") 50% 50% no-repeat; */
   background-size: cover;
   width: 100%;
-  padding: 20px 0px;
+  max-width: 520px;
+  margin: 0px auto;
+  /* padding: 20px 0px; */
   height: 100%;
 }
 
-.faq-item {
-  
+.faq-pages, .modalfaq {
+  width: 90%;
+  max-width: 520px;
+  margin: 0px auto;
 }
-
+.modalrules {
+  width: 90%;
+  max-width: 520px;
+  margin: 0px auto;
+}
 .game-rule-content-item img {
   pointer-events: none;
   transform: rotateX(180deg);
   margin-left: 10px;
 }
-
+.game-rule-content {
+  padding: 0px !important;
+}
 .item-content {
   background: #132234;
 }

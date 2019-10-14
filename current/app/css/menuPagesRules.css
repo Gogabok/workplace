@@ -1,22 +1,28 @@
-body {
+/* body {
   margin: 0px;
   padding: 0px;
   display: block;
-}
+} */
 .rules-page {
-  background: url("../img/fon.jpg") 50% 50% no-repeat;
-  background-size: cover;
-  width: 100%;
-  padding: 20px 0px;
-}
-
-.game-rule {
+  /* background: url("../img/fon.jpg") 50% 50% no-repeat; */
+  /* background-size: cover; */
+  /* width: 100%; */
+  border: 1px solid #F1CD5B;
   width: 90%;
   max-width: 520px;
   margin: 30px auto;
-  background: #132234;
-  border: 1px solid #F1CD5B;
+}
+
+.game-rule {
+  /* width: 90%;
+  max-width: 520px; */
+  /* margin: 30px auto; */
+  /* background: #132234; */
+  /* border: 1px solid #F1CD5B; */
   box-sizing: border-box;
+  padding-bottom: 0px;
+  border: none;
+  width: 100%;
 }
 
 .game-rule-head {
