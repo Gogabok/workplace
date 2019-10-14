@@ -618,7 +618,7 @@ body {
 		background-color: rgba(16, 29, 46, 0.9);
 		/* max-width: 100px; */
 		/* max-width: 180px; */
-		max-width: 160px;
+		max-width: 140px;
 		/* position: relative; */
 		/* margin-top: 60px; */
 		margin-top: 50px;
@@ -626,7 +626,7 @@ body {
 		left: 13%;
 		/* height: 80%; */
 		height: 500px;
-		padding: 20px 0px;
+		padding: 10px 0px;
 		
 	}
 	
@@ -2286,9 +2286,11 @@ body {
 	min-height: 100vh;
 	height: 100%;
 	padding-bottom: 20px;
-	padding-top: 150px;
+	padding-top: 180px;
 }
-
+.profile {
+	display: block;
+}
 
 .rules-page {
   /* background: url("../img/fon.jpg") 50% 50% no-repeat; */
