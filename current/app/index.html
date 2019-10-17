@@ -229,8 +229,8 @@
 					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
 				</div>
 			</div>
-			<div class="col-md-8 ">
-				<div class="game-area">
+			<div class="col-md-8">
+				<div class="game-area dicegame">
 	
 					<div class="frame">
 						<p>+<span class="plus">0</span></p>
@@ -271,6 +271,12 @@
 					<div class="bet-amount input-obj">
 						<img src="img/lex.png" alt="">
 						<label for="bet-amount">Bet amount</label>
+						<!-- <p>
+							<a href="#" class="bet-change bet-2x">2x</a>
+							<a href="#" class="bet-change bet-half">1/2</a>
+							<a href="#" class="bet-change bet-min">min</a>
+							<a href="#" class="bet-change bet-max">max</a>
+						</p> -->
 						<input type="text" value="1" id="bet-amount" class="lex">
 						<p>
 							<a href="#" class="bet-change bet-2x">2x</a>
@@ -781,7 +787,7 @@
 					</div>
 				</div> -->
 				<div class="fields-wrapper col-md-4 col-lg-4 right-table">
-					<div class="game-fields game-area">
+					<div class="game-fields fieldsx50 game-area">
 						<div class="coin-stripe d-flex">
 							<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
 							<button class="lex-coin ch-coin"><img src="img/lex.png" alt=""> LEX</button>
@@ -1135,7 +1141,7 @@
 
 
 
-<div class="blur" id="faqModal">
+<div class="blur" id="faqModal" style="display: none;">
 	<div class="modalfaq">
 		<div class="faq-pages">
 			<div class="faq-page">
@@ -1247,7 +1253,7 @@
 </div>
 
 
-<div class="blur" id="rulesModal">
+<div class="blur" id="rulesModal" style="display: none;">
 	<div class="modalrules">
 		<div class="rules-page">
 			<div class="game-rule">
@@ -1286,7 +1292,7 @@
 						</li>
 						<li class="game-rule-content-list-item">
 							<div class="game-rule-content-list-item-counter">4</div>
-							<p class="game-rule-content-text">Если счастливое число окажется выше вашего прогноза, вы <span
+							<p class="game-rule-content-text" style="display: block">Если счастливое число окажется выше вашего прогноза, вы <span
 									class="game-rule-content-text-bold">Выигрываете!</span></p>
 						</li>
 					</ul>
@@ -1546,9 +1552,9 @@
 
 
 <script>
-	$(".blur").hide()
+	// $(".blur").hide()
   $(document).ready(function () {
-		$(".blur").hide()
+		// $(".blur").hide()
     $("#faqModal .item-content").hide()
     $("#faqModal .game-rule-content-item").on("click", function (e) {
       $("#faqModal .item-content").not($(this).next()).slideUp("slow")
@@ -1605,7 +1611,7 @@
 		})
 
 
-
+		$(".honestGame-inputs-flex-item-relative").slideUp()
 		$("#honestGame-menutoggler").on("click", function () {
 			$(".honestGame-inputs-flex-item-relative").stop()
 			$(".honestGame-inputs-flex-item-relative").slideToggle()
@@ -1614,6 +1620,12 @@
 
 
 
+
+		$(".blur").on("click", function () {
+			$("#faqModal .item-content").slideUp()
+			$("#rulesModal .game-rule-content").slideUp()
+			$(".honestGame-inputs-flex-item-relative").slideUp()
+		})
 
 
 

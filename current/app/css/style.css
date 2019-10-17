@@ -618,7 +618,7 @@ body {
 		background-color: rgba(16, 29, 46, 0.9);
 		/* max-width: 100px; */
 		/* max-width: 180px; */
-		max-width: 140px;
+		max-width: 128px;
 		/* position: relative; */
 		/* margin-top: 60px; */
 		margin-top: 50px;
@@ -626,7 +626,7 @@ body {
 		left: 13%;
 		/* height: 80%; */
 		height: 500px;
-		padding: 10px 0px;
+		padding: 6px 0px;
 		
 	}
 	
@@ -695,7 +695,7 @@ body {
 		/* transform: translate(-50%,0); */
 		/* transform: translate(-50%, -15%); */
 		transform: translate(-50%, -15%);
-		background-image: url(../img/colored-circle-5.png);
+		background-image: url(../img/colored-circle-6.svg);
 		background-size: 100%;
 		margin-top: 20px;
 		padding-bottom: 250px;
@@ -733,9 +733,9 @@ body {
 		/*transform: translate(20%,16%);*/
 		/* transform: translate(15%,140%); */
 		display: block;
-		margin: 50px auto 10px auto;
+		margin: 10px auto 10px auto;
 		padding-left: 25px;
-		height: 300px;
+		height: 350px;
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
@@ -795,6 +795,10 @@ table th {
 	}
 	.game-fields {
 		margin-right: 20px;
+		margin-left: -200px;
+	}
+	.dicegame {
+		
 	}
 	.right-table {
 		top: 10%;
@@ -803,6 +807,9 @@ table th {
 @media screen and (max-width: 1340px) {
 	.balance {
 		display: none;
+	}
+	.game-fields {
+		margin-left: 0px;
 	}
 	.navigation-scnd-item-container-2-text {
 		margin: 0px;
@@ -2281,12 +2288,16 @@ body {
 	margin-bottom: 0px;
 }
 .game {
-	background: url("../img/fon.jpg");
+	background: url("../img/fon.jpg") 50% 50%;
+	background-attachment: fixed;
 	overflow: hidden;
 	min-height: 100vh;
 	height: 100%;
 	padding-bottom: 20px;
-	padding-top: 180px;
+	padding-top: 130px;
+}
+body {
+	background-attachment: fixed;
 }
 .profile {
 	display: block;
@@ -2399,7 +2410,10 @@ body {
   .game-rule-content-list-item p {
     margin: 0px;
     max-width: 83%;
-  }
+	}
+	.game {
+		padding-top: 200px;
+	}
 }
 
 #rulesModal {
@@ -2449,3 +2463,52 @@ body {
 	.table {
 		font-size: 14px;
 	}
+	
+	.x50_circle__last_colors {
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		justify-content: center;
+		-ms-align-items: center;
+		align-items: center;
+		/* width: 100px;
+		min-width: 100px; */
+		background-color: rgba(16, 29, 46, 0.9);
+		/* max-width: 100px; */
+		/* max-width: 180px; */
+		max-width: 98px;
+		/* position: relative; */
+		/* margin-top: 60px; */
+		margin-top: 50px;
+		/* left: 8%; */
+		left: 13%;
+		/* height: 80%; */
+		height: 500px;
+		padding: 6px 0px;
+		margin-left: -20px;
+	}
+	.fieldsx50 {
+		margin-left: -100px;
+	}
+	.x50_circle__last_colors__item{
+		/* height: 3px; */
+		height: 12px;
+		margin-bottom: 9px;
+		border-radius: 1px;
+		position: relative;
+		width: 90px;
+	}
+	@media screen and (max-width: 800px;) {
+	.fieldsx50 {
+		margin-left: 0px !important;
+	}
+}
+
+.x50_circle {
+	margin-top: -50px;
+}
+.table-borderless {
+	margin: 0px 10px;
+}
