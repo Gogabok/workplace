@@ -259,7 +259,7 @@
 	
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3 ml-auto">
 				<div class="game-fields game-area">
 					<div class="coin-stripe d-flex">
 						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
@@ -721,7 +721,588 @@
 	</div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div id="game-2" class="game game-2">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 d-flex justify-content-center container-butts">
+				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="profit">Profit <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="jackpot">
+					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="col-sm-12 col-md-4 col-lg-4 x50_circle__current">
+					<span class="colored_circle"></span>
+					<input class="x50_circle__counter" disabled="" type='text' value="0">
+					<span class="x50_circle__arrow">
+						<svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M10.7843 0H22L16.3922 10L10.7843 20L0 0H10.7843Z" fill="#F6E444" />
+						</svg>
+				
+					</span>
+				</div>
+			</div>
+			<div class="col-md-3 ml-auto">
+				<div class="game-fields game-area">
+					<div class="coin-stripe d-flex">
+						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
+						<button class="lex-coin ch-coin"><img src="img/lex.png" alt=""> LEX</button>
+						<button class="btt-coin ch-coin"><img src="img/btt.png" alt=""> BTT</button>
+
+
+					</div>
+					<div class="bet-amount input-obj">
+						<img src="img/lex.png" alt="">
+						<label for="bet-amount">Bet amount</label>
+						<!-- <p>
+							<a href="#" class="bet-change bet-2x">2x</a>
+							<a href="#" class="bet-change bet-half">1/2</a>
+							<a href="#" class="bet-change bet-min">min</a>
+							<a href="#" class="bet-change bet-max">max</a>
+						</p> -->
+						<input type="text" value="1" id="bet-amount" class="lex">
+						<p>
+							<a href="#" class="bet-change bet-2x">2x</a>
+							<a href="#" class="bet-change bet-half">1/2</a>
+							<a href="#" class="bet-change bet-min">min</a>
+							<a href="#" class="bet-change bet-max">max</a>
+						</p>
+
+					</div>
+					<div class="payout input-obj">
+						<img src="img/lex.png" alt="">
+						<label for="payout">Payout on win</label>
+						<input type="text" value="2.01" id="payout" class="lex" readonly>
+					</div>
+					<div class="balance input-obj">
+						<img src="img/lex.png" alt="">
+						<label for="balance"><span>TRX</span> Balance</label>
+
+						<select name="coin" id="balance">
+
+							<option value="1" class="special">10 TRX</option>
+							<option value="2" class="special">10 LEX</option>
+							<option value="3" class="special">10 BTT</option>
+						</select>
+					</div>
+					<div class="win-chance">
+
+						<label for="win-chance">Win chance</label>
+						<input type="text" value="49%" id="win-chance" class="lex" readonly>
+					</div>
+					<div class="multiplier">
+
+						<label for="multiplier">Multiplier</label>
+						<input type="text" value="2.0102X" id="multiplier" class="lex" readonly>
+					</div>
+					<div class="roll d-flex auto">
+
+						<label class="switch">
+							<input type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+						<span>Auto</span>
+
+
+					</div>
+					<div class="roll">
+						<button type="submit" id="roll">Roll</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<audio id="audio1" src="sound/roll.mp3"></audio>
+	<audio id="audio2" src="sound/win.mp3"></audio>
+	<audio id="audio3" src="sound/change.mp3"></audio>
+
+
+	<div id="notes" class="white-popup mfp-hide">
+		<h3>Jackpot</h3>
+		<div class="frame">
+			<span>+100 000</span>
+			<img src="img/lex.png" alt="">
+		</div>
+		<ul>
+			<li>For wagered above 100 TRX, 0.02% of wagered of platform will be put into the Jackpot Pool.</li>
+			<li>In the games, to win the jackpot you must hit the last three symbols of your ID bet must be 777 and win i.e:
+				xxxxxx777.</li>
+			<li>The percentage of the jackpot is calculated by the formula: bet_amount / max_bet_amount.</li>
+			<li>Minimum jackpot bet is 100 TRX.</li>
+		</ul>
+
+	</div>
+	<div class="table-players">
+		<div class="table-head table-colored">
+			<div class="table-head-item">
+				My bets
+			</div>
+			<div class="table-head-item">
+				All bets
+			</div>
+			<div class="table-head-item">
+				Jackpots
+			</div>
+		</div>
+		<div class="table-subhead table-colored">
+			<div class="table-subhead-item">
+				Players
+			</div>
+			<div class="table-subhead-item">
+				Prediction
+			</div>
+			<div class="table-subhead-item">
+				Lucky number
+			</div>
+			<div class="table-subhead-item">
+				Bets
+			</div>
+			<div class="table-subhead-item">
+				Payout
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<style>
+	.colored_circle,
+		{
+		transform: translate(0, 0);
+		left: 0px !important;
+	}
+
+	.x50_circle__counter,
+	.x50_circle__arrow {}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="game-3" class="game game-3">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 d-flex justify-content-center container-butts">
