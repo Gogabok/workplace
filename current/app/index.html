@@ -113,15 +113,16 @@
 				<div class="navigation-item-container container-block-balance">
 					<div class="nav-valutes-wrapper">
 						<div class="navigation-scnd-item-container-2">
-							<p class="navigation-scnd-item-container-2-text active-value">TRX</p>
+							<p class="navigation-scnd-item-container-2-text active-value" id="1">TRX</p>
 						</div>
 					</div>
 					<div class="navigation-scnd-item-container">
-						<p class="navigation-scnd-item-container-text-boldText">475.95853 TRX</p>
+						<p class="navigation-scnd-item-container-text-boldText pricing pricing-1">475.95853 TRX</p>
+						<p class="navigation-scnd-item-container-text-boldText pricing pricing-2">123.12312 LEX</p>
 					</div>
 					<div class="nav-valutes-wrapper">
 						<div class="navigation-scnd-item-container-2">
-							<p class="navigation-scnd-item-container-2-text">LEX</p>
+							<p class="navigation-scnd-item-container-2-text" id="2">LEX</p>
 						</div>
 					</div>
 				</div>
@@ -163,6 +164,9 @@
 		<div class="container-nav">
 			<div class="games-wrapper">
 				<div class="games">
+					<div class="games-jackpot">
+						<a href="jackpot.html" >7 джекпотов: 6,000,000,000 TRX</a>
+					</div>
 					<div id="1" class="games-item games-item-active game-activator">
 						<img src="img/game-1.png" alt="">
 						<p class="games-item-text">Dice</p>
@@ -220,7 +224,7 @@
 
 
 <div id="game-1" class="game game-1">
-	<div class="container-fluid">
+	<div class="container-fluid game-2-cont">
 		<div class="row">
 			<div class="col-12 d-flex justify-content-center container-butts">
 				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
@@ -334,7 +338,7 @@
 	<audio id="audio3" src="sound/change.mp3"></audio>
 	
 	
-	<div id="notes" class="white-popup mfp-hide">
+	<div id="notes" class="white-popup mfp-hide" style="z-index: 9999999 !important;">
 		<h3>Jackpot</h3>
 		<div class="frame">
 			<span>+100 000</span>
@@ -755,7 +759,7 @@
 
 
 <div id="game-2" class="game game-2">
-	<div class="container-fluid">
+	<div class="container-fluid game-2-cont">
 		<div class="row">
 			<div class="col-12 d-flex justify-content-center container-butts">
 				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
@@ -763,6 +767,35 @@
 				<div class="jackpot">
 					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
 				</div>
+			</div>
+			<div class="col-sm-12 col-lg-4 x50_circle__last_colors d-flex">
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-yellow">
+					<!--									<div class="box-circle">-->
+					<!--										xaadassadvsdfsdf sdfasdfasdf-->
+					<!--									</div>-->
+				</div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-green"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-green"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-green"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-green"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-green"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-turquoise"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
+				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
 			</div>
 			<div class="col-md-8">
 				<div class="col-sm-12 col-md-4 col-lg-4 x50_circle__current">
@@ -803,31 +836,25 @@
 						</p>
 
 					</div>
+					<div class="x50_bets__tab_content__item d-flex">
+						<!-- <div class="x50_bets__tab_content__item__content d-flex"> -->
+						<input type="radio" class="color_choose visually_hidden" id="color_choose-blue" name="color_choose" checked>
+						<label for="color_choose-blue" class="color_label color_label-blue">x2</label>
+					
+						<input type="radio" class="color_choose visually_hidden" id="color_choose-brown" name="color_choose">
+						<label for="color_choose-brown" class="color_label color_label-brown">x3</label>
+					
+						<input type="radio" class="color_choose visually_hidden" id="color_choose-red" name="color_choose">
+						<label for="color_choose-red" class="color_label color_label-red">x5</label>
+					
+						<input type="radio" class="color_choose visually_hidden" id="color_choose-turquoise" name="color_choose">
+						<label for="color_choose-turquoise" class="color_label color_label-turquoise">x50</label>
+						<!-- </div> -->
+					</div>
 					<div class="payout input-obj">
 						<img src="img/lex.png" alt="">
-						<label for="payout">Payout on win</label>
+						<label for="payout">Playout on win</label>
 						<input type="text" value="2.01" id="payout" class="lex" readonly>
-					</div>
-					<div class="balance input-obj">
-						<img src="img/lex.png" alt="">
-						<label for="balance"><span>TRX</span> Balance</label>
-
-						<select name="coin" id="balance">
-
-							<option value="1" class="special">10 TRX</option>
-							<option value="2" class="special">10 LEX</option>
-							<option value="3" class="special">10 BTT</option>
-						</select>
-					</div>
-					<div class="win-chance">
-
-						<label for="win-chance">Win chance</label>
-						<input type="text" value="49%" id="win-chance" class="lex" readonly>
-					</div>
-					<div class="multiplier">
-
-						<label for="multiplier">Multiplier</label>
-						<input type="text" value="2.0102X" id="multiplier" class="lex" readonly>
 					</div>
 					<div class="roll d-flex auto">
 
@@ -866,376 +893,224 @@
 		</ul>
 
 	</div>
-	<div class="table-players">
-		<div class="table-head table-colored">
-			<div class="table-head-item">
-				My bets
-			</div>
-			<div class="table-head-item">
-				All bets
-			</div>
-			<div class="table-head-item">
-				Jackpots
+	<div class="rectangle">
+			<div class="row_2">
+				<div class="col-lg-3 col-sm-12">
+					<table class="table table-borderless">
+						<thead>
+							<tr class="main_head_1">
+								<th scope="col" class="c-1"><span class="x50_log__item__heading-icon">
+										<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M10.5 0C14.1244 0 17.0625 2.93811 17.0625 6.5625C17.0625 10.1869 14.1244 13.125 10.5 13.125C6.87561 13.125 3.9375 10.1869 3.9375 6.5625C3.9375 2.93811 6.87561 0 10.5 0ZM18.0175 13.6919L15.0925 12.9607C12.0195 15.171 8.29467 14.6777 5.90748 12.9607L2.98253 13.6919C1.22969 14.1301 0 15.705 0 17.5118V19.0312C0 20.1186 0.881426 21 1.96875 21H19.0312C20.1186 21 21 20.1186 21 19.0312V17.5118C21 15.705 19.7703 14.1301 18.0175 13.6919Z"
+												fill="#277486" />
+										</svg>
+									</span> 3 <span class="gap">1000 TRX</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="body_2 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-1">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-3 col-sm-12">
+					<table class="table table-borderless">
+						<thead>
+							<tr class="main_head_1">
+								<th scope="col" class="c-2"><span class="x50_log__item__heading-icon">
+										<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M10.5 0C14.1244 0 17.0625 2.93811 17.0625 6.5625C17.0625 10.1869 14.1244 13.125 10.5 13.125C6.87561 13.125 3.9375 10.1869 3.9375 6.5625C3.9375 2.93811 6.87561 0 10.5 0ZM18.0175 13.6919L15.0925 12.9607C12.0195 15.171 8.29467 14.6777 5.90748 12.9607L2.98253 13.6919C1.22969 14.1301 0 15.705 0 17.5118V19.0312C0 20.1186 0.881426 21 1.96875 21H19.0312C20.1186 21 21 20.1186 21 19.0312V17.5118C21 15.705 19.7703 14.1301 18.0175 13.6919Z"
+												fill="#CE354F" />
+										</svg>
+									</span> 12 <span class="gap">1000 TRX</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="body_2 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-2">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-3 col-sm-12">
+					<table class="table table-borderless">
+						<thead>
+							<tr class="main_head_1">
+	
+								<th scope="col" class="c-3"><span class="x50_log__item__heading-icon">
+										<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M10.5 0C14.1244 0 17.0625 2.93811 17.0625 6.5625C17.0625 10.1869 14.1244 13.125 10.5 13.125C6.87561 13.125 3.9375 10.1869 3.9375 6.5625C3.9375 2.93811 6.87561 0 10.5 0ZM18.0175 13.6919L15.0925 12.9607C12.0195 15.171 8.29467 14.6777 5.90748 12.9607L2.98253 13.6919C1.22969 14.1301 0 15.705 0 17.5118V19.0312C0 20.1186 0.881426 21 1.96875 21H19.0312C20.1186 21 21 20.1186 21 19.0312V17.5118C21 15.705 19.7703 14.1301 18.0175 13.6919Z"
+												fill="#4CDB45" />
+										</svg>
+									</span> 3 <span class="gap">1000 TRX</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="body_2 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-3">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-lg-3 col-sm-12">
+					<table class="table table-borderless">
+						<thead>
+							<tr class="main_head_1">
+	
+								<th scope="col" class="c-4"><span class="x50_log__item__heading-icon">
+										<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M10.5 0C14.1244 0 17.0625 2.93811 17.0625 6.5625C17.0625 10.1869 14.1244 13.125 10.5 13.125C6.87561 13.125 3.9375 10.1869 3.9375 6.5625C3.9375 2.93811 6.87561 0 10.5 0ZM18.0175 13.6919L15.0925 12.9607C12.0195 15.171 8.29467 14.6777 5.90748 12.9607L2.98253 13.6919C1.22969 14.1301 0 15.705 0 17.5118V19.0312C0 20.1186 0.881426 21 1.96875 21H19.0312C20.1186 21 21 20.1186 21 19.0312V17.5118C21 15.705 19.7703 14.1301 18.0175 13.6919Z"
+												fill="#F6E444" />
+										</svg>
+									</span> 3 <span class="gap">1000 TRX</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="body_2 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_2 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_3 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+							<tr class="body_4 col-lg-3">
+								<td class="c-4">Login <span class="gap">1000 TRX</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-		<div class="table-subhead table-colored">
-			<div class="table-subhead-item">
-				Players
-			</div>
-			<div class="table-subhead-item">
-				Prediction
-			</div>
-			<div class="table-subhead-item">
-				Lucky number
-			</div>
-			<div class="table-subhead-item">
-				Bets
-			</div>
-			<div class="table-subhead-item">
-				Payout
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Player
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-	</div>
 </div>
 
 
@@ -1245,16 +1120,7 @@
 
 
 
-<style>
-	.colored_circle,
-		{
-		transform: translate(0, 0);
-		left: 0px !important;
-	}
 
-	.x50_circle__counter,
-	.x50_circle__arrow {}
-</style>
 
 
 
@@ -2149,6 +2015,14 @@
 			$("#rulesModal .game-rule-content").not($(this).next()).slideUp("slow")
 			$(this).next().stop()
 			$(this).next().slideToggle("slow")
+		})
+		$(".pricing").hide()
+		$(".pricing-1").show()
+		$(".navigation-scnd-item-container-2-text").on("click", function () {
+			$(".navigation-scnd-item-container-2-text").removeClass("active-value")
+			$(this).addClass("active-value")
+			$(".pricing").hide()
+			$(".pricing-" + this.id).show()
 		})
 	})
   $(document).ready(function () {

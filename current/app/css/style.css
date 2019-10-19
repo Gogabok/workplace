@@ -726,7 +726,8 @@ body {
 	}
 
 	.rectangle {
-		max-width: 73%;
+		max-width: 90%;
+		margin-top: 40px;
 		height: 100%;
 		/* margin: 300px auto; */
 		/* transform: translate(15%,25%); */
@@ -738,6 +739,10 @@ body {
 		height: 350px;
 		overflow-x: hidden;
 		overflow-y: scroll;
+	}
+	.rectangle {
+		max-width: 90%;
+		margin-top: 40px;
 	}
 	.rectangle::-webkit-scrollbar{
 	  	background: rgba(30, 44, 61, 0.7);
@@ -1629,6 +1634,10 @@ body {
 	justify-content: center;
 }
 
+.faq-pages {
+  border: 1px solid #F1CD5B;
+}
+
 .game-rule-head {
   display: flex;
   align-items: center;
@@ -2512,3 +2521,114 @@ body {
 .table-borderless {
 	margin: 0px 10px;
 }
+
+
+
+.colored_circle 	{
+		transform: translate(-50%, 0);
+		left: 50% !important;
+	}
+
+	.x50_circle__counter {
+		transform: translate(-50%, 0);
+		display: block !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		left: 50%;
+	}
+	.x50_circle__arrow {
+		transform: translate(-50%, 0);
+		display: block !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		left: 50%;
+	}
+	.x50_circle__current {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
+	@media screen and (max-width: 770px) {
+		.x50_circle__current {
+			margin-top: 0px;
+			margin-bottom: 100px;
+		}
+		.x50_bets__tab_content__item {
+			margin: 0px auto !important;
+		}
+	}
+
+	.x50_circle__last_colors {
+		height: 350px;
+	}
+
+	.x50_circle__last_colors {
+		left: 50px;
+	}
+	.game-2-cont {
+		max-width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.rectangle .row_2 {
+		width: 100%;
+		display: flex;
+	}
+
+	@media screen and (max-width: 576px) {
+		.rectangle .row_2 {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.header-menu {
+		user-select: none;
+	}
+
+	.games-jackpot {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+		text-decoration-line: underline;
+		color: #F1CD5B;
+		margin: 0px;
+		white-space: nowrap;
+		cursor: pointer;
+		position: absolute;
+		left: 40px;
+		width: 1px; 
+	}
+
+	.games-jackpot a {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 16px;
+		text-decoration-line: underline;
+		color: #F1CD5B !important;
+		margin: 0px;
+		white-space: nowrap;
+		cursor: pointer;
+	}
+
+	@media screen and (max-width: 1100px) {
+		.games-jackpot {
+			height: 70px;
+			display: flex;
+			align-items: flex-end;
+			position: relative;
+			justify-content: flex-start;
+			left: 34%;
+		}
+	}
+
+	@media screen and (max-width: 450px) {
+		.games-jackpot {
+			left: 25%;
+		}
+	}

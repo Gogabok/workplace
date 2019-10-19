@@ -113,7 +113,7 @@
 				<div class="navigation-item-container container-block-balance">
 					<div class="nav-valutes-wrapper">
 						<div class="navigation-scnd-item-container-2">
-							<p class="navigation-scnd-item-container-2-text active-value" id="1">TRX</p>
+							<p class="navigation-scnd-item-container-2-text active-value " id="1">TRX</p>
 						</div>
 					</div>
 					<div class="navigation-scnd-item-container">
@@ -122,7 +122,7 @@
 					</div>
 					<div class="nav-valutes-wrapper">
 						<div class="navigation-scnd-item-container-2">
-							<p class="navigation-scnd-item-container-2-text"  id="2">LEX</p>
+							<p class="navigation-scnd-item-container-2-text" id="2">LEX</p>
 						</div>
 					</div>
 				</div>
@@ -164,6 +164,9 @@
 		<div class="container-nav">
 			<div class="games-wrapper">
 				<div class="games">
+				<div class="games-jackpot">
+					<a href="jackpot.html">7 джекпотов: 6,000,000,000 TRX</a>
+				</div>
 					<a href="index.html" id="1" class="games-item game-activator">
 						<img src="img/game-1.png" alt="">
 						<p class="games-item-text">Dice</p>
@@ -1293,10 +1296,12 @@
   })
 </script>
 <script>
+	
   $(document).ready(function () {
     $(".dividend").on("click", function () {
       $("#dividendModal").fadeIn()
     })
+		$("#faqModal .item-content").hide()
     $("#dividendModalClose").on("click", function () {
       $("#dividendModal").fadeOut()
     })
@@ -1307,7 +1312,13 @@
       e.stopImmediatePropagation();
     });
 
-		
+		$(".blur").on("click", function () {
+			$("#faqModal .item-content").slideUp()
+			$("#rulesModal .game-rule-content").slideUp()
+			$(".honestGame-inputs-flex-item-relative").slideUp()
+		})
+
+
 		$(".statistic-table-item").hide()
 		$(".statistic-table-item-1").show()
 		$(".statistic-table-nav-item").on("click", function () {
