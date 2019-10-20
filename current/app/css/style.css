@@ -903,9 +903,7 @@ table th {
 	.games-item {
 		display: none;
 	}
-	.games-item:first-child {
-		display: flex;
-	}
+	
 	.container-nav {
 		padding: 0px 20px;
 	}
@@ -918,9 +916,7 @@ table th {
 	.games-item {
 		display: none;
 	}
-	.games-item:first-child {
-		display: flex;
-	}
+	
 	.container-block-balance {
 		display: block;
 	}
@@ -1573,9 +1569,7 @@ body {
 	.games-item {
 		display: none;
 	}
-	.games-item:first-child {
-		display: flex;
-	}
+	
 	.container-nav {
 		padding: 0px 20px;
 	}
@@ -1588,9 +1582,7 @@ body {
 	.games-item {
 		display: none;
 	}
-	.games-item:first-child {
-		display: flex;
-	}
+	
 	.container-block-balance {
 		display: block;
 	}
@@ -2444,6 +2436,19 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+#getModal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+#takeModal {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
 .header-menu {
 	position: fixed;
 	width: 100%;
@@ -2617,7 +2622,7 @@ body {
 	}
 
 	@media screen and (max-width: 1100px) {
-		.games-jackpot {
+		.games-jackpot-1 {
 			height: 70px;
 			display: flex;
 			align-items: flex-end;
@@ -2628,7 +2633,48 @@ body {
 	}
 
 	@media screen and (max-width: 450px) {
-		.games-jackpot {
-			left: 25%;
+
+	}
+
+	@media screen and (max-width: 920px) {
+		.games-jackpot-1 {
+			display: none;
+		}
+		.games-jackpot-2 {
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			text-decoration-line: underline;
+			color: #F1CD5B !important;
+			margin: 0px;
+			cursor: pointer;
+		}
+		.games-jackpot-2:hover {
+			color: #F1CD5B !important;
+			text-decoration-line: underline !important;
+		}
+		.faq-trigger {
+			color: #fff !important;
+		}
+	}
+
+	.games-jackpot-common {
+		max-width:  100px;
+		width:  100%;
+		position: static;
+		white-space: normal;
+		left: 0px;
+	}
+
+	.games-jackpot-common a {
+		position: static;
+		white-space: normal;
+		font-size: 12px;
+	}
+
+	@media screen and (max-width: 340px) {
+		.games-jackpot-common a {
+			font-size: 9px;
 		}
 	}

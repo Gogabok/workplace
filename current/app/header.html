@@ -99,11 +99,11 @@
 		<section id="header-thrd">
 			<div class="container-nav">
 				<div class="games-wrapper">
-					<div class="games-jackpot">
+					<div class="games-jackpot games-jackpot-common">
 						<a href="jackpot.html" >7 джекпотов: 6,000,000,000 TRX</a>
 					</div>
 					<div class="games">
-						<div id="1" class="games-item games-item-active game-activator">
+						<div id="1" class="games-item game-activator">
 							<img src="img/game-1.png" alt="">
 							<p class="games-item-text">Dice</p>
 						</div>
@@ -172,12 +172,12 @@
 					<p class="headerJack-balance-valutes navigation-scnd-item-container-2-text" id="2">LEX</p>
 				</div>
 				<div class="headerJack-btns">
-					<button class="headerJack-btns-item btn-1">Пополнить</button>
-					<button class="headerJack-btns-item btn-2">Вывести</button>
+					<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
+					<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
 				</div>
 			</div>
 		</div>
-	</div></div>
+	</div>
 	<div class="game" id="slots">
 		<p class="game-title-caption">Слоты</p>
 		<div class="container">
@@ -368,6 +368,18 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="blur" id="rulesModal" style="display: none;">
 	<div class="modalrules">
 		<div class="rules-page">
@@ -515,11 +527,6 @@
 
 
 
-
-<script src="js/scripts.min.js"></script>
-
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/odometer-test.js"></script>
 
 
 <div class="blur" id="honestGameModal">
@@ -674,129 +681,181 @@
 
 
 
-<script>
-	// $(".blur").hide()
-	$(document).ready(function () {
-		// $(".blur").hide()
-		$("#faqModal .item-content").hide()
-		$("#faqModal .game-rule-content-item").on("click", function (e) {
-			$("#faqModal .item-content").not($(this).next()).slideUp("slow")
-			$(this).next().stop()
-			$(this).next().slideToggle("slow")
-		})
-	})
-	$(document).ready(function () {
-		$("#rulesModal .game-rule-content").hide()
-		$("#rulesModal .game-rule-head").on("click", function (e) {
-			$("#rulesModal .game-rule-content").not($(this).next()).slideUp("slow")
-			$(this).next().stop()
-			$(this).next().slideToggle("slow")
-		})
-		$(".pricing").hide()
-		$(".pricing-1").show()
-		$(".navigation-scnd-item-container-2-text").on("click", function () {
-			$(".navigation-scnd-item-container-2-text").removeClass("active-value")
-			$(this).addClass("active-value")
-			$(".pricing").hide()
-			$(".pricing-" + this.id).show()
-		})
-	})
-	$(document).ready(function () {
-		$("#honestGame").on("click", function () {
-			$("#honestGameModal").fadeIn()
-		})
-		$("#honestModalClose").on("click", function () {
-			$("#honestGameModal").fadeOut()
-		})
-		$("#honestGameModal").on("click", function (e) {
-			$("#honestGameModal").fadeOut()
-		})
-		$(".modal1").click(function (e) {
-			e.stopImmediatePropagation();
-		});
-	})
-</script>
-<script>
-	$(document).ready(function () {
-		$(".dividend").on("click", function () {
-			$("#dividendModal").fadeIn()
-		})
-		$("#dividendModalClose").on("click", function () {
-			$("#dividendModal").fadeOut()
-		})
-		$("#dividendModal").on("click", function (e) {
-			$("#dividendModal").fadeOut()
-		})
-		$(".modal1").click(function (e) {
-			e.stopImmediatePropagation();
-		});
-
-
-
-
-		$(".game-activator").on("click", function () {
-			$(".game-activator").removeClass("games-item-active")
-			$(this).addClass("games-item-active")
-			$(".game").hide()
-			$(".game-" + this.id).show()
-		})
-
-
-		$(".honestGame-inputs-flex-item-relative").slideUp()
-		$("#honestGame-menutoggler").on("click", function () {
-			$(".honestGame-inputs-flex-item-relative").stop()
-			$(".honestGame-inputs-flex-item-relative").slideToggle()
-		})
 
 
 
 
 
-		$(".blur").on("click", function () {
-			$("#faqModal .item-content").slideUp()
-			$("#rulesModal .game-rule-content").slideUp()
-			$(".honestGame-inputs-flex-item-relative").slideUp()
-		})
+
+
+
+
+<div class="blur" id="getModal" style="display: none;">
+	<div class="modalrules">
+		<div class="rules-page">
+			<div class="game-rule">
+				<div class="game-rule-head-2">
+					<div class="game-title">
+						<p class="games-item-text">Вывести</p>
+					</div>
+					<img class="close" id="getModalClose" src="img/close.svg" alt="">
+				</div>
+			</div>
+			<div class="getContent">
+				<p class="getContent-text">
+					Ставки в этой игре делаются из игрового кошелька, расположенного на смарт-контракте. Вы можете пополнять и
+					снимать
+					средства со своего кошелька в любое время
+				</p>
+				<div class="getContent-input">
+					<p class="getContent-input-title">Номер слотового кошелька</p>
+					<div class="getContent-input-item">
+						TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
+					</div>
+				</div>
+				<div class="getContent-input">
+					<p class="getContent-input-title">Баланс слотового кошелька</p>
+					<div class="getContent-input-wrapper">
+						<input style="margin:0px" type="text" class="honestGame-input" placeholder="999.999.999">
+						<div class="getContent-input-wrapper-valute">TRX</div>
+					</div>
+					<button class="honestGame-btn" style="margin: 20px 0px 0px auto">Отправить</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+
+		<div class="blur" id="takeModal" style="display: none;">
+			<div class="modalrules">
+				<div class="rules-page">
+					<div class="game-rule">
+						<div class="game-rule-head-2">
+							<div class="game-title">
+								<p class="games-item-text">Пополнить</p>
+							</div>
+							<img class="close" id="takeModalClose" src="img/close.svg" alt="">
+						</div>
+					</div>
+					<div class="getContent">
+						<p class="getContent-text">
+							Ставки в этой игре делаются из игрового кошелька, расположенного на смарт-контракте. Вы можете пополнять и
+							снимать
+							средства со своего кошелька в любое время
+						</p>
+						<div class="getContent-input">
+							<p class="getContent-input-title">Номер слотового кошелька</p>
+							<div class="getContent-input-item">
+								TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
+							</div>
+						</div>
+						<div class="getContent-input">
+							<p class="getContent-input-title">Баланс слотового кошелька</p>
+							<div class="getContent-input-wrapper">
+								<input style="margin:0px" type="text" class="honestGame-input" placeholder="999.999.999">
+								<div class="getContent-input-wrapper-valute">TRX</div>
+							</div>
+							<button class="honestGame-btn" style="margin: 20px 0px 0px auto">Отправить</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+<style>
+	.getContent-input-wrapper {
+		display: flex;
+	}
+	.getContent-input-wrapper-valute {
+		display: flex;
+		align-items: center;
+		background: #131C2D;
+		padding: 12px 15px;
+		color: #FFFFFF;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		border: 1px solid transparent;
+		border-left:none;
+	}
+	.honestGame-input:focus ~ .getContent-input-wrapper-valute {
+		border: 1px solid #F1CD5B;
+		border-left:none;
+	}
+	.getContent-input-item {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		color: #9098A3;
+		background: #131C2D;
+		padding: 12px 15px;
+		margin: 10px 0px;
+	}
+	.getContent-input-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		color: #9098A3;
+		margin: 15px 0px 3px 0px;
+	}
+	.getContent {
+		background: #132234;
+		padding: 20px 25px;
+	}
+	.getContent-text {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		display: flex;
+		align-items: center;
+		color: #FFFFFF;
+	}
+</style>
 
 
 
 
 
-		$(".faq-trigger").on("click", function () {
-			$("#faqModal").fadeIn()
-		})
-		$("#faqModalClose").on("click", function () {
-			$("#faqModal").fadeOut()
-		})
-		$("#faqModal").on("click", function (e) {
-			$("#faqModal").fadeOut()
-		})
-		$(".modalfaq").click(function (e) {
-			e.stopImmediatePropagation();
-		});
-
-		$(".rules-trigger").on("click", function () {
-			$("#rulesModal").fadeIn()
-		})
-		$("#rulesModalClose").on("click", function () {
-			$("#rulesModal").fadeOut()
-		})
-		$("#rulesModal").on("click", function (e) {
-			$("#rulesModal").fadeOut()
-		})
-		$(".modalrules").click(function (e) {
-			e.stopImmediatePropagation();
-		});
-		$("#faqModal .item-content").hide()
-		$(".blur").on("click", function () {
-			$("#faqModal .item-content").slideUp()
-			$("#rulesModal .game-rule-content").slideUp()
-			$(".honestGame-inputs-flex-item-relative").slideUp()
-		})
-	})
 
 
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="js/scripts.min.js"></script>
+	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/odometer-test.js"></script>
+
 </body>
 	<style>
 		#slots {
