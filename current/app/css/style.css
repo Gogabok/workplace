@@ -2679,3 +2679,21 @@ body {
 			font-size: 9px;
 		}
 	}
+
+
+
+.volumeImage {
+	display: none;
+}
+.volume-active {
+	display: block;
+}
+
+.langToggle {
+	width: 80px;
+	display: none;
+}
+
+.lang-active {
+	display: flex;
+}
