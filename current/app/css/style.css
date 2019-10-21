@@ -138,6 +138,7 @@ body {
 .navigation-item-container-item-wrapper {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 .navigation-item-container-item-wrapper-text {
 	font-family: Roboto;
