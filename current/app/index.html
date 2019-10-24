@@ -238,7 +238,7 @@
 					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
 				</div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-7 col-lg-9">
 				<div class="game-area dicegame">
 	
 					<div class="frame">
@@ -250,6 +250,9 @@
 						<div class="prediction">
 							<span class="num">77</span>
 							<span class="numbers-name">Prediction</span>
+						</div>
+						<div class="sign">
+							<
 						</div>
 						<div class="lucky">
 							<span class="num subs-odometer">00</span>
@@ -268,7 +271,7 @@
 	
 				</div>
 			</div>
-			<div class="col-md-3 ml-auto">
+			<div class=" col-md-3 ml-auto">
 				<div class="game-fields game-area">
 					<div class="coin-stripe d-flex">
 						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
@@ -279,7 +282,20 @@
 					</div>
 					<div class="bet-amount input-obj">
 						<img src="img/lex.png" alt="">
-						<label for="bet-amount">Bet amount</label>
+						<label for="bet-amount">Bet amount: 
+							<span>
+								<a href="#" class="bet-change bet-2x">2x</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-half">1/2</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-min">min</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-max">max</a>
+							</span>
+						</label>
 						<!-- <p>
 							<a href="#" class="bet-change bet-2x">2x</a>
 							<a href="#" class="bet-change bet-half">1/2</a>
@@ -287,12 +303,12 @@
 							<a href="#" class="bet-change bet-max">max</a>
 						</p> -->
 						<input type="text" value="1" id="bet-amount" class="lex">
-						<p>
+						<!-- <p>
 							<a href="#" class="bet-change bet-2x">2x</a>
 							<a href="#" class="bet-change bet-half">1/2</a>
 							<a href="#" class="bet-change bet-min">min</a>
 							<a href="#" class="bet-change bet-max">max</a>
-						</p>
+						</p> -->
 	
 					</div>
 					<div class="payout input-obj">
@@ -300,7 +316,7 @@
 						<label for="payout">Payout on win</label>
 						<input type="text" value="2.01" id="payout" class="lex" readonly>
 					</div>
-					<div class="balance input-obj">
+					<!-- <div class="balance input-obj">
 						<img src="img/lex.png" alt="">
 						<label for="balance"><span>TRX</span> Balance</label>
 	
@@ -310,7 +326,7 @@
 							<option value="2" class="special">10 LEX</option>
 							<option value="3" class="special">10 BTT</option>
 						</select>
-					</div>
+					</div> -->
 					<div class="win-chance">
 	
 						<label for="win-chance">Win chance</label>
@@ -802,7 +818,7 @@
 				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
 				<div class="x50_circle__last_colors__item x50_circle__last_colors__item-red"></div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-7">
 				<div class="col-sm-12 col-md-4 col-lg-4 x50_circle__current">
 					<span class="colored_circle"></span>
 					<input class="x50_circle__counter" disabled="" type='text' value="0">
@@ -825,20 +841,27 @@
 					</div>
 					<div class="bet-amount input-obj">
 						<img src="img/lex.png" alt="">
-						<label for="bet-amount">Bet amount</label>
+						<label for="bet-amount">Bet amount:
+							<span>
+								<a href="#" class="bet-change bet-2x">2x</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-half">1/2</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-min">min</a>
+							</span>
+							<span>
+								<a href="#" class="bet-change bet-max">max</a>
+							</span>
+						</label>
+						<input type="text" value="1" id="bet-amount" class="lex">
 						<!-- <p>
 							<a href="#" class="bet-change bet-2x">2x</a>
 							<a href="#" class="bet-change bet-half">1/2</a>
 							<a href="#" class="bet-change bet-min">min</a>
 							<a href="#" class="bet-change bet-max">max</a>
 						</p> -->
-						<input type="text" value="1" id="bet-amount" class="lex">
-						<p>
-							<a href="#" class="bet-change bet-2x">2x</a>
-							<a href="#" class="bet-change bet-half">1/2</a>
-							<a href="#" class="bet-change bet-min">min</a>
-							<a href="#" class="bet-change bet-max">max</a>
-						</p>
 
 					</div>
 					<div class="x50_bets__tab_content__item d-flex">
