@@ -800,7 +800,7 @@ table th {
 		margin-right: 20px;
 	}
 	.game-fields {
-		margin-right: 20px;
+		/* margin-right: 20px; */
 		/* margin-left: -200px; */
 	}
 	.dicegame {
@@ -2469,7 +2469,7 @@ body {
 .header-menu {
 	position: fixed;
 	width: 100%;
-	z-index: 999999;
+	z-index: 99999;
 }
 .x50_circle__last_colors__item-yellow {
 		background: #F6E444;
@@ -2733,3 +2733,716 @@ body {
 		padding-top: 170px;
 	}
 }
+
+
+html {
+	margin: 0px !important;
+}
+
+.mfp-bg {
+	z-index: 999991 !important;
+}
+
+
+.mfp-wrap {
+	z-index: 999992 !important;
+}
+
+.input-obj img {
+    position: absolute;
+    top: 35px;
+    left: 13px;
+    width: 24px;
+}
+
+@media screen and (max-width: 1180px) {
+	.input-obj img {
+		position: absolute;
+		top: 109px;
+		left: 13px;
+		width: 24px;
+	}
+	.payout img {
+		top: 32px;
+	}
+	.bet-amount label  {
+		height: 100px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.getContent-input-wrapper {
+		display: flex;
+	}
+	.getContent-input-wrapper-valute {
+		display: flex;
+		align-items: center;
+		background: #131C2D;
+		padding: 12px 15px;
+		color: #FFFFFF;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		border: 1px solid transparent;
+		border-left:none;
+	}
+	.honestGame-input:focus ~ .getContent-input-wrapper-valute {
+		border: 1px solid #F1CD5B;
+		border-left:none;
+	}
+	.getContent-input-item {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		color: #9098A3;
+		background: #131C2D;
+		padding: 12px 15px;
+		margin: 10px 0px;
+	}
+	.getContent-input-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		color: #9098A3;
+		margin: 15px 0px 3px 0px;
+	}
+	.getContent {
+		background: #132234;
+		padding: 20px 25px;
+	}
+	.getContent-text {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		display: flex;
+		align-items: center;
+		color: #FFFFFF;
+	}
+	#slots {
+			display: block;
+			padding-top: 190px;
+		}
+		.game-title-caption {
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 36px;
+			line-height: 42px;
+			color: #FFFFFF;
+			display: block;
+			margin: 0px auto;
+		}
+		.game {
+			text-align: center;
+		}
+		.game-wrapper {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 30px;
+		}
+		.game-wrapper-item {
+			height: 240px;
+			margin: 20px 0px;
+			cursor: pointer;
+		}
+		.game-wrapper-item-item {
+			border: 1.5px solid transparent;
+			transition-duration: .3s;
+		}
+		.game-wrapper-item-item:hover {
+			border: 1.5px solid #F1CD5B;
+			transition-duration: .3s;
+		}
+		/* .game-wrapper-item-1 {
+			background: url("img/slot-1.png") 50% 50% no-repeat;
+		} */
+		
+		.header-menu-2 {
+			width: 100%;
+			background: #132234;
+		}
+		.game-wrapper-item div {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 28px;
+			text-align: center;
+			color: #FFFFFF;
+			position: relative;
+			padding: 10px 10px;
+			background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .9));
+		}
+		.headerJack-aside {
+			display: flex;
+			align-items:center;
+		}
+		.headerJack-aside img {
+			width: 50px;
+			margin-right: 20px;
+		}
+		.headerJack {
+			padding: 5px 40px;
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.user {
+			margin: 0px;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 16px;
+			color: #FFFFFF;
+		}
+		.headerJack-aside-balance {
+			margin: 2px 0px;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 16px;
+			color: #8D8D8D;
+		}
+		.user-id {
+			margin: 0px;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 16px;
+			color: #FFFFFF;
+		}
+		.headerJack-balance {
+			display: flex;
+			align-items: center;
+			margin-left: -100px;
+		}
+		.headerJack-balance-title {
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 12px;
+			line-height: 16px;
+			display: flex;
+			align-items: center;
+			text-align: center;
+			color: #FFFFFF;
+			margin: 0px;
+			margin-right: 5px;
+		}
+		.headerJack-balance-number {
+			background: #131C2D;
+			border-radius: 100px;
+			padding: 7px 40px;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 900;
+			font-size: 14px;
+			text-align: center;
+			color: #F1CD5B;
+			margin: 0px 10px;
+		}
+		.headerJack-balance-valutes {
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 10px;
+			line-height: 12px;
+			color: #FFFFFF;
+			cursor: pointer;
+			margin: 0px 8px;
+		}
+		.active-value {
+			text-decoration-line: underline;
+			color: #F1CD5B;
+		}
+		.headerJack-btns-item {
+			padding: 9px 20px;
+			outline: none;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: 900;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: center;
+			margin: 0px 10px;
+			border: none;
+			cursor: pointer;
+		}
+		.btn-1 {
+			color: #101B28;
+			background: #F1CD5B;
+		}
+		.btn-2 {
+			color: #FFFFFF;
+			background: #101B28;
+		}
+		#slots .container {
+			display: flex;
+			justify-content: center;
+		}
+		@media screen and (max-width: 1250px) {
+			.headerJack-balance-title {
+				display: none;
+			}
+			.headerJack {
+				max-width: 100%;
+				padding: 10px 30px;
+			}
+			.headerJack-balance {
+				margin-left: 20px;
+			}
+			#slots {
+				padding-top: 220px;
+			}
+		}
+		@media screen and (max-width: 989px) {
+			.headerJack-btns {
+				display: block;
+			}
+			.headerJack-btns-item {
+				display: block;
+				margin: 5px 0px;
+				width: 150px;
+			}
+			.headerJack {
+				padding: 10px 15px;
+			}
+			.headerJack-balance-number {
+				padding: 7px 15px;
+				margin: 0px 5px;
+			}
+			.game-wrapper-item {
+				height: 180px;
+				margin: 15px auto;
+			}
+			.game-wrapper {
+				justify-content: center;
+				margin-top: 10px;
+			}
+			#slots {
+				padding-top: 320px;
+			}
+		}
+		@media screen and (max-width: 715px) {
+			#slots {
+				padding-top: 400px;
+			}
+			.headerJack-btns-item {
+				width: 100px;
+				font-size: 12px;
+				padding: 6px 12px;
+			}
+			.headerJack-aside {
+				display: block;
+			}
+			.headerJack-aside img {
+				margin: 0px;
+				margin-bottom: 10px;
+			}
+			.headerJack-balance-valutes {
+				margin: 0px 3px;
+			}
+			.headerJack {
+				display: block;
+				padding: 15px 0px;
+			}
+			.headerJack-balance {
+				justify-content: center;
+				margin: 15px 0px;
+			}
+			.headerJack-aside {
+				text-align: center;
+			}
+			.headerJack-btns {
+				display: flex;
+				justify-content: center;
+			}
+			.headerJack-btns-item { 
+				margin: 0px 15px;
+			}
+			.headerJack-balance {
+				margin: 3px 0px;
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/* Jackpot */
+
+
+
+		.game-6 .jackpot-content-wrapper-slots-item-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 28px;
+		color: #FFFFFF;
+		margin: 15px 0px;
+	}
+	.game-6 .content-jackpot-boxes {
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+	}
+	.game-6 .content-jackpot-boxes-item {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #F1CD5B;
+		width: 45px;
+		justify-content: center;
+		border: 2px solid #F1CD5B;
+		margin: 0px 3px;
+		margin: 0 auto;
+	}
+	.game-6 .jackpot-content-wrapper-slots-item {
+		background: linear-gradient(180deg, #132234 0%, #101B28 100%);
+		border-radius: 30px;
+		padding: 40px 50px;
+		text-align: center;
+		width: 100%;
+		max-width: 31%;
+		margin: 20px 0px;
+	}
+	.game-6 .jackpot-wrapper, .jackpot-content-wrapper {
+		max-width: 1100px;
+		margin: 0px auto;
+	}
+	.game-6 .jackpot-content-wrapper-slots-item-image-wrapper {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background: #F1CD5B;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		user-select: none;
+		pointer-events: none;
+	}
+	.game-6 .jackpot-content-wrapper-slots-item-image-wrapper img {
+		max-width: 90%;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.game-6 .jackpot-content-wrapper-slots {
+		justify-content: space-between;
+		display: flex;
+		margin-top: 30px;
+		flex-wrap: wrap;
+	}
+	.game-6 .jackpot-content {
+		padding: 60px 40px;
+		background: #172535;
+	}
+	.game-6 .jackpot-content-caption {
+		max-width: 500px;
+	}
+	.game-6 .jackpot-content-caption-text {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 19px;
+		display: flex;
+		align-items: center;
+		color: #FFFFFF;
+	}
+	.game-6 .jackpot-content-caption-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 42px;
+		color: #FFFFFF;
+	}
+	.game-6 .jackpot {
+		width: 100%;
+		padding: 60px 40px 60px 40px;
+		background: #F1CD5B;
+		margin: 0px;
+	}
+	.game-6 {
+		overflow: hidden;
+		background: none;
+		padding-bottom: 0px;
+	}
+	.game-6 .jackpot-text {
+		text-align: left;
+		max-width: 500px;
+	}
+	.game-6 .jackpot-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.game-6 .jackpot-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 42px;
+		color: #000000;
+		margin: 0px;
+		margin-bottom: 20px;
+	}
+	.game-6 .jackpot-desc {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 19px;
+		display: flex;
+		align-items: center;
+		color: #000000;
+		margin: 0px;
+	}
+	.game-6 .main-jackpot-title {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 42px;
+		color: #000000;
+		margin: 0px;
+		margin-bottom: 30px;
+	}
+	.game-6 .main-jackpot-boxes {
+		display: flex;
+		align-items: center;
+	}
+	.game-6 .main-jackpot-boxes-item {
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 48px;
+		line-height: 56px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #000000;
+		padding: 0px 12px;
+		width: 120px;
+		justify-content: center;
+		border:3px solid #000;
+		margin: 0px 3px;
+	}
+	@media screen and (max-width: 850px) {
+		.game-6 .jackpot-wrapper {
+			display: block;
+		}
+		.game-6 .jackpot-text {
+			max-width: 100%;
+		}
+		.game-6 .main-jackpot {
+			margin-top: 40px;
+		}
+		.game-6 .main-jackpot-boxes {
+			justify-content: space-between;
+			width: 100%;
+		}
+		.game-6 .main-jackpot-title {
+			text-align: left;
+		}
+	}
+	@media screen and (max-width: 550px) {
+		.game-6 .main-jackpot-boxes {
+			justify-content: space-around;
+		}
+		.game-6 .main-jackpot-boxes-item {
+			font-size: 22px;
+			line-height: 22px;
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 1040px) {
+		.game-6 .jackpot-content-wrapper-slots-item {
+			max-width: 49%;
+		}
+	}
+	@media screen and (max-width: 650px) {
+		.game-6 .jackpot-content-wrapper-slots-item {
+			max-width: 100%;
+			padding: 20px 15px;
+		}
+	}
+
+
+
+
+
+	@media screen and (min-width: 1300px) {
+		.input-obj img {
+			left: 100px;
+		}
+	}
+
+
+	input {
+			max-width:300px;
+		}

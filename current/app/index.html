@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
 
 	<meta charset="utf-8">
@@ -36,9 +35,13 @@
 	<link rel="stylesheet" href="css/menuPagesFAQ.css">
 	<link rel="stylesheet" href="css/menuPagesRules.css">
 	<link rel="stylesheet" href="css/style.css">
+	<script
+		id="chatBroEmbedCode">/* Chatbro Widget Embed Code Start */function ChatbroLoader(chats, async) { async = !1 !== async; var params = { embedChatsParameters: chats instanceof Array ? chats : [chats], lang: navigator.language || navigator.userLanguage, needLoadCode: 'undefined' == typeof Chatbro, embedParamsVersion: localStorage.embedParamsVersion, chatbroScriptVersion: localStorage.chatbroScriptVersion }, xhr = new XMLHttpRequest; xhr.withCredentials = !0, xhr.onload = function () { eval(xhr.responseText) }, xhr.onerror = function () { console.error('Chatbro loading error') }, xhr.open('GET', '//www.chatbro.com/embed.js?' + btoa(unescape(encodeURIComponent(JSON.stringify(params)))), async), xhr.send() }/* Chatbro Widget Embed Code End */ChatbroLoader({ encodedChatId: '14P1e' });</script>
 </head>
 
 <body style="overflow-y: auto !important;">
+
+
 <div class="header-menu">
 	<header id="header">
 		<div class="container-nav">
@@ -169,8 +172,8 @@
 		<div class="container-nav">
 			<div class="games-wrapper">
 				<div class="games">
-					<div class="games-jackpot games-jackpot-1">
-						<a href="jackpot.html" >7 джекпотов: 6,000,000,000 TRX</a>
+					<div id="6" class="games-jackpot games-item-active game-activator games-jackpot-1">
+						<a >7 джекпотов: 6,000,000,000 TRX</a>
 					</div>
 					<div id="1" class="games-item games-item-active game-activator">
 						<img src="img/game-1.png" alt="">
@@ -188,10 +191,10 @@
 						<img src="img/game-3.png" alt="">
 						<p class="games-item-text">Roulette</p>
 					</div>
-					<a href="slots.html" class="games-item">
+					<div id="5" class="games-item game-activator">
 						<img src="img/game-4.png" alt="">
 						<p class="games-item-text">Slots</p>
-					</a>
+					</div>
 				</div>
 				<div class="rules">
 					<a href="#" class="rules-title rules-trigger">Правила</a>
@@ -225,9 +228,6 @@
 	</section>
 </div>
 
-
-
-
 <div id="game-1" class="game game-1">
 	<div class="container-fluid game-2-cont">
 		<div class="row">
@@ -238,7 +238,7 @@
 					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
 				</div>
 			</div>
-			<div class="col-md-7 col-lg-9">
+			<div class="col-md-7 col-lg-7">
 				<div class="game-area dicegame">
 	
 					<div class="frame">
@@ -271,7 +271,7 @@
 	
 				</div>
 			</div>
-			<div class=" col-md-3 ml-auto">
+			<div class=" col-md-3 col-lg-4 ml-auto">
 				<div class="game-fields game-area">
 					<div class="coin-stripe d-flex">
 						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
@@ -745,39 +745,7 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 <div id="game-2" class="game game-2">
 	<div class="container-fluid game-2-cont">
@@ -830,7 +798,7 @@
 					</span>
 				</div>
 			</div>
-			<div class="col-md-3 ml-auto">
+			<div class="col-md-3 col-lg-4 ml-auto">
 				<div class="game-fields game-area">
 					<div class="coin-stripe d-flex">
 						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
@@ -1141,65 +1109,6 @@
 		</div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="game-3" class="game game-3">
-	
-</div>
-
 <div id="game-3" class="game game-3">
 	<p style="color: #fff">MOON</p>
 </div>
@@ -1208,8 +1117,240 @@
 	<p style="color: #fff">ROULETTE</p>
 </div>
 
-<div id="game-5" class="game game-5">
-	<p style="color: #fff">SLOTS</p>
+<div id="game-5" id="slots" class="game game-5">
+	<p class="game-title-caption">Слоты</p>
+	<div class="container">
+		<div class="game-wrapper row col-md-12 p-0">
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-1.png') 50% 50% no-repeat;">
+					<div>YETI - Battle of Greenhat Peak</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-2.png') 50% 50% no-repeat;">
+					<div>Dragon Horn</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-3.png') 50% 50% no-repeat;">
+					<div>Turning Totems</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-4.png') 50% 50% no-repeat;">
+					<div>Well of Wonders</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-5.png') 50% 50% no-repeat;">
+					<div>Frog Grog</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-6.png') 50% 50% no-repeat;">
+					<div>Jaguar Temle</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-7.png') 50% 50% no-repeat;">
+					<div>Midas Golden Touch</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-8.png') 50% 50% no-repeat;">
+					<div>Not enouth Kittens</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-9.png') 50% 50% no-repeat;">
+					<div>Pink Elephants</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-10.png') 50% 50% no-repeat;">
+					<div>Ravens Eye</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-11.png') 50% 50% no-repeat;">
+					<div>The Falcon Huntress</div>
+				</div>
+			</div>
+			<div class="game-wrapper-item-item col-md-4 col-sm-6 col-11">
+				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-12.png') 50% 50% no-repeat;">
+					<div>The Rift</div>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+
+<div class="game game-6" id="game-6">
+	<div class="jackpot" style="display: block;">
+		<div class="jackpot-wrapper">
+			<div class="jackpot-text">
+				<p class="jackpot-title">
+					Джекпоты
+				</p>
+				<p class="jackpot-desc">
+					Для сообщества BITLEX GAMES создано множество больших джекпотов с целью дать возможность каждому мгновенно стать
+					богатым
+					и счастливым человеком.
+				</p>
+			</div>
+			<div class="main-jackpot">
+				<p class="main-jackpot-title">Основной джекпот</p>
+				<div class="main-jackpot-boxes">
+					<div class="main-jackpot-boxes-item">
+						000
+					</div>
+					<div class="main-jackpot-boxes-item">
+						000
+					</div>
+					<div class="main-jackpot-boxes-item">
+						000
+					</div>
+					<div class="main-jackpot-boxes-item">
+						TRX
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="jackpot-content">
+		<div class="jackpot-content-wrapper">
+			<div class="jackpot-content-caption">
+				<p class="jackpot-content-caption-title">Внутриигровые джепоты</p>
+				<p class="jackpot-content-caption-text">
+					«Внутриигровые джепоты» имеет шанс получить абслоютно любой игрок, поставивший ставку размером более 100 TRX.
+					Для всех
+					установлен одинаковый шанс: 0,03%.
+				</p>
+			</div>
+			<div class="jackpot-content-wrapper-slots">
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/1.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">New DICE Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/2.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">Master DICE Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/3.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">X50 Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/4.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">SPACE Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/5.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">ROULETTE Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+				<div class="jackpot-content-wrapper-slots-item">
+					<div class="jackpot-content-wrapper-slots-item-image-wrapper">
+						<img alt="" src="img/jackpot/6.svg" class="jackpot-content-wrapper-slots-item-image">
+					</div>
+					<p class="jackpot-content-wrapper-slots-item-title">SLOTS Jackpot</p>
+					<div class="content-jackpot-boxes">
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							000
+						</div>
+						<div class="content-jackpot-boxes-item">
+							TRX
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	</div>
 </div>
 
 
@@ -1218,316 +1359,361 @@
 
 
 
+<div class="modals">
+	<div class="blur" id="faqModal" style="display: none;">
+		<div class="modalfaq">
+			<div class="faq-pages">
+				<div class="faq-page">
+					<div class="game-rule">
+						<div class="game-rule-head-2">
+							<div class="game-title">
+								<p class="games-item-text games-item-title">Faq</p>
+							</div>
+							<img class="close" id="faqModalClose" src="img/close.svg" alt="">
+						</div>
+						<div class="game-rule-content">
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Что такое Crypto Casino?</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">Ключевое слово «Крипто» привносит два аспекта в систему онлайн-казино.
+										Криптографические
+										хеш-функции, используемые в
+										технологии Blockchain, гарантируют доказанную справедливость в системе казино. В ставках используются
+										известные
+										криптовалюты (TRON и BTT) вместо реальных или виртуальных денег, которые принесут огромную пользу игрокам.
+									</p>
+								</div>
+							</div>
 
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Как мне залогинится чтоб играть на сайте?</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">Установите приложение Tronlink
+										<a target="_blank"
+											href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec">(https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec)</a>.
+										Наш сайт использует Tronlink. Происходит автоматическая авторизация, без емейлов и паролей.</p>
+								</div>
+							</div>
 
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Что такое токен LEX и для чего он используется?</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">Token LEX - это токен TRC20 в блокчейне TRON (Вы можете добавить свои LEX токены
+										в Tron
+										Link. Выберите раздел токенов и нажмите добавить адрес («TTUoJ8mXhyXxK1UdFnm5B5aLWKJa8NTkzj»). Как только
+										ваши
+										токены LEX будут добавлены, вы можете использовать их на свое усмотрение.</p>
+									<p class="item-content-text">Всего может быть добыто 100 000 000 токенов. Владельцам токенов LEX будут
+										выплачиваться
+										дивиденды в TRX в зависимости от количества принадлежащих им токенов LEX.</p>
+								</div>
+							</div>
 
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Как получить LEX?</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">LEX можно получить, просто играя на платформе BITLEX. Используя TRX для игр на
+										платформе BITLEX, вы сможете получить LEX
+										независимо от того, выиграете вы или проиграете. Играй на 900 TRX и получай 1 LEX. 5% от общей эмисси
+										токенов LEX
+										продаются на ICO для получения инвесторми дивидентов с биржи и ставок на спорт. Токены с ICO будут
+										разморожены ровно
+										через 100 дней после старта ICO.
+									</p>
+								</div>
+							</div>
 
-<div class="blur" id="faqModal" style="display: none;">
-	<div class="modalfaq">
-		<div class="faq-pages">
-			<div class="faq-page">
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Почему токены LEX в перспективе будут стоить дороже?</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">Мы молодая и сильная команда по разработке TRON DAAps приложений. У нас есть
+										видение как наша компания будет развиватся
+										и где мы будем через год.Мы будем внедрять в нашу платформу много новый интересных и популярных игр в сфере
+										гемблинга,
+										ставки на спорт и мощную биржу, что будет толкать цену наших токенов LEX вверх.</p>
+								</div>
+							</div>
+
+							<div class="faq-item">
+								<div class="game-rule-content-item">
+									<p class="game-rule-content-text">Реферальная программа</p>
+									<img src="img/faq-arrow.svg" alt="">
+								</div>
+								<div class="item-content">
+									<p class="item-content-text">Получайте вознаграждение просто обратившись к своим друзям!
+										Получайте 0.2% всех их ставок. Все вознаграждения оправляются автоматически через наши смарт-контракты.
+
+										<a target="_blank"
+											href="https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of">https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of</a>
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blur" id="rulesModal" style="display: none;">
+		<div class="modalrules">
+			<div class="rules-page">
 				<div class="game-rule">
 					<div class="game-rule-head-2">
 						<div class="game-title">
-							<p class="games-item-text games-item-title">Faq</p>
+							<p class="games-item-text">Правила игры</p>
 						</div>
-						<img class="close" id="faqModalClose" src="img/close.svg" alt="">
+						<img class="close" id="rulesModalClose" src="img/close.svg" alt="">
+					</div>
+				</div>
+			
+			
+				<div class="game-rule">
+					<div class="game-rule-head">
+						<div class="game-title">
+							<img src="img/game-1.png" alt="">
+							<p class="games-item-text">Dice</p>
+						</div>
 					</div>
 					<div class="game-rule-content">
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Что такое Crypto Casino?</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">Ключевое слово «Крипто» привносит два аспекта в систему онлайн-казино.
-									Криптографические
-									хеш-функции, используемые в
-									технологии Blockchain, гарантируют доказанную справедливость в системе казино. В ставках используются
-									известные
-									криптовалюты (TRON и BTT) вместо реальных или виртуальных денег, которые принесут огромную пользу игрокам.
-								</p>
-							</div>
+						<p class="game-rule-content-text">Установите СТАВКУ. Это сумма TRX, на которую вы будете делать ставки.</p>
+						<ul class="game-rule-content-list">
+							<li class="game-rule-content-list-item">
+								<div class="game-rule-content-list-item-counter">1</div>
+								<p class="game-rule-content-text">Вы можете отрегулировать ползунок или ввести прогнозируемое число.</p>
+							</li>
+							<li class="game-rule-content-list-item">
+								<div class="game-rule-content-list-item-counter">2</div>
+								<p class="game-rule-content-text">Когда вы перемещаете ползунок, ваши выплаты и шансы на выигрыш будут
+									корректироваться автоматически</p>
+							</li>
+							<li class="game-rule-content-list-item">
+								<div class="game-rule-content-list-item-counter">3</div>
+								<p class="game-rule-content-text">Нажмите ROLL, чтобы сделать ставку. Smart contract случайным образом будет
+									генерировать число LUCKY от 0 до 99.</p>
+							</li>
+							<li class="game-rule-content-list-item">
+								<div class="game-rule-content-list-item-counter">4</div>
+								<p class="game-rule-content-text" style="display: block">Если счастливое число окажется выше вашего прогноза, вы <span
+										class="game-rule-content-text-bold">Выигрываете!</span></p>
+							</li>
+						</ul>
+						<p class="game-rule-content-text">Вы можете выставить автоматические ставки использовав кнопку AUTO.</p>
+						<p class="game-rule-content-text">Каждая сделанная ставка дает вам токены LEX, для получения дополнительной
+							информации ознакомьтесь с нашим разделом
+							Dividends.</p>
+					</div>
+				</div>
+			
+			
+				<div class="game-rule">
+					<div class="game-rule-head">
+						<div class="game-title">
+							<img src="img/game-2.png" alt="">
+							<p class="games-item-text">x50</p>
 						</div>
-
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Как мне залогинится чтоб играть на сайте?</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">Установите приложение Tronlink
-									<a target="_blank"
-										href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec">(https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec)</a>.
-									Наш сайт использует Tronlink. Происходит автоматическая авторизация, без емейлов и паролей.</p>
-							</div>
+					</div>
+					<div class="game-rule-content">
+						<p class="game-rule-content-text">В каждом раунде, игрок может сделать до 5 ставок на один цвет или сделать ставку
+							на несколько цветов. Каждый цвет
+							представляет собой множитель и имеет ограничение максимальной ставки.</p>
+					</div>
+				</div>
+			
+				<div class="game-rule">
+					<div class="game-rule-head">
+						<div class="game-title">
+							<img src="img/game-5.png" alt="">
+							<p class="games-item-text">Space</p>
 						</div>
-
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Что такое токен LEX и для чего он используется?</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">Token LEX - это токен TRC20 в блокчейне TRON (Вы можете добавить свои LEX токены
-									в Tron
-									Link. Выберите раздел токенов и нажмите добавить адрес («TTUoJ8mXhyXxK1UdFnm5B5aLWKJa8NTkzj»). Как только
-									ваши
-									токены LEX будут добавлены, вы можете использовать их на свое усмотрение.</p>
-								<p class="item-content-text">Всего может быть добыто 100 000 000 токенов. Владельцам токенов LEX будут
-									выплачиваться
-									дивиденды в TRX в зависимости от количества принадлежащих им токенов LEX.</p>
-							</div>
+					</div>
+					<div class="game-rule-content">
+						<p class="game-rule-content-text">Каждый раз, когда вы играете, вы должны ввести значение в auto-spice (Mин 1.01,
+							Maкс =
+							100,000/ставка < 9999x). Значение Spice независимо и случайно между 1.00 x и 9999x. Количество и/или # игроки не
+								влияют на результат.</p> <p class="game-rule-content-text">Пользователи также имеют возможность нажать на
+								кнопку
+								стоп. Если пользователь не нажмет вручную, включится функция
+								автостопа.</p>
+						<p class="game-rule-content-text">Если вы успешно spiced, выплата будет в соответствии со значением Spice. Потери
+							будут вычтены соответственно.</p>
+					</div>
+				</div>
+			
+				<div class="game-rule">
+					<div class="game-rule-head">
+						<div class="game-title">
+							<img src="img/game-4.png" alt="">
+							<p class="games-item-text">Slots</p>
 						</div>
-
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Как получить LEX?</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">LEX можно получить, просто играя на платформе BITLEX. Используя TRX для игр на
-									платформе BITLEX, вы сможете получить LEX
-									независимо от того, выиграете вы или проиграете. Играй на 900 TRX и получай 1 LEX. 5% от общей эмисси
-									токенов LEX
-									продаются на ICO для получения инвесторми дивидентов с биржи и ставок на спорт. Токены с ICO будут
-									разморожены ровно
-									через 100 дней после старта ICO.
-								</p>
-							</div>
-						</div>
-
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Почему токены LEX в перспективе будут стоить дороже?</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">Мы молодая и сильная команда по разработке TRON DAAps приложений. У нас есть
-									видение как наша компания будет развиватся
-									и где мы будем через год.Мы будем внедрять в нашу платформу много новый интересных и популярных игр в сфере
-									гемблинга,
-									ставки на спорт и мощную биржу, что будет толкать цену наших токенов LEX вверх.</p>
-							</div>
-						</div>
-
-						<div class="faq-item">
-							<div class="game-rule-content-item">
-								<p class="game-rule-content-text">Реферальная программа</p>
-								<img src="img/faq-arrow.svg" alt="">
-							</div>
-							<div class="item-content">
-								<p class="item-content-text">Получайте вознаграждение просто обратившись к своим друзям!
-									Получайте 0.2% всех их ставок. Все вознаграждения оправляются автоматически через наши смарт-контракты.
-
-									<a target="_blank"
-										href="https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of">https://netron.win/?wef233f23oi3r32r23r32iur8u2f32of</a>
-								</p>
-							</div>
-						</div>
-
+					</div>
+					<div class="game-rule-content">
+						<p class="game-rule-content-text">Ставки в слотах делаются из слотового кошелька, расположенного на
+							смарт-контракте. Вы можете пополнять и снимать
+							средства со своего кошелька в любое время.</p>
+						<p class="game-rule-content-text">Чтобы начать игру, мы делаем ставку (размер ставки) и выбираем количество
+							выигрышных линий - «линия». В игре
+							используются игровые линии от 1 до 20, которые увеличивают шансы на выигрыш.</p>
+						<p class="game-rule-content-text">При нажатии кнопки «Вращение» барабан начинает вращаться и выпадает в случайном
+							порядке.</p>
+						<p class="game-rule-content-text">Ваши выигрыши по каждой линии будут суммироваться и отображаться на игровом поле
+							в строке «Всего выигрышей»</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-<div class="blur" id="rulesModal" style="display: none;">
-	<div class="modalrules">
-		<div class="rules-page">
-			<div class="game-rule">
-				<div class="game-rule-head-2">
-					<div class="game-title">
-						<p class="games-item-text">Правила игры</p>
-					</div>
-					<img class="close" id="rulesModalClose" src="img/close.svg" alt="">
-				</div>
-			</div>
-		
-		
-			<div class="game-rule">
+	<div class="blur" id="honestGameModal">
+		<div class="blur-wrapper">
+			<div class="modal1">
 				<div class="game-rule-head">
 					<div class="game-title">
-						<img src="img/game-1.png" alt="">
-						<p class="games-item-text">Dice</p>
+						<p class="games-item-text games-item-title">Честная игра</p>
 					</div>
+					<img class="close" id="honestModalClose" src="img/close.svg" alt="">
 				</div>
-				<div class="game-rule-content">
-					<p class="game-rule-content-text">Установите СТАВКУ. Это сумма TRX, на которую вы будете делать ставки.</p>
-					<ul class="game-rule-content-list">
-						<li class="game-rule-content-list-item">
-							<div class="game-rule-content-list-item-counter">1</div>
-							<p class="game-rule-content-text">Вы можете отрегулировать ползунок или ввести прогнозируемое число.</p>
-						</li>
-						<li class="game-rule-content-list-item">
-							<div class="game-rule-content-list-item-counter">2</div>
-							<p class="game-rule-content-text">Когда вы перемещаете ползунок, ваши выплаты и шансы на выигрыш будут
-								корректироваться автоматически</p>
-						</li>
-						<li class="game-rule-content-list-item">
-							<div class="game-rule-content-list-item-counter">3</div>
-							<p class="game-rule-content-text">Нажмите ROLL, чтобы сделать ставку. Smart contract случайным образом будет
-								генерировать число LUCKY от 0 до 99.</p>
-						</li>
-						<li class="game-rule-content-list-item">
-							<div class="game-rule-content-list-item-counter">4</div>
-							<p class="game-rule-content-text" style="display: block">Если счастливое число окажется выше вашего прогноза, вы <span
-									class="game-rule-content-text-bold">Выигрываете!</span></p>
-						</li>
-					</ul>
-					<p class="game-rule-content-text">Вы можете выставить автоматические ставки использовав кнопку AUTO.</p>
-					<p class="game-rule-content-text">Каждая сделанная ставка дает вам токены LEX, для получения дополнительной
-						информации ознакомьтесь с нашим разделом
-						Dividends.</p>
-				</div>
-			</div>
-		
-		
-			<div class="game-rule">
-				<div class="game-rule-head">
-					<div class="game-title">
-						<img src="img/game-2.png" alt="">
-						<p class="games-item-text">x50</p>
-					</div>
-				</div>
-				<div class="game-rule-content">
-					<p class="game-rule-content-text">В каждом раунде, игрок может сделать до 5 ставок на один цвет или сделать ставку
-						на несколько цветов. Каждый цвет
-						представляет собой множитель и имеет ограничение максимальной ставки.</p>
-				</div>
-			</div>
-		
-			<div class="game-rule">
-				<div class="game-rule-head">
-					<div class="game-title">
-						<img src="img/game-5.png" alt="">
-						<p class="games-item-text">Space</p>
-					</div>
-				</div>
-				<div class="game-rule-content">
-					<p class="game-rule-content-text">Каждый раз, когда вы играете, вы должны ввести значение в auto-spice (Mин 1.01,
-						Maкс =
-						100,000/ставка < 9999x). Значение Spice независимо и случайно между 1.00 x и 9999x. Количество и/или # игроки не
-							влияют на результат.</p> <p class="game-rule-content-text">Пользователи также имеют возможность нажать на
-							кнопку
-							стоп. Если пользователь не нажмет вручную, включится функция
-							автостопа.</p>
-					<p class="game-rule-content-text">Если вы успешно spiced, выплата будет в соответствии со значением Spice. Потери
-						будут вычтены соответственно.</p>
-				</div>
-			</div>
-		
-			<div class="game-rule">
-				<div class="game-rule-head">
-					<div class="game-title">
-						<img src="img/game-4.png" alt="">
-						<p class="games-item-text">Slots</p>
-					</div>
-				</div>
-				<div class="game-rule-content">
-					<p class="game-rule-content-text">Ставки в слотах делаются из слотового кошелька, расположенного на
-						смарт-контракте. Вы можете пополнять и снимать
-						средства со своего кошелька в любое время.</p>
-					<p class="game-rule-content-text">Чтобы начать игру, мы делаем ставку (размер ставки) и выбираем количество
-						выигрышных линий - «линия». В игре
-						используются игровые линии от 1 до 20, которые увеличивают шансы на выигрыш.</p>
-					<p class="game-rule-content-text">При нажатии кнопки «Вращение» барабан начинает вращаться и выпадает в случайном
-						порядке.</p>
-					<p class="game-rule-content-text">Ваши выигрыши по каждой линии будут суммироваться и отображаться на игровом поле
-						в строке «Всего выигрышей»</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	<script src="js/scripts.min.js"></script>
-
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="js/odometer-test.js"></script>
-
-
-<div class="blur" id="honestGameModal">
-	<div class="blur-wrapper">
-		<div class="modal1">
-			<div class="game-rule-head">
-				<div class="game-title">
-					<p class="games-item-text games-item-title">Честная игра</p>
-				</div>
-				<img class="close" id="honestModalClose" src="img/close.svg" alt="">
-			</div>
-			<div class="honestGame-content">
-				<p class="item-content-text">Все транзакции(операции) на BITLEX производятся через надёжные смарт контракты в сети
-					TRON. Это гарантирует то что все
-					данные абсолютно достоверны.</p>
-				<p class="item-content-text">Выигрышные номера являются случайными и никому не известны заранее. Используется
-					генератор случайных чисел, основанный
-					на хэш-блоке TRON и работающий по смарт-контракту в TRON.network. Вы можете использовать адрес игрока и номер
-					блока для
-					проверки выигрышных номеров.</p>
-				<div class="honestGame-inputs">
-					<input type="text" class="honestGame-input" placeholder="Ввожу адрес игрока">
-					<input type="text" class="honestGame-input" placeholder="Номер блока">
-					<button class="honestGame-btn">Отправить</button>
-					<div class="honestGame-inputs-flex">
-						<div id="honestGame-menutoggler" class="honestGame-inputs-flex-item">
-							<div class="honestGame-inputs-flex-item-name">Dice</div>
-							<img src="img/faq-arrow.svg" alt="">
-						</div>
-						<div class="honestGame-inputs-flex-item-relative">
-							<div class="honestGame-inputs-flex-item">
+				<div class="honestGame-content">
+					<p class="item-content-text">Все транзакции(операции) на BITLEX производятся через надёжные смарт контракты в сети
+						TRON. Это гарантирует то что все
+						данные абсолютно достоверны.</p>
+					<p class="item-content-text">Выигрышные номера являются случайными и никому не известны заранее. Используется
+						генератор случайных чисел, основанный
+						на хэш-блоке TRON и работающий по смарт-контракту в TRON.network. Вы можете использовать адрес игрока и номер
+						блока для
+						проверки выигрышных номеров.</p>
+					<div class="honestGame-inputs">
+						<input type="text" class="honestGame-input" placeholder="Ввожу адрес игрока">
+						<input type="text" class="honestGame-input" placeholder="Номер блока">
+						<button class="honestGame-btn">Отправить</button>
+						<div class="honestGame-inputs-flex">
+							<div id="honestGame-menutoggler" class="honestGame-inputs-flex-item">
 								<div class="honestGame-inputs-flex-item-name">Dice</div>
+								<img src="img/faq-arrow.svg" alt="">
 							</div>
-							<div class="honestGame-inputs-flex-item">
-								<div class="honestGame-inputs-flex-item-name">x50</div>
+							<div class="honestGame-inputs-flex-item-relative">
+								<div class="honestGame-inputs-flex-item">
+									<div class="honestGame-inputs-flex-item-name">Dice</div>
+								</div>
+								<div class="honestGame-inputs-flex-item">
+									<div class="honestGame-inputs-flex-item-name">x50</div>
+								</div>
+								<div class="honestGame-inputs-flex-item">
+									<div class="honestGame-inputs-flex-item-name">Moon</div>
+								</div>
+								<div class="honestGame-inputs-flex-item">
+									<div class="honestGame-inputs-flex-item-name">Roulette</div>
+								</div>
+								<div class="honestGame-inputs-flex-item">
+									<div class="honestGame-inputs-flex-item-name">Slots</div>
+								</div>
 							</div>
+							<div class="inputs-slash"></div>
 							<div class="honestGame-inputs-flex-item">
-								<div class="honestGame-inputs-flex-item-name">Moon</div>
-							</div>
-							<div class="honestGame-inputs-flex-item">
-								<div class="honestGame-inputs-flex-item-name">Roulette</div>
-							</div>
-							<div class="honestGame-inputs-flex-item">
-								<div class="honestGame-inputs-flex-item-name">Slots</div>
+								<div class="honestGame-inputs-flex-item-name"></div>
 							</div>
 						</div>
-						<div class="inputs-slash"></div>
-						<div class="honestGame-inputs-flex-item">
-							<div class="honestGame-inputs-flex-item-name"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blur" id="dividendModal">
+		<div class="blur-wrapper">
+			<div class="modal1">
+				<div class="game-rule-head">
+					<div class="game-title">
+						<p class="games-item-text games-item-title">Дивиденты</p>
+					</div>
+					<img class="close" id="dividendModalClose" src="img/close.svg" alt="">
+				</div>
+				<div class="dividend-content">
+					<div class="progress-bar">
+						<div class="progress-line">
+							<div class="progress-level-left">1</div>
+							<div class="progress-line-item">
+								<div class="progress-line-fill"></div>
+							</div>
+							<div class="progress-level-right">2</div>
+						</div>
+						<div class="progress-numbers">
+							<div class="progress-numbers-item">
+								<p class="progress-numbers-item-counter">1,230,473</p>
+								<img src="img/lex.png" alt="">
+							</div>
+							<div class="progress-numbers-slash">
+								/
+							</div>
+							<div class="progress-numbers-item">
+								<p class="progress-numbers-item-counter">100,000,000</p>
+								<img src="img/lex.png" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="dividend-table">
+						<div class="dividend-table-item">
+							<p class="dividend-table-item-name">Уровень</p>
+							<p class="dividend-table-item-name">Условие</p>
+						</div>
+						<div class="dividend-table-item dividend-table-item-1">
+							<p class="dividend-table-item-name">Уровень 1</p>
+							<p class="dividend-table-item-name">Сыграв на 900 TRX будет добыто: 1 LEX</p>
+						</div>
+						<div class="dividend-table-item dividend-table-item-2">
+							<p class="dividend-table-item-name">Уровень 2</p>
+							<p class="dividend-table-item-name">Сыграв на 990 TRX будет добыто: 1 LEX</p>
+						</div>
+						<!-- <div class="table-more">
+							<p class="table-more-text">Полный список уровней</p>
+							<img src="img/arrow-btn.png" alt="">
+						</div> -->
+					</div>
+					<div class="dividend-pool">
+						<div class="dividend-pool-head">
+							<p class="dividend-pool-head-caption">Дивидентный пул</p>
+							<p class="dividend-pool-head-coof">Коэффициент дивидентов: 60%</p>
+						</div>
+						<div class="dividend-pool-btns">
+							<div class="dividend-pool-btns-item">100</div>
+							<div class="dividend-pool-btns-item">000</div>
+							<div class="dividend-pool-btns-item">000</div>
+							<div class="dividend-pool-btns-item">000</div>
+							<div class="dividend-pool-btns-item">
+								<img src="img/trx.png" alt="">
+							</div>
+						</div>
+						<div class="dividend-pool-desc">
+							<p class="dividend-pool-desc-name">Дивиденты начисляются ежескундно</p>
+							<img src="img/time.png" alt="">
+						</div>
+					</div>
+					<div class="dividend-footer">
+						<div class="dividend-footer-leftSide">
+							<div class="dividend-footer-leftSide-title">
+								<p class="dividend-footer-leftSide-title-item">Мои дивиденты</p>
+								<p class="dividend-footer-leftSide-title-balance">Баланс: 9000000 TRX</p>
+							</div>
+							<div class="dividend-balance">
+								<p class="dividend-balance-item">1000</p>
+								<p class="dividend-balance-item-valute">TRX</p>
+							</div>
+						</div>
+						<div class="dividend-footer-rightSide">
+							<button class="honestGame-btn">Получить</button>
 						</div>
 					</div>
 				</div>
@@ -1538,94 +1724,6 @@
 
 
 
-<div class="blur" id="dividendModal">
-	<div class="blur-wrapper">
-		<div class="modal1">
-			<div class="game-rule-head">
-				<div class="game-title">
-					<p class="games-item-text games-item-title">Дивиденты</p>
-				</div>
-				<img class="close" id="dividendModalClose" src="img/close.svg" alt="">
-			</div>
-			<div class="dividend-content">
-				<div class="progress-bar">
-					<div class="progress-line">
-						<div class="progress-level-left">1</div>
-						<div class="progress-line-item">
-							<div class="progress-line-fill"></div>
-						</div>
-						<div class="progress-level-right">2</div>
-					</div>
-					<div class="progress-numbers">
-						<div class="progress-numbers-item">
-							<p class="progress-numbers-item-counter">1,230,473</p>
-							<img src="img/lex.png" alt="">
-						</div>
-						<div class="progress-numbers-slash">
-							/
-						</div>
-						<div class="progress-numbers-item">
-							<p class="progress-numbers-item-counter">100,000,000</p>
-							<img src="img/lex.png" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="dividend-table">
-					<div class="dividend-table-item">
-						<p class="dividend-table-item-name">Уровень</p>
-						<p class="dividend-table-item-name">Условие</p>
-					</div>
-					<div class="dividend-table-item dividend-table-item-1">
-						<p class="dividend-table-item-name">Уровень 1</p>
-						<p class="dividend-table-item-name">Сыграв на 900 TRX будет добыто: 1 LEX</p>
-					</div>
-					<div class="dividend-table-item dividend-table-item-2">
-						<p class="dividend-table-item-name">Уровень 2</p>
-						<p class="dividend-table-item-name">Сыграв на 990 TRX будет добыто: 1 LEX</p>
-					</div>
-					<!-- <div class="table-more">
-						<p class="table-more-text">Полный список уровней</p>
-						<img src="img/arrow-btn.png" alt="">
-					</div> -->
-				</div>
-				<div class="dividend-pool">
-					<div class="dividend-pool-head">
-						<p class="dividend-pool-head-caption">Дивидентный пул</p>
-						<p class="dividend-pool-head-coof">Коэффициент дивидентов: 60%</p>
-					</div>
-					<div class="dividend-pool-btns">
-						<div class="dividend-pool-btns-item">100</div>
-						<div class="dividend-pool-btns-item">000</div>
-						<div class="dividend-pool-btns-item">000</div>
-						<div class="dividend-pool-btns-item">000</div>
-						<div class="dividend-pool-btns-item">
-							<img src="img/trx.png" alt="">
-						</div>
-					</div>
-					<div class="dividend-pool-desc">
-						<p class="dividend-pool-desc-name">Дивиденты начисляются ежескундно</p>
-						<img src="img/time.png" alt="">
-					</div>
-				</div>
-				<div class="dividend-footer">
-					<div class="dividend-footer-leftSide">
-						<div class="dividend-footer-leftSide-title">
-							<p class="dividend-footer-leftSide-title-item">Мои дивиденты</p>
-							<p class="dividend-footer-leftSide-title-balance">Баланс: 9000000 TRX</p>
-						</div>
-						<div class="dividend-balance">
-							<p class="dividend-balance-item">1000</p>
-							<p class="dividend-balance-item-valute">TRX</p>
-						</div>
-					</div>
-					<div class="dividend-footer-rightSide">
-						<button class="honestGame-btn">Получить</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 
@@ -1633,6 +1731,15 @@
 
 
 
+
+
+
+
+
+
+
+<script src="js/scripts.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/odometer-test.js"></script>
 </body>
-
 </html>
