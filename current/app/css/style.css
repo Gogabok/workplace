@@ -2920,7 +2920,7 @@ html {
 			margin-top: 30px;
 		}
 		.game-wrapper-item {
-			height: 240px;
+			height: 200px;
 			margin: 20px 0px;
 			cursor: pointer;
 		}
@@ -2959,6 +2959,15 @@ html {
 			position: relative;
 			padding: 10px 10px;
 			background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .9));
+			opacity: 0;
+			transition-duration: .3s;
+		}
+		.game-wrapper-item-item:hover div {
+			opacity: 1;
+			transition-duration: .3s;
+		}
+		.game-wrapper-item div p {
+			margin: 0px;
 		}
 		.headerJack-aside {
 			display: flex;
@@ -4127,4 +4136,44 @@ html {
 }
 .item-content {
 	padding-bottom: 5px;
+}
+
+.main_head_1, .body_2, .body_3, .body_4 {
+	text-align: left;
+}
+
+.game-rule-content-list-item p, .game-rule-content-text {
+	line-height: 24px;
+}
+
+
+
+* {
+	user-select: none !important;
+}
+
+#ref-copy-btn {
+	margin-left: 25px;
+	padding: 9px 20px;
+	outline: none;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	border: none;
+	cursor: pointer;
+	color: #101B28;
+	background: #F1CD5B;
+}
+
+#ref-copy-btn:disabled {
+	opacity: .6;
+	cursor: default;
+}
+
+.langToggle img {
+	max-width: 27px;
+	max-height: 27px;
 }
