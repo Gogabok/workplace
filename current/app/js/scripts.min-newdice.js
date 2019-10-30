@@ -2372,7 +2372,7 @@ $(function () {
   }
 
   function doPayout(persent) {
-    var amount = $("#bet-amount").val();
+    var amount = $("#bet-amount1").val();
     var coeficient;
     for (key in persentArr) {
       if (persent == key)
@@ -2427,7 +2427,7 @@ $(function () {
   //   }
   // });
 
-  $("#bet-amount").on('keyup', function () {
+  $("#bet-amount1").on('keyup', function () {
     var current = $(this).val();
     //console.log(current);
     var multi = $("#multiplier").val();
@@ -2466,7 +2466,7 @@ $(function () {
     lex = false;
     btt = false;
     dataWinCoin = '.trx-data ';
-    $("#bet-amount").val('10');
+    $("#bet-amount1").val('10');
     var persentCurrent = handle2.text() - handle.text() -1;
     console.log(persentCurrent);
     // console.log(handle2.text());
@@ -2482,7 +2482,7 @@ $(function () {
     lex = true;
     btt = false;
     dataWinCoin = '.lex-data ';
-    $("#bet-amount").val('1');
+    $("#bet-amount1").val('1');
     var persentCurrent = handle2.text() - handle.text()-1;
     console.log(persentCurrent);
     // console.log(handle2.text());
@@ -2498,7 +2498,7 @@ $(function () {
     lex = false;
     btt = true;
     dataWinCoin = '.btt-data ';
-    $("#bet-amount").val('500');
+    $("#bet-amount1").val('500');
     var persentCurrent = handle2.text() - handle.text()-1;
     console.log(persentCurrent);
     // console.log(handle2.text());
@@ -2566,7 +2566,7 @@ $(function () {
      
 
 
-      var b1 = $("#bet-amount").val();
+      var b1 = $("#bet-amount1").val();
       var b2 = $(dataWinCoin + '.wagered span').text();
       var wagered = +b1 + +b2;
       $(dataWinCoin + '.wagered span').text(wagered);
@@ -2611,16 +2611,16 @@ $(function () {
 
   $("a.bet-2x").on('click', function (e) {
     if (trx) {
-      if ($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
+      if ($("#bet-amount1").val() == 10000 || $("#bet-amount1").val() > 4999) return false;
     }
     if (lex) {
-      if ($("#bet-amount").val() == 1000 || $("#bet-amount").val() > 500) return false;
+      if ($("#bet-amount1").val() == 1000 || $("#bet-amount1").val() > 500) return false;
     }
     if (btt) {
-      if ($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
+      if ($("#bet-amount1").val() == 10000 || $("#bet-amount1").val() > 4999) return false;
     }
-    var current = $("#bet-amount").val() * 2;
-    $("#bet-amount").val(current);
+    var current = $("#bet-amount1").val() * 2;
+    $("#bet-amount1").val(current);
     //console.log(current);
     var multi = $("#multiplier").val();
     multi = multi.slice(0, -1);
@@ -2631,16 +2631,16 @@ $(function () {
 
   $("a.bet-half").on('click', function (e) {
     if (trx) {
-      if ($("#bet-amount").val() == 10 || $("#bet-amount").val() < 20) return false;
+      if ($("#bet-amount1").val() == 10 || $("#bet-amount1").val() < 20) return false;
     }
     if (lex) {
-      if ($("#bet-amount").val() == 1 || $("#bet-amount").val() < 2) return false;
+      if ($("#bet-amount1").val() == 1 || $("#bet-amount1").val() < 2) return false;
     }
     if (btt) {
-      if ($("#bet-amount").val() == 500 || $("#bet-amount").val() < 1000) return false;
+      if ($("#bet-amount1").val() == 500 || $("#bet-amount1").val() < 1000) return false;
     }
-    var current = $("#bet-amount").val() / 2;
-    $("#bet-amount").val(current);
+    var current = $("#bet-amount1").val() / 2;
+    $("#bet-amount1").val(current);
     var multi = $("#multiplier").val();
     multi = multi.slice(0, -1);
     $("#payout").val(rounded(multi * current));
@@ -2659,7 +2659,7 @@ $(function () {
     }
     //e.preventDefault();
     //var current = 1;
-    $("#bet-amount").val(current);
+    $("#bet-amount1").val(current);
     //console.log(current);
     var multi = $("#multiplier").val();
     multi = multi.slice(0, -1);
@@ -2679,7 +2679,7 @@ $(function () {
     if (btt) {
       current = 10000;
     }
-    $("#bet-amount").val(current);
+    $("#bet-amount1").val(current);
     //console.log(current);
     var multi = $("#multiplier").val();
     multi = multi.slice(0, -1);

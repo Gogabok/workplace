@@ -2,6 +2,7 @@ body {
 	padding: 0;
 	margin: 0;
 }
+
 a:hover {
 	color: inherit !important;
 	text-decoration: none !important;
@@ -4279,15 +4280,15 @@ html {
 
 }
 
-.mobile-roll {
+.mobile-roll1 {
 	display: none;
 }
 
 @media screen and (max-width: 768px) {
-	.desktop-roll {
+	.desktop-roll1 {
 		display: none;
 	}
-	.mobile-roll {
+	.mobile-roll1 {
 		display: block;
 	}
 }
@@ -4309,8 +4310,13 @@ html {
 	.game-area * {
 		max-width: 100%;
 	}
-	.mobile-roll {
+	.mobile-roll1 {
 		max-width: 100%;
+		margin-bottom: 20px !important;
+	}
+	.mobile-roll2 {
+		max-width: 100%;
+		margin: 20px 0px !important;
 	}
 	.prediction, .lucky {
 		height: 200px;
@@ -4355,4 +4361,12 @@ html {
 
 #dicenumb:after {
     content: '';
+}
+
+.num {
+	white-space: nowrap;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    background-color: #fff !important;
 }

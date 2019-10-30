@@ -215,27 +215,27 @@ $(function () {
     return Math.round(rand);
   }
 
-var subOdometr = document.querySelector(".subs-odometer");
-var odometr = new Odometer({
-  el: subOdometr,
-  minIntegerLen: 2,
-  format: 'dd',
-  //animation: 'count'
+  var subOdometr = document.querySelector(".subs-odometer");
+  var odometr = new Odometer({
+    el: subOdometr,
+    minIntegerLen: 2,
+    format: 'dd',
+    //animation: 'count'
 
-});
-//odometr.update(randomInteger(0, 99));
-  $("#roll").on('click', function () {
+  });
+  //odometr.update(randomInteger(0, 99));
+  $("#roll1").on('click', function () {
     var rand = randomInteger(0, 99);
     $(".odometer").html(rand);
     var myAudioWin = $('#audio2')[0];
-     setTimeout(function () {
+    setTimeout(function () {
       //var a = $(".odometer").text();
       var b = $(".prediction .num").text();
-     
-      var b1 = $("#bet-amount").val(); 
-        var b2 = $(".wagered span").text(); 
-        var wagered = +b1 + +b2;
-        $(".wagered span").text(wagered); 
+
+      var b1 = $("#bet-amount").val();
+      var b2 = $(".wagered span").text();
+      var wagered = +b1 + +b2;
+      $(".wagered span").text(wagered);
       if (rand > b || rand == b) {
         myAudioWin.play();
         var a1 = $("#payout").val();
@@ -247,8 +247,8 @@ var odometr = new Odometer({
         $(".frame .plus").text(a1);
         $(".profit span").text(rounded(res));
       }
-   }, 2500);
-  
+    }, 2500);
+
   });
 
 
@@ -260,13 +260,13 @@ var odometr = new Odometer({
 
   $("a.bet-2x").on('click', function (e) {
     if (trx) {
-      if($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
+      if ($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
     }
     if (lex) {
-      if($("#bet-amount").val() == 1000 || $("#bet-amount").val() > 500) return false;
+      if ($("#bet-amount").val() == 1000 || $("#bet-amount").val() > 500) return false;
     }
     if (btt) {
-      if($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
+      if ($("#bet-amount").val() == 10000 || $("#bet-amount").val() > 4999) return false;
     }
     var current = $("#bet-amount").val() * 2;
     $("#bet-amount").val(current);
@@ -280,13 +280,13 @@ var odometr = new Odometer({
 
   $("a.bet-half").on('click', function (e) {
     if (trx) {
-      if($("#bet-amount").val() == 10 || $("#bet-amount").val() < 20) return false;
+      if ($("#bet-amount").val() == 10 || $("#bet-amount").val() < 20) return false;
     }
     if (lex) {
-      if($("#bet-amount").val() == 1 || $("#bet-amount").val() < 2) return false;
+      if ($("#bet-amount").val() == 1 || $("#bet-amount").val() < 2) return false;
     }
     if (btt) {
-      if($("#bet-amount").val() == 500 || $("#bet-amount").val() < 1000) return false;
+      if ($("#bet-amount").val() == 500 || $("#bet-amount").val() < 1000) return false;
     }
     var current = $("#bet-amount").val() / 2;
     $("#bet-amount").val(current);
@@ -317,7 +317,7 @@ var odometr = new Odometer({
   });
 
   $("a.bet-max").on('click', function (e) {
-  
+
     var current = 10000;
     if (trx) {
       current = 10000;
