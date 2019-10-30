@@ -25,6 +25,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&amp;subset=cyrillic-ext"
 		rel="stylesheet">
 	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" href="css/newdice.css">
 	<link rel="stylesheet" href="css/select.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/jquery-ui.theme.css">
@@ -89,12 +90,24 @@
 						<img class="navigation-item-container-item-wrapper-image" src="img/tronlink.png" alt="">
 						<p class="navigation-item-container-item-wrapper-text">TronLink</p>
 					</div>
-					<a href="indexEN.html" class="navigation-item-container-item-wrapper langToggle lang-active">
-						<img class="navigation-item-container-item-wrapper-image" src="img/flag-en.png" alt="">
-						<p class="navigation-item-container-item-wrapper-text">English</p>
-						<!-- <img class="navigation-item-container-item-wrapper-image navigation-item-container-item-wrapper-image-disNoneMobile"
-							src="img/arrow-btn.png" alt=""> -->
-					</a>
+					<div class="lang-wrapper">
+						<div class="navigation-item-container-item-wrapper langToggle">
+							<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
+							<p class="navigation-item-container-item-wrapper-text">Русский</p>
+							<img class="navigation-item-container-item-wrapper-image navigation-item-container-item-wrapper-image-disNoneMobile"
+								src="img/arrow-btn.png" alt="">
+						</div>
+						<div class="langmenu">
+							<a href="index.html" class="navigation-item-container-item-wrapper langToggle">
+								<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
+								<p class="navigation-item-container-item-wrapper-text">Русский</p>
+							</a>
+							<a href="indexEN.html" class="navigation-item-container-item-wrapper langToggle">
+								<img class="navigation-item-container-item-wrapper-image" src="img/flag-en.png" alt="">
+								<p class="navigation-item-container-item-wrapper-text">English</p>
+							</a>
+						</div>
+					</div>
 					<!-- <div href="#" class="navigation-item-container-item-wrapper langToggle">
 						<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
 						<p class="navigation-item-container-item-wrapper-text">English</p>
@@ -107,7 +120,7 @@
 		<div class="container-nav">
 			<div class="navigation-scnd">
 				<div class="navigation-item-container">
-					<a href="index.html" class="navigation-scnd-item-container">
+					<a id="back" href="index.html" class="navigation-scnd-item-container">
 						<img src="img/arrow-back-btn.png" alt="">
 					</a>
 					<a href="index.html" class="navigation-scnd-item-container logo">
@@ -164,20 +177,48 @@
 				<a href="#" class="header-scnd-menu-item">Белая бумага</a>
 				<a id="7" class="game-activator header-scnd-menu-item">Дорожная карта</a>
 				<a target="_blank" class="header-scnd-menu-item faq-trigger">FAQ</a>
-				<a class="games-jackpot-2" href="jackpot.html">7 джекпотов: 6,000,000,000 TRX</a>
+				<a id="6" class="games-jackpot-2 game-activator">7 джекпотов: 6,000,000,000 TRX</a>
 			</div>
 		</div>
 	</section>
+	<div class="header-menu-2 header-disnone-2">
+		<div class="headerJack">
+			<div class="headerJack-aside">
+				<img src="img/user-avatar.png" alt="">
+				<div>
+					<p class="user">Bogdan Zenger</p>
+					<p class="headerJack-aside-balance">Баланс: 353.000 TRX</p>
+					<p class="user-id">TMtvWDsassa...dJvhvgasaxsqsfd</p>
+				</div>
+			</div>
+			<div class="headerJack-balance">
+				<p class="headerJack-balance-title">GAME баланс</p>
+				<div class="headerJack-balance-number pricing pricing-1">999.999.9999</div>
+				<div class="headerJack-balance-number pricing pricing-2">888.888.888</div>
+				<p class="headerJack-balance-valutes active-value navigation-scnd-item-container-2-text" id="1">TRX</p>
+				<p class="headerJack-balance-valutes navigation-scnd-item-container-2-text" id="2">LEX</p>
+			</div>
+			<div class="headerJack-btns">
+				<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
+				<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
+			</div>
+		</div>
+	</div>
 	<section id="header-thrd">
 		<div class="container-nav">
 			<div class="games-wrapper">
 				<div class="games">
+					<p class="thisGame">Dice</p>
 					<div id="6" class="games-jackpot games-item-active game-activator games-jackpot-1">
 						<a >7 джекпотов: 6,000,000,000 TRX</a>
 					</div>
 					<div id="1" class="games-item games-item-active game-activator">
 						<img src="img/game-1.png" alt="">
 						<p class="games-item-text">Dice</p>
+					</div>
+					<div id="9" class="games-item game-activator">
+						<img src="img/game-6.svg" alt="">
+						<p class="games-item-text">New Dice</p>
 					</div>
 					<div id="2" href="x50.html" class="games-item game-activator">
 						<img src="img/game-2.png" alt="">
@@ -204,9 +245,13 @@
 			</div>
 		</div>
 		<div id="header-scnd-menu-2">
-			<div id="1" class="games-item-menu-2 game-activator">
+			<div id="1" class="games-item-menu-2 games-item-active game-activator">
 				<img src="img/game-1.png" alt="">
 				<p class="games-item-text-menu-2">Dice</p>
+			</div>
+			<div id="9" class="games-item-menu-2 game-activator">
+				<img src="img/game-6.svg" alt="">
+				<p class="games-item-text-menu-2">New Dice</p>
 			</div>
 			<div id="2" class="games-item-menu-2 game-activator">
 				<img src="img/game-2.png" alt="">
@@ -220,35 +265,12 @@
 				<img src="img/game-3.png" alt="">
 				<p class="games-item-text-menu-2">ROULETTE</p>
 			</div>
-			<a href="slots.html" class="games-item-menu-2">
+			<div id="5" class="games-item-menu-2 game-activator">
 				<img src="img/game-4.png" alt="">
-				<p class="games-item-text-menu-2">SLOTS</p>
-			</a>
+				<p class="games-item-text-menu-2">GAMES</p>
+			</div>
 		</div>
 	</section>
-	<div class="header-menu-2 header-disnone-2">
-		<div class="headerJack">
-			<div class="headerJack-aside">
-				<img src="img/user-avatar.png" alt="">
-				<div>
-					<p class="user">Bogdan Zenger</p>
-					<p class="headerJack-aside-balance">Баланс: 353.000 TRX</p>
-					<p class="user-id">TMtvWDsassa...dJvhvgasaxsqsfd</p>
-				</div>
-			</div>
-			<div class="headerJack-balance">
-				<p class="headerJack-balance-title">Игровой баланс</p>
-				<div class="headerJack-balance-number pricing pricing-1">999.999.9999</div>
-				<div class="headerJack-balance-number pricing pricing-2">888.888.888</div>
-				<p class="headerJack-balance-valutes active-value navigation-scnd-item-container-2-text" id="1">TRX</p>
-				<p class="headerJack-balance-valutes navigation-scnd-item-container-2-text" id="2">LEX</p>
-			</div>
-			<div class="headerJack-btns">
-				<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
-				<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
-			</div>
-		</div>
-	</div>
 </div>
 
 
@@ -272,7 +294,7 @@
 	
 						<img src="img/lex.png" alt="">
 					</div>
-					<div class="numbers">
+					<div id="dicenumb" class="numbers">
 						<div class="prediction">
 							<span class="num">77</span>
 							<span class="numbers-name">Предсказание</span>
@@ -298,6 +320,9 @@
 				</div>
 			</div>
 			<div class=" col-md-3 col-lg-4 ml-auto">
+				<div class="roll mobile-roll">
+					<button type="submit" id="roll">Ролл</button>
+				</div>
 				<div class="game-fields game-area">
 					<div class="coin-stripe d-flex">
 						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
@@ -339,7 +364,7 @@
 					</div>
 					<div class="payout input-obj">
 						<img src="img/lex.png" alt="">
-						<label for="payout">Выплата за выигрыш</label>
+						<label for="payout">Выплата:</label>
 						<input type="text" value="2.01" id="payout" class="lex" readonly>
 					</div>
 					<!-- <div class="balance input-obj">
@@ -373,7 +398,7 @@
 	
 	
 					</div>
-					<div class="roll">
+					<div class="roll desktop-roll">
 						<button type="submit" id="roll">Ролл</button>
 					</div>
 				</div>
@@ -1149,7 +1174,7 @@
 <div id="game-5" id="slots" class="game game-5">
 	<p class="game-title-caption">Игры</p>
 	<div class="container">
-		<div class="game-wrapper row col-md-12 p-0">
+		<div class="game-wrapper row col-md-12 col-12 p-0">
 			<div class="game-wrapper-item-item col-md-3 col-sm-6 col-11">
 				<div class="game-wrapper-item game-wrapper-item-1" style="background: url('img/slot-1.png') 50% 50% no-repeat;">
 					<div><p>YETI - Battle of Greenhat Peak</p></div>
@@ -1663,7 +1688,7 @@
 							<input type="text" class="main-wrapper-inputs-line-item-input" value="Bogdan Zenger" placeholder="Логин">
 						</div>
 						<div class="main-wrapper-inputs-line-item">
-							<p class="main-wrapper-inputs-line-item-title">Fast ID</p>
+							<p class="main-wrapper-inputs-line-item-title">ID</p>
 							<input type="text" disabled class="main-wrapper-inputs-line-item-input" value="14684354684313"
 								placeholder="Fast ID">
 						</div>
@@ -1706,7 +1731,7 @@
 					<div class="statistic-item">
 						<div class="statistic-item-main">
 							<p class="statistic-item-main-title">
-								Максимальная выйгрыш
+								Максимальный выигрыш
 							</p>
 							<p class="statistic-item-main-value">10000 TRX</p>
 						</div>
@@ -1755,7 +1780,7 @@
 						<p class="statistic-table-item-head-item">Игра</p>
 						<p class="statistic-table-item-head-item">Всего ставок</p>
 						<p class="statistic-table-item-head-item">Максимальная ставка</p>
-						<p class="statistic-table-item-head-item">Выйграно</p>
+						<p class="statistic-table-item-head-item">Выиграно</p>
 						<p class="statistic-table-item-head-item">Выведено</p>
 						<p class="statistic-table-item-head-item">Последняя игра</p>
 					</div>
@@ -1784,7 +1809,7 @@
 						<p class="statistic-table-item-line-item">04.10.2019</p>
 					</div>
 					<div class="statistic-table-item-line">
-						<p class="statistic-table-item-line-item">SLOTS</p>
+						<p class="statistic-table-item-line-item">GAMES</p>
 						<p class="statistic-table-item-line-item">95</p>
 						<p class="statistic-table-item-line-item">9000 TRX</p>
 						<p class="statistic-table-item-line-item">90000 TRX</p>
@@ -1807,7 +1832,7 @@
 						<p class="statistic-table-item-head-item">Ставка</p>
 						<p class="statistic-table-item-head-item">Сумма ставки</p>
 						<p class="statistic-table-item-head-item">Результат</p>
-						<p class="statistic-table-item-head-item">Выйгрыш</p>
+						<p class="statistic-table-item-head-item">Выигрыш</p>
 					</div>
 					<div class="statistic-table-item-line">
 						<p class="statistic-table-item-line-item">00:00</p>
@@ -1835,7 +1860,7 @@
 					</div>
 					<div class="statistic-table-item-line">
 						<p class="statistic-table-item-line-item">00:00</p>
-						<p class="statistic-table-item-line-item">SLOTS</p>
+						<p class="statistic-table-item-line-item">GAMES</p>
 						<p class="statistic-table-item-line-item">????</p>
 						<p class="statistic-table-item-line-item">????</p>
 						<p class="statistic-table-item-line-item">????</p>
@@ -1899,6 +1924,653 @@
 	</div>
 </div>
 
+<div class="game game-9" id="game-9">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center container-butts">
+
+			<div class="trx-data">
+				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="profit">Profit <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="jackpot">
+					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
+				</div>
+			</div>
+
+			<div class="lex-data">
+				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="profit">Profit <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="jackpot">
+					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
+				</div>
+			</div>
+
+			<div class="btt-data">
+				<div class="wagered">Wagered <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="profit">Profit <img src="img/lex.png" alt=""> <span>0</span></div>
+				<div class="jackpot">
+					<a href="#notes">Jackpot <img src="img/lex.png" alt=""> <span>0</span></a>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="col-md-8 ">
+			<div class="game-area">
+
+				<div class="frame">
+					<p>+<span class="plus">0</span></p>
+
+					<img src="img/lex.png" alt="">
+				</div>
+				<div class="scroll-nums">
+					<div class="scroll-nums-abs">
+						<div class="roll-1">1</div>
+						<div class="roll-2">2</div>
+						<div class="roll-3">3</div>
+						<div class="roll-4">4</div>
+						<div class="roll-5">5</div>
+						<div class="roll-6">6</div>
+						<div class="roll-7">7</div>
+						<div class="roll-8">8</div>
+						<div class="roll-9">9</div>
+						<div class="roll-10">10</div>
+						<div class="roll-11">11</div>
+						<div class="roll-12">12</div>
+						<div class="roll-13">13</div>
+						<div class="roll-14">14</div>
+						<div class="roll-15">15</div>
+						<div class="roll-16">16</div>
+						<div class="roll-17">17</div>
+						<div class="roll-18">18</div>
+						<div class="roll-19">19</div>
+						<div class="roll-20">20</div>
+						<div class="roll-21">21</div>
+						<div class="roll-22">22</div>
+						<div class="roll-23">23</div>
+						<div class="roll-24">24</div>
+						<div class="roll-25">25</div>
+						<div class="roll-26">26</div>
+						<div class="roll-27">27</div>
+						<div class="roll-28">28</div>
+						<div class="roll-29">29</div>
+						<div class="roll-30">30</div>
+						<div class="roll-31">31</div>
+						<div class="roll-32">32</div>
+						<div class="roll-33">33</div>
+						<div class="roll-34">34</div>
+						<div class="roll-35">35</div>
+						<div class="roll-36">36</div>
+						<div class="roll-37">37</div>
+						<div class="roll-38">38</div>
+						<div class="roll-39">39</div>
+						<div class="roll-40">40</div>
+						<div class="roll-41">41</div>
+						<div class="roll-42">42</div>
+						<div class="roll-43">43</div>
+						<div class="roll-44">44</div>
+						<div class="roll-45">45</div>
+						<div class="roll-46">46</div>
+						<div class="roll-47">47</div>
+						<div class="roll-48">48</div>
+						<div class="roll-49">49</div>
+						<div class="roll-50">50</div>
+						<div class="roll-51">51</div>
+						<div class="roll-52">52</div>
+						<div class="roll-53">53</div>
+						<div class="roll-54">54</div>
+						<div class="roll-55">55</div>
+						<div class="roll-56">56</div>
+						<div class="roll-57">57</div>
+						<div class="roll-58">58</div>
+						<div class="roll-59">59</div>
+						<div class="roll-60">60</div>
+						<div class="roll-61">61</div>
+						<div class="roll-62">62</div>
+						<div class="roll-63">63</div>
+						<div class="roll-64">64</div>
+						<div class="roll-65">65</div>
+						<div class="roll-66">66</div>
+						<div class="roll-67">67</div>
+						<div class="roll-68">68</div>
+						<div class="roll-69">69</div>
+						<div class="roll-70">70</div>
+						<div class="roll-71">71</div>
+						<div class="roll-72">72</div>
+						<div class="roll-73">73</div>
+						<div class="roll-74">74</div>
+						<div class="roll-75">75</div>
+						<div class="roll-76">76</div>
+						<div class="roll-77">77</div>
+						<div class="roll-78">78</div>
+						<div class="roll-79">79</div>
+						<div class="roll-80">80</div>
+						<div class="roll-81">81</div>
+						<div class="roll-82">82</div>
+						<div class="roll-83">83</div>
+						<div class="roll-84">84</div>
+						<div class="roll-85">85</div>
+						<div class="roll-86">86</div>
+						<div class="roll-87">87</div>
+						<div class="roll-88">88</div>
+						<div class="roll-89">89</div>
+						<div class="roll-90">90</div>
+						<div class="roll-91">91</div>
+						<div class="roll-92">92</div>
+						<div class="roll-93">93</div>
+						<div class="roll-94">94</div>
+						<div class="roll-95">95</div>
+						<div class="roll-96">96</div>
+						<div class="roll-97">97</div>
+						<div class="roll-98">98</div>
+						<div class="roll-99">99</div>
+					</div>
+				</div>
+
+				<!-- <div class="numbers">
+						<div class="prediction">
+							<span class="num">77</span>
+							<span class="numbers-name">Prediction</span>
+						</div>
+						<div class="lucky">
+							<span class="num subs-odometer" >00</span>
+							<span class="numbers-name">Lucky Number</span>
+						</div>
+					</div> -->
+				<div class="area-slider">
+					<!-- <div id="slider1">
+									<div id="custom-handle" class="ui-slider-handle">										
+									</div>
+								  </div> -->
+
+					<div id="slider-range">
+						<div id="custom-handle" class="ui-slider-handle">20</div>
+						<div id="custom-handle2" class="ui-slider-handle">70</div>
+					</div>
+
+				</div>
+				<div class="roll d-md-none d-block">
+					<button type="submit" id="roll">Ролл</button>
+				</div>
+
+
+
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="game-fields game-area">
+				<div class="coin-stripe d-flex">
+					<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
+					<button class="lex-coin ch-coin"><img src="img/lex.png" alt=""> LEX</button>
+					<button class="btt-coin ch-coin"><img src="img/btt.png" alt=""> BTT</button>
+
+
+				</div>
+				<div class="bet-amount input-obj">
+					<img src="img/lex.png" alt="">
+					<label for="bet-amount">Ставка:
+						<span>
+							<a href="#" class="bet-change bet-2x">2x</a>
+						</span>
+						<span>
+							<a href="#" class="bet-change bet-half">1/2</a>
+						</span>
+						<span>
+							<a href="#" class="bet-change bet-min">мин</a>
+						</span>
+						<span>
+							<a href="#" class="bet-change bet-max">макс</a>
+						</span>
+					</label>
+					<!-- <p>
+							<a href="#" class="bet-change bet-2x">2x</a>
+							<a href="#" class="bet-change bet-half">1/2</a>
+							<a href="#" class="bet-change bet-min">min</a>
+							<a href="#" class="bet-change bet-max">max</a>
+						</p> -->
+					<input type="text" value="1" id="bet-amount" class="lex">
+					<!-- <p>
+							<a href="#" class="bet-change bet-2x">2x</a>
+							<a href="#" class="bet-change bet-half">1/2</a>
+							<a href="#" class="bet-change bet-min">min</a>
+							<a href="#" class="bet-change bet-max">max</a>
+						</p> -->
+
+				</div>
+				<div class="payout input-obj">
+					<img src="img/lex.png" alt="">
+					<label for="payout">Выплата за выигрыш</label>
+					<input type="text" value="2.01" id="payout" class="lex" readonly>
+				</div>
+				<!-- <div class="balance input-obj">
+						<img src="img/lex.png" alt="">
+						<label for="balance"><span>TRX</span> Balance</label>
+	
+						<select name="coin" id="balance">
+	
+							<option value="1" class="special">10 TRX</option>
+							<option value="2" class="special">10 LEX</option>
+							<option value="3" class="special">10 BTT</option>
+						</select>
+					</div> -->
+				<div class="win-chance">
+
+					<label for="win-chance">Шанс победить</label>
+					<input type="text" value="49%" id="win-chance" class="lex" readonly>
+				</div>
+				<div class="multiplier">
+
+					<label for="multiplier">Мультипликатор</label>
+					<input type="text" value="2.0102X" id="multiplier" class="lex" readonly>
+				</div>
+				<div class="roll d-flex auto">
+
+					<label class="switch">
+						<input type="checkbox" checked>
+						<span class="slider round"></span>
+					</label>
+					<span>Авто</span>
+
+
+				</div>
+				<div class="roll d-none d-md-block">
+					<button type="submit" id="roll">Ролл</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<audio id="audio1" src="sound/roll.mp3"></audio>
+<audio id="audio2" src="sound/win.mp3"></audio>
+<audio id="audio3" src="sound/change.mp3"></audio>
+
+
+<div id="notes" class="white-popup mfp-hide">
+	<h3>Jackpot</h3>
+	<div class="frame">
+		<span>+100 000</span>
+		<img src="img/lex.png" alt="">
+	</div>
+	<ul>
+		<li>For wagered above 100 TRX, 0.02% of wagered of platform will be put into the Jackpot Pool.</li>
+		<li>In the games, to win the jackpot you must hit the last three symbols of your ID bet must be 777 and win i.e:
+			xxxxxx777.</li>
+		<li>The percentage of the jackpot is calculated by the formula: bet_amount / max_bet_amount.</li>
+		<li>Minimum jackpot bet is 100 TRX.</li>
+	</ul>
+
+</div>
+<div class="table-players">
+	<div class="table-head table-colored">
+		<div class="table-head-item">
+			My bets
+		</div>
+		<div class="table-head-item">
+			All bets
+		</div>
+		<div class="table-head-item">
+			Jackpots
+		</div>
+	</div>
+	<div class="table-subhead table-colored">
+		<div class="table-subhead-item">
+			Players
+		</div>
+		<div class="table-subhead-item">
+			Prediction
+		</div>
+		<div class="table-subhead-item">
+			Lucky number
+		</div>
+		<div class="table-subhead-item">
+			Bets
+		</div>
+		<div class="table-subhead-item">
+			Payout
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+	<div class="table-content table-colored">
+		<div class="table-content-item">
+			Player
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+		<div class="table-content-item">
+			???
+		</div>
+	</div>
+</div>
+</div>
 
 
 <div class="modals">
@@ -1913,7 +2585,7 @@
 							</div>
 							<img class="close" id="faqModalClose" src="img/close.svg" alt="">
 						</div>
-						<div class="game-rule-content">
+						<div class="game-rule-content modal-cont">
 							<div class="faq-item">
 								<div class="game-rule-content-item">
 									<p class="game-rule-content-text">Что такое Crypto Casino?</p>
@@ -2028,7 +2700,7 @@
 					</div>
 				</div>
 			
-			
+			<div class="modal-cont">
 				<div class="game-rule">
 					<div class="game-rule-head">
 						<div class="game-title">
@@ -2138,6 +2810,7 @@
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
 	</div>
 	<div class="blur" id="honestGameModal">
@@ -2149,7 +2822,7 @@
 					</div>
 					<img class="close" id="honestModalClose" src="img/close.svg" alt="">
 				</div>
-				<div class="honestGame-content">
+				<div class="honestGame-content modal-cont">
 					<p class="item-content-text">Все транзакции(операции) на BITLEX производятся через надёжные смарт контракты в сети
 						TRON. Это гарантирует то что все
 						данные абсолютно достоверны.</p>
@@ -2203,7 +2876,7 @@
 					</div>
 					<img class="close" id="dividendModalClose" src="img/close.svg" alt="">
 				</div>
-				<div class="dividend-content">
+				<div class="dividend-content modal-cont">
 					<div class="progress-bar">
 						<div class="progress-line">
 							<div class="progress-level-left">1</div>
@@ -2293,14 +2966,14 @@
 						<img class="close" id="getModalClose" src="img/close.svg" alt="">
 					</div>
 				</div>
-				<div class="getContent">
+				<div class="getContent modal-cont">
 					<p class="getContent-text">
 						Ставки в этой игре делаются из игрового кошелька, расположенного на смарт-контракте. Вы можете пополнять и
 						снимать
 						средства со своего кошелька в любое время
 					</p>
 					<div class="getContent-input">
-						<p class="getContent-input-title">Номер game кошелька</p>
+						<p class="getContent-input-title">Номер GAME кошелька</p>
 						<div class="getContent-input-item">
 							TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
 						</div>
@@ -2328,14 +3001,14 @@
 						<img class="close" id="takeModalClose" src="img/close.svg" alt="">
 					</div>
 				</div>
-				<div class="getContent">
+				<div class="getContent modal-cont">
 					<p class="getContent-text">
 						Ставки в этой игре делаются из игрового кошелька, расположенного на смарт-контракте. Вы можете пополнять и
 						снимать
 						средства со своего кошелька в любое время
 					</p>
 					<div class="getContent-input">
-						<p class="getContent-input-title">Номер game кошелька</p>
+						<p class="getContent-input-title">Номер GAME кошелька</p>
 						<div class="getContent-input-item">
 							TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
 						</div>
@@ -2368,10 +3041,12 @@
 
 
 
-
 <script src="js/scripts.min.js"></script>
+<script src="js/scripts.min-newdice.js"></script>
+<script src="js/common-newdice.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/odometer-test.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script>
 	function copyToClipboard(element) {
 		var $temp = $("<input>");
@@ -2379,7 +3054,7 @@
 		$temp.val($(element).text()).select();
 		document.execCommand("copy");
 		$temp.remove();
-		$("#ref-copy-btn").text("Скопировал")
+		$("#ref-copy-btn").text("Скопировано")
 		$("#ref-copy-btn").prop('disabled', true);
 	}
 </script>

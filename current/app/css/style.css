@@ -426,7 +426,7 @@ body {
 	align-items: center;
 	max-width: 380px;
 	width: 100%;
-	margin: 0;
+	margin: 0 auto;
 }
 
 .visually_hidden {
@@ -897,7 +897,7 @@ table th {
 		margin-left: 4px;
 	}
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 730px) {
 	.rules-title-game {
 		display: block;
 	}
@@ -919,7 +919,7 @@ table th {
 	}
 	
 	.container-block-balance {
-		display: block;
+		/* display: block; */
 	}
 	.nav-valutes-wrapper {
 		justify-content: center;
@@ -1450,7 +1450,7 @@ body {
 	position: absolute;
 	right: 0px;
 	left:0px;
-	top: 35px;
+	top: 30px;
 	background: #101B28;;
 	padding: 10px 15px;
 	width: 100%;
@@ -1563,7 +1563,7 @@ body {
 		margin-left: 4px;
 	}
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 730px) {
 	.rules-title-game {
 		display: block;
 	}
@@ -1575,7 +1575,9 @@ body {
 		padding: 0px 20px;
 	}
 }
-
+.thisGame {
+	display: none;
+}
 @media screen and (max-width: 530px) {
 	.rules-title-game {
 		display: block;
@@ -1585,8 +1587,30 @@ body {
 	}
 	
 	.container-block-balance {
-		display: block;
+		/* display: block; */
 	}
+	#back {
+		display: none;
+	}
+	.thisGame {
+		display: block;
+		margin: 0px;
+		margin-right: auto;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 16px;
+		color: #F1CD5B;
+		text-decoration-line: underline;
+		text-transform: uppercase;
+		margin: 0px 0px 0px 10px;
+	}
+	.games-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 	.nav-valutes-wrapper {
 		justify-content: center;
 	}
@@ -1984,7 +2008,7 @@ body {
 	display: flex;
 	align-items: center;
 	width: 50%;
-	margin: 20px auto;
+	margin: 10px auto 5px auto;
 }
 
 .progress-numbers-item {
@@ -2024,7 +2048,7 @@ body {
 
 .dividend-table {
 	width: 100%;
-	margin: 20px 0px;
+	margin: 10px 0px;
 }
 
 .dividend-table-item {
@@ -2167,7 +2191,7 @@ body {
 }
 
 .dividend-footer {
-	margin-top: 30px;
+	margin-top: 10px;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
@@ -2829,6 +2853,8 @@ html {
 
 
 
+
+
 .quartl {
 	display: none;
 }
@@ -2974,11 +3000,11 @@ html {
 			align-items:center;
 		}
 		.headerJack-aside img {
-			width: 50px;
+			width: 40px;
 			margin-right: 20px;
 		}
 		.headerJack {
-			padding: 5px 40px;
+			padding: 6px 40px;
 			margin-left: auto;
 			display: flex;
 			align-items: center;
@@ -2989,17 +3015,17 @@ html {
 			font-family: Roboto;
 			font-style: normal;
 			font-weight: 500;
-			font-size: 12px;
-			line-height: 16px;
+			font-size: 11px;
 			color: #FFFFFF;
+			line-height: 11px;
 		}
 		.headerJack-aside-balance {
-			margin: 2px 0px;
+			margin: 1px 0px;
 			font-family: Roboto;
 			font-style: normal;
 			font-weight: 500;
-			font-size: 12px;
-			line-height: 16px;
+			font-size: 11px;
+			line-height: 11px;
 			color: #8D8D8D;
 		}
 		.user-id {
@@ -3007,8 +3033,8 @@ html {
 			font-family: Roboto;
 			font-style: normal;
 			font-weight: 500;
-			font-size: 12px;
-			line-height: 16px;
+			font-size: 11px;
+			line-height: 11px;
 			color: #FFFFFF;
 		}
 		.headerJack-balance {
@@ -3050,6 +3076,7 @@ html {
 			color: #FFFFFF;
 			cursor: pointer;
 			margin: 0px 8px;
+			text-decoration-line: underline;
 		}
 		.active-value {
 			text-decoration-line: underline;
@@ -3158,6 +3185,7 @@ html {
 			.headerJack-balance {
 				justify-content: center;
 				margin: 15px 0px;
+				margin-left: -50px;
 			}
 			.headerJack-aside {
 				text-align: center;
@@ -3722,14 +3750,14 @@ html {
 		right: -1px;
 	}
 	.roadmap-step-4 {
-		margin-top: -65px;
+		margin-top: -59px;
 	}
 	.roadmap-step-5 {
-		margin-top: -128px;
+		margin-top: -103px;
 		right: -1px;
 	}
 	.roadmap-step-date-2 {
-		margin-top: -28px;
+		margin-top: -8px;
 	}
 	.roadmap-step-6 {
 		margin-top: 45px;
@@ -4142,8 +4170,8 @@ html {
 	text-align: left;
 }
 
-.game-rule-content-list-item p, .game-rule-content-text {
-	line-height: 24px;
+.game-rule-content-list-item p, .game-rule-content-text, .honestGame-content p {
+	line-height: 26px;
 }
 
 
@@ -4166,6 +4194,8 @@ html {
 	cursor: pointer;
 	color: #101B28;
 	background: #F1CD5B;
+	display: block;
+	margin: 0px auto;
 }
 
 #ref-copy-btn:disabled {
@@ -4176,4 +4206,153 @@ html {
 .langToggle img {
 	max-width: 27px;
 	max-height: 27px;
+}
+
+.lang-wrapper {
+	position: relative;
+}
+.langmenu {
+	display: none;
+	position: absolute;
+	padding: 9px 15px 9px 0px;
+	background-color: rgb(12, 25, 40);
+	z-index: 99999;
+	margin-top: 5px;
+}
+
+.lang-active {
+	display: block;
+}
+
+.langToggle {
+	display: flex;
+}
+
+.langmenu .navigation-item-container-item-wrapper-text {
+	margin: 10px 0px 10px 5px;
+}
+
+@media screen and (max-width: 1100px) {
+	.langToggle {
+		width: auto;
+	}
+	.langmenu img {
+		margin: 5px 0px;
+	}
+	.langmenu {
+		padding: 4px 0px;
+	}
+}
+.container-block-balance {
+	margin-right: -50px;
+}
+
+
+.dividend-content {
+	max-height: 70vh;
+	overflow: auto;
+}
+.dividend-content::-webkit-scrollbar{
+  background: rgba(30, 44, 61, 0.7);
+  border-radius: 5px;
+  width: 8px;
+}
+.dividend-content::-webkit-scrollbar-thumb{
+	background: rgb(42, 59, 80);
+ 	border-radius: 5px;
+}
+.game-5 .container {
+	display: flex;
+	justify-content: center;
+}
+@media screen and (max-width: 720px) {
+	.game-5 {
+		padding-top: 220px;
+	}
+}
+
+.lang-active {
+	/* display: block !important; */
+}
+
+.desktop-roll {
+
+}
+
+.mobile-roll {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	.desktop-roll {
+		display: none;
+	}
+	.mobile-roll {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.table-players .table-head-item {
+		font-size: 12px;
+	}
+	.table-players .table-subhead-item {
+		font-size: 10px;
+	}
+	.table-players .table-content-item {
+		font-size: 8px;
+	}
+	.table-players {
+		/* width: 100%; */
+		max-width: 100%;
+	}
+	.game-area * {
+		max-width: 100%;
+	}
+	.mobile-roll {
+		max-width: 100%;
+	}
+	.prediction, .lucky {
+		height: 200px;
+	}
+}
+
+
+#header-scnd-menu-1 .header-scnd-menu-item {
+	color:#fff !important;
+}
+
+.modal-cont {
+	max-height: 80vh;
+	overflow: auto;
+}
+
+.modal-cont::-webkit-scrollbar{
+  background: rgba(30, 44, 61, 0.7);
+  border-radius: 5px;
+  width: 8px;
+}
+.modal-cont::-webkit-scrollbar-thumb{
+	background: rgb(42, 59, 80);
+ 	border-radius: 5px;
+}
+
+
+.bet-amount label {
+	max-width: 100% !important;
+	width: 100% !important;
+	text-align: center !important;
+	margin: 0px auto !important;
+}
+.coin-stripe {
+	justify-content: center;
+}
+@media screen and (max-width: 1100px) {
+	.game-6 {
+			padding-top: 120px;
+	}
+}
+
+#dicenumb:after {
+    content: '';
 }

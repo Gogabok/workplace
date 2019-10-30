@@ -89,16 +89,24 @@
 						<img class="navigation-item-container-item-wrapper-image" src="img/tronlink.png" alt="">
 						<p class="navigation-item-container-item-wrapper-text">TronLink</p>
 					</div>
-					<a href="index.html" class="navigation-item-container-item-wrapper langToggle lang-active">
-						<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
-						<p class="navigation-item-container-item-wrapper-text">Русский</p>
-						<!-- <img class="navigation-item-container-item-wrapper-image navigation-item-container-item-wrapper-image-disNoneMobile"
-							src="img/arrow-btn.png" alt=""> -->
-					</a>
-					<!-- <div href="#" class="navigation-item-container-item-wrapper langToggle">
-						<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
-						<p class="navigation-item-container-item-wrapper-text">English</p>
-					</div> -->
+					<div class="lang-wrapper">
+						<div class="navigation-item-container-item-wrapper langToggle">
+							<img class="navigation-item-container-item-wrapper-image" src="img/flag-en.png" alt="">
+							<p class="navigation-item-container-item-wrapper-text">English</p>
+							<img class="navigation-item-container-item-wrapper-image navigation-item-container-item-wrapper-image-disNoneMobile"
+								src="img/arrow-btn.png" alt="">
+						</div>
+						<div class="langmenu">
+							<a href="index.html" class="navigation-item-container-item-wrapper langToggle">
+								<img class="navigation-item-container-item-wrapper-image" src="img/flag.png" alt="">
+								<p class="navigation-item-container-item-wrapper-text">Русский</p>
+							</a>
+							<a href="indexEN.html" class="navigation-item-container-item-wrapper langToggle">
+								<img class="navigation-item-container-item-wrapper-image" src="img/flag-en.png" alt="">
+								<p class="navigation-item-container-item-wrapper-text">English</p>
+							</a>
+						</div>
+					</div>
 				</div>
 			</nav>
 		</div>
@@ -107,7 +115,7 @@
 		<div class="container-nav">
 			<div class="navigation-scnd">
 				<div class="navigation-item-container">
-					<a href="index.html" class="navigation-scnd-item-container">
+					<a id="back" href="index.html" class="navigation-scnd-item-container">
 						<img src="img/arrow-back-btn.png" alt="">
 					</a>
 					<a href="index.html" class="navigation-scnd-item-container logo">
@@ -168,6 +176,29 @@
 			</div>
 		</div>
 	</section>
+	<div class="header-menu-2 header-disnone-2">
+		<div class="headerJack">
+			<div class="headerJack-aside">
+				<img src="img/user-avatar.png" alt="">
+				<div>
+					<p class="user">Bogdan Zenger</p>
+					<p class="headerJack-aside-balance">Баланс: 353.000 TRX</p>
+					<p class="user-id">TMtvWDsassa...dJvhvgasaxsqsfd</p>
+				</div>
+			</div>
+			<div class="headerJack-balance">
+				<p class="headerJack-balance-title">GAME balance</p>
+				<div class="headerJack-balance-number pricing pricing-1">999.999.9999</div>
+				<div class="headerJack-balance-number pricing pricing-2">888.888.888</div>
+				<p class="headerJack-balance-valutes active-value navigation-scnd-item-container-2-text" id="1">TRX</p>
+				<p class="headerJack-balance-valutes navigation-scnd-item-container-2-text" id="2">LEX</p>
+			</div>
+			<div class="headerJack-btns">
+				<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
+				<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
+			</div>
+		</div>
+	</div>
 	<section id="header-thrd">
 		<div class="container-nav">
 			<div class="games-wrapper">
@@ -226,29 +257,6 @@
 			</a>
 		</div>
 	</section>
-	<div class="header-menu-2 header-disnone-2">
-		<div class="headerJack">
-			<div class="headerJack-aside">
-				<img src="img/user-avatar.png" alt="">
-				<div>
-					<p class="user">Bogdan Zenger</p>
-					<p class="headerJack-aside-balance">Баланс: 353.000 TRX</p>
-					<p class="user-id">TMtvWDsassa...dJvhvgasaxsqsfd</p>
-				</div>
-			</div>
-			<div class="headerJack-balance">
-				<p class="headerJack-balance-title">Game balance</p>
-				<div class="headerJack-balance-number pricing pricing-1">999.999.9999</div>
-				<div class="headerJack-balance-number pricing pricing-2">888.888.888</div>
-				<p class="headerJack-balance-valutes active-value navigation-scnd-item-container-2-text" id="1">TRX</p>
-				<p class="headerJack-balance-valutes navigation-scnd-item-container-2-text" id="2">LEX</p>
-			</div>
-			<div class="headerJack-btns">
-				<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
-				<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
-			</div>
-		</div>
-	</div>
 </div>
 
 
@@ -1660,7 +1668,7 @@
 							<input type="text" class="main-wrapper-inputs-line-item-input" value="Bogdan Zenger" placeholder="Логин">
 						</div>
 						<div class="main-wrapper-inputs-line-item">
-							<p class="main-wrapper-inputs-line-item-title">Fast ID</p>
+							<p class="main-wrapper-inputs-line-item-title">ID</p>
 							<input type="text" disabled class="main-wrapper-inputs-line-item-input" value="14684354684313"
 								placeholder="Fast ID">
 						</div>
@@ -1703,7 +1711,7 @@
 					<div class="statistic-item">
 						<div class="statistic-item-main">
 							<p class="statistic-item-main-title">
-								Максимальная выйгрыш
+								Максимальный выигрыш
 							</p>
 							<p class="statistic-item-main-value">10000 TRX</p>
 						</div>
@@ -1781,7 +1789,7 @@
 						<p class="statistic-table-item-line-item">04.10.2019</p>
 					</div>
 					<div class="statistic-table-item-line">
-						<p class="statistic-table-item-line-item">SLOTS</p>
+						<p class="statistic-table-item-line-item">GAMES</p>
 						<p class="statistic-table-item-line-item">95</p>
 						<p class="statistic-table-item-line-item">9000 TRX</p>
 						<p class="statistic-table-item-line-item">90000 TRX</p>
@@ -1832,7 +1840,7 @@
 					</div>
 					<div class="statistic-table-item-line">
 						<p class="statistic-table-item-line-item">00:00</p>
-						<p class="statistic-table-item-line-item">SLOTS</p>
+						<p class="statistic-table-item-line-item">GAMES</p>
 						<p class="statistic-table-item-line-item">????</p>
 						<p class="statistic-table-item-line-item">????</p>
 						<p class="statistic-table-item-line-item">????</p>
@@ -2297,7 +2305,7 @@
 						средства со своего кошелька в любое время
 					</p>
 					<div class="getContent-input">
-						<p class="getContent-input-title">Номер game кошелька</p>
+						<p class="getContent-input-title">Номер GAME кошелька</p>
 						<div class="getContent-input-item">
 							TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
 						</div>
@@ -2332,7 +2340,7 @@
 						средства со своего кошелька в любое время
 					</p>
 					<div class="getContent-input">
-						<p class="getContent-input-title">Номер game кошелька</p>
+						<p class="getContent-input-title">Номер GAME кошелька</p>
 						<div class="getContent-input-item">
 							TMtvWDsassasaddfhgfjtwedfdJvhvgasaxsqsfd
 						</div>
@@ -2376,7 +2384,7 @@
 		$temp.val($(element).text()).select();
 		document.execCommand("copy");
 		$temp.remove();
-		$("#ref-copy-btn").text("Скопировал")
+		$("#ref-copy-btn").text("Copied")
 		$("#ref-copy-btn").prop('disabled', true);
 	}
 </script>
