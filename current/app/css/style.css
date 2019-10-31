@@ -2791,17 +2791,43 @@ html {
 		left: 13px;
 		width: 24px;
 	}
-	.payout img {
-		top: 32px;
+	.payout img, .payout1 img {
+		top: 42px;
 	}
-	.bet-amount label  {
+	.bet-amount label, .bet-amount1 label  {
 		height: 100px;
 	}
 }
+@media screen and (max-width: 900px) {
+	.payout img, .payout1 img  {
+		top: 55px;
+	}
+}
 
+@media screen and (max-width: 768px) {
+	.payout img, .payout1 img  {
+		top: 32px;
+	}
+	.bet-amount label, .bet-amount1 label {
+		height: 40px
+	}
+	.bet-amount img, .bet-amount1 img {
+		top: 50px;
+	}
+}
+@media screen and (max-width: 425px) {
+	.table-players .table-head-item {
+		margin: 0px 5px;
+	}
+}
 
-
-
+.win-chance1 label, .multiplier1 label {
+	margin: 0px auto !important;
+}
+.win-chance1, .multiplier1  {
+	width: 330px;
+	margin: 0px auto;
+}
 
 
 
@@ -4290,6 +4316,7 @@ html {
 	}
 	.mobile-roll1 {
 		display: block;
+		margin-bottom: 20px;
 	}
 }
 
@@ -4344,7 +4371,7 @@ html {
 }
 
 
-.bet-amount label {
+.bet-amount label, .bet-amount1 label {
 	max-width: 100% !important;
 	width: 100% !important;
 	text-align: center !important;
@@ -4369,4 +4396,36 @@ html {
 
 .ui-slider-horizontal .ui-slider-range {
     background-color: #fff !important;
+}
+
+@media screen and (max-width: 530px) {
+	.container-block-balance {
+		margin-left: -50px;
+	}
+}
+
+
+.prediction, .lucky {
+	justify-content: flex-end;
+}
+.prediction .numbers-name, .lucky .numbers-name {
+	height: 50px;
+}
+.prediction .num, .lucky .num {
+	height: 110px;
+}
+
+@media screen and (max-width: 576px) {
+	#game-9 .profit {
+		margin: 0px;
+	}
+}
+
+.mobile-roll2 {
+	margin: 0px auto !important;
+	margin-top: 30px !important;
+}
+
+.mobile-roll2 button {
+	margin: 0px auto !important;
 }

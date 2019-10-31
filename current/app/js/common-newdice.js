@@ -401,7 +401,7 @@ $(function () {
   });
 
 
-  $("a.bet-2x").on('click', function (e) {
+  $("a.bet-2x1").on('click', function (e) {
     if (trx) {
       if ($("#bet-amount1").val() == 10000 || $("#bet-amount1").val() > 4999) return false;
     }
@@ -421,7 +421,7 @@ $(function () {
 
   });
 
-  $("a.bet-half").on('click', function (e) {
+  $("a.bet-half1").on('click', function (e) {
     if (trx) {
       if ($("#bet-amount1").val() == 10 || $("#bet-amount1").val() < 20) return false;
     }
@@ -438,7 +438,7 @@ $(function () {
     $("#payout1").val(rounded(multi * current));
   });
 
-  $("a.bet-min").on('click', function (e) {
+  $("a.bet-min1").on('click', function (e) {
     var current = 1;
     if (trx) {
       current = 10;
@@ -459,7 +459,7 @@ $(function () {
     $("#payout1").val(rounded(multi * current));
   });
 
-  $("a.bet-max").on('click', function (e) {
+  $("a.bet-max1").on('click', function (e) {
 
     var current = 10000;
     if (trx) {
