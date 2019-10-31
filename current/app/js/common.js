@@ -139,6 +139,7 @@ $(function () {
     value: 50,
     min: 4,
     max: 98,
+    range: "max",
     create: function () {
       handle.text($(this).slider("value"));
       $(".prediction .num").text($(this).slider("value"));
