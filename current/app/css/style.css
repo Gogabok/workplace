@@ -4499,3 +4499,70 @@ html {
 		max-width: 100%;
 	}
 }
+
+.dividendMobile {
+	display: none;
+	margin: 0px 30px;
+}
+
+.rules-title {
+	margin-left: 20px;
+}
+
+@media screen and (max-width: 1100px) {
+	.dividendMobile {
+		display: block;
+	}
+}
+
+.container-butts .wagered {
+	width: 140px;
+	height: 40px;
+
+}
+
+.container-butts .profit {
+	width: 140px;
+	height: 40px;
+
+}
+
+.container-butts .jackpot {
+	width: 140px;
+	height: 40px;
+	padding: 0px;
+}
+
+.container-butts .jackpot a {
+	display: block !important;
+	width: 100% !important;
+	height: 40px;
+}
+
+@media screen and (max-width: 380px) {
+	.container-butts .profit {
+		margin: 5px auto;
+	}
+	.container-butts .jackpot {
+		margin: 5px auto;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.prediction {
+		margin-left: 0px;
+	}
+	.lucky {
+		margin-right: 0px;
+	}
+	.game-2-cont {
+		padding: 0PX;
+	}
+}
+
+
+@media screen and (max-width: 640px) {
+	.roadmap-wrapper {
+		background: #000 !important;
+	}
+}
