@@ -4429,3 +4429,73 @@ html {
 .mobile-roll2 button {
 	margin: 0px auto !important;
 }
+
+.headerJack-btns {
+	align-items: center;
+	display: flex;
+}
+
+.hamburger-game5 {
+		/* display: block; */
+		width: 20px;
+		margin-left: 25px;
+		cursor: pointer;
+	}
+	.hamburger-game5 span {
+		width: 100%;
+		display: block;
+		margin: 3px 0px;
+		height: 2px;
+		border: 1px solid #fff;
+	}
+	.headerJack-btns {
+		position: relative;
+	}
+
+@media screen and (max-width: 715px) {
+	.headerJack-aside {
+		display: none;
+	}
+	.headerJack {
+		padding: 2px 0px;
+	}
+	#game-5 {
+		padding-top: 150px;
+	}
+	.headerJack-btns-item {
+		margin: 0px 5px;
+	}
+	
+	.hamburger-game5 {
+		position: absolute;
+		right: 25px;
+	}
+}
+
+.game-5-hamMenu {
+	width: 300px;
+	padding: 10px 10px;
+	background: #101B28;
+	position: absolute;
+	top: 40px;
+	right: 25px;
+  z-index: 995;
+}
+
+.game-5-hamMenu *, .game-5-hamMenu *:hover {
+	color: #fff !important;
+	cursor: pointer !important;
+}
+
+@media screen and (max-width: 520px) {
+	.game-5-hamMenu {
+		width: 100%;
+		right: 0px;
+	}
+}
+
+@media screen and (max-width: 1050px) {
+	.win-chance1, .multiplier1 {
+		max-width: 100%;
+	}
+}
