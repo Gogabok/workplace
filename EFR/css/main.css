@@ -33,7 +33,7 @@ img {
 
 .container {
   max-width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   padding: 0px 70px;
 }
 header {
@@ -58,6 +58,8 @@ header {
   align-items: center;
   justify-content: space-between;
   list-style: none;
+  position: relative;
+  top: -12px;
 }
 
 .nav-list-item > a {
@@ -697,3 +699,59 @@ textarea.form-input {
   top: 120px;
   right: 40px;
 }
+
+
+
+
+
+.body-container {
+  width: 1900px;
+  min-width: 1900px;
+  margin: 0 auto !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  background: #fff;
+  min-width: 1700px !important;
+}
+html {
+  min-width: 1700px;
+}
+@media screen and (max-width: 1680px) {
+	html {
+		display: flex !important;
+		justify-content: center !important;
+		zoom:80%;
+		margin: 0 auto !important;
+  }
+  #license .sec-6 {
+    min-height: calc(100vh - 90px);
+  }
+  #license .sec-6 .container{
+    min-height: calc(100vh - 90px);
+  }
+}
+@media screen and (max-width: 1540px) {
+	html {
+		display: flex !important;
+		justify-content: center !important;
+		zoom:70%;
+		display: block;
+		margin: 0 auto !important;
+	}
+  #license .sec-6 {
+    min-height: 100vh ;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+	html {
+		display: flex !important;
+		justify-content: center !important;
+		zoom:65%;
+		display: block;
+		margin: 0 auto !important;
+	}
+}
+

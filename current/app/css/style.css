@@ -202,7 +202,7 @@ body {
 	cursor: pointer;
 }
 .active-value {
-	text-decoration-line: underline;
+	/* text-decoration-line: underline; */
 	color: #F1CD5B;
 }
 
@@ -1313,7 +1313,7 @@ body {
 	cursor: pointer;
 }
 .active-value {
-	text-decoration-line: underline;
+	/* text-decoration-line: underline; */
 	color: #F1CD5B;
 }
 
@@ -3106,7 +3106,7 @@ html {
 			text-decoration-line: underline;
 		}
 		.active-value {
-			text-decoration-line: underline;
+			/* text-decoration-line: underline; */
 			color: #F1CD5B;
 		}
 		.headerJack-btns-item {
@@ -4589,7 +4589,7 @@ html {
 
 .area-slider1 {
 	max-width: 400px;
-	margin: 0px auto;
+	margin: 30px auto 0px auto;
 }
 
 .navigation-statistic {
@@ -4621,3 +4621,21 @@ html {
 }
 }
 
+@media screen and (min-width: 1700px) {
+	.payout1 img {
+		left: 215px;
+		top: 29px;
+	}
+
+	.bet-amount1 img {
+		left: 215px;
+		top: 33px;
+	}
+}
+
+
+@media screen and (min-width: 1100px) {
+	.mobileDisplay {
+		display: none;
+	}
+}

@@ -2,12 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=1900">
   <title>EFR</title>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <script src="js/main.js"></script>
 </head>
 <body id="main">
   <div class="body-container">
@@ -38,9 +36,11 @@
         <h3 class="sec-1-subtitle">
           Regulation of activities and violations of financial organizations
         </h3>
-        <button class="refund-btn">
-          Refund
-        </button>
+        <a href="#form">
+          <button id="refund-btn" class="refund-btn">
+            Refund
+          </button>
+        </a>
         <div class="contacts">
           <div class="contacts-item">
             <img src="img/call.png" alt="" class="contacts-item-preview">
@@ -274,12 +274,12 @@
             <div class="footer-form-container">
               <p class="form-title">Application for refund</p>
               <p class="form-title-desc">Fill in the form</p>
-              <form class="form-item" action="">
+              <form id="form" class="form-item">
                 <input required autocomplete="off" name="name" class="form-input" type="text" placeholder="Full name">
                 <input required autocomplete="off" name="phone" class="form-input" type="text" placeholder="Phone">
                 <input required autocomplete="off" name="email" class="form-input" type="text" placeholder="Email">
                 <textarea autocomplete="off" name="desc" class="form-input" type="text" placeholder="Description of the complaint"></textarea>
-                <button class="refund-btn refund-btn-form">
+                <button id="btn" class="refund-btn refund-btn-form">
                   Refund
                 </button>
               </form>
@@ -381,5 +381,7 @@
       </div>
     </footer>
   </div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
