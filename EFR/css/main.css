@@ -1,0 +1,699 @@
+@font-face {
+font-family: "ft40";
+src: url("../fonts/ft40.ttf"); 
+}
+@font-face {
+font-family: "PN-black";
+src: url("../fonts/ProximaNova-Black.ttf"); 
+}
+@font-face {
+font-family: "PN-bold";
+src: url("../fonts/ProximaNova-Bold.ttf"); 
+}
+@font-face {
+font-family: "PN-extrabold";
+src: url("../fonts/ProximaNova-Extrabld.ttf"); 
+}
+@font-face {
+font-family: "PN-light";
+src: url("../fonts/ProximaNova-Light.ttf"); 
+}
+@font-face {
+font-family: "PN-regular";
+src: url("../fonts/ProximaNova-Regular.ttf"); 
+}
+@font-face {
+font-family: "PN-semibold";
+src: url("../fonts/ProximaNova-Semibold.ttf"); 
+}
+
+img {
+  pointer-events: none;
+}
+
+.container {
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0px 70px;
+}
+header {
+  padding: 27px 0px;
+  position: relative;
+  z-index: 20;
+  background: url("../img/header-bg.png") 0% 50% no-repeat;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  max-width: 100%;
+  width: 55%;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.nav-list-item > a {
+  font-size: 22px;
+  font-family: PN-regular;
+  color: #b2b2b2;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition-duration: .3s;
+  text-decoration: none;
+}
+
+.nav-list-item:hover  > a {
+  color: #4caab3;
+  transition-duration: .3s;
+}
+
+.nav-list-item-active  > a {
+  font-family: PN-bold;
+  color: #4caab3;
+}
+
+.section {
+  position: relative;
+}
+
+.sec-1 {
+  padding: 90px 0px 50px 0px;
+  background: linear-gradient(to right, #fff, rgba(255,255,255, 0.1));
+  top: -60px;
+  position: relative;
+  margin-bottom: -60px;
+  box-shadow: 0px 0px 25px -15px #000;
+}
+
+.sec-1 .container {
+  z-index: 12;
+  position: relative;
+}
+
+.sec-1-bg {
+  width: 100%;
+  position: absolute;
+  right: 0px;
+  top: -50px;
+  height: calc(100% + 50px);
+  z-index: -1;
+  background: url("../img/sec-1-bg.png")
+}
+
+.sec-1-caption {
+  font-family: PN-extrabold;
+  font-size: 39px;
+  color: #000;
+  margin: 0px 0px 40px 0px;
+}
+
+.sec-1-title {
+  margin: 0px 0px 7px 0px;
+  font-family: PN-regular;
+  font-size: 29px;
+  color: #000;
+}
+
+.sec-1-subtitle {
+  margin: 0px;
+  font-family: PN-light;
+  font-size: 20px;
+  color: #3f3f3f;
+}
+
+.refund-btn {
+  border-radius: 7px;
+  color: #fff;
+  font-family: PN-bold;
+  font-size: 25px;
+  text-align: center;
+  padding: 6px 45px;
+  background: #4caab3;
+  border: none;
+  outline: none;
+  margin: 50px 0px 60px 0px;
+  cursor: pointer;
+}
+
+.contacts-item {
+  display: flex;
+  align-items: center;
+  margin: 25px 0px;
+}
+
+.contacts-item-text {
+  margin-left: 10px;
+}
+
+.contacts-item-text-title {
+  font-family: PN-bold;
+  color: #2b2f2c;
+  margin: 0px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+.contacts-item-text-desc {
+  text-decoration: none;
+  font-family: PN-regular;
+  font-size: 20px;
+  color: #2b2f2c;
+  margin: 0px;
+}
+
+.sec-2 {
+  padding: 50px 0px;
+  background: #fff;
+  box-shadow: 0px 0px 25px -15px #000;
+}
+
+.sec-2-title {
+  font-family: PN-regular;
+  font-size: 37px;
+  color: #444444;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+.sec-2-desc {
+  font-family: PN-regular;
+  font-size: 20px;
+  color: #444444;
+  margin: 0px;
+}
+
+.sec-2 .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sec-2-content {
+  width: 70%;
+}
+
+.sec-2-list {
+  list-style: none;
+  padding: 0px;
+  margin-top: 60px;
+}
+
+.sec-2-list-item {
+  margin: 35px 0px;
+}
+
+.sec-2-list-item-title {
+  font-family: PN-bold;
+  font-size: 20px;
+  color: #444444;
+  margin: 0px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.sec-2-list-item-desc {
+  font-family: PN-regular;
+  font-size: 20px;
+  color: #444444;
+  margin: 0px;
+}
+
+.sec-3 {
+  padding: 70px 0px;
+}
+
+.sec-3-image {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+}
+
+.sec-3-image img {
+  height: 100%;
+}
+
+.sec-3-content {
+  width: 60%;
+}
+
+.sec-3-title {
+  font-family: PN-regular;
+  font-size: 37px;
+  color:#444;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+.sec-3-desc {
+  font-family: PN-regular;
+  font-size: 20px;
+  color:#444;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+.sec-3-info-list {
+  padding: 0px;
+  padding-left: 25px;
+  margin: 0px;
+  width: 60%;
+}
+
+.sec-3-info-list-item {
+  font-size: 20px;
+  font-family: PN-regular;
+  color: #444;
+  margin: 15px 0px;
+}
+
+.sec-4 {
+  width: 100%;
+  padding: 40px 0px;
+  background: #4caab3;
+}
+
+.line-list {
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-title {
+  margin: 0px;
+  font-family: PN-bold;
+  font-size: 37px;
+  color: #fff;
+}
+
+.line-list-item {
+  text-align: center;
+}
+
+.line-list-item-title {
+  font-size: 45px;
+  font-family: PN-bold;
+  color: #fff;
+  margin: 0px;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+}
+
+.line-list-item-subtitle {
+  font-size: 25px;
+  font-family: PN-bold;
+  color: #fff;
+  margin: 0px;
+  text-transform: uppercase;
+} 
+
+.sec-5 {
+  padding: 70px 0px;
+  background: #f7f8fa;
+}
+
+.sec-5-bg {
+  position: absolute;
+  top: 20%;
+  right: 20px;
+}
+
+.sec-5-content {
+  width: 55%;
+}
+
+.sec-5-title {
+  font-family: PN-regular;
+  font-size: 37px;
+  color:#444;
+  margin: 50px 0px 30px 0px;
+}
+
+.sec-5-text {
+  font-family: PN-regular;
+  font-size: 20px;
+  color:#444;
+  margin: 0px;
+}
+
+.sec-5-info-list {
+  margin: 30px 0px 60px 0px;
+}
+.sec-5-info-list-item {
+  margin: 8px 0px;
+}
+
+.sec-6 {
+  padding: 60px 0px 40px 0px;
+  box-shadow: 0px 0px 25px -15px #000;
+}
+
+.sec-6-content {
+  width: 50%;
+}
+
+.sec-6-text {
+  margin: 30px 0px;
+}
+
+.bold-text {
+  font-family: PN-bold;
+}
+
+.sec-6-title {
+  margin-top: 60px;
+}
+
+.sec-6-bg {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+}
+
+.sec-6-bg img {
+  height: 100%;
+}
+
+.sec-7 {
+  padding: 40px 0px 0px 0px;
+  margin-bottom: -50px;
+}
+
+.footer-form {
+  margin-right: 80px;
+  width: 45%;
+  box-shadow: 0px 0px 25px -20px #000;
+  border-radius: 30px;
+  margin: 0px 80px 20px 0px;
+}
+
+.footer-form-container {
+  padding: 35px 50px;
+}
+
+.form-title {
+  font-family: PN-bold;
+  font-size: 31px;
+  color:#6a6a6a;
+  margin: 0px;
+}
+
+.form-title-desc {
+  font-family: PN-light;
+  font-size: 20px;
+  margin: 5px 0px 20px 2px;
+  color: #6a6a6a;
+}
+
+.form-item {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+
+.form-input {
+  max-width: 100%;
+  width: 100%;
+  background: #efefef;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 15px;
+  font-family: PN-regular;
+  font-size: 20px;
+  box-sizing: border-box;
+  margin: 10px 0px;
+  outline: none;
+}
+
+textarea.form-input {
+  height: 120px;
+  resize: none;
+}
+
+.refund-btn-form {
+  padding: 9px 100px;
+  margin: 20px auto 0px auto;
+  display: block;
+}
+
+.sec-7-content {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  margin: 0px;
+  margin-top: 70px;
+}
+
+.sec-7-content-main {
+  width: 55%;
+}
+
+.sec-7-content-logo {
+  width: 250px;
+}
+
+.sec-7-content-logo img {
+  width: 100%;
+}
+
+.sec-7-content-text-title {
+  margin: 20px 0px;
+  font-family: PN-bold;
+  font-size: 29px;
+  color: #444;
+  width: 70%;
+}
+.sec-7-content-list {
+  list-style: none;
+  padding: 0px;
+  width: 100%;
+}
+
+.sec-7-content-list-item {
+  margin: 20px 0px;
+}
+
+.sec-7-content-list-item-title {
+  font-family: PN-bold;
+  font-size: 20px;
+  color: #444;
+  margin: 0px;
+}
+
+.sec-7-content-list-item-text {
+  margin: 5px 0px 0px 0px;
+  font-size: 20px;
+  color: #444444;
+  font-family: PN-regular;
+}
+
+.sec-7-parthers {
+  width: 45%;
+  position: relative;
+  top: -60px
+}
+
+.footer {
+  background: #f8f8f8;
+  padding: 40px 0px 10px 0px;
+}
+
+.footer-content-title {
+  font-family: PN-bold;
+  font-size: 25px;
+  color: #9d9d9d;
+  margin: 0px;
+}
+
+.footer-content-desc {
+  font-family: PN-regular;
+  font-size: 20px;
+  color: #9d9d9d;
+  margin: 0px;
+}
+
+.copyright {
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright-text {
+  color: #484848;
+  font-family: PN-regular;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.copyright-text .bold-text {
+  color: #444444;
+}
+
+.copyright-phone {
+  color: #484848;
+  font-family: PN-regular;
+  font-size: 20px;
+  margin: 0px;
+  text-decoration: none;
+}
+
+.footer-content {
+  width: 40%;
+}
+
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-content-2 {
+  width: 25%;
+}
+
+.footer-contacts-list {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.footer-contacts-list-item {
+  color: #484848;
+  font-family: PN-regular;
+  font-size: 20px;
+  margin: 10px 0px;
+}
+
+#service .sec-2 {
+  top: -60px;
+  margin-bottom: -60px;
+  padding: 70px 0px 70px 0px;
+}
+
+.sec-3-extra {
+  padding: 90px 0px 70px 0px;
+  top: -60px;
+  margin-bottom: -60px;
+}
+
+.sec-3-extra .sec-3-content {
+  width: 50%;
+}
+
+.sec-5-title .sec-5-subtitle {
+  font-size: 25px;
+}
+
+#role .sec-5-text {
+  margin: 30px 0px;
+}
+
+#role .sec-5-content {
+  width: 40%;
+}
+
+#role .sec-5-bg {
+  top: 0px;
+  height: 100%
+}
+
+#role .sec-5-bg img {
+  height: 100%;
+}
+
+#refund .sec-2 {
+  margin-bottom: -60px;
+  top: -60px;
+  padding: 90px 0px 70px 0px;
+}
+
+#refund .sec-2-desc {
+  margin: 30px 0px;
+}
+
+#refund .sec-2-list-item-title {
+  font-family: PN-bold;
+  font-size: 20px;
+  color: #444444;
+  margin: 0px;
+  text-transform: none;
+  margin-top: 50px;
+}
+
+#refund .sec-2-content {
+  width: 50%;
+}
+
+
+#refund .sec-2 .container {
+  display: block;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sec-3-refund-image {
+  height: auto;
+  top: 10px;
+}
+
+.sec-3-refund-image img {
+  width: 100%;
+  height: auto;
+}
+
+#refund .sec-5-text {
+  margin: 30px 0px;
+}
+
+.sec-5-payment {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 60px;
+}
+
+.sec-5-payment-title {
+  font-family: PN-bold;
+  color: #444444;
+  margin: 0px;
+  font-size: 20px;
+}
+
+.sec-5-payment-desc {
+  font-family: PN-regular;
+  color: #444444;
+  margin: 0px;
+  font-size: 20px;
+}
+
+#refund .sec-5-bg {
+  top: 70px;
+  right: 60px;
+}
+
+#license .sec-6 {
+  top: -60px;
+  margin-bottom: -60px;
+  padding: 120px 0px;
+}
+
+#license .sec-6-bg {
+  height: auto;
+  top: 120px;
+  right: 40px;
+}

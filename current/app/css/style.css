@@ -4558,6 +4558,17 @@ html {
 	.game-2-cont {
 		padding: 0PX;
 	}
+	.lucky, .prediction {
+		font-size: 50px !important;
+	}
+	.prediction .num, .lucky .num {
+			height: auto;
+		line-height: 40px;
+		margin-top: 20px;
+	}
+	.prediction, .lucky {
+			justify-content: center;
+	}
 }
 
 
@@ -4566,3 +4577,47 @@ html {
 		background: #000 !important;
 	}
 }
+
+#roll:hover, #roll1:hover {
+    opacity: 1;
+}
+
+#roll:disabled, #roll1:disabled {
+	opacity: .7;
+	cursor: default;
+}
+
+.area-slider1 {
+	max-width: 400px;
+	margin: 0px auto;
+}
+
+.navigation-statistic {
+	margin-left: -50px;
+}
+
+.bet-amount1 input, .payout1 input {
+	max-width: 330px !important;
+}
+
+.roll {
+	max-width: 330px;
+	margin: 5px auto;
+}
+
+.payout1 label {
+	margin: 0px auto;
+}
+
+@media screen and (min-width: 1150px) {
+.payout1 img {
+	left: 115px;
+	top: 29px;
+}
+
+.bet-amount1 img {
+	left: 115px;
+	top: 33px;
+}
+}
+

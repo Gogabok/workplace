@@ -334,10 +334,12 @@ $(function () {
       'font-size': '60px',
       'color': '#f1cd5b'
     });
+    $(".roll button").prop('disabled', true);
 
     $(".scroll-nums-abs").animate({
       left: posRand,
     }, 3000, function () {
+      $(".roll button").prop('disabled', false);
       var prev = rand - 1;
       var next = rand + 1;
       $('.roll-' + rand).animate({
@@ -351,7 +353,7 @@ $(function () {
     });
 
     //$(".odometer").html(rand);
-    var myAudioWin = $('#audio2')[0];
+    var myAudioWin = $('#audio5')[0];
     setTimeout(function () {
       //var a = $(".odometer").text();
       //var b = $(".prediction .num").text();
