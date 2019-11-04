@@ -17,8 +17,8 @@ img {
 	max-width: 90%;
 	/* margin: 40px auto 40px auto; */
 	margin: 40px auto 20px auto;
-	height: 400px;
-	overflow-y: scroll;
+	/* height: 400px;
+	overflow-y: scroll; */
 }
 .table-players::-webkit-scrollbar{
   background: rgba(30, 44, 61, 0.7);
@@ -73,6 +73,7 @@ body {
 	text-transform: uppercase;
 	margin: 0px 30px;
 	color: #9098A3;
+	cursor: pointer;
 }
 .table-subhead-item {
 	font-family: Roboto;
@@ -866,7 +867,7 @@ table th {
 	}
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1100px) {
 	.navigation-item-container-menu {
 		display: none;
 	}
@@ -1136,8 +1137,8 @@ img {
 	max-width: 90%;
 	/* margin: 40px auto 40px auto; */
 	margin: 40px auto 20px auto;
-	height: 400px;
-	overflow-y: scroll;
+	/* height: 400px;
+	overflow-y: scroll; */
 }
 .table-players::-webkit-scrollbar{
   background: rgba(30, 44, 61, 0.7);
@@ -1532,7 +1533,7 @@ body {
 	}
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1100px) {
 	.navigation-item-container-menu {
 		display: none;
 	}
@@ -2669,12 +2670,7 @@ body {
 
 	@media screen and (max-width: 1100px) {
 		.games-jackpot-1 {
-			height: 70px;
-			display: flex;
-			align-items: flex-end;
-			position: relative;
-			justify-content: flex-start;
-			left: 34%;
+			display: none;
 		}
 	}
 
@@ -2792,10 +2788,13 @@ html {
 		width: 24px;
 	}
 	.payout img, .payout1 img {
-		top: 42px;
+		top: 33px;
 	}
 	.bet-amount label, .bet-amount1 label  {
-		height: 100px;
+		height: 50px;
+	}
+	.bet-amount img, .bet-amount1 img {
+		top: 59px;
 	}
 }
 @media screen and (max-width: 900px) {
@@ -3108,6 +3107,7 @@ html {
 		.active-value {
 			/* text-decoration-line: underline; */
 			color: #F1CD5B;
+			font-size: 10px;
 		}
 		.headerJack-btns-item {
 			padding: 9px 20px;
@@ -4437,16 +4437,16 @@ html {
 
 .hamburger-game5 {
 		/* display: block; */
-		width: 20px;
+		width: 15px;
 		margin-left: 25px;
 		cursor: pointer;
 	}
 	.hamburger-game5 span {
 		width: 100%;
 		display: block;
-		margin: 3px 0px;
+		margin: 2px 0px;
 		height: 2px;
-		border: 1px solid #fff;
+		background: #fff;
 	}
 	.headerJack-btns {
 		position: relative;
@@ -4638,4 +4638,54 @@ html {
 	.mobileDisplay {
 		display: none;
 	}
+}
+
+.header-scnd-menu-item-2-dividend {
+		display: none;
+	}
+.rules-title-header-menu-2 {
+	margin: 0px 5px;
+	display: none;
+}
+
+@media screen and (min-width: 1100px) {
+	.header-scnd-menu-item-2-dividend {
+		display: block;
+	}
+	.rules-title-header-menu-2 {
+		display: block;
+	}
+}
+
+.games-jackpot-2, .games-jackpot-2:hover {
+	color: #f1cd5b !important;
+}
+
+.coin-stripe {
+	margin-bottom: 10px;
+}
+
+.table-wrapper {
+	height: 350px;
+	overflow-y: scroll;
+	display: none;
+}
+
+.table-wrapper-active {
+	display: block;
+}
+
+
+.table-wrapper::-webkit-scrollbar{
+  background: rgba(30, 44, 61, 0.7);
+  border-radius: 5px;
+  width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb{
+	background: rgb(42, 59, 80);
+ 	border-radius: 5px;
+}
+
+.active-table-head {
+	color: #f1cd5b;
 }

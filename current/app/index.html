@@ -177,7 +177,7 @@
 				<a id="8" class="game-activator header-scnd-menu-item">Профиль</a>
 				<!-- <p class="header-scnd-menu-item dividend">Дивиденты</p> -->
 				<p class="header-scnd-menu-item rules-trigger">Правила</p>
-				<p class="header-scnd-menu-item" id="honestGame">Честность</p>
+				<p class="header-scnd-menu-item honestGame">Честность</p>
 				<a href="#" class="header-scnd-menu-item">Белая бумага</a>
 				<a id="7" class="game-activator header-scnd-menu-item">Дорожная карта</a>
 				<a target="_blank" class="header-scnd-menu-item faq-trigger">FAQ</a>
@@ -189,21 +189,22 @@
 		<div class="headerJack">
 			<div class="headerJack-aside">
 				<img src="img/user-avatar.png" alt="">
-				<div>
+				<div id="8" class="game-activator">
 					<p class="user">Bogdan Zenger</p>
 					<p class="headerJack-aside-balance">Баланс: 353.000 TRX</p>
-					<p class="user-id">TMtvWDsassa...dJvhvgasaxsqsfd</p>
+					<p class="user-id">TMtvWDsassadJvh...</p>
 				</div>
+				<p style="margin-left: 15px;" class="header-scnd-menu-item dividend header-scnd-menu-item-2-dividend">Дивиденты</p>
 			</div>
 			<div class="headerJack-balance">
-				<p class="headerJack-balance-title">GAME баланс</p>
+				<p class="headerJack-balance-title">GAME кошелек</p>
 				<div class="navigation-scnd-item-container-text-boldText pricing pricing-1">999.999.9999</div>
 				<p style="margin: 0px 0px 0px 10px" class="active-value">TRX</p>
 			</div>
 			<div class="headerJack-btns">
 				<button class="headerJack-btns-item btn-1 take-trigger">Пополнить</button>
 				<button class="headerJack-btns-item btn-2 get-trigger">Вывести</button>
-				<div class="hamburger-game5">
+				<div class="hamburger-game5 mobileDisplay">
 					<span></span>
 					<span></span>
 					<span></span>
@@ -212,7 +213,7 @@
 					<a id="8" class="game-activator header-scnd-menu-item">Профиль</a>
 					<!-- <p class="header-scnd-menu-item dividend">Дивиденты</p> -->
 					<p class="header-scnd-menu-item rules-trigger">Правила</p>
-					<p class="header-scnd-menu-item" id="honestGame">Честность</p>
+					<p class="header-scnd-menu-item honestGame">Честность</p>
 					<a href="#" class="header-scnd-menu-item mobileDisplay">Белая бумага</a>
 					<a id="7" class="game-activator header-scnd-menu-item mobileDisplay">Дорожная карта</a>
 					<a target="_blank" class="header-scnd-menu-item faq-trigger mobileDisplay">FAQ</a>
@@ -255,8 +256,8 @@
 					</div>
 				</div>
 				<div class="rules">
-					<!-- <a href="#" class="rules-title rules-trigger">Правила</a>
-					<a href="#" class="rules-title" id="honestGame">Честность</a> -->
+					<a href="#" class="rules-title rules-trigger rules-title-header-menu-2">Правила</a>
+					<a href="#" class="rules-title rules-title-header-menu-2 honestGame">Честность</a>
 					<p style="margin: 0px;" class="header-scnd-menu-item dividendMobile dividend">Дивиденты</p>
 					<a href="#" id="gamesRouter" class="rules-title rules-title-game">Игры</a>
 				</div>
@@ -442,373 +443,1061 @@
 		</ul>
 
 	</div>
-	<div class="table-players">
-		<div class="table-head table-colored">
-			<div class="table-head-item">
-				Мои ставки
+	<div class="table-players table-players-1">
+		<div class="table-wrapper-head">
+			<div class="table-head table-head-1 table-colored">
+				<div id="my" class="table-head-item active-table-head">
+					Мои ставки
+				</div>
+				<div id="all" class="table-head-item">
+					Все ставки
+				</div>
+				<div id="jackpots" class="table-head-item">
+					Джекпоты
+				</div>
 			</div>
-			<div class="table-head-item">
-				Все ставки
-			</div>
-			<div class="table-head-item">
-				Джекпоты
-			</div>
-		</div>
-		<div class="table-subhead table-colored">
-			<div class="table-subhead-item">
-				Игроков
-			</div>
-			<div class="table-subhead-item">
-				Предсказание
-			</div>
-			<div class="table-subhead-item">
-				Счастливое число
-			</div>
-			<div class="table-subhead-item">
-				Ставки
-			</div>
-			<div class="table-subhead-item">
-				Выплата
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-subhead table-colored">
+				<div class="table-subhead-item">
+					Игроков
+				</div>
+				<div class="table-subhead-item">
+					Предсказание
+				</div>
+				<div class="table-subhead-item">
+					Счастливое число
+				</div>
+				<div class="table-subhead-item">
+					Ставки
+				</div>
+				<div class="table-subhead-item">
+					Выплата
+				</div>
 			</div>
 		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
+		<div class="table-wrapper table-wrapper-active table-wrapper-my">
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок1
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
 		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
+		<div class="table-wrapper table-wrapper-all">
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок2
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
-			<div class="table-content-item">
-				???
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
 		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-		</div>
-		<div class="table-content table-colored">
-			<div class="table-content-item">
-				Игрок
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
-			</div>
-			<div class="table-content-item">
-				???
+		<div class="table-wrapper table-wrapper-jackpots">
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок3
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+			</div>
+			<div class="table-content table-colored">
+				<div class="table-content-item">
+					Игрок
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
+				<div class="table-content-item">
+					???
+				</div>
 			</div>
 		</div>
 	</div>
@@ -2216,373 +2905,1061 @@
 	</ul>
 
 </div>
-<div class="table-players">
-	<div class="table-head table-colored">
-		<div class="table-head-item">
-			My bets
+<div class="table-players table-players-2">
+	<div class="table-wrapper-head">
+		<div class="table-head table-head-2 table-colored">
+			<div id="my" class="table-head-item active-table-head">
+				My bets
+			</div>
+			<div id="all" class="table-head-item">
+				All bets
+			</div>
+			<div id="jackpots" class="table-head-item">
+				Jackpots
+			</div>
 		</div>
-		<div class="table-head-item">
-			All bets
-		</div>
-		<div class="table-head-item">
-			Jackpots
-		</div>
-	</div>
-	<div class="table-subhead table-colored">
-		<div class="table-subhead-item">
-			Players
-		</div>
-		<div class="table-subhead-item">
-			Prediction
-		</div>
-		<div class="table-subhead-item">
-			Lucky number
-		</div>
-		<div class="table-subhead-item">
-			Bets
-		</div>
-		<div class="table-subhead-item">
-			Payout
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-subhead table-colored">
+			<div class="table-subhead-item">
+				Players
+			</div>
+			<div class="table-subhead-item">
+				Prediction
+			</div>
+			<div class="table-subhead-item">
+				Lucky number
+			</div>
+			<div class="table-subhead-item">
+				Bets
+			</div>
+			<div class="table-subhead-item">
+				Payout
+			</div>
 		</div>
 	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
+	<div class="table-wrapper table-wrapper-active table-wrapper-my">
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player1
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
 	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
+	<div class="table-wrapper table-wrapper-all">
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player2
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
-		<div class="table-content-item">
-			???
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
 	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-	</div>
-	<div class="table-content table-colored">
-		<div class="table-content-item">
-			Player
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
-		</div>
-		<div class="table-content-item">
-			???
+	<div class="table-wrapper table-wrapper-jackpots">
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player3
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+		</div>
+		<div class="table-content table-colored">
+			<div class="table-content-item">
+				Player
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
+			<div class="table-content-item">
+				???
+			</div>
 		</div>
 	</div>
 </div>
@@ -2604,14 +3981,14 @@
 						<div class="game-rule-content modal-cont">
 							<div class="faq-item">
 								<div class="game-rule-content-item">
-									<p class="game-rule-content-text">Что такое Crypto Casino?</p>
+									<p class="game-rule-content-text">Что такое Crypto Games?</p>
 									<img src="img/faq-arrow.svg" alt="">
 								</div>
 								<div class="item-content">
-									<p class="item-content-text">Ключевое слово «Крипто» привносит два аспекта в систему онлайн-казино.
+									<p class="item-content-text">Ключевое слово «Крипто» привносит два аспекта в систему онлайн-игр.
 										Криптографические
 										хеш-функции, используемые в
-										технологии Blockchain, гарантируют доказанную справедливость в системе казино. В ставках используются
+										технологии Blockchain, гарантируют доказанную справедливость в системе игр. В ставках используются
 										известные
 										криптовалюты (TRON и BTT) вместо реальных или виртуальных денег, которые принесут огромную пользу игрокам.
 									</p>
