@@ -194,9 +194,15 @@ body {
 }
 
 .navigation-scnd-item-container-balances {
-	width: 120px;
+	/* width: 120px; */
 	overflow-x: auto;
 	text-align: center;
+}
+
+.navigation-scnd-item-container-balances p {
+	/* width: 100% !important; */
+	/* display: block !important; */
+	width: 200px;
 }
 
 .navigation-scnd-item-container-2-text {
@@ -3032,7 +3038,7 @@ html {
 		.headerJack-balance {
 			display: flex;
 			align-items: center;
-			margin-left: -180px;
+			margin-left: -220px;
 		}
 		.headerJack-balance-title {
 			font-family: Roboto;
@@ -3045,7 +3051,7 @@ html {
 			text-align: center;
 			color: #FFFFFF;
 			margin: 0px;
-			margin-right: 5px;
+			margin-right: 10px;
 		}
 		.headerJack-balance-number {
 			background: #131C2D;
