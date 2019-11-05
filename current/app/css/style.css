@@ -193,6 +193,12 @@ body {
 	margin: 0px 15px;
 }
 
+.navigation-scnd-item-container-balances {
+	width: 120px;
+	overflow-x: auto;
+	text-align: center;
+}
+
 .navigation-scnd-item-container-2-text {
 	font-family: Roboto;
 	font-style: normal;
@@ -2837,49 +2843,9 @@ html {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.container-block-balance {
+	margin-left: -20px;
+}
 
 .quartl {
 	display: none;
