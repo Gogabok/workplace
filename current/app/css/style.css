@@ -3066,7 +3066,7 @@ html {
 		.headerJack-balance {
 			display: flex;
 			align-items: center;
-			margin-left: -100px;
+			margin-left: -180px;
 		}
 		.headerJack-balance-title {
 			font-family: Roboto;
