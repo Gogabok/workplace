@@ -1,3 +1,4 @@
+
 const nums = [
   {
     i: 0,
@@ -364,40 +365,76 @@ const nums = [
 const animationDuration = 7000
 const timingBetweenRotating = 20000
 const stepDeg = 360 / nums.length
+const spinner = $('.colored-circle')
 let transformation = 0
 
-setInterval(() => {
-  let randElement = nums[Math.floor(Math.random() * (nums.length))];
-  let transform = 360 - (randElement.i * stepDeg)
-  transformation = transform
-  let currentRotate = transformation + 720
-  rotating(currentRotate)
+
+
+function startCounting () {
+  $("#counter").counter("start");
+  $(".currentText").toggle()
+}
+function starting () {
+  $("#counterWrapper--text").text("Stop placing bets")
+  $(".currentText").toggle()
+  setTimeout(() => {
+    let randElement = nums[Math.floor(Math.random() * (nums.length))];
+    let transform = 360 - (randElement.i * stepDeg)
+    transformation = transform
+    let currentRotate = transformation + 720
+    rotating(randElement, transformation, currentRotate)
+    $("#counterWrapper--text").text("")
+    console.log(transformation, randElement, currentRotate)
+  }, 2000);
+}
+
+function rotating(randElement, transformation, currentRotate) {
+  spinner.css("transition-duration", + animationDuration + "ms")
+  spinner.css('transform', 'rotate(' + currentRotate + 'deg)');
   setTimeout(() => {
     fixing(randElement, transformation)
   }, animationDuration);
-  console.log(transformation, randElement, currentRotate)
-}, timingBetweenRotating);
-
-
-function rotating(currentRotate) {
-  $('.colored-circle').css("transition-duration", + 7000 + "ms")
-  $('.colored-circle').css('transform', 'rotate(' + currentRotate + 'deg)');
 }
 
 function fixing(randElement, transformation) {
-  $('.colored-circle').css("transition-duration", "0s")
-  $('.colored-circle').css('transform', 'rotate(' + transformation + 'deg)')
-  $("<style>.x50_circle__arrow::after { border-color: " + randElement.colorHex + ' rgba(255, 212, 52, 0) rgba(255, 212, 52, 0)' + "; !important }</style>").appendTo("head")
+  spinner.css("transition-duration", "0s")
+  spinner.css('transform', 'rotate(' + transformation + 'deg)')
+  $("<style>#counterWrapper--text, #counter { color: " + randElement.colorHex + " } .x50_circle__arr div { border-color:  transparent transparent" + randElement.colorHex + "; !important }</style>").appendTo("head")
+  setTimeout(() => {
+    $("#counterWrapper--text").text("Preparing next round")
+    setTimeout(() => {
+      startCounting()
+    }, 1000);
+  }, 1000);
 }
 
 
 
 
-let subOdometr = $(".x50_circle__counter");
-var odometr = new Odometer({
-  el: subOdometr,
-  minIntegerLen: 2,
-  format: 'dd',
-  //animation: 'count'
+$("#counter").counter({
+  autoStart: false,      
+  duration: timingBetweenRotating,          
+  countFrom: 20,       
+  countTo: 0,              
+  runOnce: false,             
+  placeholder: "",
+  easing: "linear",
+  format: '(,ddd).dd',
+  onStart: function () { },
+  onComplete: function () { 
+    starting()
+  }, 
+  numberFormatter:
+    function (number) {
+      return (number.toFixed(1));
+    }
+});
 
+
+
+$(document).ready(function () {
+  $("#counter").hide()
+  setTimeout(() => {
+    startCounting()
+  }, 1000);
 });

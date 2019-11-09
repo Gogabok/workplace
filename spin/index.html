@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="jquery-ui.theme.css">
   <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
   <div class="spin">
@@ -19,16 +22,21 @@
             </div>
           </div>
         </div>
-        <input class="x50_circle__counter" disabled="" type='text' value="0">
-        <span class="x50_circle__arrow">
-        </span>
+        <!-- <input class="x50_circle__counter" disabled="" type='text' value="0"> -->
+        <div class="x50_circle__counter count">
+          <div id="counterWrapper">
+            <span class="currentText" id="counterWrapper--text">Preparing next round</span>
+            <span class="currentText" id="counter"></span>
+          </div>
+        <div class="x50_circle__arr">
+          <div class="x50_circle__arr-up"></div>
+          <div class="x50_circle__arr-down"></div>
+        </div>
       </div>
     </div>
-    <div class="roll">
-      <button type="submit" id="roll">Ролл</button>
-    </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
+  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+  <script src="counter.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
