@@ -4677,5 +4677,21 @@ body {
 
 
 .colored-circle {
-  transition:all 4s cubic-bezier(.12,.32,.07,.96);
+  transition:all 7s cubic-bezier(.12,.32,.07,.96);
+	transform-origin: 50% 50%;
+}
+
+.x50_circle__arrow::after {
+  border: medium solid transparent;
+  content: "";
+  top: 100%;
+  left: 50%;
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-color: #ffd434 rgba(255, 212, 52, 0) rgba(255, 212, 52, 0);
+  border-width: 15px;
+	margin-left: -15px;
+	margin-top: 25px;
+	transition-duration: .3s;
 }
