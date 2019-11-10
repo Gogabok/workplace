@@ -404,7 +404,7 @@
 						<label for="multiplier">Мультипликатор</label>
 						<input type="text" value="2.0102X" id="multiplier" class="lex" readonly>
 					</div>
-					<div class="roll d-flex auto">
+					<div class="rollAuto d-flex auto">
 
 						<label class="switch">
 							<input type="checkbox" checked>
@@ -1547,18 +1547,22 @@
 					<span class="colored_circle"></span>
 					<div class="col-md-8 ">
 						<div class="game-area">
-							<div class="colored-circle">
-								<img src="img/+/+/colored-circle.png" alt="">
+							<div class="colored-circle colored-circle-default colored_circle-wrapper">
+								<img src="img/+/+/colored-circle.svg" alt="">
 							</div>
 						</div>
 					</div>
-					<input class="x50_circle__counter" disabled="" type='text' value="0">
-					<span class="x50_circle__arrow">
-						<svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.7843 0H22L16.3922 10L10.7843 20L0 0H10.7843Z" fill="#F6E444" />
-						</svg>
-				
-					</span>
+					<!-- <input class="x50_circle__counter" disabled="" type='text' value="0"> -->
+					<div class="x50_circle__counter count">
+						<div id="counterWrapper">
+							<span class="currentText" id="counterWrapper--text">Preparing next round</span>
+							<span class="currentText" id="counter"></span>
+						</div>
+						<div class="x50_circle__arr">
+							<div class="x50_circle__arr-up"></div>
+							<div class="x50_circle__arr-down"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-3 col-lg-4 ml-auto">
@@ -1586,7 +1590,7 @@
 								<a href="#" class="bet-change bet-max">макс</a>
 							</span>
 						</label>
-						<input type="text" value="1" id="bet-amount" class="lex">
+						<input type="text" value="1" id="bet-amountx50" class="lex">
 						<!-- <p>
 							<a href="#" class="bet-change bet-2x">2x</a>
 							<a href="#" class="bet-change bet-half">1/2</a>
@@ -1595,18 +1599,18 @@
 						</p> -->
 
 					</div>
-					<div class="x50_bets__tab_content__item d-flex">
+					<div id="x50Inputs" class="x50_bets__tab_content__item d-flex">
 						<!-- <div class="x50_bets__tab_content__item__content d-flex"> -->
-						<input type="radio" class="color_choose visually_hidden" id="color_choose-blue" name="color_choose" checked>
+						<input type="radio" value="blue" class="color_choose visually_hidden" id="color_choose-blue" name="color_choose" checked>
 						<label for="color_choose-blue" class="color_label color_label-blue">x2</label>
 					
-						<input type="radio" class="color_choose visually_hidden" id="color_choose-brown" name="color_choose">
+						<input type="radio" value="red" class="color_choose visually_hidden" id="color_choose-brown" name="color_choose">
 						<label for="color_choose-brown" class="color_label color_label-brown">x3</label>
 					
-						<input type="radio" class="color_choose visually_hidden" id="color_choose-red" name="color_choose">
+						<input type="radio" value="green" class="color_choose visually_hidden" id="color_choose-red" name="color_choose">
 						<label for="color_choose-red" class="color_label color_label-red">x5</label>
 					
-						<input type="radio" class="color_choose visually_hidden" id="color_choose-turquoise" name="color_choose">
+						<input type="radio" value="gold" class="color_choose visually_hidden" id="color_choose-turquoise" name="color_choose">
 						<label for="color_choose-turquoise" class="color_label color_label-turquoise">x50</label>
 						<!-- </div> -->
 					</div>
@@ -1615,7 +1619,7 @@
 						<label for="payout">Выплата за выигрыш</label>
 						<input type="text" value="2.01" id="payout" class="lex" readonly>
 					</div>
-					<div class="roll d-flex auto">
+					<div class="rollAuto d-flex auto">
 
 						<label class="switch">
 							<input type="checkbox" checked>
@@ -1625,8 +1629,8 @@
 
 
 					</div>
-					<div class="roll">
-						<button type="submit" id="roll">Ролл</button>
+					<div class="rollx50">
+						<button type="submit" id="rollx50">Поставить</button>
 					</div>
 				</div>
 			</div>
@@ -1671,41 +1675,9 @@
 						</thead>
 						<tbody>
 							<tr class="body_2 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
+								<td class="c-1"><span class="gap"></span></td>
 							</tr>
-							<tr class="body_3 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_4 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_2 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_3 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_4 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_2 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_3 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_4 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_2 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_3 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
-							<tr class="body_4 col-lg-3">
-								<td class="c-1">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</div>
@@ -1723,7 +1695,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="body_2 col-lg-3">
+							<!-- <tr class="body_2 col-lg-3">
 								<td class="c-2">Логин <span class="gap">1000 TRX</span></td>
 							</tr>
 							<tr class="body_3 col-lg-3">
@@ -1758,7 +1730,7 @@
 							</tr>
 							<tr class="body_4 col-lg-3">
 								<td class="c-2">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -1777,7 +1749,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="body_2 col-lg-3">
+							<!-- <tr class="body_2 col-lg-3">
 								<td class="c-3">Логин <span class="gap">1000 TRX</span></td>
 							</tr>
 							<tr class="body_3 col-lg-3">
@@ -1812,7 +1784,7 @@
 							</tr>
 							<tr class="body_4 col-lg-3">
 								<td class="c-3">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -1831,7 +1803,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="body_2 col-lg-3">
+							<!-- <tr class="body_2 col-lg-3">
 								<td class="c-4">Логин <span class="gap">1000 TRX</span></td>
 							</tr>
 							<tr class="body_3 col-lg-3">
@@ -1866,7 +1838,7 @@
 							</tr>
 							<tr class="body_4 col-lg-3">
 								<td class="c-4">Логин <span class="gap">1000 TRX</span></td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>
@@ -2882,7 +2854,7 @@
 					<label for="multiplier1">Мультипликатор</label>
 					<input type="text" value="2.0102X" id="multiplier1" class="lex" readonly>
 				</div>
-				<div class="roll d-flex auto">
+				<div class="rollAuto d-flex auto">
 
 					<label class="switch">
 						<input type="checkbox" checked>
@@ -4446,15 +4418,11 @@
 
 
 
-
-
-
-
 <script src="js/scripts.min.js"></script>
 <!-- <script src="js/scripts.min-newdice.js"></script> -->
 <script src="js/common-newdice.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/odometer-test.js"></script>
+<script src="js/odometer-test.js">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 <script>
 	function copyToClipboard(element) {

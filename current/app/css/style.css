@@ -709,7 +709,7 @@ body {
 		left: 100%;
 		/* transform: translate(-50%,0); */
 		/* transform: translate(-50%, -15%); */
-		transform: translate(-50%, -15%);
+		/* transform: translate(-50%, -15%); */
 		background-image: url(../img/colored-circle-6.svg);
 		background-size: 100%;
 		margin-top: 20px;
@@ -2589,8 +2589,9 @@ body {
 
 
 .colored_circle 	{
-		transform: translate(-50%, 0);
-		left: 50% !important;
+		/* transform: translate(-50%, 0); */
+		left: auto !important;
+		right: auto !important;
 	}
 
 	.x50_circle__counter {
@@ -4660,4 +4661,119 @@ html {
 
 .active-table-head {
 	color: #f1cd5b;
+}
+
+.colored-circle {
+	margin-top: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.colored-circle {
+  transition:all 7s cubic-bezier(.12,.32,.07,.96);
+	transform-origin: 50% 50%;
+}
+
+.colored_circle-wrapper {
+	transition:all 7s cubic-bezier(.12,.32,.07,.96);
+	transform-origin: 50% 50%;
+}
+
+.x50_circle__arrow::after {
+  border:  solid transparent;
+  content: "";
+  top: 100%;
+  left: 50%;
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-color: #ffd434 rgba(255, 212, 52, 0) rgba(255, 212, 52, 0);
+  border-width: 40px;
+	margin-left: -15px;
+	margin-top: 25px;
+	transition-duration: .3s;
+}
+.x50_circle__counter {
+	margin-top: -30px;
+	width: 200px !important;
+	/* width: 100%; */
+}
+#counterWrapper {
+	display: flex;
+	justify-content: center;
+	width: 200px !important;
+}
+
+#counterWrapper span {
+	display: block;
+	width: 100%;
+}
+
+#counterWrapper--text {
+	font-size: 12px;
+	margin-bottom: 50px;
+	margin-top: 49px;
+	line-height: 0px;
+}
+
+
+.x50_circle__arr {
+	width: 20px;
+	margin: 0px auto;
+	margin-top: 30px;
+}
+
+.x50_circle__arr-up {
+	width: 0;
+  height: 0;
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #fc0;
+  position: absolute;
+	transform: rotate(65deg);
+}
+
+.x50_circle__arr-down {
+	width: 0;
+  height: 0;
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent #fc0;
+  position: absolute;
+	transform: rotate(-65deg);
+}
+
+
+#rollx50 {
+    opacity: 1;
+}
+
+#rollx50:disabled {
+	opacity: .7;
+	cursor: default;
+}
+
+#rollx50{
+	background-color:#f1cd5b;
+	color:#333;
+	cursor:pointer;
+	width:100%;
+	max-width:380px;
+	border:1px solid #f1cd5b;
+	border-radius:2px;
+	font-weight:800;
+	padding:5px;
+	-webkit-transition:all .3s ease;
+	-o-transition:all .3s ease;
+	transition:all .3s ease
 }
