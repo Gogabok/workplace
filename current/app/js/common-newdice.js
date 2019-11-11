@@ -276,7 +276,7 @@ $(function () {
     dataWinCoin = '.lex-data ';
     $("#bet-amount1").val('1');
     var persentCurrent = handle2.text() - handle.text()-1;
-    console.log(persentCurrent);
+    // console.log(persentCurrent);
     // console.log(handle2.text());
     // console.log(handle.text());
     $("#payout1").val(rounded(doPayout1(persentCurrent)));

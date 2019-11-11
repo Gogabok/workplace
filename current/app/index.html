@@ -1567,11 +1567,25 @@
 			</div>
 			<div class="col-md-3 col-lg-4 ml-auto">
 				<div class="game-fields game-area">
-					<div class="coin-stripe d-flex">
-						<button class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
-						<button class="lex-coin ch-coin"><img src="img/lex.png" alt=""> LEX</button>
-						<button class="btt-coin ch-coin"><img src="img/btt.png" alt=""> BTT</button>
-
+					<div class="coin-stripe coin-stripe-x50 d-flex">
+						<input id="myBetTRX" value="TRX" class="ch-coin myBetCoin" type="radio" name="myBetCoin">
+						<label class="ch-coin coin-stripe-x50-label" for="myBetTRX">
+							<button class="ch-coin"><img src="img/trx.png" alt=""> TRX</button>
+						</label>
+						<input id="myBetLEX" value="LEX" class="ch-coin myBetCoin" type="radio" name="myBetCoin" checked>
+						<label class="ch-coin" for="myBetLEX">
+							<button class="ch-coin"><img src="img/lex.png" alt=""> LEX</button>
+						</label>
+						<input id="myBetBTT" value="BTT" class="ch-coin myBetCoin" type="radio" name="myBetCoin">
+						<label class="ch-coin" for="myBetBTT">
+							<button class="ch-coin"><img src="img/btt.png" alt=""> BTT</button>
+						</label>
+						<!-- <button data-value="TRX" class="trx-coin ch-coin"><img src="img/trx.png" alt=""> TRX</button>
+						<button data-value="LEX" class="lex-coin ch-coin"><img src="img/lex.png" alt=""> LEX</button>
+						<button data-value="BTT" class="btt-coin ch-coin"><img src="img/btt.png" alt=""> BTT</button> -->
+						<!-- <input id="myBetTRX" value="TRX" class="trx-coin ch-coin myBetCoin" type="radio" name="myBetCoin">
+						<input id="myBetLEX" value="LEX" class="trx-coin ch-coin myBetCoin" type="radio" name="myBetCoin" checked>
+						<input id="myBetBTT" value="BTT" class="trx-coin ch-coin myBetCoin" type="radio" name="myBetCoin"> -->
 
 					</div>
 					<div class="bet-amount input-obj">
@@ -1617,7 +1631,7 @@
 					<div class="payout input-obj">
 						<img src="img/lex.png" alt="">
 						<label for="payout">Выплата за выигрыш</label>
-						<input type="text" value="2.01" id="payout" class="lex" readonly>
+						<input type="text" value="2" id="payout" class="lex" readonly>
 					</div>
 					<div class="rollAuto d-flex auto">
 
