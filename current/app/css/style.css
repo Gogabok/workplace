@@ -4812,10 +4812,15 @@ html {
 
 input[type="radio"][disabled] + label:after 
 {
-    opacity: 0 !important;
+    /* opacity: 0 !important; */
 }
 
 input[type="radio"][disabled] + label
 {
-    opacity: .3 !important;
+    /* opacity: .3 !important; */
+}
+
+.rectangle {
+	max-height: 350px;	
+	height: auto;
 }
