@@ -4842,7 +4842,8 @@ input[type="radio"][disabled] + label
 
 .colored-circle {
 	position:relative;
-	top: 6px;
+	top: 7px;
+	right: -1.5px;
 }
 
 .x50_circle__last_colors__item-red {
@@ -4907,4 +4908,48 @@ input[type="radio"][disabled] + label
 	#game-2 .x50_circle__current {
 		right: 0px;
 	}
+}
+
+
+
+
+
+
+.c-1 {
+    color: #319CE9;
+}
+
+.c-2 {
+    color: #ED3F22;
+}
+
+.c-3 {
+    color: #39DC36;
+}
+
+.c-4 {
+    color: #ffd434;
+}
+
+
+.payout img, .payout1 img {
+	top: 32px;
+}
+#yourPayout {
+	font-size: 16px;
+	display: none;
+}
+#counterWrapper {
+	display: block;
+}
+
+.count {
+	height: 100px;
+}
+
+@media only screen 
+and (max-width : 1300px){
+		#game-2 {
+			zoom: .85;
+		}
 }
