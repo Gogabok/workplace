@@ -4689,7 +4689,7 @@ html {
 	transform-origin: 50% 50%;
 }
 
-.x50_circle__arrow::after {
+.x50_circle__arrowSpin::after {
   border:  solid transparent;
   content: "";
   top: 100%;
@@ -4698,9 +4698,9 @@ html {
   height: 0;
   width: 0;
   border-color: #ffd434 rgba(255, 212, 52, 0) rgba(255, 212, 52, 0);
-  border-width: 40px;
+  border-width: 15px;
 	margin-left: -15px;
-	margin-top: 25px;
+	margin-top: 50px;
 	transition-duration: .3s;
 }
 .x50_circle__counter {
