@@ -663,7 +663,7 @@ body {
 		right: 0%;
 		transform: translateX(calc(100% + 20px));
 	}
-	.x50_circle__last_colors__item-yellow {
+	.x50_circle__last_colors__item-gold {
 		background: #F6E444;
 		/* width: 100px; */
 		width: 120px;
@@ -673,7 +673,7 @@ body {
 		/* width: 70px; */
 		width: 120px;
 	}
-	.x50_circle__last_colors__item-turquoise {
+	.x50_circle__last_colors__item-blue {
 		background: #277486;
 		/* width: 20px; */
 		width: 120px;
@@ -1019,7 +1019,7 @@ table th {
 		border-radius: 1px;
 		position: relative;
 	}
-	.x50_circle__last_colors__item-yellow {
+	.x50_circle__last_colors__item-gold {
 		background: #F6E444;
 		/* width: 100px; */
 		width: 120px;
@@ -1029,7 +1029,7 @@ table th {
 		/* width: 70px; */
 		width: 80px;
 	}
-	.x50_circle__last_colors__item-turquoise {
+	.x50_circle__last_colors__item-blue {
 		background: #277486;
 		/* width: 20px; */
 		width: 30px;
@@ -2513,7 +2513,7 @@ body {
 	width: 100%;
 	z-index: 99999;
 }
-.x50_circle__last_colors__item-yellow {
+.x50_circle__last_colors__item-gold {
 		background: #F6E444;
 		/* width: 100px; */
 		width: 120px;
@@ -2523,7 +2523,7 @@ body {
 		/* width: 70px; */
 		width: 120px;
 	}
-	.x50_circle__last_colors__item-turquoise {
+	.x50_circle__last_colors__item-blue {
 		background: #277486;
 		/* width: 20px; */
 		width: 120px;
@@ -2543,7 +2543,7 @@ body {
 		-ms-flex-direction: column;
 		-o-flex-direction: column;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: flex-start !important;
 		-ms-align-items: center;
 		align-items: center;
 		/* width: 100px;
@@ -4823,4 +4823,88 @@ input[type="radio"][disabled] + label
 .rectangle {
 	max-height: 350px;	
 	height: auto;
+}
+
+.x50_circle__last_colors {
+	width: 60px;
+	max-width: 60px;
+	margin-top: 20px;
+}
+
+.x50_circle__last_colors__item {
+	width: 50px;
+	height: 6px;
+}
+
+.colored-circle img {
+	width: 260px;
+}
+
+.colored-circle {
+	position:relative;
+	top: 6px;
+}
+
+.x50_circle__last_colors__item-red {
+	background: #ED3F22
+}
+
+.x50_circle__last_colors__item-blue {
+	background: #319CE9
+}
+
+.x50_circle__last_colors__item-green {
+	background: #39DC36
+}
+
+.x50_circle__last_colors__item-gold {
+	background: #ffd434
+}
+
+.color_choose:checked + .color_label-blue {
+    background: #319CE9;
+    color: white;
+}
+
+.color_choose:checked + .color_label-brown {
+    background: #ED3F22;
+    color: white;
+}
+
+.color_choose:checked + .color_label-red {
+    background: #39DC36;
+    color: white;
+}
+
+.color_choose:checked + .color_label-turquoise {
+    background: #ffd434;
+    color: white;
+}
+
+
+.color_label-blue {
+	color: #319CE9;
+}
+
+.color_label-brown {
+	color: #ED3F22;
+}
+
+.color_label-red {
+	color: #39DC36;
+}
+
+.color_label-turquoise {
+	color: #ffd434;
+}
+
+#game-2 .x50_circle__current {
+	position: relative;
+	right: -100px;
+}
+
+@media screen and (max-width: 769px) {
+	#game-2 .x50_circle__current {
+		right: 0px;
+	}
 }
