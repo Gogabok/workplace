@@ -4963,6 +4963,7 @@ and (max-width : 1300px){
 
 @media (max-width: 700px) {
 	.rectangle {
-		margin-top: 0px !important;
+		margin-top: -21px !important;
+		padding-left: 0px;
 	}
 }
