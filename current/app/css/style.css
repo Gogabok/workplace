@@ -4947,12 +4947,6 @@ input[type="radio"][disabled] + label
 	height: 100px;
 }
 
-/*@media only screen 
-and (max-width : 1300px){
-		#game-2 {
-			zoom: .85;
-		}
-}*/
 
 @media (max-width: 1400px) {
 	#game-2 {
