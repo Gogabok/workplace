@@ -1,12 +1,12 @@
 $(function(){
-$(document).ready(function(){
-	    var trigger = $('.mobilem'),
-	    menu = $('header .bottom__header .btn-flex');
-	    trigger.on('click',function(){
-	    $(this).toggleClass('open'); 
-	    menu.toggleClass('open');
-	  });
-	});
+// $(document).ready(function(){
+// 	    var trigger = $('.mobilem'),
+// 	    menu = $('header .bottom__header .btn-flex');
+// 	    trigger.on('click',function(){
+// 	    $(this).toggleClass('open'); 
+// 	    menu.toggleClass('open');
+// 	  });
+// 	});
 
 
 
@@ -133,3 +133,79 @@ function redraw(){
 }
 
 });
+
+
+
+
+
+
+
+// -----------------------------------------------
+
+let myBet = {
+  coin: null, 
+  value: null
+}
+
+$(".btn--link").on("click", function () {
+  $(".btn--link").removeClass("active")
+  $(this).addClass("active")
+  myBet.coin = $(this).text()
+})
+
+
+$(".ivu-switch").on("click", function () {
+  $(".ivu-round").toggleClass("ivu-round-checked")
+  $(this).toggleClass("ivu-checked")
+})
+
+$(".crash *").on("input propertychange", function () {
+  valuesUpdating()
+})
+
+function valuesUpdating() {
+  myBet.value = $("#crash-value").val()
+}
+
+$("#crash-btn").on("click", function () {
+  if(myBet.coin === null) {
+    myBet.coin = "LEX"
+  }
+  valuesUpdating()
+  $("#crash-playerTables").append(
+    `<tr>
+			<td>` + 'User' + `</td>
+			<td>` + '???' + `</td>
+			<td>` + myBet.value + `</td>
+			<td>` + '???' + `</td>
+		</tr>`
+  )
+  $(this).attr("disabled", "true")
+})
+
+$(".bet-hotkey").on("click", function () {
+  $(".bet-hotkey").removeClass("active")
+  $(this).addClass("active")
+  if (parseInt($(this).attr("data-value")) >= 0) {
+    $("#crash-value").val($("#crash-value").val() * $(this).attr("data-value"))
+  } else {
+    $(this).attr("data-value") === "min" ? $("#crash-value").val(10) : $("#crash-value").val(10000)
+  }
+  valuesUpdating()
+})
+
+
+
+
+$(".auto-stop-hotkey").on("click", function () {
+  $(".auto-stop-hotkey").removeClass("active")
+  $(this).addClass("active")
+  if (parseInt($(this).attr("data-value")) >= 0) {
+    $("#crash-value").val($("#crash-value").val() * $(this).attr("data-value"))
+  } else {
+    $(this).attr("data-value") === "min" ? $("#crash-value").val(10) : $("#crash-value").val(10000)
+  }
+  valuesUpdating()
+})
+
+

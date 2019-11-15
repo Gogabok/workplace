@@ -132,7 +132,7 @@ input {
           border-radius: 20px;
   vertical-align: middle;
   border: 1px solid #e4c358;
-  background-color: #e4c358;
+  background-color: #0F1B2B;
   position: relative;
   cursor: pointer;
   -webkit-user-select: none;
@@ -145,16 +145,10 @@ input {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  transition-duration: .3s; }
 
-.ivu-switch:after {
-  content: "On";
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
+.ivu-round {
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -172,20 +166,31 @@ input {
   -webkit-border-radius: 20px;
           border-radius: 20px;
   background-color: #0F1B2B;
-  position: absolute;
+  position: relative;
   left: 3px;
-  right: auto;
   top: 2px;
   cursor: pointer;
-  -webkit-transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
-  -o-transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
-  transition: left 0.2s ease-in-out, width 0.2s ease-in-out; }
+  background-color: #e4c358;
+  color: #0F1B2B;
+  transition-duration: .3s; }
 
-.ivu-switch.ivu-switch-checked:after {
+.ivu-round:after {
+  content: "Off"
+}
+
+.ivu-round-checked {
+  transform: translate(calc(200% - 9px),0);
+  color: #e4c358;
   background-color: #0F1B2B;
-  left: auto;
-  right: 3px;
-  content: 'Off'; }
+}
+
+.ivu-checked {
+  background-color: #e4c358;
+}
+
+.ivu-round-checked:after {
+  content: "On"
+}
 
 .ivu-switch-large.ivu-switch-checked .ivu-switch {
   display: inline-block; }
@@ -922,3 +927,6 @@ main {
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
   /**/ }
+#crash-btn:disabled {
+  opacity: .7;
+}
