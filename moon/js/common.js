@@ -35,7 +35,8 @@ function textOX(l,s){
 	//OX
 	ctx.fillStyle= '#fff';
 	ctx.fillText("1x",4,canvas.height - 30);
-	ctx.fillText("1.5x",-1,canvas.height - 150);
+  ctx.fillText("1.5x", 0, canvas.height - 150);
+  ctx.fillText("2x", 4, canvas.height - 270);
 
 	//OY
 	ctx.fillText("0",canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
@@ -150,6 +151,10 @@ let myBet = {
   autostopTiming: null
 }
 
+let bets = [
+
+]
+
 $(".btn--link").on("click", function () {
   $(".btn--link").removeClass("active")
   $(this).addClass("active")
@@ -181,19 +186,30 @@ $("#crash-btn").on("click", function () {
     myBet.coin = "LEX"
   }
   valuesUpdating()
-  // if(myBet.value >= 10) {
-  //   $("#crash-playerTables").append(
-  //     `<tr>
-  //       <td>` + 'User' + `</td>
-  //       <td>` + '???' + `</td>
-  //       <td>` + myBet.value + `</td>
-  //       <td>` + '???' + `</td>
-  //     </tr>`
-  //   )
-    // $("#crash-btn").text("Вывести")
+  if(myBet.value >= 10) {
+    bets.push({
+      user: "User",
+      value: myBet.value
+    })
+    betsUpdating()
+    $("#crash-btn").text("Вывести")
     disableInputs(true)
-  // }
+  }
 })
+
+function betsUpdating () {
+  $("#crash-playerTables").empty()
+  for(bet of bets) {
+    $("#crash-playerTables").append(
+      `<tr>
+        <td>` + bet.user + `</td>
+        <td>` + '???' + `</td>
+        <td>` + bet.value + `</td>
+        <td>` + '???' + `</td>
+      </tr>`
+    )
+  }
+}
 
 function disableInputs(block) {
   // $("#crash-btn").attr("disabled", block)
@@ -201,8 +217,9 @@ function disableInputs(block) {
   $("#crash-value").attr("disabled", block)
   $(".btn__tab button").attr("disabled", block)
   $(".bet-hotkey").toggleClass("hotkey-disable")
-  $(".auto-stop-hotkey").toggleClass("hotkey-disable")
-  $(".ivu-switch").toggleClass("hotkey-disable")
+  block ? $(".bet-hotkey").addClass("hotkey-disable") : $(".bet-hotkey").removeClass("hotkey-disable")
+  block ? $(".auto-stop-hotkey").addClass("hotkey-disable") : $(".auto-stop-hotkey").removeClass("hotkey-disable")
+  block ? $(".ivu-switch").addClass("hotkey-disable") : $(".ivu-switch").removeClass("hotkey-disable")
 } 
 
 $(".bet-hotkey").on("click", function () {

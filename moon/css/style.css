@@ -937,13 +937,8 @@ main {
   user-select: none;
 }
 
-.crash-playersTable {
-  display: block;
-  max-height: 400px;
-  overflow-y: auto;
-}
-.crash-playersTable * {
-  width: 100%;
+#crash-playerTables {
+  
 }
 
 .crash-playersTable::-webkit-scrollbar{
@@ -955,3 +950,5 @@ main {
 	background: rgb(42, 59, 80);
  	border-radius: 5px;
 }
+
+
