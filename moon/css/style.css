@@ -930,3 +930,7 @@ main {
 #crash-btn:disabled {
   opacity: .7;
 }
+
+* {
+  user-select: none;
+}

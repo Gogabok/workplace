@@ -144,7 +144,8 @@ function redraw(){
 
 let myBet = {
   coin: null, 
-  value: null
+  value: null,
+  autostopTiming: null
 }
 
 $(".btn--link").on("click", function () {
@@ -160,38 +161,49 @@ $(".ivu-switch").on("click", function () {
 })
 
 $(".crash *").on("input propertychange", function () {
-  valuesUpdating()
+  valuesUpdating(myBet.value, $("#crash-value"))
 })
 
-function valuesUpdating() {
-  myBet.value = $("#crash-value").val()
+function valuesUpdating(option, elem) {
+  if (option && elem) {
+    option = elem.val()
+  } else {
+    myBet.value = $("#crash-value").val()
+    myBet.autostopTiming = $("#auto-stop-value").val()
+  }
 }
+
 
 $("#crash-btn").on("click", function () {
   if(myBet.coin === null) {
     myBet.coin = "LEX"
   }
   valuesUpdating()
-  $("#crash-playerTables").append(
-    `<tr>
-			<td>` + 'User' + `</td>
-			<td>` + '???' + `</td>
-			<td>` + myBet.value + `</td>
-			<td>` + '???' + `</td>
-		</tr>`
-  )
-  $(this).attr("disabled", "true")
+  if(myBet.value >= 10) {
+    $("#crash-playerTables").append(
+      `<tr>
+        <td>` + 'User' + `</td>
+        <td>` + '???' + `</td>
+        <td>` + myBet.value + `</td>
+        <td>` + '???' + `</td>
+      </tr>`
+    )
+    $(this).attr("disabled", "true")
+  }
 })
 
 $(".bet-hotkey").on("click", function () {
   $(".bet-hotkey").removeClass("active")
   $(this).addClass("active")
   if (parseInt($(this).attr("data-value")) >= 0) {
-    $("#crash-value").val($("#crash-value").val() * $(this).attr("data-value"))
+    if ($("#crash-value").val() * $(this).attr("data-value") >= 10) {
+      let val = $("#crash-value").val() * $(this).attr("data-value")
+      $("#crash-value").val(val.toFixed(0))
+    }
   } else {
     $(this).attr("data-value") === "min" ? $("#crash-value").val(10) : $("#crash-value").val(10000)
   }
-  valuesUpdating()
+  valuesUpdating(myBet.value, $("#crash-value"))
 })
 
 
@@ -201,11 +213,11 @@ $(".auto-stop-hotkey").on("click", function () {
   $(".auto-stop-hotkey").removeClass("active")
   $(this).addClass("active")
   if (parseInt($(this).attr("data-value")) >= 0) {
-    $("#crash-value").val($("#crash-value").val() * $(this).attr("data-value"))
+    $("#auto-stop-value").val($("#auto-stop-value").val() * $(this).attr("data-value"))
   } else {
-    $(this).attr("data-value") === "min" ? $("#crash-value").val(10) : $("#crash-value").val(10000)
+    $(this).attr("data-value") === "min" ? $("#auto-stop-value").val(10) : $("#auto-stop-value").val(10000)
   }
-  valuesUpdating()
+  valuesUpdating(myBet.autostopTiming, $("#auto-stop-value"))
 })
 
 
