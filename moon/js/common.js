@@ -81,7 +81,9 @@ function timer(){
       x += 5;
       
       redraw(); //Рисуем график
-      x > (w-pad*4) && clearInterval(interval)
+      x > (300) && clearInterval(interval)
+      console.log(x);
+      
     }, 30)
 
     } else {
