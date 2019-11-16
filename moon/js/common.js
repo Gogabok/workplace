@@ -75,8 +75,10 @@ function timer(){
     setTimeout(function(){},1);
     // fake server data
     let interval = setInterval(() => {
-      points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
+      //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
+      points.push([pad + x, h - pad - x / 3 ])
       x += 5;
+      
       redraw(); //Рисуем график
       x > (w-pad*4) && clearInterval(interval)
     }, 30)
@@ -179,18 +181,18 @@ $("#crash-btn").on("click", function () {
     myBet.coin = "LEX"
   }
   valuesUpdating()
-  if(myBet.value >= 10) {
-    $("#crash-playerTables").append(
-      `<tr>
-        <td>` + 'User' + `</td>
-        <td>` + '???' + `</td>
-        <td>` + myBet.value + `</td>
-        <td>` + '???' + `</td>
-      </tr>`
-    )
+  // if(myBet.value >= 10) {
+  //   $("#crash-playerTables").append(
+  //     `<tr>
+  //       <td>` + 'User' + `</td>
+  //       <td>` + '???' + `</td>
+  //       <td>` + myBet.value + `</td>
+  //       <td>` + '???' + `</td>
+  //     </tr>`
+  //   )
     // $("#crash-btn").text("Вывести")
     disableInputs(true)
-  }
+  // }
 })
 
 function disableInputs(block) {
