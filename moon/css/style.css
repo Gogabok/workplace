@@ -927,9 +927,11 @@ main {
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
   /**/ }
-#crash-btn:disabled {
+#crash-btn:disabled, #auto-stop-value:disabled, #crash-value:disabled, .btn__tab button:disabled, .hotkey-disable {
   opacity: .7;
+  pointer-events: none;
 }
+
 
 * {
   user-select: none;

@@ -188,9 +188,20 @@ $("#crash-btn").on("click", function () {
         <td>` + '???' + `</td>
       </tr>`
     )
-    $(this).attr("disabled", "true")
+    // $("#crash-btn").text("Вывести")
+    disableInputs(true)
   }
 })
+
+function disableInputs(block) {
+  // $("#crash-btn").attr("disabled", block)
+  $("#auto-stop-value").attr("disabled", block)
+  $("#crash-value").attr("disabled", block)
+  $(".btn__tab button").attr("disabled", block)
+  $(".bet-hotkey").toggleClass("hotkey-disable")
+  $(".auto-stop-hotkey").toggleClass("hotkey-disable")
+  $(".ivu-switch").toggleClass("hotkey-disable")
+} 
 
 $(".bet-hotkey").on("click", function () {
   $(".bet-hotkey").removeClass("active")
