@@ -62,13 +62,16 @@ let mutShow = $('#mutShow');
 
 function start(){
   setTimeout(function(){},1);
+  let rand = Math.random() * 10
   let interval = setInterval(() => {
     //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
-    points.push([pad + x, h - pad - x / 3 ])
+    points.push([pad + x, h - pad - x / 3])
     x += 5;
+    let pts = points.filter(p => p[0] > 0);
+    let lastPt = pts[pts.length - 1];
     redraw(); //Рисуем график
-    x > (300) && clearInterval(interval)
-    console.log(x);
+    rand < ((h - lastPt[1]) / 70) && clearInterval(interval)
+    console.log(rand > ((h - lastPt[1]) / 70));
     
   }, 30)
 }
@@ -98,7 +101,7 @@ function redraw(){
   let lastPt = pts[pts.length-1];
   let prevPt = pts[pts.length-2];
   polyline(10, pts); //толщина линии
-
+  
   mutShow.find('span').html(((h - lastPt[1]) / 70).toFixed(2)+ "x");//Выводим X
   ctx.fillStyle = '#e4c35866';
   // рисуем область под линией
@@ -247,6 +250,8 @@ $("#waitTimeShow").counter({
   onStart: function () { },
   onComplete: function () {
     start()
+    $("#waitTimeShow").addClass('hide');
+    mutShow.removeClass('hide');
   },
   numberFormatter:
     function (number) {
