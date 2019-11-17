@@ -1,12 +1,6 @@
-$(function(){
-// $(document).ready(function(){
-// 	    var trigger = $('.mobilem'),
-// 	    menu = $('header .bottom__header .btn-flex');
-// 	    trigger.on('click',function(){
-// 	    $(this).toggleClass('open'); 
-// 	    menu.toggleClass('open');
-// 	  });
-// 	});
+const timerTime = 1000; //Время таймера
+
+
 
 
 
@@ -62,35 +56,22 @@ let x = 0;
 let points = []; //Данные для отрисовки графика
 
 //Таймер обратного отсчета
-let waitTimeShow = $('#waitTimeShow');
+
 let mutShow = $('#mutShow');
 
-let timerTime = 500; //Время таймера
-waitTimeShow.html((timerTime / 1000).toFixed(2) + "s");
-function timer(){
-  timerTime--;
-  waitTimeShow.html((timerTime / 1000).toFixed(2)+ "s");
-  if (timerTime === 0){
-    waitTimeShow.addClass('hide');//Выводим рейтинг X
-    mutShow.removeClass('hide'); //Скрываем время
-    setTimeout(function(){},1);
-    // fake server data
-    let interval = setInterval(() => {
-      //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
-      points.push([pad + x, h - pad - x / 3 ])
-      x += 5;
-      
-      redraw(); //Рисуем график
-      x > (300) && clearInterval(interval)
-      console.log(x);
-      
-    }, 30)
 
-    } else {
-      setTimeout(timer,1);
-    }
+function start(){
+  setTimeout(function(){},1);
+  let interval = setInterval(() => {
+    //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
+    points.push([pad + x, h - pad - x / 3 ])
+    x += 5;
+    redraw(); //Рисуем график
+    x > (300) && clearInterval(interval)
+    console.log(x);
+    
+  }, 30)
 }
-setTimeout(timer,1);
 
 function polyline(width, pts) { //Перерисовываем ОСИ
   ctx.lineWidth = width;
@@ -137,7 +118,7 @@ function redraw(){
   ctx.restore();
 }
 
-});
+
 
 
 
@@ -253,3 +234,24 @@ $(".auto-stop-hotkey").on("click", function () {
 })
 
 
+
+
+$("#waitTimeShow").counter({
+  autoStart: false,
+  duration: timerTime,
+  countFrom: (timerTime / 1000),
+  countTo: 0,
+  runOnce: false,
+  placeholder: (timerTime / 1000) + '.00s',
+  easing: "linear",
+  onStart: function () { },
+  onComplete: function () {
+    start()
+  },
+  numberFormatter:
+    function (number) {
+      return (number.toFixed(2) + 's');
+    }
+});
+
+$("#waitTimeShow").counter('start')
