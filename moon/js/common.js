@@ -1,4 +1,4 @@
-const timerTime = 1000; //Время таймера
+const timerTime = 5000; //Время таймера
 
 
 
@@ -54,15 +54,18 @@ let pad = 20;
 let axes = [[pad, pad], [pad, h-pad], [w-pad, h-pad]];
 let x = 0;
 let points = []; //Данные для отрисовки графика
-
+let roundCondition = "waiting"
 //Таймер обратного отсчета
 
 let mutShow = $('#mutShow');
 
 
 function start(){
+  roundCondition = "started"
+  $("#crash-btn").attr("disabled", true)
   setTimeout(function(){},1);
-  let rand = Math.random() * 10
+  //let rand = Math.random() * 10
+  let rand = Math.random() * 5
   let interval = setInterval(() => {
     //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     points.push([pad + x, h - pad - x / 3])
@@ -70,12 +73,84 @@ function start(){
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
     redraw(); //Рисуем график
-    rand < ((h - lastPt[1]) / 70) && clearInterval(interval)
-    console.log(rand > ((h - lastPt[1]) / 70));
-    
+    if(rand < ((h - lastPt[1]) / 70)) {
+      clearInterval(interval)
+      $("#crash-btn").attr("disabled", true)
+      setTimeout(() => {
+        preparing()
+      }, 1000);
+    }
   }, 30)
+  
+  // Необходимо динамическое значение поля User
+  let necessaryObj = bets.find(x => x.user === 'User')
+  if (necessaryObj) {
+    $("#crash-btn").attr("disabled", false)
+  }
 }
 
+
+
+$("#crash-btn").on("click", function () {
+  let necessaryObj = bets.find(x => x.user === 'User')
+  if (necessaryObj && roundCondition !== "waiting") {
+    $("#crash-btn").attr("disabled", true)
+    let pts = points.filter(p => p[0] > 0);
+    let lastPt = pts[pts.length - 1];
+    necessaryObj.x = ((h - lastPt[1]) / 70).toFixed(2)
+    necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
+    betsUpdating()
+  } else {
+    if (myBet.coin === null) {
+      myBet.coin = "LEX"
+    }
+    valuesUpdating()
+    if (myBet.value >= 10) {
+      $("#crash-btn").text() !== "Вывести" ? bets.push(myBet) : false
+      betsUpdating()
+      $("#crash-btn").text("Вывести")
+      disableInputs(true)
+    }
+  }
+})
+
+
+
+
+
+
+
+function preparing () {
+  roundCondition = "waiting"
+  $("#waitTimeShow").addClass('hide');
+  mutShow.removeClass('hide');
+  mutShow.find('span').html('Preparing...')
+  setTimeout(() => {
+    startNextRound()
+  }, 3000);
+}
+
+function startNextRound() {
+  x = 0
+  points = []
+  redraw();
+  mutShow.addClass('hide');
+  $("#waitTimeShow").removeClass('hide');
+  $("#waitTimeShow").counter('start')
+  disableInputs(false)
+  $("#crash-btn").text("BET")
+  bets = []
+  myBet = {
+    user: "User",
+    coin: null,
+    value: null,
+    x: null,
+    profit: null,
+    autostopTiming: null
+  }
+  valuesUpdating()
+  betsUpdating()
+}
 function polyline(width, pts) { //Перерисовываем ОСИ
   ctx.lineWidth = width;
   ctx.beginPath(); 
@@ -132,8 +207,11 @@ function redraw(){
 // -----------------------------------------------
 
 let myBet = {
+  user: "User",
   coin: null, 
   value: null,
+  x: null,
+  profit: null,
   autostopTiming: null
 }
 
@@ -154,6 +232,8 @@ $(".ivu-switch").on("click", function () {
 })
 
 $(".crash *").on("input propertychange", function () {
+  var preg = $(this).val().replace(/[^.\d]+/g, "").replace(/^([^\.]*\.)|\./g, '$1');
+  $(this).val(preg);
   valuesUpdating(myBet.value, $("#crash-value"))
 })
 
@@ -167,38 +247,28 @@ function valuesUpdating(option, elem) {
 }
 
 
-$("#crash-btn").on("click", function () {
-  if(myBet.coin === null) {
-    myBet.coin = "LEX"
-  }
-  valuesUpdating()
-  if(myBet.value >= 10) {
-    bets.push({
-      user: "User",
-      value: myBet.value
-    })
-    betsUpdating()
-    $("#crash-btn").text("Вывести")
-    disableInputs(true)
-  }
-})
-
 function betsUpdating () {
   $("#crash-playerTables").empty()
+  let values = 0
   for(bet of bets) {
+    let x = bet.x ? bet.x : '???'
+    let profit = bet.profit ? bet.profit : '???'
     $("#crash-playerTables").append(
       `<tr>
         <td>` + bet.user + `</td>
-        <td>` + '???' + `</td>
+        <td>` + x + `</td>
         <td>` + bet.value + `</td>
-        <td>` + '???' + `</td>
+        <td>` + profit + `</td>
       </tr>`
     )
+    values += parseInt(bet.value) 
   }
+  $("#crash-playerTables-people").text(bets.length)
+  $("#crash-playerTables-values").text(values)
 }
 
 function disableInputs(block) {
-  // $("#crash-btn").attr("disabled", block)
+  $("#crash-btn").attr("disabled", block)
   $("#auto-stop-value").attr("disabled", block)
   $("#crash-value").attr("disabled", block)
   $(".btn__tab button").attr("disabled", block)
