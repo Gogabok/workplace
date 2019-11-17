@@ -195,15 +195,6 @@ function redraw(){
   ctx.fill();
   ctx.restore();
 }
-
-
-
-
-
-
-
-
-
 // -----------------------------------------------
 
 let myBet = {
