@@ -951,4 +951,8 @@ main {
  	border-radius: 5px;
 }
 
-
+#crash-view {
+  background-size: 100%;
+  background-image: url(../img/frame.png);
+  background-repeat: repeat !important;
+}

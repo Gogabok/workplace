@@ -34,12 +34,12 @@ function textOX(l,s){
 
 	//OY
 	ctx.fillText("0",canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
-	for (let i = 1; i < s; i++){//Отрисвываем количество секунд
+	for (let i = 1; i < s; i++){//Отрисовываем количество секунд
     	ctx.fillText(i+"s",(canvas.width / s)*i, canvas.height - 5);
     }
 }
 
-textOX(1,9);
+textOX(1,6);
 
 
 /*
@@ -56,7 +56,7 @@ let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
-
+let intervalX = (canvas.width / 166.6).toFixed(0)
 let mutShow = $('#mutShow');
 
 
@@ -65,13 +65,33 @@ function start(){
   $("#crash-btn").attr("disabled", true)
   setTimeout(function(){},1);
   //let rand = Math.random() * 10
-  let rand = Math.random() * 5
+  //let rand = Math.random() * 5
+  let rand = 15
   let interval = setInterval(() => {
     //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
-    points.push([pad + x, h - pad - x / 3])
-    x += 5;
+    //points.push([pad + x, h - pad - x / 3])
+    
+    if (canvas.width - x > pad + 500) {
+      points.push([pad + x, h - pad - x / 3])
+      x += 5;
+    } else {
+      points.push([pad + x, h - pad - x / 3])
+      x += 5;
+      
+    }
+    
+    // x += 5 ;
+    console.log(canvas.width - x)
+    $("#crash-view").css("background-position-y", x/5)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
+    if (canvas.width - x < pad + 500) {
+      intervalX = ((canvas.width + x * Math.sqrt(2)) / 166.6)
+    }
+    ctx.arc(0, lastPt, 5, 0, Math.PI * 2); 
+    console.log(intervalX);
+    
+    // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секнду 33.3 интервала => 166px)
     redraw(); //Рисуем график
     if(rand < ((h - lastPt[1]) / 70)) {
       clearInterval(interval)
@@ -168,7 +188,7 @@ function redraw(){
    // рисуем оси
   polyline(1, axes)
   
-  textOX(1,9);
+  textOX(1, intervalX);
   //рисуем линию
   let pts = points.filter(p => p[0] > 0);
   if (pts.length < 2)
@@ -182,7 +202,7 @@ function redraw(){
   // рисуем область под линией
   ctx.lineTo(lastPt[0], h - 20);  
   ctx.fill();
-  
+  ctx.arc(prevPt, lastPt, 90, 90, 90);
   // рисуем стрелку треугольник на конце
   ctx.save();
   ctx.fillStyle = '#e4c358';
