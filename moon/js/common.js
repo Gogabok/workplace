@@ -56,9 +56,9 @@ let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
-let intervalX = (canvas.width / 166.6).toFixed(0)
+let intervalX = (canvas.width / 166.6)
 let mutShow = $('#mutShow');
-
+let diagonal = Math.pow(canvas.width) + Math.pow(canvas.height)
 
 function start(){
   roundCondition = "started"
@@ -70,26 +70,20 @@ function start(){
   let interval = setInterval(() => {
     //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     //points.push([pad + x, h - pad - x / 3])
+    console.log(Math.pow(1000));
     
-    if (canvas.width - x > pad + 500) {
-      points.push([pad + x, h - pad - x / 3])
+    if (canvas.width - x > pad + 80) {
+      points.push([pad + x, h - pad - x / Math.sqrt(diagonal)])
       x += 5;
     } else {
-      points.push([pad + x, h - pad - x / 3])
-      x += 5;
-      
+      x += 0
     }
     
-    // x += 5 ;
-    console.log(canvas.width - x)
     $("#crash-view").css("background-position-y", x/5)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    if (canvas.width - x < pad + 500) {
-      intervalX = ((canvas.width + x * Math.sqrt(2)) / 166.6)
-    }
-    ctx.arc(0, lastPt, 5, 0, Math.PI * 2); 
-    console.log(intervalX);
+    intervalX = ((canvas.width + x / (1000 / 400) ) / ((1000 / 30) * 5))
+    
     
     // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секнду 33.3 интервала => 166px)
     redraw(); //Рисуем график
@@ -171,13 +165,16 @@ function startNextRound() {
   valuesUpdating()
   betsUpdating()
 }
+
+
+
 function polyline(width, pts) { //Перерисовываем ОСИ
   ctx.lineWidth = width;
   ctx.beginPath(); 
-
   ctx.moveTo(...pts[0]);
-  for (var i = 1; i < pts.length; i++)
+  for (var i = 1; i < pts.length; i++) {
     ctx.lineTo(...pts[i]);
+  }
   ctx.stroke();
 }
 
@@ -196,13 +193,15 @@ function redraw(){
   let lastPt = pts[pts.length-1];
   let prevPt = pts[pts.length-2];
   polyline(10, pts); //толщина линии
-  
+  if (lastPt[0] > 700) {
+
+  }
   mutShow.find('span').html(((h - lastPt[1]) / 70).toFixed(2)+ "x");//Выводим X
   ctx.fillStyle = '#e4c35866';
   // рисуем область под линией
   ctx.lineTo(lastPt[0], h - 20);  
   ctx.fill();
-  ctx.arc(prevPt, lastPt, 90, 90, 90);
+  ctx.arc(prevPt[0], lastPt[0], 90, 90, 90);
   // рисуем стрелку треугольник на конце
   ctx.save();
   ctx.fillStyle = '#e4c358';
