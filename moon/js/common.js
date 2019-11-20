@@ -28,18 +28,31 @@ ctx.save();
 function textOX(l,s){
 	//OX
 	ctx.fillStyle= '#fff';
-	ctx.fillText("1x",4,canvas.height - 30);
-  ctx.fillText("1.5x", 0, canvas.height - 150);
-  ctx.fillText("2x", 4, canvas.height - 270);
-
+	// ctx.fillText("1x",4,canvas.height - 30);
+  // ctx.fillText("1.5x", 0, canvas.height - 150);
+  // ctx.fillText("2x", 4, canvas.height - 270);
+  // for (let i = 1; i < s; i++) {//Отрисовываем количество секунд
+  //   ctx.fillText(i + "s", (canvas.width / s) * i, canvas.height - 5);
+  // }
 	//OY
 	ctx.fillText("0",canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
 	for (let i = 1; i < s; i++){//Отрисовываем количество секунд
     	ctx.fillText(i+"s",(canvas.width / s)*i, canvas.height - 5);
     }
 }
+function textOY(l, s) {
+  ctx.fillStyle = '#fff';
+  // ctx.fillText("1x", 4, canvas.height - 30);
+  // ctx.fillText("1.5x", 0, canvas.height - 150);
+  // ctx.fillText("2x", 4, canvas.height - 270);
+  // ctx.fillText("1x", 4, canvas.height - pad);
+  for (let i = 1; i < s; i++) {
+    console.log((canvas.height / s) * i)
+    ctx.fillText(i + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1) ));
+    
+  }
 
-textOX(1,6);
+}
 
 
 /*
@@ -56,9 +69,13 @@ let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
-let intervalX = (canvas.width / 166.6)
+var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
+var intervalY = 7
 let mutShow = $('#mutShow');
-let diagonal = Math.pow(canvas.width) + Math.pow(canvas.height)
+let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
+
+textOY(1, intervalY);
+textOX(1, intervalX);
 
 function start(){
   roundCondition = "started"
@@ -68,22 +85,21 @@ function start(){
   //let rand = Math.random() * 5
   let rand = 15
   let interval = setInterval(() => {
-    //points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
-    //points.push([pad + x, h - pad - x / 3])
-    console.log(Math.pow(1000));
+    // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
+    // points.push([pad + x, h - pad - x / 3])
+    // console.log(Math.sqrt(diagonal, 2));
     
-    if (canvas.width - x > pad + 80) {
-      points.push([pad + x, h - pad - x / Math.sqrt(diagonal)])
+    
+      points.push([pad + x, h - pad - x / 2.7])
       x += 5;
-    } else {
-      x += 0
-    }
+
     
-    $("#crash-view").css("background-position-y", x/5)
+    $("#crash-view").css("background-position-y", x / 5)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    intervalX = ((canvas.width + x / (1000 / 400) ) / ((1000 / 30) * 5))
+    intervalX = ((canvas.width - pad * 5 + x / (1000 / 400) ) / ((1000 / 30) * 5))
     
+    console.log((h - lastPt[1]) / 70);
     
     // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секнду 33.3 интервала => 166px)
     redraw(); //Рисуем график
@@ -169,6 +185,7 @@ function startNextRound() {
 
 
 function polyline(width, pts) { //Перерисовываем ОСИ
+  
   ctx.lineWidth = width;
   ctx.beginPath(); 
   ctx.moveTo(...pts[0]);
@@ -181,38 +198,49 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 
 
 function redraw(){
-  ctx.clearRect(0, 0, w, h);
-   // рисуем оси
-  polyline(1, axes)
   
-  textOX(1, intervalX);
-  //рисуем линию
-  let pts = points.filter(p => p[0] > 0);
-  if (pts.length < 2)
-    return;
-  let lastPt = pts[pts.length-1];
-  let prevPt = pts[pts.length-2];
-  polyline(10, pts); //толщина линии
-  if (lastPt[0] > 700) {
+  if (canvas.width - x > pad * 4) {
+    ctx.clearRect(0, 0, w, h);
+    // рисуем оси
+    polyline(1, axes)
+    textOY(1, intervalY);
+    textOX(1, intervalX);
+    //рисуем линию
 
+    let pts = points.filter(p => p[0] > 0);
+    if (pts.length < 2)
+      return;
+    let lastPt = pts[pts.length-1];
+    let prevPt = pts[pts.length-2];
+    polyline(10, pts); //толщина линии
+    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2)+ "x");//Выводим X
+    ctx.fillStyle = '#e4c35866';
+    // рисуем область под линией
+    ctx.lineTo(lastPt[0], h - 20);  
+    ctx.fill();
+    //ctx.arc(prevPt[0], lastPt[0], 90, 90, 90);
+    // рисуем стрелку треугольник на конце
+    ctx.save();
+    ctx.fillStyle = '#e4c358';
+    ctx.translate(...lastPt);
+    ctx.rotate(Math.atan2(lastPt[1] - prevPt[1], lastPt[0] - prevPt[0]));
+    ctx.beginPath();
+    ctx.moveTo(0 , 18);
+    ctx.lineTo(36, 0);
+    ctx.lineTo(0, -18);
+    ctx.fill();
+    ctx.restore();
+  } else {
+    let pts = points.filter(p => p[0] > 0);
+    if (pts.length < 2)
+      return;
+    let lastPt = pts[pts.length - 1];
+    let prevPt = pts[pts.length - 2];
+
+    console.log(lastPt); // 935
+    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");
+    ctx.restore();
   }
-  mutShow.find('span').html(((h - lastPt[1]) / 70).toFixed(2)+ "x");//Выводим X
-  ctx.fillStyle = '#e4c35866';
-  // рисуем область под линией
-  ctx.lineTo(lastPt[0], h - 20);  
-  ctx.fill();
-  ctx.arc(prevPt[0], lastPt[0], 90, 90, 90);
-  // рисуем стрелку треугольник на конце
-  ctx.save();
-  ctx.fillStyle = '#e4c358';
-  ctx.translate(...lastPt);
-  ctx.rotate(Math.atan2(lastPt[1] - prevPt[1], lastPt[0] - prevPt[0]));
-  ctx.beginPath();
-  ctx.moveTo(0 , 18);
-  ctx.lineTo(36, 0);
-  ctx.lineTo(0, -18);
-  ctx.fill();
-  ctx.restore();
 }
 // -----------------------------------------------
 
