@@ -37,7 +37,7 @@ function textOX(l,s){
 	//OY
 	ctx.fillText("0",canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
 	for (let i = 1; i < s; i++){//Отрисовываем количество секунд
-    	ctx.fillText(i+"s",(canvas.width / s)*i, canvas.height - 5);
+    	ctx.fillText(l + i - 1 +"s",(canvas.width / s)*i, canvas.height - 5);
     }
 }
 function textOY(l, s) {
@@ -47,7 +47,7 @@ function textOY(l, s) {
   // ctx.fillText("2x", 4, canvas.height - 270);
   // ctx.fillText("1x", 4, canvas.height - pad);
   for (let i = 1; i < s; i++) {
-    ctx.fillText(i + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 110 * (i - 1) ));
+    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 125 * (i - 1) ));
     
   }
 
@@ -68,8 +68,9 @@ let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
-var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
-var intervalY = ((canvas.height + x) / 100) + 1
+// var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
+var intervalX = (canvas.width / 166).toFixed(0)
+var intervalY = (canvas.height / 125) + 1
 let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
 let games = []
@@ -82,7 +83,8 @@ function start(){
   setTimeout(function(){},1);
   //let rand = Math.random() * 10
   //let rand = Math.random() * 5
-  let rand = Math.random() * (5 - 1) + 1;
+  // let rand = Math.random() * (5 - 1) + 1;
+  let rand = 10
   let interval = setInterval(() => {
     // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     // points.push([pad + x, h - pad - x / 3])
@@ -91,14 +93,14 @@ function start(){
     
       points.push([pad + x, h - pad - x / 2.7])
       x += 5;
-
+    
     
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    intervalX = ((canvas.width - pad * 5 + x / (1000 / 400) ) / ((1000 / 30) * 5))
+    // intervalX = ((canvas.width - pad * 5 + x / (1000 / 400) ) / ((1000 / 30) * 5))
     // intervalY = ((canvas.height + x) / 100) + 1
     // console.log(intervalY)
-    // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секнду 33.3 интервала => 166px)
+    // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секунду 33.3 интервала => 166px)
     redraw(); //Рисуем график
     if (rand < ((h - lastPt[1] + 120) / 120)) {
       let gameVal = ((h - lastPt[1] + 120) / 120).toFixed(1)
@@ -236,23 +238,44 @@ function redraw(){
     ctx.restore();
     
   } else {
-    // ctx.clearRect(0, 0, w, h)
+    ctx.clearRect(0, 0, w, h)
+    polyline(1, axes)
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
+   
     let lastPt = [935, 41.111111111111];
     let prevPt = [930, 42.96296296296299];
     ctx.beginPath(); 
     ctx.moveTo(20, canvas.height - 20); 
-    ctx.lineTo(935, 42.96296296296299); 
-   
-
-    // polyline(1, axes)
-    textOY(1, intervalY);
-    textOX(1, intervalX);
-    $("#crash-view").css("background-position-y", x / 10).css("background-position-x", -(x / 10))
+    ctx.lineTo(935, 41.111111111111); 
+    let sX = parseInt((x / 166).toFixed(0))
+    let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
+    textOY(sY - 3, intervalY);
+    textOX(sX - 4, intervalX);
+    $("#crash-view").css("background-position-y", x / 8).css("background-position-x", - (x / 20))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(20, canvas.height - pad);
+    ctx.lineTo(635, 222);
+    ctx.arcTo(750, 122, 850, 82, 60)
+    ctx.lineTo(935, 42);
+    ctx.stroke();
   }
 }
 // -----------------------------------------------
