@@ -48,7 +48,7 @@ function textOY(l, s) {
   // ctx.fillText("1x", 4, canvas.height - pad);
   for (let i = 1; i < s; i++) {
     console.log((canvas.height / s) * i)
-    ctx.fillText(i + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1) ));
+    ctx.fillText(i + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 110 * (i - 1) ));
     
   }
 
@@ -70,7 +70,7 @@ let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
 var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
-var intervalY = 7
+var intervalY = ((canvas.height + x) / 100) + 1
 let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
 
@@ -98,9 +98,7 @@ function start(){
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
     intervalX = ((canvas.width - pad * 5 + x / (1000 / 400) ) / ((1000 / 30) * 5))
-    
-    console.log((h - lastPt[1]) / 70);
-    
+    // intervalY = ((canvas.height + x) / 100) + 1
     // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секнду 33.3 интервала => 166px)
     redraw(); //Рисуем график
     if(rand < ((h - lastPt[1]) / 70)) {
@@ -198,7 +196,7 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 
 
 function redraw(){
-  
+  let lastPts = []
   if (canvas.width - x > pad * 4) {
     ctx.clearRect(0, 0, w, h);
     // рисуем оси
@@ -210,6 +208,7 @@ function redraw(){
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
+    lastPts = pts 
     let lastPt = pts[pts.length-1];
     let prevPt = pts[pts.length-2];
     polyline(10, pts); //толщина линии
@@ -230,15 +229,30 @@ function redraw(){
     ctx.lineTo(0, -18);
     ctx.fill();
     ctx.restore();
+    
   } else {
+    ctx.clearRect(0, 0, w, h)
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
-    let lastPt = pts[pts.length - 1];
-    let prevPt = pts[pts.length - 2];
-
-    console.log(lastPt); // 935
-    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");
+    let lastPt = [935, 41.111111111111];
+    let prevPt = [930, 42.96296296296299];
+    ctx.beginPath();       // Начинает новый путь
+    ctx.moveTo(20, canvas.height - 20);    // Рередвигает перо в точку (30, 50)
+    ctx.lineTo(935, 42.96296296296299);  // Рисует линию до точки (150, 100)
+    ctx.stroke();
+    ctx.save()
+    ctx.rotate(Math.atan2(lastPt[1] - prevPt[1], lastPt[0] - prevPt[0]));
+    ctx.beginPath();
+    ctx.moveTo(0, 18);
+    ctx.lineTo(36, 0);
+    ctx.lineTo(0, -18);
+    ctx.fill();
+    ctx.restore();
+    polyline(1, axes)
+    textOY(1, intervalY);
+    textOX(1, intervalX);
+    mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
   }
 }
