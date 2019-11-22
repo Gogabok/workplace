@@ -69,7 +69,7 @@ function start(){
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function(){},1);
-  let rand = Math.random() * (10 - 1) + 1;
+  let rand = Math.random() * (10 - 10) + 10;
   let interval = setInterval(() => {
     // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     // points.push([pad + x, h - pad - x / 3])
@@ -132,6 +132,7 @@ $("#crash-btn").on("click", function () {
   }
 })
 function preparing () {
+  $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   roundCondition = "waiting"
   $("#waitTimeShow").addClass('hide');
   mutShow.removeClass('hide');
@@ -216,6 +217,7 @@ function redraw(){
     ctx.fill();
     ctx.restore();
     console.log(lastPt);
+    $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     
   } else {
     ctx.clearRect(0, 0, w, h)
@@ -229,7 +231,7 @@ function redraw(){
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
     textOY(sY - 3, intervalY);
     textOX(sX - 4, intervalX);
-    $("#crash-view").css("background-position-y", x / 8).css("background-position-x", - (x / 20))
+    $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
 
@@ -255,7 +257,8 @@ function redraw(){
     ctx.save();
     ctx.fillStyle = '#e4c358';
     ctx.translate(935, 41.111111111111);
-    ctx.rotate(- 0.35);
+    let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
+    ctx.rotate(- 0.35  - rotation);
     ctx.beginPath();
     ctx.moveTo(0, 18);
     ctx.lineTo(36, 0);
@@ -264,7 +267,6 @@ function redraw(){
     ctx.restore();
   }
 }
-// -----------------------------------------------
 
 let myBet = {
   user: "User",
