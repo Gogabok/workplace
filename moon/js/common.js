@@ -69,7 +69,7 @@ function start(){
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function(){},1);
-  let rand = Math.random() * (30 - 1) + 1;
+  let rand = Math.random() * (15 - 1) + 1;
   let interval = setInterval(() => {
     // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     // points.push([pad + x, h - pad - x / 3])
