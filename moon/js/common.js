@@ -69,7 +69,7 @@ function start(){
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function(){},1);
-  let rand = Math.random() * (10 - 10) + 10;
+  let rand = Math.random() * (30 - 1) + 1;
   let interval = setInterval(() => {
     // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
     // points.push([pad + x, h - pad - x / 3])
@@ -89,7 +89,8 @@ function start(){
       games.push({
         val: gameVal,
         bets: bets.length,
-        profit: profit
+        profit: profit,
+        time: parseInt((x / 166).toFixed(0))
       })
       profit = 0
       gamesUpdating(gameVal)
@@ -231,6 +232,7 @@ function redraw(){
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
     textOY(sY - 3, intervalY);
     textOX(sX - 4, intervalX);
+    
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
@@ -318,7 +320,7 @@ function gamesUpdating(gameVal) {
 		<td>`+ game.bets + `</td>
 		<td>` + game.profit + `</td>
 		<td>???</td>
-		<td>???</td>
+		<td>` + game.time + 's' + `</td>
 	</tr>
   `);
   }
