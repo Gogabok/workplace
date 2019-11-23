@@ -43,7 +43,7 @@ var intervalY = (canvas.height / 125) + 1
 let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
 let games = []
-
+let btnClicked = false
 
 
 
@@ -68,10 +68,6 @@ function textOY(l, s) {
   }
 }
 
-
-console.log(intervalX)
-
-
 textOY(1, intervalY);
 textOX(1, intervalX);
 
@@ -80,8 +76,8 @@ function start() {
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  // let rand = Math.random() * (15 - 1) + 1;
-  let rand = 15
+  let rand = Math.random() * (15 - 1) + 1;
+
   let interval = setInterval(() => {
     points.push([pad + x, h - pad - x / 2.7])
     let pts = points.filter(p => p[0] > 0);
@@ -89,6 +85,8 @@ function start() {
     x += x < 935 ? 2.5 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
     redraw(); //Рисуем график
     if (rand < ((h - lastPt[1] + 120) / 120)) {
+      btnClicked = true
+      redraw();
       let gameVal = ((h - lastPt[1] + 120) / 120).toFixed(1)
       clearInterval(interval)
       let profit = 0
@@ -99,7 +97,7 @@ function start() {
         val: gameVal,
         bets: bets.length,
         profit: profit,
-        time: parseInt(((x - ((h - lastPt[1] + 120) / 120) / 10) / 166).toFixed(0))
+        time: x < 935 ? parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 88).toFixed(0)) : parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(0)) + 5
       })
       profit = 0
       gamesUpdating(gameVal)
@@ -128,6 +126,7 @@ $("#crash-btn").on("click", function () {
     necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
     necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
     betsUpdating()
+    btnClicked = true
   } else {
     if (myBet.coin === null) {
       myBet.coin = "LEX"
@@ -143,6 +142,7 @@ $("#crash-btn").on("click", function () {
 })
 function preparing() {
   $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
+  btnClicked = false
   roundCondition = "waiting"
   $("#waitTimeShow").addClass('hide');
   mutShow.removeClass('hide');
@@ -192,8 +192,11 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 var middleX = 20
 var middleY = 380
 
+
+let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
+
 function redraw() {
- 
+  ctx.strokeStyle = '#e4c358';
   if (middleX > 120 && middleX < 550) {
     middleX += 2
   } else {
@@ -204,17 +207,14 @@ function redraw() {
     }
   }
 
-  let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
+  rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
   
-  
-
   if (canvas.width - x > pad * 4) {
     ctx.clearRect(0, 0, w, h);
     // рисуем оси
     polyline(1, axes)
     textOY(1, intervalY);
     textOX(1, intervalX);
-    //рисуем линию
 
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
@@ -222,37 +222,12 @@ function redraw() {
     lastPts = pts
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
-    //polyline(10, pts); //толщина линии
-
-    ctx.lineWidth = 10;
-    ctx.beginPath();
-    ctx.moveTo(20, ctx.height - pad);
-    ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
-    ctx.stroke();
-
-
-
-    //ctx.bezierCurveTo(30, 370, middleX, middleY, 935, 41.111);
-
 
     mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
-    ctx.fillStyle = '#e4c35866';
-    // рисуем область под линией
-    ctx.lineTo(lastPt[0], h - 20);
-    ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
-    ctx.fill();
+    
+    underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
 
-    ctx.save();
-    ctx.fillStyle = '#e4c358';
-    ctx.translate(lastPt[0], lastPt[1]);
-    ctx.rotate(- 0.35 - rotation);
-    ctx.beginPath();
-    ctx.moveTo(0, 18);
-    ctx.lineTo(36, 0);
-    ctx.lineTo(0, -18);
-    ctx.fill();
-    ctx.restore();
   } else {
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
@@ -272,25 +247,30 @@ function redraw() {
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
 
-    ctx.lineWidth = 10;
 
+    let color = btnClicked ? "#897A42" : "#e4c35866"
+    let colorStroke = btnClicked ? "#897A42" : '#e4c358'
+    ctx.strokeStyle = colorStroke;
+    ctx.lineWidth = 10;
     ctx.beginPath();
-    ctx.moveTo(20, canvas.height - pad);
-    ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 41.111);
+    ctx.moveTo(20, ctx.height - pad);
+    ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
+
     ctx.stroke();
 
 
-    ctx.fillStyle = '#e4c35866';
+
+    ctx.fillStyle = color;
     // рисуем область под линией
     ctx.lineTo(lastPt[0], h - 20);
     ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
 
-    // рисуем стрелку треугольник на конце
+
 
     ctx.save();
-    ctx.fillStyle = '#e4c358';
-    ctx.translate(935, 41.111111111111);
+    ctx.fillStyle = colorStroke;
+    ctx.translate(lastPt[0], lastPt[1]);
     ctx.rotate(- 0.35 - rotation);
     ctx.beginPath();
     ctx.moveTo(0, 18);
@@ -298,10 +278,52 @@ function redraw() {
     ctx.lineTo(0, -18);
     ctx.fill();
     ctx.restore();
-
   }
 
 }
+
+function underLinePainting(color, colorStroke) {
+  ctx.strokeStyle = colorStroke;
+  let pts = points.filter(p => p[0] > 0);
+  if (pts.length < 2)
+    return;
+  let lastPt = pts[pts.length - 1];
+  let prevPt = pts[pts.length - 2];
+
+
+  ctx.lineWidth = 10;
+  ctx.beginPath();
+  ctx.moveTo(20, ctx.height - pad);
+  ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
+
+  ctx.stroke();
+
+
+
+  ctx.fillStyle = color;
+  // рисуем область под линией
+  ctx.lineTo(lastPt[0], h - 20);
+  ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
+  ctx.fill();
+
+
+
+  ctx.save();
+  ctx.fillStyle = colorStroke;
+  ctx.translate(lastPt[0], lastPt[1]);
+  ctx.rotate(- 0.35 - rotation);
+  ctx.beginPath();
+  ctx.moveTo(0, 18);
+  ctx.lineTo(36, 0);
+  ctx.lineTo(0, -18);
+  ctx.fill();
+  ctx.restore();
+
+}
+
+
+
+
 
 let myBet = {
   user: "User",
@@ -365,7 +387,6 @@ function betsUpdating() {
   for (bet of bets) {
     let x = bet.x ? bet.x + 1 : '???'
     let profit = bet.profit ? bet.profit : '???'
-    console.log(bet.x);
     
     $("#crash-playerTables").append(
       `<tr>
@@ -413,7 +434,8 @@ $(".auto-stop-hotkey").on("click", function () {
   $(".auto-stop-hotkey").removeClass("active")
   $(this).addClass("active")
   if (parseInt($(this).attr("data-value")) >= 0) {
-    $("#auto-stop-value").val($("#auto-stop-value").val() * $(this).attr("data-value"))
+
+  $("#auto-stop-value").val($(this).attr("data-value"))
   } else {
     $(this).attr("data-value") === "min" ? $("#auto-stop-value").val(10) : $("#auto-stop-value").val(10000)
   }
