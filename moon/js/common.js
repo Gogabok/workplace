@@ -2,12 +2,6 @@ const timerTime = 5000; //Время таймера
 
 
 
-
-
-
-/*
-*  Canvas
-*/
 let canvas = document.getElementById('crash-canvas');
 let ctx = canvas.getContext('2d');
 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -18,28 +12,14 @@ ctx.strokeStyle = '#e4c358';
 ctx.lineWidth = "1"; //Ширина линий ОСИ
 
 ctx.beginPath();
-ctx.moveTo(20,canvas.height - 20);
-ctx.lineTo(20, 20 );
-ctx.moveTo(20,canvas.height - 20);
-ctx.lineTo(canvas.width - 20, canvas.height - 20 );
+ctx.moveTo(20, canvas.height - 20);
+ctx.lineTo(20, 20);
+ctx.moveTo(20, canvas.height - 20);
+ctx.lineTo(canvas.width - 20, canvas.height - 20);
 ctx.stroke();
 ctx.save();
 
-function textOX(l,s){
-	ctx.fillStyle= '#fff';
-	ctx.fillText("0",canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
-	for (let i = 1; i < s; i++){//Отрисовываем количество секунд
-    	ctx.fillText(l + i - 1 +"s",(canvas.width / s)*i, canvas.height - 5);
-    }
-}
-function textOY(l, s) {
-  ctx.fillStyle = '#fff';
-  for (let i = 1; i < s; i++) {
-    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 125 * (i - 1) ));
-    
-  }
 
-}
 
 
 /*
@@ -51,47 +31,75 @@ let w = canvas.width;
 ctx.strokeStyle = '#e4c358';
 //ctx.fillStyle = '#e4c358ad';
 let pad = 20;
-let axes = [[pad, pad], [pad, h-pad], [w-pad, h-pad]];
+let axes = [[pad, pad], [pad, h - pad], [w - pad, h - pad]];
 let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
 //Таймер обратного отсчета
 // var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
-var intervalX = (canvas.width / 166).toFixed(0)
+// var intervalX = (canvas.width / (x < 935 ? 88 : 166)).toFixed(0)
+var intervalX = ((canvas.width - 65) /  166).toFixed(0)
 var intervalY = (canvas.height / 125) + 1
 let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
 let games = []
+
+
+
+
+function textOX(l, s) {
+  ctx.fillStyle = '#fff';
+  ctx.fillText("0", canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
+  let g = 6
+  if(x < 935) {
+    for (let i = 1; i < g; i++) {//Отрисовываем количество секунд
+      ctx.fillText((l + i - 1) * 2 + "s", ((canvas.width) / g) * i, canvas.height - 5);
+    }
+  } else {
+    for (let i = 1; i < s; i++) {//Отрисовываем количество секунд
+      ctx.fillText(l + i - 1 + "s", ((canvas.width - 65) / s) * i, canvas.height - 5);
+    }
+  }
+}
+function textOY(l, s) {
+  ctx.fillStyle = '#fff';
+  for (let i = 1; i < s; i++) {
+    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 125 * (i - 1)));
+  }
+}
+
+
+console.log(intervalX)
+
+
 textOY(1, intervalY);
 textOX(1, intervalX);
 
-function start(){
+
+function start() {
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
-  setTimeout(function(){},1);
+  setTimeout(function () { }, 1);
   // let rand = Math.random() * (15 - 1) + 1;
   let rand = 15
   let interval = setInterval(() => {
-    // points.push([pad+x, h-pad-Math.sin(x/150)*25*Math.cos(x/14)-x/4]) //Тестовые данные для отрисовки, подставляем из базы
-    // points.push([pad + x, h - pad - x / 3])
     points.push([pad + x, h - pad - x / 2.7])
-    x += 5;
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    // 166px каждую секунду (1000 - секунда, 30 интервал, 5px за интервал, в секунду 33.3 интервала => 166px)
+    x += x < 935 ? 2.5 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
     redraw(); //Рисуем график
     if (rand < ((h - lastPt[1] + 120) / 120)) {
       let gameVal = ((h - lastPt[1] + 120) / 120).toFixed(1)
       clearInterval(interval)
       let profit = 0
-      for(let i = 0; i < bets.length; i++) {
+      for (let i = 0; i < bets.length; i++) {
         profit += parseInt(bets[i].profit)
       }
       games.push({
         val: gameVal,
         bets: bets.length,
         profit: profit,
-        time: parseInt((x / 166).toFixed(0))
+        time: parseInt(((x - ((h - lastPt[1] + 120) / 120) / 10) / 166).toFixed(0))
       })
       profit = 0
       gamesUpdating(gameVal)
@@ -101,7 +109,7 @@ function start(){
       }, 1000);
     }
   }, 30)
-  
+
   // Необходимо динамическое значение поля User
   let necessaryObj = bets.find(x => x.user === 'User')
   if (necessaryObj) {
@@ -117,7 +125,7 @@ $("#crash-btn").on("click", function () {
     $("#crash-btn").attr("disabled", true)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    necessaryObj.x = ((h - lastPt[1]) / 70 + 1).toFixed(2)
+    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
     necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
     betsUpdating()
   } else {
@@ -133,7 +141,7 @@ $("#crash-btn").on("click", function () {
     }
   }
 })
-function preparing () {
+function preparing() {
   $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   roundCondition = "waiting"
   $("#waitTimeShow").addClass('hide');
@@ -171,9 +179,9 @@ function startNextRound() {
 
 
 function polyline(width, pts) { //Перерисовываем ОСИ
-  
+
   ctx.lineWidth = width;
-  ctx.beginPath(); 
+  ctx.beginPath();
   ctx.moveTo(...pts[0]);
   for (var i = 1; i < pts.length; i++) {
     ctx.lineTo(...pts[i]);
@@ -184,7 +192,8 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 var middleX = 20
 var middleY = 380
 
-function redraw(){
+function redraw() {
+ 
   if (middleX > 120 && middleX < 550) {
     middleX += 2
   } else {
@@ -194,9 +203,10 @@ function redraw(){
       middleX += .5
     }
   }
-  
-  let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
 
+  let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
+  
+  
 
   if (canvas.width - x > pad * 4) {
     ctx.clearRect(0, 0, w, h);
@@ -209,9 +219,9 @@ function redraw(){
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
-    lastPts = pts 
-    let lastPt = pts[pts.length-1];
-    let prevPt = pts[pts.length-2];
+    lastPts = pts
+    let lastPt = pts[pts.length - 1];
+    let prevPt = pts[pts.length - 2];
     //polyline(10, pts); //толщина линии
 
     ctx.lineWidth = 10;
@@ -225,24 +235,12 @@ function redraw(){
     //ctx.bezierCurveTo(30, 370, middleX, middleY, 935, 41.111);
 
 
-    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2)+ "x");//Выводим X
+    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
     ctx.fillStyle = '#e4c35866';
     // рисуем область под линией
     ctx.lineTo(lastPt[0], h - 20);
     ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
-    // рисуем стрелку треугольник на конце
-    // ctx.save();
-    // ctx.fillStyle = '#e4c358';
-    // ctx.translate(...lastPt);
-    // ctx.rotate(Math.atan2(lastPt[1] - prevPt[1], lastPt[0] - prevPt[0]));
-    
-    // ctx.beginPath();
-    // ctx.moveTo(0 , 18);
-    // ctx.lineTo(36, 0);
-    // ctx.lineTo(0, -18);
-    // ctx.fill();
-    // ctx.restore();
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
 
     ctx.save();
@@ -255,9 +253,6 @@ function redraw(){
     ctx.lineTo(0, -18);
     ctx.fill();
     ctx.restore();
-
-
-
   } else {
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
@@ -266,19 +261,21 @@ function redraw(){
       return;
     let lastPt = [935, 41.111111111111];
     let prevPt = [930, 42.96296296296299];
-    let sX = parseInt((x / 166).toFixed(0))
+//(canvas.width / (x < 935 ? 88 : 166))
+    let sX = parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(0))
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
-    textOY(sY - 3, intervalY);
-    textOX(sX - 4, intervalX);
     
+    textOY(sY - 3, intervalY);
+    textOX(sX + 1, intervalX);
+
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
 
     ctx.lineWidth = 10;
-    
+
     ctx.beginPath();
-    ctx.moveTo(20, canvas.height - pad); 
+    ctx.moveTo(20, canvas.height - pad);
     ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 41.111);
     ctx.stroke();
 
@@ -288,9 +285,9 @@ function redraw(){
     ctx.lineTo(lastPt[0], h - 20);
     ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
-    
+
     // рисуем стрелку треугольник на конце
-    
+
     ctx.save();
     ctx.fillStyle = '#e4c358';
     ctx.translate(935, 41.111111111111);
@@ -301,14 +298,14 @@ function redraw(){
     ctx.lineTo(0, -18);
     ctx.fill();
     ctx.restore();
-    
+
   }
-  
+
 }
 
 let myBet = {
   user: "User",
-  coin: null, 
+  coin: null,
   value: null,
   x: null,
   profit: null,
@@ -349,8 +346,8 @@ function valuesUpdating(option, elem) {
 
 function gamesUpdating(gameVal) {
   $("#games-table").empty()
-  for(game of games) {
-  $("#games-table").append(`
+  for (game of games) {
+    $("#games-table").append(`
   <tr>
 		<td>` + game.val + `x </td>
 		<td>`+ game.bets + `</td>
@@ -362,21 +359,23 @@ function gamesUpdating(gameVal) {
   }
 }
 
-function betsUpdating () {
+function betsUpdating() {
   $("#crash-playerTables").empty()
   let values = 0
-  for(bet of bets) {
+  for (bet of bets) {
     let x = bet.x ? bet.x + 1 : '???'
     let profit = bet.profit ? bet.profit : '???'
+    console.log(bet.x);
+    
     $("#crash-playerTables").append(
       `<tr>
         <td>` + bet.user + `</td>
-        <td>` + x  + `</td>
+        <td>` + x + `</td>
         <td>` + bet.value + `</td>
         <td>` + profit + `</td>
       </tr>`
     )
-    values += parseInt(bet.value) 
+    values += parseInt(bet.value)
   }
   $("#crash-playerTables-people").text(bets.length)
   $("#crash-playerTables-values").text(values)
@@ -391,7 +390,7 @@ function disableInputs(block) {
   block ? $(".bet-hotkey").addClass("hotkey-disable") : $(".bet-hotkey").removeClass("hotkey-disable")
   block ? $(".auto-stop-hotkey").addClass("hotkey-disable") : $(".auto-stop-hotkey").removeClass("hotkey-disable")
   block ? $(".ivu-switch").addClass("hotkey-disable") : $(".ivu-switch").removeClass("hotkey-disable")
-} 
+}
 
 $(".bet-hotkey").on("click", function () {
   $(".bet-hotkey").removeClass("active")
