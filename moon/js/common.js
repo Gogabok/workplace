@@ -424,17 +424,20 @@ function valuesUpdating(option, elem) {
 }
 
 
+
+
+
 function gamesUpdating(gameVal) {
   $("#games-table").empty()
   for (game of games) {
     $("#games-table").append(`
-  <tr>
-		<td>` + game.val + `x </td>
-		<td>`+ game.bets + `</td>
-		<td>` + game.profit + `</td>
-		<td>???</td>
-		<td>` + game.time + 's' + `</td>
-	</tr>
+    <div class="table-content table-colored">
+      <div class="table-content-item">` + game.val + `x </div>
+      <div class="table-content-item">`+ game.bets + `</div>
+      <div class="table-content-item">` + game.profit + `</div>
+      <div class="table-content-item">???</div>
+      <div class="table-content-item">` + game.time + 's' + `</div>
+    </div>
   `);
   }
 }
