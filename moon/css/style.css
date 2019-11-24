@@ -1000,7 +1000,9 @@ main {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto !important;
+  width: 100% !important;
+  min-width: 320px !important;
+  max-width: 260px !important;
   background: rgba(19, 34, 52, 0.8);
   border: 1px solid #F1CD5B;
   padding: 0 20px;
