@@ -123,13 +123,22 @@ function start() {
       for (let i = 0; i < bets.length; i++) {
         profit += parseInt(bets[i].profit)
       }
-      
-      games.push({
-        val: gameVal,
-        bets: bets.length,
-        profit: profit ? profit : 0,
-        time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
-      })
+      if (games.length <= 10) {
+        games.push({
+          val: gameVal,
+          bets: bets.length,
+          profit: profit ? profit : 0,
+          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
+        })
+      } else {
+        games.splice(0, 1)
+        games.push({
+          val: gameVal,
+          bets: bets.length,
+          profit: profit ? profit : 0,
+          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
+        })
+      }
       profit = 0
       gamesUpdating(gameVal)
       $("#crash-btn").attr("disabled", true)
