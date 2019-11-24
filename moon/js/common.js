@@ -525,7 +525,7 @@ $("#waitTimeShow").counter({
   easing: "linear",
   onStart: function () { },
   onComplete: function () {
-    start()
+    // start()
     $("#waitTimeShow").addClass('hide');
     mutShow.removeClass('hide');
   },

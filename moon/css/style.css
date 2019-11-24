@@ -1019,23 +1019,36 @@ main .wrapper table.box tr:nth-child(even) {
 
 
 
-.table-head {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	padding: 15px 0px;
-}
+
 .table-subhead {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	padding: 10px 0px;
+  padding-right: 15px;
 }
+
+
+.table-wrapper::-webkit-scrollbar{
+  background: rgba(30, 44, 61, 0.7);
+  border-radius: 5px;
+  width: 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb{
+	background: rgb(42, 59, 80);
+ 	border-radius: 5px;
+}
+
+
 .table-content {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	padding: 10px 0px;
+  padding: 10px 0px;
+}
+.table-wrapper {
+  max-height: 200px;
+  overflow-y: auto;
 }
 .table-head-item {
 	font-family: Roboto;
