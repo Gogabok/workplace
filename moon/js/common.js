@@ -459,12 +459,12 @@ function betsUpdating() {
     let profit = bet.profit ? bet.profit : '???'
     
     $("#crash-playerTables").append(
-      `<tr>
-        <td>` + bet.user + `</td>
-        <td>` + x + `</td>
-        <td>` + bet.value + `</td>
-        <td>` + profit + `</td>
-      </tr>`
+      `<div class="table-content table-colored">
+        <div class="table-content-item">` + bet.user + `</div>
+        <div class="table-content-item">` + x + `</div>
+        <div class="table-content-item">` + bet.value + `</div>
+        <div class="table-content-item">` + profit + `</div>
+      </div>`
     )
     values += parseInt(bet.value)
   }

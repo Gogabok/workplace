@@ -1098,3 +1098,38 @@ main .wrapper table.box tr:nth-child(even) {
 .table-colored:nth-child(odd) {
 	background: rgba(19, 34, 52, 0.7);
 }
+
+#crash-playerTables * {
+  flex: 1
+}
+
+.table-subhead-players * {
+  flex: 1
+}
+
+.people-counter {
+	display: flex;
+	align-items: center;
+	color: #F1CD5B;
+	font-size: 14px;
+	font-weight: 400;
+}
+.people-counter img {
+	width: 14px;
+	margin-right: 5px;
+}
+
+.table-players-wrapper {
+  max-width: 400px;
+  overflow-y: auto;
+}
+
+.table-players-wrapper::-webkit-scrollbar{
+  background: rgba(30, 44, 61, 0.7);
+  border-radius: 5px;
+  width: 8px;
+}
+.table-players-wrapper::-webkit-scrollbar-thumb{
+	background: rgb(42, 59, 80);
+ 	border-radius: 5px;
+}
