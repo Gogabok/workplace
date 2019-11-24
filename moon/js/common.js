@@ -70,13 +70,11 @@ textOX(1, intervalX);
 
 var stoped = false
 function start() {
-  console.log(myBet);
-  
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  let rand = Math.random() * (15 - 1) + 1;
-  // let rand = 120
+  // let rand = Math.random() * (15 - 1) + 1;
+  let rand = 1.2
   let interval = setInterval(() => {
     points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
