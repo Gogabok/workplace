@@ -19,7 +19,7 @@ ctx.lineTo(canvas.width - 20, canvas.height - 20);
 ctx.stroke();
 ctx.save();
 
-
+var BgZ = 0
 
 
 /*
@@ -35,9 +35,6 @@ let axes = [[pad, pad], [pad, h - pad], [w - pad, h - pad]];
 let x = 0;
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting"
-//Таймер обратного отсчета
-// var intervalX = (canvas.width + x / (1000 / 400)) / ((1000 / 30) * 5)
-// var intervalX = (canvas.width / (x < 935 ? 88 : 166)).toFixed(0)
 var intervalX = ((canvas.width - 65) /  166).toFixed(0)
 var intervalY = (canvas.height / 125) + 1
 let mutShow = $('#mutShow');
@@ -56,8 +53,8 @@ function textOX(l, s) {
       ctx.fillText((l + i - 1) * 5 + "s", ((canvas.width) / intervalX) * i, canvas.height - 5);
     }
   } else {
-    for (let i = 1; i < s; i++) {//Отрисовываем количество секунд
-      ctx.fillText(l + i - 1 + "s", ((canvas.width - 65) / s) * i, canvas.height - 5);
+    for (let i = 1; i < g; i++) {//Отрисовываем количество секунд
+      ctx.fillText(l + i - 1 + "s", ((canvas.width) /  intervalX) * i, canvas.height - 5);
     }
   }
 }
@@ -78,8 +75,8 @@ function start() {
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  // let rand = Math.random() * (15 - 1) + 1;
-  let rand = 2
+  let rand = Math.random() * (15 - 1) + 1;
+  // let rand = 120
   let interval = setInterval(() => {
     points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
@@ -116,8 +113,9 @@ function start() {
     }
 
     redraw(); //Рисуем график
-    
+    BgZ += x
     if (rand < ((h - lastPt[1] + 120) / 120)) {
+      
       myBet.value && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
@@ -179,7 +177,7 @@ $("#crash-btn").on("click", function () {
 })
 function preparing() {
   
-  $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
+  // $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   btnClicked = false
   roundCondition = "waiting"
   $("#waitTimeShow").addClass('hide');
@@ -298,7 +296,8 @@ function redraw() {
     mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
     
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
-    $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
+    $("#crash-view").css("background-position-y", BgZ / 500).css("background-position-x", - BgZ / 3000)
+    // $("#crash-view").css("background-size", 300 - x / 4 + "%")
   } else {
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
@@ -318,7 +317,9 @@ function redraw() {
     textOY(sY - 3, intervalY);
     textOX(sX + 16, intervalX);
 
-    $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
+    $("#crash-view").css("background-position-y", BgZ / 500).css("background-position-x", - BgZ / 3000)
+    // $("#crash-view").css("background-size", 300 - x / 4 + "%")
+    // $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
     let color = btnClicked ? "#897A42" : "#e4c35866"

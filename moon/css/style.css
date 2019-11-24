@@ -952,9 +952,16 @@ main {
 }
 
 #crash-view {
-  background-size: 50% 50%;
-  background-image: url(../img/frame.png);
+  background-position-y: 0px;
+  background-position-x: 0px;
+  background-size: 300%;
+  background-image: url(../img/frame-new.png);
   background-repeat: repeat !important;
+  transition-duration: .1s;
+}
+#crash-view:hover {
+  background-size: 300%;
+  transition-duration: .1s;
 }
 
 
