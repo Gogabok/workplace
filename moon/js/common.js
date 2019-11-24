@@ -50,10 +50,10 @@ let btnClicked = false
 function textOX(l, s) {
   ctx.fillStyle = '#fff';
   ctx.fillText("0", canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
-  let g = 6
-  if(x < 935) {
+  let g = intervalX
+  if(x <= 935) {
     for (let i = 1; i < g; i++) {//Отрисовываем количество секунд
-      ctx.fillText((l + i - 1) * 2 + "s", ((canvas.width) / g) * i, canvas.height - 5);
+      ctx.fillText((l + i - 1) * 5 + "s", ((canvas.width) / intervalX) * i, canvas.height - 5);
     }
   } else {
     for (let i = 1; i < s; i++) {//Отрисовываем количество секунд
@@ -71,20 +71,54 @@ function textOY(l, s) {
 textOY(1, intervalY);
 textOX(1, intervalX);
 
-
+var stoped = false
 function start() {
+  console.log(myBet);
+  
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  let rand = Math.random() * (15 - 1) + 1;
-
+  // let rand = Math.random() * (15 - 1) + 1;
+  let rand = 2
   let interval = setInterval(() => {
-    points.push([pad + x, h - pad - x / 2.7])
+    points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    x += x < 935 ? 2.5 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
+    x += x < 935 ? 1 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
+
+    if((((h - lastPt[1] + 120) / 120).toFixed(2) + "x") >= myBet.autostopTiming) {
+      
+      if(!stoped) {
+        let necessaryObj = bets.find(x => x.user === 'User')
+        if (necessaryObj && roundCondition !== "waiting") {
+          $("#crash-btn").attr("disabled", true)
+          let pts = points.filter(p => p[0] > 0);
+          let lastPt = pts[pts.length - 1];
+          necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
+          necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
+          betsUpdating()
+          btnClicked = true
+          notice(true, true)
+        } else {
+          if (myBet.coin === null) {
+            myBet.coin = "LEX"
+          }
+          valuesUpdating()
+          if (myBet.value >= 10) {
+            $("#crash-btn").text() !== "Вывести" ? bets.push(myBet) : false
+            betsUpdating()
+            $("#crash-btn").text("Вывести")
+            disableInputs(true)
+          }
+        }
+        stoped = true
+      }
+    }
+
     redraw(); //Рисуем график
+    
     if (rand < ((h - lastPt[1] + 120) / 120)) {
+      myBet.value && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
       let gameVal = ((h - lastPt[1] + 120) / 120).toFixed(1)
@@ -93,15 +127,17 @@ function start() {
       for (let i = 0; i < bets.length; i++) {
         profit += parseInt(bets[i].profit)
       }
+      
       games.push({
         val: gameVal,
         bets: bets.length,
-        profit: profit,
-        time: x < 935 ? parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 88).toFixed(0)) : parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(0)) + 5
+        profit: profit ? profit : 0,
+        time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
       })
       profit = 0
       gamesUpdating(gameVal)
       $("#crash-btn").attr("disabled", true)
+      stoped = false
       setTimeout(() => {
         preparing()
       }, 1000);
@@ -123,10 +159,11 @@ $("#crash-btn").on("click", function () {
     $("#crash-btn").attr("disabled", true)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
+    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
     necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
     betsUpdating()
     btnClicked = true
+    notice(true, true)
   } else {
     if (myBet.coin === null) {
       myBet.coin = "LEX"
@@ -141,6 +178,7 @@ $("#crash-btn").on("click", function () {
   }
 })
 function preparing() {
+  
   $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   btnClicked = false
   roundCondition = "waiting"
@@ -148,6 +186,7 @@ function preparing() {
   mutShow.removeClass('hide');
   mutShow.find('span').html('Preparing...')
   setTimeout(() => {
+    notice(false)
     startNextRound()
   }, 3000);
 }
@@ -164,18 +203,57 @@ function startNextRound() {
   disableInputs(false)
   $("#crash-btn").text("BET")
   bets = []
-  myBet = {
-    user: "User",
-    coin: null,
-    value: null,
-    x: null,
-    profit: null,
-    autostopTiming: null
-  }
-  valuesUpdating()
+  // if(myBet.autostopTiming) {
+  //   myBet.x = null,
+  //   myBet.profit = null
+
+  //   let necessaryObj = bets.find(x => x.user === 'User')
+  //   if (necessaryObj && roundCondition !== "waiting") {
+  //     $("#crash-btn").attr("disabled", true)
+  //     let pts = points.filter(p => p[0] > 0);
+  //     let lastPt = pts[pts.length - 1];
+  //     necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
+  //     necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
+  //     betsUpdating()
+  //     btnClicked = true
+  //     notice(true, true)
+  //   } else {
+  //     if (myBet.coin === null) {
+  //       myBet.coin = "LEX"
+  //     }
+  //     valuesUpdating()
+  //     if (myBet.value >= 10) {
+  //       $("#crash-btn").text() !== "Вывести" ? bets.push(myBet) : false
+  //       betsUpdating()
+  //       $("#crash-btn").text("Вывести")
+  //       disableInputs(true)
+  //     }
+  //   }
+  // } else {
+    myBet = {
+      user: "User",
+      coin: null,
+      value: null,
+      x: null,
+      profit: null,
+      autostopTiming: null
+    }
+  // }
+  
+  //valuesUpdating()
   betsUpdating()
 }
 
+function notice(isShowed, isWin) {
+  isShowed ? $("#crash-wrapper").show() : $("#crash-wrapper").hide()
+  if (isWin) {
+    $("#crash-wrapper span").text("+ " + myBet.profit + " " + myBet.coin)
+    $("#crash-wrapper span").css("color", "#F1CD5B")
+  } else {
+    $("#crash-wrapper span").text("- " + myBet.value + " " + myBet.coin)
+    $("#crash-wrapper span").css("color", "#fff")
+  }
+}
 
 
 function polyline(width, pts) { //Перерисовываем ОСИ
@@ -191,24 +269,14 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 
 var middleX = 20
 var middleY = 380
-
-
 let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
 
 function redraw() {
   ctx.strokeStyle = '#e4c358';
-  if (middleX > 120 && middleX < 550) {
-    middleX += 2
-  } else {
-    if (middleX > 750) {
-      middleX += 0
-    } else {
-      middleX += .5
-    }
-  }
 
-  rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
   
+  rotation = (middleX > 850) ? middleX / (middleY * 2.2) : middleX / (middleY * 2.5)
+
   if (canvas.width - x > pad * 4) {
     ctx.clearRect(0, 0, w, h);
     // рисуем оси
@@ -222,12 +290,15 @@ function redraw() {
     lastPts = pts
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
-
+    
+    if (middleX < 685) {
+      middleX += .3
+    }
+    
     mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
     
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
-
   } else {
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
@@ -236,18 +307,20 @@ function redraw() {
       return;
     let lastPt = [935, 41.111111111111];
     let prevPt = [930, 42.96296296296299];
-//(canvas.width / (x < 935 ? 88 : 166))
     let sX = parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(0))
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
-    
+    if (middleX < 885) {
+      middleX += 1
+    }
+    if (middleY < 375) {
+      middleY += .5
+    }
     textOY(sY - 3, intervalY);
-    textOX(sX + 1, intervalX);
+    textOX(sX + 16, intervalX);
 
     $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
-
-
     let color = btnClicked ? "#897A42" : "#e4c35866"
     let colorStroke = btnClicked ? "#897A42" : '#e4c358'
     ctx.strokeStyle = colorStroke;
@@ -255,19 +328,12 @@ function redraw() {
     ctx.beginPath();
     ctx.moveTo(20, ctx.height - pad);
     ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
-
     ctx.stroke();
-
-
-
     ctx.fillStyle = color;
     // рисуем область под линией
     ctx.lineTo(lastPt[0], h - 20);
-    ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
+    // ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
-
-
-
     ctx.save();
     ctx.fillStyle = colorStroke;
     ctx.translate(lastPt[0], lastPt[1]);
@@ -289,25 +355,16 @@ function underLinePainting(color, colorStroke) {
     return;
   let lastPt = pts[pts.length - 1];
   let prevPt = pts[pts.length - 2];
-
-
   ctx.lineWidth = 10;
   ctx.beginPath();
   ctx.moveTo(20, ctx.height - pad);
   ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
-
   ctx.stroke();
-
-
-
   ctx.fillStyle = color;
   // рисуем область под линией
   ctx.lineTo(lastPt[0], h - 20);
-  ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
+  // ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
   ctx.fill();
-
-
-
   ctx.save();
   ctx.fillStyle = colorStroke;
   ctx.translate(lastPt[0], lastPt[1]);
@@ -361,7 +418,9 @@ function valuesUpdating(option, elem) {
     option = elem.val()
   } else {
     myBet.value = $("#crash-value").val()
-    myBet.autostopTiming = $("#auto-stop-value").val()
+    if ($(".ivu-switch").hasClass("ivu-checked")) {
+      myBet.autostopTiming = $("#auto-stop-value").val()
+    }
   }
 }
 
