@@ -1167,3 +1167,10 @@ main .wrapper table.box tr:nth-child(even) {
     display: block;
   }
 }
+
+@media (max-width: 1400px) {
+	#app {
+		zoom: .85;
+		min-height: 115vh;
+	}
+}
