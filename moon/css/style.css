@@ -1144,11 +1144,11 @@ main .wrapper table.box tr:nth-child(even) {
 
 @media (min-width: 990px) and (max-width: 1400px) {
   .item-1, .item-2, .item-3 {
-    width: 200px;
+    width: 300px;
   }
 
   .item-2 input, .item-3 input {
-    width: 200px;
+    width: 300px;
   }
 }
 @media screen and (max-width: 1400px) {

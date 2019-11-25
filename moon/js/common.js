@@ -61,32 +61,68 @@ function textOX(l, s) {
     }
   }
 }
+// function textOY(l, s) {
+//   ctx.fillStyle = '#fff';
+//   for (let i = 1; i < s; i++) {
+//     ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1)));
+//   }
+// }
 function textOY(l, s) {
   ctx.fillStyle = '#fff';
   for (let i = 1; i < s; i++) {
-    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 125 * (i - 1)));
+    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1)));
+  }
+}
+let xFormule = null
+textOY(1, intervalY);
+textOX(1, intervalX);
+var gameVal
+var stoped = false
+
+
+
+
+var tick = 0
+var tickInterval
+function ticker (isActive) {
+  if (isActive) {
+    tickInterval = setInterval(() => {
+      tick++
+    }, 1000)
+  } else {
+    tick = 0
+    clearInterval(tickInterval)
   }
 }
 
-textOY(1, intervalY);
-textOX(1, intervalX);
 
-var stoped = false
 function start() {
   audioMoonPlaying.play();
   roundCondition = "started"
+  
+  ticker(true)
   disableInputs(true)
   // $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  let rand = Math.random() * (50 - 1) + 1;
-  // let rand = 2
+  // let rand = Math.random() * (50 - 1) + 1;
+  let rand = 1.1
   let interval = setInterval(() => {
-    points.push([pad + x, h - pad -  x / 2.7 ])
+
+    console.log(tick);
+    points.push([pad + x, h - pad -  x / 3.7 ])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    x += x < 935 ? 1 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
-
-    if((((h - lastPt[1] + 120) / 120).toFixed(2) + "x") >= myBet.autostopTiming) {
+    // x += x < 935 ? 1 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
+    // console.log(xFormule);
+    xFormule = (h - lastPt[1] + 100) / 120
+    if(x < 120) {
+      x += .3
+    } else if (x < 935) {
+      x += 1
+    } else {
+      x += (5 + (xFormule) / 10)
+    }
+    if (((xFormule).toFixed(2) + "x") >= myBet.autostopTiming) {
       
       if(!stoped) {
         // audioMoonPlaying.pause()
@@ -96,7 +132,7 @@ function start() {
           $("#crash-btn").attr("disabled", true)
           let pts = points.filter(p => p[0] > 0);
           let lastPt = pts[pts.length - 1];
-          necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
+          necessaryObj.x = (xFormule).toFixed(2)
           necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
           betsUpdating()
           btnClicked = true
@@ -119,14 +155,16 @@ function start() {
 
     redraw(); //Рисуем график
     BgZ += x
-    if (rand < ((h - lastPt[1] + 120) / 120)) {
+    if (rand < (xFormule)) {
+      ticker(false)
+      
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
       audioMoonEnd.play()
       myBet.value && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
-      let gameVal = ((h - lastPt[1] + 120) / 120).toFixed(1)
+      // let gameVal = (xFormule).toFixed(2)
       clearInterval(interval)
       let profit = 0
       for (let i = 0; i < bets.length; i++) {
@@ -137,7 +175,7 @@ function start() {
           val: gameVal,
           bets: bets.length,
           profit: profit ? profit : 0,
-          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
+          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - ((xFormule / 10) / 166)).toFixed(1))) + 26
         })
       } else {
         games.splice(0, 1)
@@ -145,7 +183,7 @@ function start() {
           val: gameVal,
           bets: bets.length,
           profit: profit ? profit : 0,
-          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(1)) + 26
+          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - ((xFormule / 10) / 166)).toFixed(1))) + 26
         })
       }
       profit = 0
@@ -155,6 +193,9 @@ function start() {
       setTimeout(() => {
         preparing()
       }, 1000);
+    } else {
+      gameVal = (xFormule).toFixed(2)
+      mutShow.find('span').html((xFormule).toFixed(2) + "x");
     }
   }, 30)
 
@@ -173,7 +214,7 @@ $("#crash-btn").on("click", function () {
     $("#crash-btn").attr("disabled", true)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
+    necessaryObj.x = (xFormule).toFixed(2)
     necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
     betsUpdating()
     btnClicked = true
@@ -192,7 +233,6 @@ $("#crash-btn").on("click", function () {
   }
 })
 function preparing() {
-  
   // $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   btnClicked = false
   roundCondition = "waiting"
@@ -307,11 +347,13 @@ function redraw() {
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
     
-    if (middleX < 685) {
-      middleX += .3
+    if(x > 100) {
+      if (middleX < 685) {
+        middleX += .3
+      }
     }
     
-    mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
+    // mutShow.find('span').html((xFormule).toFixed(2) + "x");//Выводим X
     
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
     $("#crash-view").css("background-position-y", BgZ / 500)
@@ -325,7 +367,7 @@ function redraw() {
       return;
     let lastPt = [935, 41.111111111111];
     let prevPt = [930, 42.96296296296299];
-    let sX = parseInt(((x - (((h - lastPt[1] + 120) / 120) / 10)) / 166).toFixed(0))
+    let sX = parseInt((x - ((xFormule / 10)) / 166).toFixed(0))
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
     if (middleX < 885) {
       middleX += 1
@@ -339,7 +381,7 @@ function redraw() {
     $("#crash-view").css("background-position-y", BgZ / 500)
     // $("#crash-view").css("background-size", 300 - x / 4 + "%")
     // $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
-    mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
+    //mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
     let color = btnClicked ? "#897A42" : "#e4c35866"
     let colorStroke = btnClicked ? "#897A42" : '#e4c358'
