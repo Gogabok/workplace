@@ -43,6 +43,7 @@ let games = []
 let btnClicked = false
 let audioMoonPlaying = $('#audioMoonPlaying')[0];
 let audioMoonWin = $('#audioMoonWin')[0];
+let audioMoonEnd = $('#audioMoonEnd')[0];
 
 
 
@@ -77,8 +78,8 @@ function start() {
   disableInputs(true)
   // $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  // let rand = Math.random() * (50 - 1) + 1;
-  let rand = 2
+  let rand = Math.random() * (50 - 1) + 1;
+  // let rand = 2
   let interval = setInterval(() => {
     points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
@@ -121,6 +122,7 @@ function start() {
     if (rand < ((h - lastPt[1] + 120) / 120)) {
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
+      audioMoonEnd.play()
       myBet.value && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
