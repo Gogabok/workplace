@@ -105,9 +105,9 @@ function start() {
     // console.log(xFormule);
     xFormule = (h - lastPt[1] + 100) / 120
     if(x < 120) {
-      x += 5
+      x += .3
     } else if (x < 935) {
-      x += 5
+      x += 1
     } else {
       x += (5 + (xFormule) / 10)
     }
@@ -240,6 +240,7 @@ function startNextRound() {
   x = 0
   points = []
   lastPtAfter = [930, 134.05405405405406]
+  tick = 0
   redraw();
   mutShow.addClass('hide');
   $("#waitTimeShow").removeClass('hide');
@@ -335,9 +336,9 @@ function redraw() {
     lastPts = pts
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
- 
+    
     textOY(1, 2, 3);
-    textOX(1, intervalX);
+    textOX(0, 13, 19, 24, 29, 34);
     if(x > 100) {
       if (middleX < 685) {
         middleX += .3
@@ -362,7 +363,6 @@ function redraw() {
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(0))
     // console.log(((h - pts[pts.length - 1][1] + 120) / 120));
     lastPtAfter[1] > 40 ? lastPtAfter[1] -= 0.1 : false
-    console.log(lastPtAfter);
     
     if (middleX < 885) {
       middleX += 1
@@ -371,8 +371,9 @@ function redraw() {
       middleY += .5
     }
     // textOY(sY - 2, sY - 1, sY);
+    console.log(tick);
     textOY(xFormule.toFixed(0) - 2, xFormule.toFixed(0) - 1, xFormule.toFixed(0));
-    textOX(sX + 16, intervalX);
+    textOX(tick - 5, tick - 4, tick - 3, tick - 2, tick - 1, tick);
 
     $("#crash-view").css("background-position-y", BgZ / 500)
     // $("#crash-view").css("background-size", 300 - x / 4 + "%")
