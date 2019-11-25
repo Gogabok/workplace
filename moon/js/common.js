@@ -73,8 +73,8 @@ function start() {
   roundCondition = "started"
   $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  // let rand = Math.random() * (15 - 1) + 1;
-  let rand = 1.2
+  let rand = Math.random() * (50 - 1) + 1;
+  // let rand = 10
   let interval = setInterval(() => {
     points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
@@ -89,8 +89,8 @@ function start() {
           $("#crash-btn").attr("disabled", true)
           let pts = points.filter(p => p[0] > 0);
           let lastPt = pts[pts.length - 1];
-          necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
-          necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
+          necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
+          necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
           betsUpdating()
           btnClicked = true
           notice(true, true)
@@ -164,8 +164,8 @@ $("#crash-btn").on("click", function () {
     $("#crash-btn").attr("disabled", true)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
-    necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
+    necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(2)
+    necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
     betsUpdating()
     btnClicked = true
     notice(true, true)
@@ -252,7 +252,7 @@ function startNextRound() {
 function notice(isShowed, isWin) {
   isShowed ? $("#crash-wrapper").show() : $("#crash-wrapper").hide()
   if (isWin) {
-    $("#crash-wrapper span").text("+ " + myBet.profit + " " + myBet.coin)
+    $("#crash-wrapper span").text("+ " + (myBet.profit - myBet.value).toFixed(1) + " " + myBet.coin)
     $("#crash-wrapper span").css("color", "#F1CD5B")
   } else {
     $("#crash-wrapper span").text("- " + myBet.value + " " + myBet.coin)
@@ -303,7 +303,8 @@ function redraw() {
     mutShow.find('span').html(((h - lastPt[1] + 120) / 120).toFixed(2) + "x");//Выводим X
     
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
-    $("#crash-view").css("background-position-y", BgZ / 500).css("background-position-x", - BgZ / 3000)
+    $("#crash-view").css("background-position-y", BgZ / 500)
+    // .css("background-position-x", - BgZ / 3000)
     // $("#crash-view").css("background-size", 300 - x / 4 + "%")
   } else {
     ctx.clearRect(0, 0, w, h)
@@ -324,7 +325,7 @@ function redraw() {
     textOY(sY - 3, intervalY);
     textOX(sX + 16, intervalX);
 
-    $("#crash-view").css("background-position-y", BgZ / 500).css("background-position-x", - BgZ / 3000)
+    $("#crash-view").css("background-position-y", BgZ / 500)
     // $("#crash-view").css("background-size", 300 - x / 4 + "%")
     // $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
     mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
@@ -452,13 +453,13 @@ function gamesUpdating(gameVal) {
 }
 
 function betsUpdating() {
-  $("#crash-playerTables").empty()
+  $(".crash-playerTables").empty()
   let values = 0
   for (bet of bets) {
     let x = bet.x ? bet.x + 1 : '???'
     let profit = bet.profit ? bet.profit : '???'
     
-    $("#crash-playerTables").append(
+    $(".crash-playerTables").append(
       `<div class="table-content table-colored">
         <div class="table-content-item">` + bet.user + `</div>
         <div class="table-content-item">` + x + `</div>
@@ -468,8 +469,8 @@ function betsUpdating() {
     )
     values += parseInt(bet.value)
   }
-  $("#crash-playerTables-people").text(bets.length)
-  $("#crash-playerTables-values").text(values)
+  $(".crash-playerTables-people").text(bets.length)
+  $(".crash-playerTables-values").text(values)
 }
 
 function disableInputs(block) {
@@ -525,7 +526,7 @@ $("#waitTimeShow").counter({
   easing: "linear",
   onStart: function () { },
   onComplete: function () {
-    // start()
+    start()
     $("#waitTimeShow").addClass('hide');
     mutShow.removeClass('hide');
   },

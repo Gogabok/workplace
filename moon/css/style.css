@@ -435,6 +435,9 @@ header .center__header {
       header .center__header .balance__data .btn-link.active, header .center__header .balance__data .btn-link:hover {
         color: #F1CD5B;
         cursor: pointer; }
+        .lang {
+          display: none !important;
+        }
   header .center__header .user__data {
     display: -webkit-flex;
     display: -moz-flex;
@@ -442,7 +445,7 @@ header .center__header {
     display: -o-flex;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: none;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -557,7 +560,7 @@ main {
       text-align: center;
       left: 0; }
       main .wrapper .graphic__frame #crash-game-notice #mutShow span {
-        margin: 45px auto 0;
+        margin: 20px auto 0;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -579,7 +582,7 @@ main {
         font-weight: 900;
         color: #ffffff; }
       main .wrapper .graphic__frame #crash-game-notice #waitTimeShow {
-        margin: 45px auto 0;
+        margin: 20px auto 0;
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -987,7 +990,7 @@ main {
 
 
 #crash-wrapper span {
-  margin: 140px auto 0;
+  margin: 105px auto 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1001,14 +1004,15 @@ main {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100% !important;
-  min-width: 320px !important;
+  min-width: 260px !important;
   max-width: 260px !important;
   background: rgba(19, 34, 52, 0.8);
   border: 1px solid #F1CD5B;
   padding: 0 20px;
-  font-size: 18px;
+  font-size: 22px !important;
   font-weight: 900;
   color: #ffffff;
+  height: 60px !important;
 }
 
 main .wrapper table.box tr:nth-child(even) {
@@ -1132,4 +1136,34 @@ main .wrapper table.box tr:nth-child(even) {
 .table-players-wrapper::-webkit-scrollbar-thumb{
 	background: rgb(42, 59, 80);
  	border-radius: 5px;
+}
+
+@media (min-width: 990px) and (max-width: 1400px) {
+  .item-1, .item-2, .item-3 {
+    width: 200px;
+  }
+
+  .item-2 input, .item-3 input {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .crash {
+    padding-top: 0px !important;
+  }
+}
+
+.right-table-mobile {
+  margin-top: 50px;
+  display: none;
+}
+
+.right-table-mobile .table-players {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .right-table-mobile {
+    display: block;
+  }
 }
