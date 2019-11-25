@@ -1032,6 +1032,10 @@ main .wrapper table.box tr:nth-child(even) {
   padding-right: 15px;
 }
 
+#games-wrapper-table {
+  margin-top: 50px;
+}
+
 
 .table-wrapper::-webkit-scrollbar{
   background: rgba(30, 44, 61, 0.7);
@@ -1147,9 +1151,9 @@ main .wrapper table.box tr:nth-child(even) {
     width: 200px;
   }
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
   .crash {
-    padding-top: 0px !important;
+    padding-top: 10px !important;
   }
 }
 
@@ -1170,7 +1174,7 @@ main .wrapper table.box tr:nth-child(even) {
 
 @media (max-width: 1400px) {
 	#app {
-		zoom: .85;
+		zoom: .8;
 		min-height: 115vh;
 	}
 }

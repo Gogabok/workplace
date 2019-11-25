@@ -41,6 +41,8 @@ let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
 let games = []
 let btnClicked = false
+let audioMoonPlaying = $('#audioMoonPlaying')[0];
+let audioMoonWin = $('#audioMoonWin')[0];
 
 
 
@@ -70,11 +72,13 @@ textOX(1, intervalX);
 
 var stoped = false
 function start() {
+  audioMoonPlaying.play();
   roundCondition = "started"
-  $("#crash-btn").attr("disabled", true)
+  disableInputs(true)
+  // $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  let rand = Math.random() * (50 - 1) + 1;
-  // let rand = 10
+  // let rand = Math.random() * (50 - 1) + 1;
+  let rand = 2
   let interval = setInterval(() => {
     points.push([pad + x, h - pad -  x / 2.7 ])
     let pts = points.filter(p => p[0] > 0);
@@ -84,6 +88,8 @@ function start() {
     if((((h - lastPt[1] + 120) / 120).toFixed(2) + "x") >= myBet.autostopTiming) {
       
       if(!stoped) {
+        // audioMoonPlaying.pause()
+        // audioMoonWin.play();
         let necessaryObj = bets.find(x => x.user === 'User')
         if (necessaryObj && roundCondition !== "waiting") {
           $("#crash-btn").attr("disabled", true)
@@ -113,7 +119,8 @@ function start() {
     redraw(); //Рисуем график
     BgZ += x
     if (rand < ((h - lastPt[1] + 120) / 120)) {
-      
+      audioMoonPlaying.pause()
+      audioMoonPlaying.currentTime = 0;
       myBet.value && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
@@ -252,6 +259,8 @@ function startNextRound() {
 function notice(isShowed, isWin) {
   isShowed ? $("#crash-wrapper").show() : $("#crash-wrapper").hide()
   if (isWin) {
+    // audioMoonPlaying.pause()
+    audioMoonWin.play();
     $("#crash-wrapper span").text("+ " + (myBet.profit - myBet.value).toFixed(1) + " " + myBet.coin)
     $("#crash-wrapper span").css("color", "#F1CD5B")
   } else {
@@ -419,7 +428,7 @@ $(".ivu-switch").on("click", function () {
 $(".crash *").on("input propertychange", function () {
   var preg = $(this).val().replace(/[^.\d]+/g, "").replace(/^([^\.]*\.)|\./g, '$1');
   $(this).val(preg);
-  valuesUpdating(myBet.value, $("#crash-value"))
+  //valuesUpdating(myBet.value, $("#crash-value"))
 })
 
 function valuesUpdating(option, elem) {
