@@ -47,38 +47,27 @@ let audioMoonEnd = $('#audioMoonEnd')[0];
 
 
 
-function textOX(l, s) {
+function textOX(zero, first, second, third, fourth, fifth) {
   ctx.fillStyle = '#fff';
-  ctx.fillText("0", canvas.width - (canvas.width - 20), canvas.height - 5);// 0 оси
-  let g = intervalX
-  if(x <= 935) {
-    for (let i = 1; i < g; i++) {//Отрисовываем количество секунд
-      ctx.fillText((l + i - 1) * 5 + "s", ((canvas.width) / intervalX) * i, canvas.height - 5);
-    }
-  } else {
-    for (let i = 1; i < g; i++) {//Отрисовываем количество секунд
-      ctx.fillText(l + i - 1 + "s", ((canvas.width) /  intervalX) * i, canvas.height - 5);
-    }
-  }
+  ctx.fillText(zero + "s", pad, canvas.height - 5)
+  ctx.fillText(first + "s", pad + 166, canvas.height - 5)
+  ctx.fillText(second + "s", pad + 166 * 2, canvas.height - 5)
+  ctx.fillText(third + "s", pad + 166 * 3, canvas.height - 5)
+  ctx.fillText(fourth + "s", pad + 166 * 4, canvas.height - 5)
+  ctx.fillText(fifth + "s", pad + 166 * 5, canvas.height - 5)
 }
-// function textOY(l, s) {
-//   ctx.fillStyle = '#fff';
-//   for (let i = 1; i < s; i++) {
-//     ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1)));
-//   }
-// }
-function textOY(l, s) {
-  ctx.fillStyle = '#fff';
-  for (let i = 1; i < s; i++) {
-    ctx.fillText(l + i - 1 + "x", 4, i === 1 ? canvas.height - pad : (canvas.height - 120 * (i - 1)));
-  }
-}
+
 let xFormule = null
-textOY(1, intervalY);
-textOX(1, intervalX);
+textOY(1, 2, 3);
+textOX(0, 5, 10, 15, 20, 25);
 var gameVal
 var stoped = false
-
+function textOY(first, second, third) {
+  ctx.fillStyle = '#fff';
+  ctx.fillText(first + "x", 4, canvas.height - pad)
+  ctx.fillText(second + "x", 4, canvas.height - pad - 130)
+  ctx.fillText(third + "x", 4, canvas.height - pad - 260)
+}
 
 
 
@@ -105,10 +94,10 @@ function start() {
   // $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
   // let rand = Math.random() * (50 - 1) + 1;
-  let rand = 1.1
+  let rand = 15
   let interval = setInterval(() => {
 
-    console.log(tick);
+    // console.log((pad + x / 3.7) / 130)
     points.push([pad + x, h - pad -  x / 3.7 ])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
@@ -116,9 +105,9 @@ function start() {
     // console.log(xFormule);
     xFormule = (h - lastPt[1] + 100) / 120
     if(x < 120) {
-      x += .3
+      x += 5
     } else if (x < 935) {
-      x += 1
+      x += 5
     } else {
       x += (5 + (xFormule) / 10)
     }
@@ -157,7 +146,7 @@ function start() {
     BgZ += x
     if (rand < (xFormule)) {
       ticker(false)
-      
+
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
       audioMoonEnd.play()
@@ -250,6 +239,7 @@ function startNextRound() {
   middleY = 380
   x = 0
   points = []
+  lastPtAfter = [930, 134.05405405405406]
   redraw();
   mutShow.addClass('hide');
   $("#waitTimeShow").removeClass('hide');
@@ -326,10 +316,10 @@ function polyline(width, pts) { //Перерисовываем ОСИ
 var middleX = 20
 var middleY = 380
 let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
-
+var lastPtAfter = [930, 134.05405405405406];
 function redraw() {
   ctx.strokeStyle = '#e4c358';
-
+  
   
   rotation = (middleX > 850) ? middleX / (middleY * 2.2) : middleX / (middleY * 2.5)
 
@@ -337,8 +327,7 @@ function redraw() {
     ctx.clearRect(0, 0, w, h);
     // рисуем оси
     polyline(1, axes)
-    textOY(1, intervalY);
-    textOX(1, intervalX);
+    
 
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
@@ -346,7 +335,9 @@ function redraw() {
     lastPts = pts
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
-    
+ 
+    textOY(1, 2, 3);
+    textOX(1, intervalX);
     if(x > 100) {
       if (middleX < 685) {
         middleX += .3
@@ -365,17 +356,22 @@ function redraw() {
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
-    let lastPt = [935, 41.111111111111];
-    let prevPt = [930, 42.96296296296299];
+    // [930, 134.05405405405406]
+    // [925, 135.40540540540542]
     let sX = parseInt((x - ((xFormule / 10)) / 166).toFixed(0))
-    let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2))
+    let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(0))
+    // console.log(((h - pts[pts.length - 1][1] + 120) / 120));
+    lastPtAfter[1] > 40 ? lastPtAfter[1] -= 0.1 : false
+    console.log(lastPtAfter);
+    
     if (middleX < 885) {
       middleX += 1
     }
     if (middleY < 375) {
       middleY += .5
     }
-    textOY(sY - 3, intervalY);
+    // textOY(sY - 2, sY - 1, sY);
+    textOY(xFormule.toFixed(0) - 2, xFormule.toFixed(0) - 1, xFormule.toFixed(0));
     textOX(sX + 16, intervalX);
 
     $("#crash-view").css("background-position-y", BgZ / 500)
@@ -389,16 +385,16 @@ function redraw() {
     ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(20, ctx.height - pad);
-    ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
+    ctx.bezierCurveTo(20, 380, middleX, middleY, lastPtAfter[0], lastPtAfter[1]);
     ctx.stroke();
     ctx.fillStyle = color;
     // рисуем область под линией
-    ctx.lineTo(lastPt[0], h - 20);
+    ctx.lineTo(lastPtAfter[0], h - 20);
     // ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
     ctx.save();
     ctx.fillStyle = colorStroke;
-    ctx.translate(lastPt[0], lastPt[1]);
+    ctx.translate(lastPtAfter[0], lastPtAfter[1]);
     ctx.rotate(- 0.35 - rotation);
     ctx.beginPath();
     ctx.moveTo(0, 18);
