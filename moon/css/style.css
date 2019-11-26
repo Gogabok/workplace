@@ -1083,8 +1083,9 @@ main .wrapper table.box tr:nth-child(even) {
 	text-align: center;
 	color: #F1CD5B;
 	margin: 0px 10px;
-	width: 15%;
-	justify-content: center;
+	/* width: 15%; */
+  justify-content: center;
+  flex: 1;
 }
 .table-content-item {
 	font-family: Roboto;
@@ -1097,7 +1098,8 @@ main .wrapper table.box tr:nth-child(even) {
 	text-align: center;
 	color: #FFFFFF;
 	margin: 0px 10px;
-	width: 15%;
+  /* width: 15%; */
+  flex: 1;
 	justify-content: center;
 }
 .table-colored:nth-child(even) {

@@ -19,7 +19,7 @@ ctx.lineTo(canvas.width - 20, canvas.height - 20);
 ctx.stroke();
 ctx.save();
 
-var BgZ = 0
+var BgZ = 0 // Положение BG
 
 
 /*
@@ -28,25 +28,25 @@ var BgZ = 0
 
 let h = canvas.height;
 let w = canvas.width;
-ctx.strokeStyle = '#e4c358';
-//ctx.fillStyle = '#e4c358ad';
-let pad = 20;
+ctx.strokeStyle = '#e4c358'; // цвет линии
+let pad = 20; // canvas padding
 let axes = [[pad, pad], [pad, h - pad], [w - pad, h - pad]];
-let x = 0;
+let x = 0; // Основа расчетов (растет по мере увеличения грфика)
 let points = []; //Данные для отрисовки графика
-let roundCondition = "waiting"
-var intervalX = ((canvas.width - 65) /  166).toFixed(0)
-var intervalY = (canvas.height / 125) + 1
+let roundCondition = "waiting" // Состояние раунда
+var intervalX = ((canvas.width - 65) /  166).toFixed(0) // Интервал оси OX (не актуально)
+var intervalY = (canvas.height / 125) + 1 // Интервал оси OY (не актуально)
 let mutShow = $('#mutShow');
-let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2)
-let games = []
-let btnClicked = false
+let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2) // Диагональ (не актуально)
+let games = [] // История игр, нижняя таблица
+let btnClicked = false // обработчик нажания кнопки Bet
+// Звуки
 let audioMoonPlaying = $('#audioMoonPlaying')[0];
 let audioMoonWin = $('#audioMoonWin')[0];
 let audioMoonEnd = $('#audioMoonEnd')[0];
 
 
-
+// Отрисовка оси OX, с циклом проблемы
 function textOX(zero, first, second, third, fourth, fifth) {
   ctx.fillStyle = '#fff';
   ctx.fillText(zero + "s", pad, canvas.height - 5)
@@ -57,7 +57,8 @@ function textOX(zero, first, second, third, fourth, fifth) {
   ctx.fillText(fifth + "s", pad + 166 * 5, canvas.height - 5)
 }
 
-let xFormule = null
+let xFormule = null // Высчитывает текущий X в start()
+// Первоначальная отрисовка значений
 textOY(1, 2, 3);
 textOX(0, 5, 10, 15, 20, 25);
 var gameVal
@@ -70,13 +71,16 @@ function textOY(first, second, third) {
 }
 
 
-
+// Секундомер + рандомайзер выигрыша 
 var tick = 0
 var tickInterval
+var isRoundEnd = false
 function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
-      tick++
+      let rand = Math.random() * 100
+      rand < 5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
     tick = 0
@@ -84,26 +88,22 @@ function ticker (isActive) {
   }
 }
 
-
+// Функция старта, запускается в конце скрипта (по завершению счетчика .counter())
 function start() {
   audioMoonPlaying.play();
   roundCondition = "started"
   
   ticker(true)
   disableInputs(true)
-  // $("#crash-btn").attr("disabled", true)
   setTimeout(function () { }, 1);
-  // let rand = Math.random() * (50 - 1) + 1;
-  let rand = 15
+  // let rand = Math.random() * (50 - 1) + 1; // предыдущий рандомайзер
+  // Генерация графика и его обновление
   let interval = setInterval(() => {
-
-    // console.log((pad + x / 3.7) / 130)
     points.push([pad + x, h - pad -  x / 3.7 ])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
-    // x += x < 935 ? 1 : (5 + ((h - lastPt[1] + 120) / 120) / 10);
-    // console.log(xFormule);
     xFormule = (h - lastPt[1] + 100) / 120
+    // скорость роста графика
     if(x < 120) {
       x += .3
     } else if (x < 935) {
@@ -111,11 +111,9 @@ function start() {
     } else {
       x += (5 + (xFormule) / 10)
     }
+    // Обработка автостопа
     if (((xFormule).toFixed(2) + "x") >= myBet.autostopTiming) {
-      
       if(!stoped) {
-        // audioMoonPlaying.pause()
-        // audioMoonWin.play();
         let necessaryObj = bets.find(x => x.user === 'User')
         if (necessaryObj && roundCondition !== "waiting") {
           $("#crash-btn").attr("disabled", true)
@@ -144,9 +142,9 @@ function start() {
 
     redraw(); //Рисуем график
     BgZ += x
-    if (rand < (xFormule)) {
+    if (isRoundEnd) {
       ticker(false)
-
+      isRoundEnd = false
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
       audioMoonEnd.play()
@@ -188,7 +186,7 @@ function start() {
     }
   }, 30)
 
-  // Необходимо динамическое значение поля User
+  // Необходимо динамическое значение поля User, сейчас ищет юзера с указанным никнеймом и меняет его профит и тд
   let necessaryObj = bets.find(x => x.user === 'User')
   if (necessaryObj) {
     $("#crash-btn").attr("disabled", false)
@@ -222,7 +220,6 @@ $("#crash-btn").on("click", function () {
   }
 })
 function preparing() {
-  // $("#crash-view").css("background-position-y", 0).css("background-position-x", 0)
   btnClicked = false
   roundCondition = "waiting"
   $("#waitTimeShow").addClass('hide');
@@ -248,6 +245,8 @@ function startNextRound() {
   disableInputs(false)
   $("#crash-btn").text("BET")
   bets = []
+  // Автостоп
+
   // if(myBet.autostopTiming) {
   //   myBet.x = null,
   //   myBet.profit = null
@@ -284,15 +283,12 @@ function startNextRound() {
       autostopTiming: null
     }
   // }
-  
-  //valuesUpdating()
   betsUpdating()
 }
 
 function notice(isShowed, isWin) {
   isShowed ? $("#crash-wrapper").show() : $("#crash-wrapper").hide()
   if (isWin) {
-    // audioMoonPlaying.pause()
     audioMoonWin.play();
     $("#crash-wrapper span").text("+ " + (myBet.profit - myBet.value).toFixed(1) + " " + myBet.coin)
     $("#crash-wrapper span").css("color", "#F1CD5B")
@@ -304,7 +300,6 @@ function notice(isShowed, isWin) {
 
 
 function polyline(width, pts) { //Перерисовываем ОСИ
-
   ctx.lineWidth = width;
   ctx.beginPath();
   ctx.moveTo(...pts[0]);
@@ -320,23 +315,18 @@ let rotation = (middleX < 50) ? (middleX / 550) : (middleX / 1000)
 var lastPtAfter = [930, 134.05405405405406];
 function redraw() {
   ctx.strokeStyle = '#e4c358';
-  
-  
   rotation = (middleX > 850) ? middleX / (middleY * 2.2) : middleX / (middleY * 2.5)
-
+  // до достижения конца игры
   if (canvas.width - x > pad * 4) {
     ctx.clearRect(0, 0, w, h);
     // рисуем оси
     polyline(1, axes)
-    
-
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
     lastPts = pts
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
-    
     textOY(1, 2, 3);
     textOX(0, 13, 19, 24, 29, 34);
     if(x > 100) {
@@ -344,41 +334,28 @@ function redraw() {
         middleX += .3
       }
     }
-    
-    // mutShow.find('span').html((xFormule).toFixed(2) + "x");//Выводим X
-    
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
     $("#crash-view").css("background-position-y", BgZ / 500)
-    // .css("background-position-x", - BgZ / 3000)
-    // $("#crash-view").css("background-size", 300 - x / 4 + "%")
   } else {
+  // после достижения конца игры
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
     let pts = points.filter(p => p[0] > 0);
     if (pts.length < 2)
       return;
-    // [930, 134.05405405405406]
-    // [925, 135.40540540540542]
     let sX = parseInt((x - ((xFormule / 10)) / 166).toFixed(0))
     let sY = parseInt(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(0))
-    // console.log(((h - pts[pts.length - 1][1] + 120) / 120));
     lastPtAfter[1] > 40 ? lastPtAfter[1] -= 0.1 : false
-    
     if (middleX < 885) {
       middleX += 1
     }
     if (middleY < 375) {
       middleY += .5
     }
-    // textOY(sY - 2, sY - 1, sY);
-    console.log(tick);
     textOY(xFormule.toFixed(0) - 2, xFormule.toFixed(0) - 1, xFormule.toFixed(0));
     textOX(tick - 5, tick - 4, tick - 3, tick - 2, tick - 1, tick);
 
     $("#crash-view").css("background-position-y", BgZ / 500)
-    // $("#crash-view").css("background-size", 300 - x / 4 + "%")
-    // $("#crash-view").css("background-position-y", x / 4).css("background-position-x", - (x / 8))
-    //mutShow.find('span').html(((h - pts[pts.length - 1][1] + 120) / 120).toFixed(2) + "x");
     ctx.restore();
     let color = btnClicked ? "#897A42" : "#e4c35866"
     let colorStroke = btnClicked ? "#897A42" : '#e4c358'
@@ -391,7 +368,6 @@ function redraw() {
     ctx.fillStyle = color;
     // рисуем область под линией
     ctx.lineTo(lastPtAfter[0], h - 20);
-    // ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
     ctx.fill();
     ctx.save();
     ctx.fillStyle = colorStroke;
@@ -420,9 +396,7 @@ function underLinePainting(color, colorStroke) {
   ctx.bezierCurveTo(20, 380, middleX, middleY, lastPt[0], lastPt[1]);
   ctx.stroke();
   ctx.fillStyle = color;
-  // рисуем область под линией
   ctx.lineTo(lastPt[0], h - 20);
-  // ctx.bezierCurveTo(20, 380, middleX, middleY, 935, 380);
   ctx.fill();
   ctx.save();
   ctx.fillStyle = colorStroke;
@@ -469,7 +443,6 @@ $(".ivu-switch").on("click", function () {
 $(".crash *").on("input propertychange", function () {
   var preg = $(this).val().replace(/[^.\d]+/g, "").replace(/^([^\.]*\.)|\./g, '$1');
   $(this).val(preg);
-  //valuesUpdating(myBet.value, $("#crash-value"))
 })
 
 function valuesUpdating(option, elem) {
