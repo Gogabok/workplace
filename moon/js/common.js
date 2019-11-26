@@ -60,7 +60,7 @@ function textOX(zero, first, second, third, fourth, fifth) {
 let xFormule = null // Высчитывает текущий X в start()
 // Первоначальная отрисовка значений
 textOY(1, 2, 3);
-textOX(0, 5, 10, 15, 20, 25);
+textOX(0, 10, 15, 20, 25, 30);
 var gameVal
 var stoped = false
 function textOY(first, second, third) {
@@ -83,7 +83,9 @@ function ticker (isActive) {
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
-    tick = 0
+    setTimeout(() => {
+      tick = 0
+    }, 1);
     clearInterval(tickInterval)
   }
 }
@@ -105,7 +107,7 @@ function start() {
     xFormule = (h - lastPt[1] + 100) / 120
     // скорость роста графика
     if(x < 120) {
-      x += .3
+      x += .4
     } else if (x < 935) {
       x += 1
     } else {
@@ -157,20 +159,22 @@ function start() {
       for (let i = 0; i < bets.length; i++) {
         profit += parseInt(bets[i].profit)
       }
-      if (games.length <= 10) {
-        games.push({
+      console.log(tick);
+      
+      if (games.length <= 40) {
+        games.unshift({
           val: gameVal,
           bets: bets.length,
           profit: profit ? profit : 0,
-          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - ((xFormule / 10) / 166)).toFixed(1))) + 26
+          time: tick
         })
       } else {
-        games.splice(0, 1)
-        games.push({
+        games.splice(0, games.length)
+        games.unshift({
           val: gameVal,
           bets: bets.length,
           profit: profit ? profit : 0,
-          time: x < 935 ? parseInt(((x / 166) * 5).toFixed(1)) : parseInt((((x - 935) - ((xFormule / 10) / 166)).toFixed(1))) + 26
+          time: tick
         })
       }
       profit = 0
@@ -328,7 +332,7 @@ function redraw() {
     let lastPt = pts[pts.length - 1];
     let prevPt = pts[pts.length - 2];
     textOY(1, 2, 3);
-    textOX(0, 13, 19, 24, 29, 34);
+    textOX(0, 10, 15, 20, 25, 30);
     if(x > 100) {
       if (middleX < 685) {
         middleX += .3
