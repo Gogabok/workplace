@@ -930,7 +930,7 @@ main {
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
   /**/ }
-#crash-btn:disabled, #auto-stop-value:disabled, #crash-value:disabled, .btn__tab button:disabled, .hotkey-disable {
+.crash-btn:disabled, #auto-stop-value:disabled, #crash-value:disabled, .btn__tab button:disabled, .hotkey-disable {
   opacity: .7;
   pointer-events: none;
 }
@@ -1179,4 +1179,28 @@ main .wrapper table.box tr:nth-child(even) {
 		zoom: .8;
 		min-height: 115vh;
 	}
+}
+
+.crash-btn-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .item-5 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .crash-btn-desktop {
+    display: none;
+  }
+  .crash-btn-mobile {
+    display: block;
+    width: 50% !important;
+  }
+  .item-2, .item-3 {
+    width: 100% !important;
+  }
 }
