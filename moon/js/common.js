@@ -79,7 +79,7 @@ function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < .5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 31 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
@@ -92,6 +92,7 @@ function ticker (isActive) {
 
 // Функция старта, запускается в конце скрипта (по завершению счетчика .counter())
 function start() {
+  betsNulling()
   audioMoonPlaying.play();
   roundCondition = "started"
   
@@ -159,8 +160,6 @@ function start() {
       for (let i = 0; i < bets.length; i++) {
         profit += parseInt(bets[i].profit)
       }
-      console.log(tick);
-      
       if (games.length <= 40) {
         games.unshift({
           val: gameVal,
@@ -197,7 +196,30 @@ function start() {
   }
 }
 
-
+function betsNulling () {
+  if(myBet.autobet) {
+    myBet.x = null,
+    myBet.profit = null
+    if (myBet.coin === null) {
+      myBet.coin = "LEX"
+    }
+    $(".crash-btn").text("Вывести")
+    myBet.coin === null ? myBet.coin = "LEX" : false
+    myBet.value == null ? bets.push(myBet) : false
+    valuesUpdating()
+    betsUpdating()
+  } else {
+    myBet = {
+      user: "User",
+      coin: null,
+      value: null,
+      x: null,
+      profit: null,
+      autostopTiming: null,
+      autobet: false
+    }
+  }
+}
 
 $(".crash-btn").on("click", function () {
   let necessaryObj = bets.find(x => x.user === 'User')
@@ -236,6 +258,8 @@ function preparing() {
 }
 
 function startNextRound() {
+ 
+  
   middleX = 20
   middleY = 380
   x = 0
@@ -250,11 +274,10 @@ function startNextRound() {
   $(".crash-btn").text("BET")
   bets = []
   // АвтоБЕТ
-
-  // if(myBet.autostopTiming) {
+  // if(myBet.autostop) {
   //   myBet.x = null,
   //   myBet.profit = null
-
+    
   //   let necessaryObj = bets.find(x => x.user === 'User')
   //   if (necessaryObj && roundCondition !== "waiting") {
   //     $(".crash-btn").attr("disabled", true)
@@ -269,7 +292,7 @@ function startNextRound() {
   //     if (myBet.coin === null) {
   //       myBet.coin = "LEX"
   //     }
-  //     valuesUpdating()
+  //     // valuesUpdating()
   //     if (myBet.value >= 10) {
   //       $(".crash-btn").text() !== "Вывести" ? bets.push(myBet) : false
   //       betsUpdating()
@@ -278,16 +301,18 @@ function startNextRound() {
   //     }
   //   }
   // } else {
-    myBet = {
-      user: "User",
-      coin: null,
-      value: null,
-      x: null,
-      profit: null,
-      autostopTiming: null
-    }
+    // myBet = {
+    //   user: "User",
+    //   coin: null,
+    //   value: null,
+    //   x: null,
+    //   profit: null,
+    //   autostopTiming: null,
+    //   autostop: false
+    // }
   // }
   betsUpdating()
+  valuesUpdating()
 }
 
 function notice(isShowed, isWin) {
@@ -424,7 +449,8 @@ let myBet = {
   value: null,
   x: null,
   profit: null,
-  autostopTiming: null
+  autostopTiming: null,
+  autobet: false
 }
 
 let bets = [
@@ -454,15 +480,22 @@ function valuesUpdating(option, elem) {
   } else {
     myBet.value = $("#crash-value").val()
     // if ($(".ivu-switch").hasClass("ivu-checked")) {
-    //   myBet.autostopTiming = $("#auto-stop-value").val()
+    $("#auto-stop-value").val() > 1 ? myBet.autostopTiming = $("#auto-stop-value").val() : false
     // }
+    $(".ivu-switch").hasClass("ivu-checked") ? myBet.autobet = true : myBet.autobet = false
     if($("auto-stop-value").val() >= 1) {
       myBet.autostopTiming = $("#auto-stop-value").val()
     }
   }
+  $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false)
 }
 
-
+$(".ivu-switch").on("click", function (e) {
+  $(".ivu-switch").hasClass("ivu-checked") ? myBet.autobet = true : myBet.autobet = false
+  if(myBet.value == null) {
+    $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false)
+  }
+})
 
 
 
@@ -510,7 +543,7 @@ function disableInputs(block) {
   $(".bet-hotkey").toggleClass("hotkey-disable")
   block ? $(".bet-hotkey").addClass("hotkey-disable") : $(".bet-hotkey").removeClass("hotkey-disable")
   block ? $(".auto-stop-hotkey").addClass("hotkey-disable") : $(".auto-stop-hotkey").removeClass("hotkey-disable")
-  block ? $(".ivu-switch").addClass("hotkey-disable") : $(".ivu-switch").removeClass("hotkey-disable")
+  // block ? $(".ivu-switch").addClass("hotkey-disable") : $(".ivu-switch").removeClass("hotkey-disable")
 }
 
 $(".bet-hotkey").on("click", function () {

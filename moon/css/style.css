@@ -1130,7 +1130,7 @@ main .wrapper table.box tr:nth-child(even) {
 }
 
 .table-players-wrapper {
-  max-width: 400px;
+  /* max-width: 400px; */
   overflow-y: auto;
 }
 
