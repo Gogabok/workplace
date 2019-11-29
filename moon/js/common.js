@@ -5,6 +5,9 @@ const timerTime = 5000; //Время таймера
 let canvas = document.getElementById('crash-canvas');
 let ctx = canvas.getContext('2d');
 ctx.clearRect(0, 0, canvas.width, canvas.height);
+var arrrowImage = document.getElementById('arrrowImage');
+
+
 /*
 *  Рисуем оси
 */
@@ -79,7 +82,7 @@ function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < 31 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
@@ -398,15 +401,15 @@ function redraw() {
     ctx.lineTo(lastPtAfter[0], h - 20);
     ctx.fill();
     ctx.save();
-    ctx.fillStyle = colorStroke;
-    ctx.translate(lastPtAfter[0], lastPtAfter[1]);
-    ctx.rotate(- 0.35 - rotation);
-    ctx.beginPath();
-    ctx.moveTo(0, 18);
-    ctx.lineTo(36, 0);
-    ctx.lineTo(0, -18);
-    ctx.fill();
-    ctx.restore();
+    // ctx.fillStyle = colorStroke;
+    // ctx.translate(lastPtAfter[0], lastPtAfter[1]);
+    // ctx.rotate(- 0.35 - rotation);
+    // ctx.beginPath();
+    // ctx.moveTo(0, 18);
+    // ctx.lineTo(36, 0);
+    // ctx.lineTo(0, -18);
+    // ctx.fill();
+    // ctx.restore();
   }
 
 }
@@ -427,16 +430,21 @@ function underLinePainting(color, colorStroke) {
   ctx.lineTo(lastPt[0], h - 20);
   ctx.fill();
   ctx.save();
-  ctx.fillStyle = colorStroke;
+  // ctx.fillStyle = colorStroke;
+  // ctx.drawImage(arrrowImage, lastPt[0], lastPt[1] - 18, 40, 30);
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(90 - 0.35 - rotation);
+  // ctx.beginPath();
+  // ctx.moveTo(0, 18);
+  // ctx.lineTo(36, 0);
+  // ctx.lineTo(0, -18);
+  // ctx.fill();
+  // ctx.restore();
   ctx.translate(lastPt[0], lastPt[1]);
-  ctx.rotate(- 0.35 - rotation);
-  ctx.beginPath();
-  ctx.moveTo(0, 18);
-  ctx.lineTo(36, 0);
-  ctx.lineTo(0, -18);
-  ctx.fill();
-  ctx.restore();
-
+  ctx.rotate(0 + 1.45);
+  ctx.drawImage(arrrowImage, 50, 50, 0, 0, 80, 60);
+  ctx.rotate(- (0 + 1.45));
+  ctx.translate(-lastPt[0], -lastPt[1]);
 }
 
 
