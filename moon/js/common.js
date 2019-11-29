@@ -410,6 +410,11 @@ function redraw() {
     // ctx.lineTo(0, -18);
     // ctx.fill();
     // ctx.restore();
+    ctx.translate(lastPtAfter[0], lastPtAfter[1]);
+    ctx.rotate(1.3 - rotation);
+    ctx.drawImage(arrrowImage, -40, -40, 80, 60);
+    ctx.rotate(- (1.3 - rotation));
+    ctx.translate(-lastPtAfter[0], -lastPtAfter[1]);
   }
 
 }
@@ -440,10 +445,11 @@ function underLinePainting(color, colorStroke) {
   // ctx.lineTo(0, -18);
   // ctx.fill();
   // ctx.restore();
+  
   ctx.translate(lastPt[0], lastPt[1]);
-  ctx.rotate(0 + 1.45);
-  ctx.drawImage(arrrowImage, 50, 50, 0, 0, 80, 60);
-  ctx.rotate(- (0 + 1.45));
+  ctx.rotate(1.3 - rotation);
+  ctx.drawImage(arrrowImage, -40, -40, 80, 60);
+  ctx.rotate(- (1.3 - rotation));
   ctx.translate(-lastPt[0], -lastPt[1]);
 }
 
