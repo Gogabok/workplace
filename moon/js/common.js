@@ -112,7 +112,7 @@ function start() {
     xFormule = (h - lastPt[1] + 100) / 120
     // скорость роста графика
     if(x < 120) {
-      x += .4
+      x += Cjpl.4
     } else if (x < 935) {
       x += 1
     } else {
