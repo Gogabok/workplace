@@ -82,7 +82,7 @@ function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < 32 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 2 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
