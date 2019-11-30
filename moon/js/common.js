@@ -149,7 +149,7 @@ function start() {
 
     redraw(); //Рисуем график
     BgZ += x
-    if (isRoundEnd) {
+    if (isRoundEnd || xFormule >= 9999) {
       ticker(false)
       isRoundEnd = false
       audioMoonPlaying.pause()
