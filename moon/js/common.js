@@ -82,7 +82,7 @@ function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < 5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 32 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
@@ -95,7 +95,7 @@ function ticker (isActive) {
 
 // Функция старта, запускается в конце скрипта (по завершению счетчика .counter())
 function start() {
-  betsNulling()
+  myBet.autobet  ? betsNulling() : false
   audioMoonPlaying.play();
   roundCondition = "started"
   
@@ -105,6 +105,7 @@ function start() {
   // let rand = Math.random() * (50 - 1) + 1; // предыдущий рандомайзер
   // Генерация графика и его обновление
   let interval = setInterval(() => {
+    
     points.push([pad + x, h - pad -  x / 3.7 ])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
@@ -126,7 +127,7 @@ function start() {
           let pts = points.filter(p => p[0] > 0);
           let lastPt = pts[pts.length - 1];
           necessaryObj.x = (xFormule).toFixed(2)
-          necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
+          necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
           betsUpdating()
           btnClicked = true
           notice(true, true)
@@ -154,7 +155,7 @@ function start() {
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
       audioMoonEnd.play()
-      myBet.value && !myBet.profit ? notice(true, false) : false
+      necessaryObj && !myBet.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
       // let gameVal = (xFormule).toFixed(2)
@@ -200,7 +201,7 @@ function start() {
 }
 
 function betsNulling () {
-  if(myBet.autobet) {
+  if(!myBet.value) {
     myBet.x = null,
     myBet.profit = null
     if (myBet.coin === null) {
@@ -208,20 +209,22 @@ function betsNulling () {
     }
     $(".crash-btn").text("Вывести")
     myBet.coin === null ? myBet.coin = "LEX" : false
-    myBet.value == null ? bets.push(myBet) : false
+    bets.push(myBet)
     valuesUpdating()
     betsUpdating()
-  } else {
-    myBet = {
-      user: "User",
-      coin: null,
-      value: null,
-      x: null,
-      profit: null,
-      autostopTiming: null,
-      autobet: false
-    }
-  }
+    
+  } 
+  // else {
+  //   myBet = {
+  //     user: "User",
+  //     coin: null,
+  //     value: null,
+  //     x: null,
+  //     profit: null,
+  //     autostopTiming: null,
+  //     autobet: false
+  //   }
+  // }
 }
 
 $(".crash-btn").on("click", function () {
@@ -231,7 +234,7 @@ $(".crash-btn").on("click", function () {
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
     necessaryObj.x = (xFormule).toFixed(2)
-    necessaryObj.profit = (myBet.value * myBet.x).toFixed(2)
+    necessaryObj.profit = (myBet.value * myBet.x).toFixed(1)
     betsUpdating()
     btnClicked = true
     notice(true, true)
@@ -272,10 +275,22 @@ function startNextRound() {
   redraw();
   mutShow.addClass('hide');
   $("#waitTimeShow").removeClass('hide');
-  $("#waitTimeShow").counter('start')
+  $("#waitTimeShow").counter('start');
+  textOY(1, 2, 3);
+  textOX(0, 10, 15, 20, 25, 30);
   disableInputs(false)
   $(".crash-btn").text("BET")
   bets = []
+  myBet = {
+    user: "User",
+    coin: null,
+    value: null,
+    x: null,
+    profit: null,
+    autostopTiming: null,
+    autobet: false
+  }
+  $(".ivu-switch").hasClass("ivu-checked") ? myBet.autobet = true : myBet.autobet = false
   // АвтоБЕТ
   // if(myBet.autostop) {
   //   myBet.x = null,
@@ -315,7 +330,7 @@ function startNextRound() {
     // }
   // }
   betsUpdating()
-  valuesUpdating()
+  // valuesUpdating()
 }
 
 function notice(isShowed, isWin) {
@@ -410,10 +425,17 @@ function redraw() {
     // ctx.lineTo(0, -18);
     // ctx.fill();
     // ctx.restore();
+
+    // ctx.translate(lastPtAfter[0], lastPtAfter[1]);
+    // ctx.rotate(1.3 - rotation);
+    // ctx.drawImage(arrrowImage, -40, -40, 80, 60);
+    // ctx.rotate(- (1.3 - rotation));
+    // ctx.translate(-lastPtAfter[0], -lastPtAfter[1]);
+
     ctx.translate(lastPtAfter[0], lastPtAfter[1]);
-    ctx.rotate(1.3 - rotation);
-    ctx.drawImage(arrrowImage, -40, -40, 80, 60);
-    ctx.rotate(- (1.3 - rotation));
+    ctx.rotate(-1 - rotation);
+    ctx.drawImage(arrrowImage, -30, -30, 60, 60);
+    ctx.rotate(1 + rotation);
     ctx.translate(-lastPtAfter[0], -lastPtAfter[1]);
   }
 
@@ -445,12 +467,55 @@ function underLinePainting(color, colorStroke) {
   // ctx.lineTo(0, -18);
   // ctx.fill();
   // ctx.restore();
-  
+
+  // Первая ракета
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(1.3 - rotation);
+  // ctx.drawImage(arrrowImage, -40, -40, 80, 60);
+  // ctx.rotate(- (1.3 - rotation));
+  // ctx.translate(-lastPt[0], -lastPt[1]);
+
+  // // UFO
   ctx.translate(lastPt[0], lastPt[1]);
-  ctx.rotate(1.3 - rotation);
-  ctx.drawImage(arrrowImage, -40, -40, 80, 60);
-  ctx.rotate(- (1.3 - rotation));
+  ctx.rotate(-1 - rotation);
+  ctx.drawImage(arrrowImage, -30, -30, 60, 60);
+  ctx.rotate(1 + rotation);
   ctx.translate(-lastPt[0], -lastPt[1]);
+
+  // startup
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(0.45);
+  // ctx.drawImage(arrrowImage, -15, -30, 45, 45);
+  // ctx.rotate(- 0.45);
+  // ctx.translate(-lastPt[0], -lastPt[1]);
+
+
+
+  // startup1
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(0.45);
+  // ctx.drawImage(arrrowImage, -25, -67, 90, 90);
+  // ctx.rotate(- 0.45);
+  // ctx.translate(-lastPt[0], -lastPt[1]);
+
+
+  // rocket
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(1.1);
+  // ctx.drawImage(arrrowImage, -5, -97, 90, 90);
+  // ctx.rotate(- 1.1);
+  // ctx.translate(-lastPt[0], -lastPt[1]);
+
+
+  // rocket1
+  // ctx.translate(lastPt[0], lastPt[1]);
+  // ctx.rotate(0.45);
+  // ctx.drawImage(arrrowImage, -10, -35, 45, 45);
+  // ctx.rotate(- 0.45);
+  // ctx.translate(-lastPt[0], -lastPt[1]);
+
+
+  
 }
 
 
@@ -501,13 +566,13 @@ function valuesUpdating(option, elem) {
       myBet.autostopTiming = $("#auto-stop-value").val()
     }
   }
-  $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false)
+  roundCondition === "waiting" ? $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false) : false
 }
 
 $(".ivu-switch").on("click", function (e) {
   $(".ivu-switch").hasClass("ivu-checked") ? myBet.autobet = true : myBet.autobet = false
   if(myBet.value == null) {
-    $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false)
+    roundCondition === "waiting" ? $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false) : false
   }
 })
 
