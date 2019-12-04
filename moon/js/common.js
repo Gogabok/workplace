@@ -1,4 +1,4 @@
-const timerTime = 5000; //Время таймера
+const timerTime = 20000; //Время таймера
 
 
 
@@ -82,7 +82,7 @@ function ticker (isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < 2 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
@@ -112,7 +112,7 @@ function start() {
     xFormule = (h - lastPt[1] + 100) / 120
     // скорость роста графика
     if(x < 120) {
-      x += Cjpl.4
+      x += .4
     } else if (x < 935) {
       x += 1
     } else {
