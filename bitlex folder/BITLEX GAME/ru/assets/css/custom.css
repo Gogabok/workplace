@@ -17,7 +17,7 @@ body:after {
     top: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../images/bg/bg.png');
+    background-image: url('../images/bg/bg-new.jpg');
     background-size: cover;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -781,10 +781,14 @@ h2 {
   width: 75%
 }
 
-img {
+img {#
   pointer-events: none;
 }
 
 html * {
   user-select: none;
+}
+
+#partners {
+  padding: 60px 0px;
 }
