@@ -767,3 +767,16 @@ h2 {
 #exclusive .tournament-btn {
   display: none;
 }
+
+.owl-carousel .owl-stage {
+  display: flex;
+  align-items: center;
+}
+
+.owl-carousel .owl-stage .owl-item {
+  margin: 0px 0px;
+}
+
+.owl-carousel .owl-stage .owl-item img {
+  width: 75%
+}
