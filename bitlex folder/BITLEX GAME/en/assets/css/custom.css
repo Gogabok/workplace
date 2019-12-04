@@ -261,13 +261,9 @@ a, a:hover {
   
 }
 
-.game-title {
-    font-size: 5rem !important;
-    font-weight: 600;
-    margin-bottom: 40px;
-}
+
 .sign__word {
-  font-size: 2.6rem;
+  font-size: 1.6rem !important;
   line-height: 1;
   color: #fff;
   height: 5vh;
@@ -276,7 +272,15 @@ a, a:hover {
   text-align: center;
   -o-text-overflow: clip;
   text-overflow: clip;
-  white-space: pre;
+  /* white-space: pre; */
+}
+.info {
+  padding-top: 50px;
+}
+.game-title {
+    font-size: 5rem !important;
+    font-weight: 600;
+    margin-bottom: 40px;
 }
 .testimonials blockquote p {
   text-transform: uppercase;
@@ -762,4 +766,17 @@ h2 {
 
 #exclusive .tournament-btn {
   display: none;
+}
+
+.owl-carousel .owl-stage {
+  display: flex;
+  align-items: center;
+}
+
+.owl-carousel .owl-stage .owl-item {
+  margin: 0px 0px;
+}
+
+.owl-carousel .owl-stage .owl-item img {
+  width: 75%
 }
