@@ -1,3 +1,21 @@
+.wrap-loader{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: #1a1a1a;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+}
+
+.wrap-loader img{
+	width: 200px;
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -16,6 +34,7 @@ body {
   margin: 0px 0px 0px 60px;
   position: relative;
   z-index: 999;
+  width: 170px;
 }
 
 .current-lang {
@@ -27,7 +46,6 @@ body {
 .menu-lang {
   display: none;
   background: #fff;
-  width: 170px;
   margin-top: 15px;
 }
 
@@ -130,6 +148,64 @@ body {
   background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sections-side-right-item a {
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 7px 17px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.5);
+  transition-duration: .2s;
+  font-size: 25px;
+  outline: none;
+}
+
+.sections-side-right-item .centered {
+  margin-top: 130px;
+  position: relative;
+  z-index: 1000;
+  text-align: center;
+}
+
+.sections-side-right-item .centered a {
+  margin: 0px auto;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.countdown .countdown-item {
+  margin: 0px 5px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  border: 1px solid #fff;
+}
+
+.count-half {
+  color: #000;
+  margin: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.sections-side-right-item a:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(125, 125, 125);
+  transition-duration: .2s;
 }
 
 .sections-bg {
@@ -159,4 +235,54 @@ body {
 
 .sections-side-right-item p {
   margin: 0px;
+}
+
+.side-left-title {
+  max-width: 700px;
+}
+
+
+
+@media screen and (max-width: 1300px) {
+  .side-left-title {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .side-left-title {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .sections {
+    display: block;
+    height: 100vh;
+  }
+
+  .language {
+    position: absolute;
+  }
+
+  .sections .sections-side-left, .sections .sections-side-right {
+    width: 100%;
+    position: relative;
+  }
+  .language {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 441px) {
+  .countdown {
+    display: block;
+    text-align: center;
+  }
+
+  .countdown-item {
+    width: 30px;
+    margin: 2px auto !important;
+    display: block;
+  }
 }
