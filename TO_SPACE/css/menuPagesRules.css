@@ -1,0 +1,114 @@
+/* body {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+} */
+.rules-page {
+  /* background: url("../img/fon.jpg") 50% 50% no-repeat; */
+  /* background-size: cover; */
+  /* width: 100%; */
+  border: 1px solid #F1CD5B;
+  width: 90%;
+  max-width: 520px;
+  margin: 30px auto;
+}
+
+.game-rule {
+  /* width: 90%;
+  max-width: 520px; */
+  /* margin: 30px auto; */
+  /* background: #132234; */
+  /* border: 1px solid #F1CD5B; */
+  box-sizing: border-box;
+  padding-bottom: 0px;
+  border: none;
+  width: 100%;
+}
+
+.game-rule-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #101B28;
+  padding: 16px 25px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+}
+
+.game-title-rules {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #F1CD5B;
+  margin: 0px;
+}
+
+.game-rule-content {
+  background: #132234;
+  box-sizing: border-box;
+  padding: 16px 25px 20px 25px;
+}
+
+.game-rule-content-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+.game-rule-content-list {
+  list-style: none;
+  padding: 0px;
+}
+
+.game-rule-content-list-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0px;
+  margin: 10px 0px;
+}
+
+.game-rule-content-list-item p {
+  margin: 0px;
+  max-width: 90%;
+}
+
+.game-rule-content-list-item-counter {
+  line-height: 0px;
+  background: #F1CD5B;
+  border-radius: 50%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #101B28;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 15px;
+}
+
+.game-rule-content-text-bold {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 600px) {
+  .game-rule-content-list-item p {
+    margin: 0px;
+    max-width: 83%;
+  }
+}
