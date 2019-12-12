@@ -4410,23 +4410,23 @@ function fixing(randElement, transformation) {
 
 
 
-$("#counter").counter({
-	autoStart: false,
-	duration: 20000,
-	countFrom: 20,
-	countTo: 0,
-	runOnce: false,
-	placeholder: "",
-	easing: "linear",
-	onStart: function () { },
-	onComplete: function () {
-		starting()
-	},
-	numberFormatter:
-		function (number) {
-			return (number.toFixed(1));
-		}
-});
+// $("#counter").counter({
+// 	autoStart: false,
+// 	duration: 20000,
+// 	countFrom: 20,
+// 	countTo: 0,
+// 	runOnce: false,
+// 	placeholder: "",
+// 	easing: "linear",
+// 	onStart: function () { },
+// 	onComplete: function () {
+// 		starting()
+// 	},
+// 	numberFormatter:
+// 		function (number) {
+// 			return (number.toFixed(1));
+// 		}
+// });
 
 
 var randNumber = -1;

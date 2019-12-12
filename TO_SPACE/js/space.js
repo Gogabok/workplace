@@ -1,4 +1,155 @@
-const timerTime = 5000; //Время таймера
+(function () {
+
+  (function ($) {
+    var Counter, defaults, pluginName;
+    pluginName = "counter";
+    defaults = {
+      autoStart: true,
+      duration: 1500,
+      countFrom: void 0,
+      countTo: void 0,
+      runOnce: false,
+      placeholder: void 0,
+      easing: "easeOutQuad",
+      onStart: function () { },
+      onComplete: function () { },
+      numberFormatter: function (number) {
+        return Math.round(number);
+      }
+    };
+    Counter = (function () {
+
+      function Counter(element, options) {
+        this.element = element;
+        this.options = $.extend(true, {}, defaults, options);
+        this.init();
+      }
+
+      return Counter;
+
+    })();
+    Counter.prototype.init = function () {
+      var givenNumber;
+      givenNumber = parseFloat(this.element.innerHTML);
+      if ((givenNumber != null) && !isNaN(givenNumber)) {
+        if (this.options.countFrom < givenNumber) {
+          this.options.countTo = givenNumber;
+        } else {
+          this.options.countFrom = givenNumber;
+        }
+      }
+      if (this.options.countFrom === void 0) {
+        this.options.countFrom = 0;
+      }
+      if (this.options.countTo === void 0) {
+        this.options.countTo = 0;
+      }
+      if (this.options.placeholder != null) {
+        this.element.innerHTML = this.options.placeholder;
+      }
+      if (this.options.autoStart) {
+        return this.start();
+      }
+    };
+    Counter.prototype.start = function () {
+      var self;
+      if (this.options.runOnce && this.runCount() >= 1) {
+        return false;
+      }
+      if (!this.running) {
+        this.running = true;
+        this.updateRunCount();
+        this.options.onStart();
+        self = this;
+        return jQuery({
+          count: this.options.countFrom
+        }).animate({
+          count: this.options.countTo
+        }, {
+          duration: this.options.duration,
+          easing: this.options.easing,
+          step: function () {
+            return self.setNumber(this.count);
+          },
+          complete: function () {
+            self.setNumber(self.options.countTo);
+            self.running = false;
+            return self.options.onComplete();
+          }
+        });
+      }
+    };
+    Counter.prototype.updateRunCount = function () {
+      return $(this.element).data("counterRunCount", (this.runCount() || 0) + 1);
+    };
+    Counter.prototype.runCount = function () {
+      return $(this.element).data("counterRunCount");
+    };
+    Counter.prototype.setNumber = function (number) {
+      return this.element.innerHTML = this.options.numberFormatter(number);
+    };
+    return $.fn.counter = function (options) {
+      var countFromAttr, countToAttr, self;
+      self = this;
+      countToAttr = parseFloat($(this).attr("data-count-to"));
+      countFromAttr = parseFloat($(this).attr("data-count-from"));
+      if (typeof options !== "string") {
+        if (!(options.countTo != null) && countToAttr) {
+          options.countTo = countToAttr;
+        }
+        if (!(options.countFrom != null) && countFromAttr) {
+          options.countFrom = countFromAttr;
+        }
+      }
+      return this.each(function () {
+        var plugin;
+        if (plugin = $(this).data("plugin_" + pluginName)) {
+          if (typeof options === "string") {
+            switch (options) {
+              case "start":
+                return plugin.start();
+            }
+          }
+        } else {
+          return $(this).data("plugin_" + pluginName, new Counter(this, options));
+        }
+      });
+    };
+  })(jQuery);
+
+}).call(this);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const timerTime = 20000; //Время таймера
 
 
 
@@ -37,11 +188,11 @@ let axes = [[pad, pad], [pad, h - pad], [w - pad, h - pad]];
 let x = 0; // Основа расчетов (растет по мере увеличения грфика)
 let points = []; //Данные для отрисовки графика
 let roundCondition = "waiting" // Состояние раунда
-var intervalX = ((canvas.width - 65) /  166).toFixed(0) // Интервал оси OX (не актуально)
+var intervalX = ((canvas.width - 65) / 166).toFixed(0) // Интервал оси OX (не актуально)
 var intervalY = (canvas.height / 125) + 1 // Интервал оси OY (не актуально)
 let mutShow = $('#mutShow');
 let diagonal = Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2) // Диагональ (не актуально)
-let games1 = [] // История игр, нижняя таблица
+let games = [] // История игр, нижняя таблица
 let btnClicked = false // обработчик нажания кнопки Bet
 // Звуки
 let audioMoonPlaying = $('#audioMoonPlaying')[0];
@@ -78,11 +229,11 @@ function textOY(first, second, third) {
 var tick = 0
 var tickInterval
 var isRoundEnd = false
-function ticker (isActive) {
+function ticker(isActive) {
   if (isActive) {
     tickInterval = setInterval(() => {
       let rand = Math.random() * 100
-      rand < 2 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
+      rand < 5 ? isRoundEnd = true : false // Рандомайзер, сейчас 5% шанс обрывания роста графика
       tick++ // счетчик секунд (в основном для оси OX)
     }, 1000)
   } else {
@@ -95,23 +246,23 @@ function ticker (isActive) {
 
 // Функция старта, запускается в конце скрипта (по завершению счетчика .counter())
 function start() {
-  mySpaceBet.autobet  ? betsNulling() : false
+  myBetMoon.autobet ? betsNulling() : false
   audioMoonPlaying.play();
   roundCondition = "started"
-  
+
   ticker(true)
   disableInputs(true)
   setTimeout(function () { }, 1);
   // let rand = Math.random() * (50 - 1) + 1; // предыдущий рандомайзер
   // Генерация графика и его обновление
   let interval = setInterval(() => {
-    
-    points.push([pad + x, h - pad -  x / 3.7 ])
+
+    points.push([pad + x, h - pad - x / 3.7])
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
     xFormule = (h - lastPt[1] + 100) / 120
     // скорость роста графика
-    if(x < 120) {
+    if (x < 120) {
       x += .4
     } else if (x < 935) {
       x += 1
@@ -119,25 +270,25 @@ function start() {
       x += (5 + (xFormule) / 2)
     }
     // Обработка автостопа
-    if (((xFormule).toFixed(2) + "x") >= mySpaceBet.autostopTiming) {
-      if(!stoped) {
-        let necessaryObj = betSpace.find(x => x.user === 'User')
+    if (((xFormule).toFixed(2) + "x") >= myBetMoon.autostopTiming) {
+      if (!stoped) {
+        let necessaryObj = betsMoon.find(x => x.user === 'User')
         if (necessaryObj && roundCondition !== "waiting") {
           $(".crash-btn").attr("disabled", true)
           let pts = points.filter(p => p[0] > 0);
           let lastPt = pts[pts.length - 1];
           necessaryObj.x = (xFormule).toFixed(2)
-          necessaryObj.profit = (mySpaceBet.value * mySpaceBet.x).toFixed(1)
+          necessaryObj.profit = (myBetMoon.value * myBetMoon.x).toFixed(1)
           betsUpdating()
           btnClicked = true
           notice(true, true)
         } else {
-          if (mySpaceBet.coin === null) {
-            mySpaceBet.coin = "LEX"
+          if (myBetMoon.coin === null) {
+            myBetMoon.coin = "LEX"
           }
           valuesUpdating()
-          if (mySpaceBet.value >= 10) {
-            $(".crash-btn").text() !== "Вывести" ? betSpace.push(mySpaceBet) : false
+          if (myBetMoon.value >= 10) {
+            $(".crash-btn").text() !== "Вывести" ? betsMoon.push(myBetMoon) : false
             betsUpdating()
             $(".crash-btn").text("Вывести")
             disableInputs(true)
@@ -155,27 +306,27 @@ function start() {
       audioMoonPlaying.pause()
       audioMoonPlaying.currentTime = 0;
       audioMoonEnd.play()
-      necessaryObj && !mySpaceBet.profit ? notice(true, false) : false
+      necessaryObj && !myBetMoon.profit ? notice(true, false) : false
       btnClicked = true
       redraw();
       // let gameVal = (xFormule).toFixed(2)
       clearInterval(interval)
       let profit = 0
-      for (let i = 0; i < betSpace.length; i++) {
-        profit += parseInt(betSpace[i].profit)
+      for (let i = 0; i < betsMoon.length; i++) {
+        profit += parseInt(betsMoon[i].profit)
       }
-      if (games1.length <= 40) {
-        games1.unshift({
+      if (games.length <= 40) {
+        games.unshift({
           val: gameVal,
-          bets: betSpace.length,
+          bets: betsMoon.length,
           profit: profit ? profit : 0,
           time: tick
         })
       } else {
-        games1.splice(0, games.length)
-        games1.unshift({
+        games.splice(0, games.length)
+        games.unshift({
           val: gameVal,
-          bets: betSpace.length,
+          bets: betsMoon.length,
           profit: profit ? profit : 0,
           time: tick
         })
@@ -194,28 +345,28 @@ function start() {
   }, 30)
 
   // Необходимо динамическое значение поля User, сейчас ищет юзера с указанным никнеймом и меняет его профит и тд
-  let necessaryObj = betSpace.find(x => x.user === 'User')
+  let necessaryObj = betsMoon.find(x => x.user === 'User')
   if (necessaryObj) {
     $(".crash-btn").attr("disabled", false)
   }
 }
 
-function betsNulling () {
-  if(!mySpaceBet.value) {
-    mySpaceBet.x = null,
-    mySpaceBet.profit = null
-    if (mySpaceBet.coin === null) {
-      mySpaceBet.coin = "LEX"
+function betsNulling() {
+  if (!myBetMoon.value) {
+    myBetMoon.x = null,
+      myBetMoon.profit = null
+    if (myBetMoon.coin === null) {
+      myBetMoon.coin = "LEX"
     }
     $(".crash-btn").text("Вывести")
-    mySpaceBet.coin === null ? mySpaceBet.coin = "LEX" : false
-    betSpace.push(mySpaceBet)
+    myBetMoon.coin === null ? myBetMoon.coin = "LEX" : false
+    betsMoon.push(myBetMoon)
     valuesUpdating()
     betsUpdating()
-    
-  } 
+
+  }
   // else {
-  //   mySpaceBet = {
+  //   myBetMoon = {
   //     user: "User",
   //     coin: null,
   //     value: null,
@@ -228,23 +379,23 @@ function betsNulling () {
 }
 
 $(".crash-btn").on("click", function () {
-  let necessaryObj = betSpace.find(x => x.user === 'User')
+  let necessaryObj = betsMoon.find(x => x.user === 'User')
   if (necessaryObj && roundCondition !== "waiting") {
     $(".crash-btn").attr("disabled", true)
     let pts = points.filter(p => p[0] > 0);
     let lastPt = pts[pts.length - 1];
     necessaryObj.x = (xFormule).toFixed(2)
-    necessaryObj.profit = (mySpaceBet.value * mySpaceBet.x).toFixed(1)
+    necessaryObj.profit = (myBetMoon.value * myBetMoon.x).toFixed(1)
     betsUpdating()
     btnClicked = true
     notice(true, true)
   } else {
-    if (mySpaceBet.coin === null) {
-      mySpaceBet.coin = "LEX"
+    if (myBetMoon.coin === null) {
+      myBetMoon.coin = "LEX"
     }
     valuesUpdating()
-    if (mySpaceBet.value >= 10) {
-      $(".crash-btn").text() !== "Вывести" ? betSpace.push(mySpaceBet) : false
+    if (myBetMoon.value >= 10) {
+      $(".crash-btn").text() !== "Вывести" ? betsMoon.push(myBetMoon) : false
       betsUpdating()
       $(".crash-btn").text("Вывести")
       disableInputs(true)
@@ -264,8 +415,8 @@ function preparing() {
 }
 
 function startNextRound() {
- 
-  
+
+
   middleX = 20
   middleY = 380
   x = 0
@@ -280,8 +431,8 @@ function startNextRound() {
   textOX(0, 10, 15, 20, 25, 30);
   disableInputs(false)
   $(".crash-btn").text("BET")
-  betSpace = []
-  mySpaceBet = {
+  betsMoon = []
+  myBetMoon = {
     user: "User",
     coin: null,
     value: null,
@@ -290,44 +441,44 @@ function startNextRound() {
     autostopTiming: null,
     autobet: false
   }
-  $(".ivu-switch").hasClass("ivu-checked") ? mySpaceBet.autobet = true : mySpaceBet.autobet = false
+  $(".ivu-switch").hasClass("ivu-checked") ? myBetMoon.autobet = true : myBetMoon.autobet = false
   // АвтоБЕТ
-  // if(mySpaceBet.autostop) {
-  //   mySpaceBet.x = null,
-  //   mySpaceBet.profit = null
-    
-  //   let necessaryObj = betSpace.find(x => x.user === 'User')
+  // if(myBetMoon.autostop) {
+  //   myBetMoon.x = null,
+  //   myBetMoon.profit = null
+
+  //   let necessaryObj = bets.find(x => x.user === 'User')
   //   if (necessaryObj && roundCondition !== "waiting") {
   //     $(".crash-btn").attr("disabled", true)
   //     let pts = points.filter(p => p[0] > 0);
   //     let lastPt = pts[pts.length - 1];
   //     necessaryObj.x = ((h - lastPt[1] + 120) / 120).toFixed(1)
-  //     necessaryObj.profit = (mySpaceBet.value * mySpaceBet.x).toFixed(1)
+  //     necessaryObj.profit = (myBetMoon.value * myBetMoon.x).toFixed(1)
   //     betsUpdating()
   //     btnClicked = true
   //     notice(true, true)
   //   } else {
-  //     if (mySpaceBet.coin === null) {
-  //       mySpaceBet.coin = "LEX"
+  //     if (myBetMoon.coin === null) {
+  //       myBetMoon.coin = "LEX"
   //     }
   //     // valuesUpdating()
-  //     if (mySpaceBet.value >= 10) {
-  //       $(".crash-btn").text() !== "Вывести" ? betSpace.push(mySpaceBet) : false
+  //     if (myBetMoon.value >= 10) {
+  //       $(".crash-btn").text() !== "Вывести" ? bets.push(myBetMoon) : false
   //       betsUpdating()
   //       $(".crash-btn").text("Вывести")
   //       disableInputs(true)
   //     }
   //   }
   // } else {
-    // mySpaceBet = {
-    //   user: "User",
-    //   coin: null,
-    //   value: null,
-    //   x: null,
-    //   profit: null,
-    //   autostopTiming: null,
-    //   autostop: false
-    // }
+  // myBetMoon = {
+  //   user: "User",
+  //   coin: null,
+  //   value: null,
+  //   x: null,
+  //   profit: null,
+  //   autostopTiming: null,
+  //   autostop: false
+  // }
   // }
   betsUpdating()
   // valuesUpdating()
@@ -337,10 +488,10 @@ function notice(isShowed, isWin) {
   isShowed ? $("#crash-wrapper").show() : $("#crash-wrapper").hide()
   if (isWin) {
     audioMoonWin.play();
-    $("#crash-wrapper span").text("+ " + (mySpaceBet.profit - mySpaceBet.value).toFixed(1) + " " + mySpaceBet.coin)
+    $("#crash-wrapper span").text("+ " + (myBetMoon.profit - myBetMoon.value).toFixed(1) + " " + myBetMoon.coin)
     $("#crash-wrapper span").css("color", "#F1CD5B")
   } else {
-    $("#crash-wrapper span").text("- " + mySpaceBet.value + " " + mySpaceBet.coin)
+    $("#crash-wrapper span").text("- " + myBetMoon.value + " " + myBetMoon.coin)
     $("#crash-wrapper span").css("color", "#fff")
   }
 }
@@ -376,7 +527,7 @@ function redraw() {
     let prevPt = pts[pts.length - 2];
     textOY(1, 2, 3);
     textOX(0, 10, 15, 20, 25, 30);
-    if(x > 100) {
+    if (x > 100) {
       if (middleX < 685) {
         middleX += .3
       }
@@ -384,7 +535,7 @@ function redraw() {
     underLinePainting(btnClicked ? "#897A42" : "#e4c35866", btnClicked ? "#897A42" : '#e4c358')
     $("#crash-view").css("background-position-y", BgZ / 500)
   } else {
-  // после достижения конца игры
+    // после достижения конца игры
     ctx.clearRect(0, 0, w, h)
     polyline(1, axes)
     let pts = points.filter(p => p[0] > 0);
@@ -515,14 +666,14 @@ function underLinePainting(color, colorStroke) {
   // ctx.translate(-lastPt[0], -lastPt[1]);
 
 
-  
+
 }
 
 
 
 
 
-let mySpaceBet = {
+let myBetMoon = {
   user: "User",
   coin: null,
   value: null,
@@ -532,14 +683,14 @@ let mySpaceBet = {
   autobet: false
 }
 
-let betSpace = [
+let betsMoon = [
 
 ]
 
 $(".btn--link").on("click", function () {
   $(".btn--link").removeClass("active")
   $(this).addClass("active")
-  mySpaceBet.coin = $(this).text()
+  myBetMoon.coin = $(this).text()
 })
 
 
@@ -557,21 +708,21 @@ function valuesUpdating(option, elem) {
   if (option && elem) {
     option = elem.val()
   } else {
-    mySpaceBet.value = $("#crash-value").val()
+    myBetMoon.value = $("#crash-value").val()
     // if ($(".ivu-switch").hasClass("ivu-checked")) {
-    $("#auto-stop-value").val() > 1 ? mySpaceBet.autostopTiming = $("#auto-stop-value").val() : false
+    $("#auto-stop-value").val() > 1 ? myBetMoon.autostopTiming = $("#auto-stop-value").val() : false
     // }
-    $(".ivu-switch").hasClass("ivu-checked") ? mySpaceBet.autobet = true : mySpaceBet.autobet = false
-    if($("auto-stop-value").val() >= 1) {
-      mySpaceBet.autostopTiming = $("#auto-stop-value").val()
+    $(".ivu-switch").hasClass("ivu-checked") ? myBetMoon.autobet = true : myBetMoon.autobet = false
+    if ($("auto-stop-value").val() >= 1) {
+      myBetMoon.autostopTiming = $("#auto-stop-value").val()
     }
   }
   roundCondition === "waiting" ? $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false) : false
 }
 
 $(".ivu-switch").on("click", function (e) {
-  $(".ivu-switch").hasClass("ivu-checked") ? mySpaceBet.autobet = true : mySpaceBet.autobet = false
-  if(mySpaceBet.value == null) {
+  $(".ivu-switch").hasClass("ivu-checked") ? myBetMoon.autobet = true : myBetMoon.autobet = false
+  if (myBetMoon.value == null) {
     roundCondition === "waiting" ? $(".ivu-switch").hasClass("ivu-checked") ? $(".crash-btn").attr("disabled", true) : $(".crash-btn").attr("disabled", false) : false
   }
 })
@@ -580,7 +731,7 @@ $(".ivu-switch").on("click", function (e) {
 
 function gamesUpdating(gameVal) {
   $("#games-table").empty()
-  for (game of games1) {
+  for (game of games) {
     $("#games-table").append(`
     <div class="table-content table-colored">
       <div class="table-content-item">` + game.val + `x </div>
@@ -596,10 +747,10 @@ function gamesUpdating(gameVal) {
 function betsUpdating() {
   $(".crash-playerTables").empty()
   let values = 0
-  for (bet of betSpace) {
+  for (bet of betsMoon) {
     let x = bet.x ? bet.x + 1 : '???'
     let profit = bet.profit ? bet.profit : '???'
-    
+
     $(".crash-playerTables").append(
       `<div class="table-content table-colored">
         <div class="table-content-item">` + bet.user + `</div>
@@ -610,7 +761,7 @@ function betsUpdating() {
     )
     values += parseInt(bet.value)
   }
-  $(".crash-playerTables-people").text(betSpace.length)
+  $(".crash-playerTables-people").text(betsMoon.length)
   $(".crash-playerTables-values").text(values)
 }
 
@@ -636,7 +787,7 @@ $(".bet-hotkey").on("click", function () {
   } else {
     $(this).attr("data-value") === "min" ? $("#crash-value").val(10) : $("#crash-value").val(10000)
   }
-  valuesUpdating(mySpaceBet.value, $("#crash-value"))
+  valuesUpdating(myBetMoon.value, $("#crash-value"))
 })
 
 
@@ -647,11 +798,11 @@ $(".auto-stop-hotkey").on("click", function () {
   $(this).addClass("active")
   if (parseInt($(this).attr("data-value")) >= 0) {
 
-  $("#auto-stop-value").val($(this).attr("data-value"))
+    $("#auto-stop-value").val($(this).attr("data-value"))
   } else {
     $(this).attr("data-value") === "min" ? $("#auto-stop-value").val(10) : $("#auto-stop-value").val(10000)
   }
-  valuesUpdating(mySpaceBet.autostopTiming, $("#auto-stop-value"))
+  valuesUpdating(myBetMoon.autostopTiming, $("#auto-stop-value"))
 })
 
 
@@ -673,7 +824,7 @@ $("#waitTimeShow").counter({
   },
   numberFormatter:
     function (number) {
-      //return (number.toFixed(2) + 's');
+      return (number.toFixed(2) + 's');
     }
 });
 
