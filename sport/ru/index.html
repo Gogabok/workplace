@@ -228,12 +228,25 @@
                                             </div>
                                             <div class="col-sm-9 col-md-4 col-lg-3">
                                                 <div class="sport-table-title">
-                                                    <div class="sport-table-title-item sport-table-title-item-left"><span class="sport-table-title-team">Real Madrid</span><span class="sport-table-title-team">Chelsea</span></div>
+                                                    <div onclick="loger()" class="sport-table-title-item sport-table-title-item-left"><span class="sport-table-title-team">Real Madrid</span><span class="sport-table-title-team">Chelsea</span></div>
                                                     <div class="sport-table-title-item sport-table-title-item-right"><span class="sport-table-title-score"><span>4</span></span>
                                                         <!--span.sport-table-title-team= obj.team[1][0]--><span class="sport-table-title-score"><span>2</span></span>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <script>
+                                                function loger() {
+                                                console.log(1);
+                                                var req = "https://therundown-therundown-v1.p.rapidapi.com/affiliates"
+                                                    $.ajax({
+                                                        url: req,
+                                                        type: "GET",
+                                                        success: function (msg) {
+                                                            console.log(msg);
+                                                        }
+                                                    });
+                                                }
+                                            </script>
                                             <div class="col-sm-10 col-md-6 col-lg-7">
                                                 <div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid" data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23" data-score="4:2"><span>Real Madrid</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea" data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2"><span>Chelsea</span><span class="sport-table-wager-button-count">34.25</span></a>
                                                 </div>
