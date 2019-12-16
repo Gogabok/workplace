@@ -235,17 +235,43 @@
                                                 </div>
                                             </div>
                                             <script>
+                                                // function loger() {
+                                                // console.log(1);
+                                                // var req = "https://www.api-football.com/demo/api/v2/"
+                                                //     $.ajax({
+                                                //         url: req,
+                                                //         type: "GET",
+                                                //         success: function (msg) {
+                                                //             console.log(msg);
+                                                //         }
+                                                //     });
+                                                // }
+                                                // function loger() {
+                                                //         $.get(
+                                                //             "http://api.openweathermap.org/data/2.5/weather",
+                                                //             {
+                                                //                 "id": "569143",
+                                                //                 "appid": "70e1ed322b02acbc57d443dd91065f3e"
+                                                //             },
+                                                //             function (data) {
+                                                //                 console.log(data);
+                                                //             }
+                                                //         )
+                                                //     }
                                                 function loger() {
-                                                console.log(1);
-                                                var req = "https://therundown-therundown-v1.p.rapidapi.com/affiliates"
-                                                    $.ajax({
-                                                        url: req,
-                                                        type: "GET",
-                                                        success: function (msg) {
-                                                            console.log(msg);
-                                                        }
-                                                    });
-                                                }
+                                                        // $.get(
+                                                        //     "https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/ru/events/sport1/country53/tourney119235",
+                                                        //     function (data) {
+                                                        //         console.log(data);
+                                                        //     }
+                                                        // )
+                                                         $.get(
+                                                                "https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/live/ru/sports",
+                                                                function (data) {
+                                                                    console.log(data);
+                                                                }
+                                                            )
+                                                    }
                                             </script>
                                             <div class="col-sm-10 col-md-6 col-lg-7">
                                                 <div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid" data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23" data-score="4:2"><span>Real Madrid</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea" data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2"><span>Chelsea</span><span class="sport-table-wager-button-count">34.25</span></a>
