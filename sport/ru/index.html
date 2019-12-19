@@ -266,7 +266,13 @@
                                                         //     }
                                                         // )
                                                          $.get(
-                                                                "https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/live/ru/sports",
+                                                                "https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/ru/tournaments/sport1/country53",
+                                                                function (data) {
+                                                                    console.log(data);
+                                                                }
+                                                            )
+                                                            $.get(
+                                                                "https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/ru/events/sport1/country53/tourney119235",
                                                                 function (data) {
                                                                     console.log(data);
                                                                 }
