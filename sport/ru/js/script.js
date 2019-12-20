@@ -1730,6 +1730,49 @@
 	});
 }());
 
+const gameFolder = $("#football-folder")
 
-
-
+$(document).ready(function (){
+	$.get(
+		"https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/ru/tournaments/sport1/country53",
+		function (data) {
+			data.map(cup => {
+				$.get("https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/en/events/sport1/country53/tourney" + cup.ID, function (gamesInCup) {
+					gamesInCup.map(game => {
+						console.log(game)
+						gameFolder.append(
+							`
+							<div class="sport-table">
+                <div class="sport-table-tr">
+                  <div class="row sport-row align-items-center row-15">
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                      <div class="sport-table-icon">
+                        <div class="sprite sprite-sport-icon-07"></div>
+                      </div>
+                    </div>
+                    <div class="col-sm-9 col-md-4 col-lg-3">
+                      <div class="sport-table-title">
+                        <div class="sport-table-title-item sport-table-title-item-left"><span class="sport-table-title-team">${ game.teams[0]}</span><span class="sport-table-title-team">${game.teams[1] }</span></div>
+                        <div class="sport-table-title-item sport-table-title-item-right"><span class="sport-table-title-score"><span>4</span></span>
+                            <!--span.sport-table-title-team= obj.team[1][0]--><span class="sport-table-title-score"><span>2</span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-10 col-md-6 col-lg-7">
+                      <div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid" data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23" data-score="4:2"><span>Real Madrid</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea" data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2"><span>Chelsea</span><span class="sport-table-wager-button-count">34.25</span></a>
+                      </div>
+                    </div>
+                    <div class="col-sm-2 col-md-1 col-lg-1">
+                      <div class="sport-table-bonus"><span class="sport-table-bonus-count">+58</span><span class="sport-table-bonus-icon material-icons-chevron_right"></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+							`
+						)
+					})
+				})
+			}
+		)
+	})
+})
