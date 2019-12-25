@@ -1732,7 +1732,8 @@
 
 const gameFolder = $("#sport-wrapper")
 
-$(document).ready(function (){
+$(document).ready(function () {
+	$.get("https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/live/ru/sports", (data) => console.log(data))
 	$.get(
 		"https://data.incub.space/api/pkg:be381439933d5c2fa3f9a71dbf1fd2cf/line/ru/tournaments/sport1/country53",
 		function (data) {
@@ -1746,28 +1747,19 @@ $(document).ready(function (){
 						tourneyID: cup.ID,
 						games: gamesInCup
 					})
+					gamesInit(cups, gamesCount)
 				})
 			}
-		)
-			setTimeout(() => {
-				gamesInit(cups, gamesCount)
-			}, 1000);
-	})
-		// .done(function () {
-		// 	setTimeout(() => {
-				// gamesInit(cups, gamesCount)
-		// 	}, 1000);
-		// })
-		// .fail(function () {
-		// 	console.log("ошибка!")
-		// })
-		
+			)
+
+		})
 })
 
 
 function gamesInit(cups, gamesCount) {
 	console.log(cups, gamesCount)
-	let gameFolder = 
+	$("#games-folder").empty()
+	let $gameFolder = $(
 		`
 			<div class="col-lg-12 isotope-item" data-filter="football">
           <article class="heading-component">
@@ -1787,54 +1779,24 @@ function gamesInit(cups, gamesCount) {
 					</div>
       </div>
 		`
-	$("#games-folder").append(gameFolder).isotope('appended', gameFolder)
-
-
-
-		// < div id = "football-cups-header" class="sport-table-header" >
-					
-		// 			</div >
-		// <div id="football-cups-body">
-
-		// </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	)
+	$("#games-folder").append($gameFolder).isotope('insert', $gameFolder)
 
 
 	cups.forEach(cup => {
-		let currentCup = 
+		let $currentCup = $(
 			`
 			<div id ="football-cups-header" class="sport-table-header">
 				<p>${ cup.tourney} (${cup.games.length})</p>
 			</div>
-			<div id="${ cup.tourneyID}">
+			<div class="matches-wrapper" id="${ cup.tourneyID}">
 			
 			</div>
 			`
-		$(".tournaments-folder").append(currentCup).isotope('appended', currentCup)
-		// let currentGameFolder = 
-		// `
-		// <div id="${ cup.tourneyID}"></div>
-		// `
-		// $("#football-cups-body").append(currentGameFolder).isotope('append', currentGameFolder)
+		)
+		$(".tournaments-folder").append($currentCup).isotope('insert', $currentCup)
 		cup.games.forEach(game => {
-			let currentGame = 
+			let $currentGame = $(
 				`
 				<div class="sport-table">
 					<div class="sport-table-tr">
@@ -1853,7 +1815,7 @@ function gamesInit(cups, gamesCount) {
 								</div>
 							</div>
 							<div class="col-sm-10 col-md-6 col-lg-7">
-								<div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid" data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23" data-score="4:2"><span>Real Madrid</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea" data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2"><span>Chelsea</span><span class="sport-table-wager-button-count">34.25</span></a>
+								<div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="${ game.teams[0]}" data-confrontation="${game.teams[0]} vs ${game.teams[1]}" data-wager-count="1.23" data-score="4:2"><span>${game.teams[0]}</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="${game.teams[0]} vs. ${game.teams[1]}" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="${game.teams[1]}" data-confrontation="${game.teams[0]} vs ${game.teams[1]}" data-wager-count="34.25" data-score="4:2"><span>${game.teams[1]}</span><span class="sport-table-wager-button-count">34.25</span></a>
 								</div>
 							</div>
 							<div class="col-sm-2 col-md-1 col-lg-1">
@@ -1862,8 +1824,8 @@ function gamesInit(cups, gamesCount) {
 						</div>
 					</div>
 				</div>
-				`
-			$("#" + cup.tourneyID).append(currentGame).isotope('appended', currentGame);
+				`)
+			$("#" + cup.tourneyID).append($currentGame).isotope('insert', $currentGame);
 		})
 	})
 }
@@ -1892,39 +1854,3 @@ function gamesInit(cups, gamesCount) {
 
 
 
-
-
-
-
-
-
-// gameFolder.append(
-// 	`
-// 							<div class="sport-table">
-//                 <div class="sport-table-tr">
-//                   <div class="row sport-row align-items-center row-15">
-//                     <div class="col-sm-1 col-md-1 col-lg-1">
-//                       <div class="sport-table-icon">
-//                         <div class="sprite sprite-sport-icon-07"></div>
-//                       </div>
-//                     </div>
-//                     <div class="col-sm-9 col-md-4 col-lg-3">
-//                       <div class="sport-table-title">
-//                         <div class="sport-table-title-item sport-table-title-item-left"><span class="sport-table-title-team">${ game.teams[0]}</span><span class="sport-table-title-team">${game.teams[1]}</span></div>
-//                         <div class="sport-table-title-item sport-table-title-item-right"><span class="sport-table-title-score"><span>4</span></span>
-//                             <!--span.sport-table-title-team= obj.team[1][0]--><span class="sport-table-title-score"><span>2</span></span>
-//                         </div>
-//                       </div>
-//                     </div>
-//                     <div class="col-sm-10 col-md-6 col-lg-7">
-//                       <div class="sport-table-wager"><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid" data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23" data-score="4:2"><span>Real Madrid</span><span class="sport-table-wager-button-count">1.23</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Draw" data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00" data-score="4:2"><span>Draw</span><span class="sport-table-wager-button-count">13.00</span></a><a class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea" data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2"><span>Chelsea</span><span class="sport-table-wager-button-count">34.25</span></a>
-//                       </div>
-//                     </div>
-//                     <div class="col-sm-2 col-md-1 col-lg-1">
-//                       <div class="sport-table-bonus"><span class="sport-table-bonus-count">+58</span><span class="sport-table-bonus-icon material-icons-chevron_right"></span></div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-// 							`
-// )
