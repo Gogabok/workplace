@@ -273,34 +273,188 @@
 
 
                                             <script>
-                                                const games = ['Футбол', 'Тенис', 'Баскетбол', 'Хоккей', 'Волейбол', 'Бадминтон', 'Бейсбол']
+                                                const games = [
+                                                    {
+                                                        sportName: 'Футбол',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Тенис',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Баскетбол',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Хоккей',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Волейбол',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Бадминтон',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                    {
+                                                        sportName: 'Бейсбол',
+                                                        sportID: null,
+                                                        countries: null,
+                                                        tournaments: null,
+                                                        games: null
+                                                    },
+                                                ]
                                                 const ApiKey = 'be381439933d5c2fa3f9a71dbf1fd2cf'
+                                                const mode = 'live' // 'live' or 'line'
+                                                const lang = 'ru'
+                                                const hoster = 'https://data.incub.space'
                                                 let sportWrapper = new Vue({
                                                     el: '#sport-wrapper',
                                                     data: {
-                                                        navigation: []
+                                                        gamesData: games,
                                                     },
-                                                    mounted() {
-                                                        this.getApiData()
+                                                    async mounted() {
+                                                        await this.getApiSports()
+                                                        await this.getApiCounties()
+                                                        await this.getApiTournaments()
+                                                        console.log(this.gamesData)
                                                     },
                                                     methods: {
-                                                        async getApiData() {
-                                                            await axios
-                                                                .get(`https://data.incub.space/api/pkg:${ ApiKey }/live/ru/sports`)
-                                                                .then(response => {
-                                                                    response.data.forEach(element => {
-                                                                        if(games.indexOf(element.text) != -1) {
-                                                                            // this.navigation.push(element)
-                                                                            axios 
-                                                                                .get(`https://data.incub.space/api/pkg:${ ApiKey }/line/ru/tournaments/sport${ element.ID }/country53`)
-                                                                                .then(tournament => {
-                                                                                    console.log(tournament.data)
+                                                        getApiSports() {
+                                                            return new Promise(resolve => {
+                                                            axios 
+                                                                .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/sports`)
+                                                                .then(sports => {
+                                                                    sports.data.forEach(sport => {
+                                                                        games.map(obj => {
+                                                                            if(obj.sportName === sport.text) {
+                                                                                obj.sportID = sport.ID
+                                                                            }
+                                                                         }
+                                                                        )
+                                                                    })
+                                                                    resolve()
+                                                                })
+                                                            })
+                                                        },
+                                                        getApiCounties() {
+                                                            return new Promise(resolve => {
+                                                                this.gamesData.forEach((game, i, arr) => {
+                                                                    axios
+                                                                        .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/countries/sport${game.sportID}`)
+                                                                        .then(countries => {
+                                                                            !!game.sportID ? game.countries = countries.data : false;
+                                                                            (i == arr.length - 1) ? resolve() : false;
+                                                                        })
+                                                                })
+                                                            })
+                                                        },
+                                                        getApiTournaments() {
+                                                            return new Promise(resolve => {
+                                                                this.gamesData.forEach(game => {
+                                                                    game.countries.forEach((country, i, arr) => {
+                                                                        if(!!game.countries) {
+                                                                            axios
+                                                                                .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/tournaments/sport${game.sportID}/country${country.ID}`)
+                                                                                .then(tournaments => {
+                                                                                    game.tournaments = tournaments.data;
+                                                                                    tournaments.data.forEach(tournament => {
+                                                                                        axios
+                                                                                            .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/events/sport${game.sportID}/country${country.ID}/tourney${tournament.ID}`)
+                                                                                            .then(games => {
+                                                                                                game.games = games.data
+                                                                                            })
+                                                                                    })
                                                                                 })
                                                                         }
-                                                                    });
-                                                                    console.log(this.navigation)
+                                                                        (i == arr.length - 1) ? resolve() : false;
+                                                                    })
                                                                 })
-                                                        }
+                                                            })
+                                                        },
+                                                        // getApiGames() {
+                                                        //     this.gamesData.forEach(game => {
+                                                        //         if(!!game.tournaments) {
+                                                        //             game.tournaments.forEach(tournament => {
+                                                        //                 axios
+                                                        //                     // .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/events/sport${sport.ID}/country${country.ID}/tourney${tournament.ID}`)
+                                                        //                     .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/events/sport${game.sportID}/country${country.ID}/tourney${tournament.ID}`)
+                                                        //                     .then(games => {
+                                                        //                        console.log(country, tournament, games.data)
+                                                        //                     })
+                                                        //             })
+                                                        //         }
+                                                        //     })
+                                                        // }
+                                                                    //     if (games.indexOf(sport.text) != -1) {
+                                                                    //         axios  
+                                                                    //             .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/countries/sport${sport.ID}`)
+                                                                    //             .then(countries => {
+                                                                    //                 countries.data.forEach(country => {
+                                                                    //                     axios
+                                                                    //                         .get(`${hoster}/api/pkg:${ApiKey}/${mode}/${lang}/tournaments/sport${sport.ID}/country${country.ID}`)
+                                                                    //                         .then(tournaments => {
+                                                                    //                             tournaments.data.forEach(tournament => {
+                                                                    //                                 console.log(sport.text, country.text, tournament.tourneyName)
+                                                                    //                                 console.log(this.navigation);
+                                                                    //                             })
+                                                                    //                         })
+                                                                    //                 })
+                                                                    //             })
+                                                                    //     }
+                                                                    // })
+                                                        //         })
+                                                        // }
+                                                        // getApiTournaments() {
+                                                        //     axios
+                                                        //         .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/sports`)
+                                                        //         .then(sports => {
+                                                        //             sports.data.forEach(sport => {
+                                                        //                 if (games.indexOf(sport.text) != -1) {
+                                                        //                     axios
+                                                        //                         // .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/countries/sport${sport.ID}`)
+                                                        //                         .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/countries/sport1`)
+                                                        //                         .then(countries => {
+                                                        //                             countries.data.forEach(country => {
+                                                        //                                 axios
+                                                        //                                     // .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/tournaments/sport${sport.ID}/country${country.ID}`)
+                                                        //                                     .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/tournaments/sport1/country${country.ID}`)
+                                                        //                                     .then(tournaments => {
+                                                        //                                         tournaments.data.forEach(tournament => {
+                                                        //                                             axios
+                                                        //                                                 // .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/events/sport${sport.ID}/country${country.ID}/tourney${tournament.ID}`)
+                                                        //                                                 .get(`${hoster}/api/pkg:${ApiKey}/${liveORLine}/${lang}/events/sport1/country${country.ID}/tourney${tournament.ID}`)
+                                                        //                                                 .then(games => {
+                                                        //                                                    console.log(country, tournament, games.data)
+                                                        //                                                 })
+                                                        //                                         })
+                                                        //                                     })
+                                                        //                             })
+                                                        //                         })
+                                                        //                 }
+                                                        //             });
+                                                        //         })
+                                                        // }
                                                     }
                                                 })
                                             </script>
