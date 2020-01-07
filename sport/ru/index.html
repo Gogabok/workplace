@@ -221,11 +221,11 @@
                                     </div>
                                 </div>
                             </article>
-                            <div v-for="tournament in sport.tournaments">
+                            <div v-show="tournament.games.length > 0" v-for="tournament in sport.tournaments">
                                 <div class="sport-table-header">
-                                    <p>{{ tournament.tournament }} ({{ tournament.games ? tournament.games.length : false}})</p>
+                                    <p>{{ tournament.countryName }}. {{ tournament.tournament }} ({{ tournament.games ? tournament.games.length : false}})</p>
                                 </div>
-                                <div class="sport-table" v-for="game in tournament.games">
+                                <div :key="game.ID"  class="sport-table" v-for="game in tournament.games">
                                     <div class="sport-table-tr">
                                         {{ game.teams[2] !== '' ? game.teams[2] : '' }}
                                         <div class="row sport-row align-items-center row-15">
@@ -239,33 +239,29 @@
                                                     <div class="sport-table-title-item sport-table-title-item-left"><span
                                                             class="sport-table-title-team">{{ game.teams[0] | truncate(30, '...') }}</span><span
                                                             class="sport-table-title-team">{{ game.teams[1] | truncate(30, '...') }}</span></div>
-                                                    <div class="sport-table-title-item sport-table-title-item-right"><span
+                                                    <!-- <div class="sport-table-title-item sport-table-title-item-right"><span
                                                             class="sport-table-title-score"><span>4</span></span>
                                                         <span
                                                             class="sport-table-title-score"><span>2</span></span>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="col-sm-10 col-md-6 col-lg-7">
-                                                <div class="sport-table-wager"><a class="sport-table-wager-button" href="#"
-                                                        data-toggle="modal" data-target="#sportModal" data-team-name="Real Madrid"
-                                                        data-confrontation="Real Madrid vs Chelsea" data-wager-count="1.23"
-                                                        data-score="4:2"><span>{{ game.teams[0] | truncate(10, '...') }}</span><span
-                                                            class="sport-table-wager-button-count">1.23</span></a><a
-                                                        class="sport-table-wager-button" href="#" data-toggle="modal"
-                                                        data-target="#sportModal" data-team-name="Draw"
-                                                        data-confrontation="Real Madrid vs. Chelsea" data-wager-count="13.00"
-                                                        data-score="4:2"><span>Ничья</span><span
-                                                            class="sport-table-wager-button-count">13.00</span></a><a
-                                                        class="sport-table-wager-button" href="#" data-toggle="modal"
-                                                        data-target="#sportModal" data-team-name="Chelsea"
-                                                        data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25"
-                                                        data-score="4:2"><span>{{ game.teams[1] | truncate(10, '...') }}</span><span
-                                                            class="sport-table-wager-button-count">34.25</span></a>
+                                                <div class="sport-table-wager">
+                                                    <a v-for="coef in game.correctCoefs"  class="sport-table-wager-button" href="#" data-toggle="modal" data-target="#sportModal" data-team-name="Chelsea"
+                                                        data-confrontation="Real Madrid vs Chelsea" data-wager-count="34.25" data-score="4:2">
+                                                        <div>
+                                                            <div >
+                                                                <span>{{ coef.betNameLong }}</span>
+                                                                <span
+                                                                    class="sport-table-wager-button-count">{{ coef.rate }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="col-sm-2 col-md-1 col-lg-1">
-                                                <div class="sport-table-bonus"><span class="sport-table-bonus-count">+58</span><span
+                                                <div class="sport-table-bonus"><span class="sport-table-bonus-count">+ {{ game.additionalBetsCount }}</span><span
                                                         class="sport-table-bonus-icon material-icons-chevron_right"></span></div>
                                             </div>
                                         </div>
@@ -292,7 +288,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -300,7 +295,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -308,7 +302,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -316,7 +309,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -324,7 +316,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -332,7 +323,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                     {
@@ -340,7 +330,6 @@
                                                         sportID: null,
                                                         countries: null,
                                                         tournaments: [],
-                                                        games: [],
                                                         total: null
                                                     },
                                                 ]
@@ -406,6 +395,8 @@
                                                                                         let tournamentData = {
                                                                                                 tournament: tournament.tourneyName,
                                                                                                 ID: tournament.ID,
+                                                                                                countryID: country.ID,
+                                                                                                countryName: country.text,
                                                                                                 games: []
                                                                                             } 
                                                                                             game.tournaments.push(tournamentData)
@@ -419,22 +410,34 @@
                                                                     this.liveGames.gamesData.forEach(game => {
                                                                         let totalGame = 0
                                                                         if (game.countries) {
-                                                                            game.countries.forEach((country, i, arr) => {
                                                                             game.tournaments.forEach(tournament => {
                                                                                 gamesPromises.push(
                                                                                     axios
-                                                                                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/events/sport${game.sportID}/country${country.ID}/tourney${tournament.ID}`)
+                                                                                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/events/sport${game.sportID}/country${tournament.countryID}/tourney${tournament.ID}`)
                                                                                         .then(games => {
                                                                                             games.data.forEach(gamesItem => {
                                                                                                 if(gamesItem.teams[2] === '') {
                                                                                                     totalGame++
                                                                                                     game.total = totalGame
-                                                                                                    tournament.games.push(gamesItem)
+                                                                                                    // tournament.games.push(gamesItem)
+                                                                                                    let gameData = gamesItem
+                                                                                                    gameData.correctCoefs = []
+                                                                                                    gameData.correctCoefCount = 0
+                                                                                                    gameData.coefs.find(coef => {
+                                                                                                        if(coef.ID === '111' || coef.ID === '112' || coef.ID === '113') {
+                                                                                                            gameData.correctCoefCount += 1
+                                                                                                            gameData.correctCoefs.push(coef)
+                                                                                                        }
+                                                                                                    })
+                                                                                                    gameData.correctCoefs.sort(function(a, b) {
+                                                                                                        return a.ID - b.ID
+                                                                                                    })
+                                                                                                    console.log(gameData.correctCoefs)
+                                                                                                    tournament.games.push(gameData)
                                                                                                 }
                                                                                             })
                                                                                         })
-                                                                                    )
-                                                                                })
+                                                                                )
                                                                             })
                                                                         }
                                                                     })
