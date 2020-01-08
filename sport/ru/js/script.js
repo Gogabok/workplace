@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 (function () {
 	// Global variables
 	let userAgent = navigator.userAgent.toLowerCase(),
@@ -83,16 +83,17 @@
 
 		// Isotope
 		if (plugins.isotope.length) {
-			for ( let i = 0; i < plugins.isotope.length; i++ ) {
+			for (let i = 0; i < plugins.isotope.length; i++) {
 				var
 						wrap = plugins.isotope[ i ],
-						filterHandler = function ( event ) {
+					filterHandler = function (event) {
+						// var ISO = this.isoGroup.isotope
 							event.preventDefault();
 							for ( var n = 0; n < this.isoGroup.filters.length; n++ ) this.isoGroup.filters[ n ].classList.remove( 'active' );
-							this.classList.add( 'active' );
+						this.classList.add('active');
 							this.isoGroup.isotope.arrange( { filter: this.getAttribute( "data-isotope-filter" ) !== '*' ? '[data-filter*="' + this.getAttribute( "data-isotope-filter" ) + '"]' : '*' } );
 						},
-						resizeHandler = function () {
+					resizeHandler = function () {
 							this.isoGroup.isotope.layout();
 						};
 
@@ -109,7 +110,6 @@
 						if ( wrap.isoGroup.node.hasAttribute('data-column-width') ) return parseFloat( wrap.isoGroup.node.getAttribute('data-column-width') );
 					}() )
 				} );
-
 				for ( var n = 0; n < wrap.isoGroup.filters.length; n++ ) {
 					var filter = wrap.isoGroup.filters[ n ];
 					filter.isoGroup = wrap.isoGroup;
@@ -118,7 +118,6 @@
 
 				window.addEventListener( 'resize', window.setTimeout(resizeHandler.bind( wrap ), 500) );
 			}
-
 			var filterList = $('.isotope-filters-list-link'),
 					filterInfo = $('.isotope-filters-info-text');
 
@@ -1729,6 +1728,8 @@
 		}
 	});
 }());
+
+// window.ISO = ISO
 
 // const gameFolder = $("#sport-wrapper")
 

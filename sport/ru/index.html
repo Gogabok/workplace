@@ -201,11 +201,11 @@
                     </div>
                     <!-- Isotope Content-->
                 <div class="col-lg-12" id="sport-wrapper">
-                    <div class="row  row-30" data-isotope-layout="masonry" data-column-class=".col-1" data-isotope-group="gallery">
+                    <div class="row isotope row-30"   data-isotope-group="gallery">
                     <!-- <div class="row isotope row-30" data-isotope-layout="masonry" data-column-class=".col-1" data-isotope-group="gallery"> -->
-                        <div class="col-1 isotope-item isotope-sizer"></div>
+                        <!-- <div class="col-1 isotope-item isotope-sizer"></div> -->
                         <!-- Football-->
-                        <div v-show="sport.total > 0" v-for="sport in liveGames.gamesData" :key="sport.sportName" class="col-lg-12 isotope-item" data-filter="football">
+                        <div v-show="sport.total > 0" v-for="sport in liveGames.gamesData" :key="sport.sportName" class="col-lg-12 isotope-item" :data-filter="sport.sorting">
                             <!-- Heading Component-->
                             <article class="heading-component">
                                 <div class="heading-component-inner">
@@ -231,7 +231,7 @@
                                         <div class="row sport-row align-items-center row-15">
                                             <div class="col-sm-1 col-md-1 col-lg-1">
                                                 <div class="sport-table-icon">
-                                                    <div class="sprite sprite-sport-icon-07"></div>
+                                                    <div class="sprite" :class="`sprite-sport-icon-${sport.icon}`"></div>
                                                 </div>
                                             </div>
                                             <div class="col-sm-9 col-md-4 col-lg-3">
@@ -266,190 +266,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div v->
                             </div>
                         </div>
         </section>
 
 
-                                            <script>
-                                                var filter = function (text, length, clamp) {
-                                                        clamp = clamp || '...';
-                                                        var node = document.createElement('div');
-                                                        node.innerHTML = text;
-                                                        var content = node.textContent;
-                                                        return content.length > length ? content.slice(0, length) + clamp : content;
-                                                    };
-
-                                                    Vue.filter('truncate', filter);
-                                                const games = [
-                                                    {
-                                                        sportName: 'Футбол',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Тенис',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Баскетбол',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Хоккей',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Волейбол',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Бадминтон',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                    {
-                                                        sportName: 'Бейсбол',
-                                                        sportID: null,
-                                                        countries: null,
-                                                        tournaments: [],
-                                                        total: null
-                                                    },
-                                                ]
-                                                let sportWrapper = new Vue({
-                                                    el: '#sport-wrapper',
-                                                    data: {
-                                                        liveGames: {
-                                                            gamesData: games,
-                                                        },
-                                                        ApiKey: 'be381439933d5c2fa3f9a71dbf1fd2cf',
-                                                        mode: 'live', // 'live' or 'line'
-                                                        lang: 'ru',
-                                                        hoster: 'https://data.incub.space'
-                                                    },
-                                                    async mounted() {
-                                                        await this.getApiSports()
-                                                        await this.getApiCounties()
-                                                        await this.getApiTournaments()
-                                                    },
-                                                    methods: {
-                                                        getApiSports() {
-                                                            return new Promise(resolve => {
-                                                            axios 
-                                                                .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/sports`)
-                                                                .then(sports => {
-                                                                    sports.data.forEach(sport => {
-                                                                        games.map(obj => {
-                                                                            if(obj.sportName === sport.text) {
-                                                                                obj.sportID = sport.ID
-                                                                            }
-                                                                         }
-                                                                        )
-                                                                    })
-                                                                    resolve()
-                                                                })
-                                                            })
-                                                        },
-                                                        getApiCounties() {
-                                                            return new Promise(resolve => {
-                                                                this.liveGames.gamesData.forEach((game, i, arr) => {
-                                                                    axios
-                                                                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/countries/sport${game.sportID}`)
-                                                                        .then(countries => {
-                                                                            !!game.sportID ? game.countries = countries.data : false;
-                                                                            (i == arr.length - 1) ? resolve() : false;
-                                                                        })
-                                                                })
-                                                            })
-                                                        },
-                                                        getApiTournaments() {
-                                                            return new Promise(resolve => {
-                                                                let tournamentsPromises = []
-                                                                let tournaments = []
-                                                                let gamesPromises = []
-                                                                this.liveGames.gamesData.forEach(game => {
-                                                                    if (game.countries) {
-                                                                        game.countries.forEach((country, i, arr) => {
-                                                                            tournamentsPromises.push(
-                                                                                axios
-                                                                                    .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/tournaments/sport${game.sportID}/country${country.ID}`)
-                                                                                    .then(tournaments => {
-                                                                                        tournaments.data.forEach(tournament => {
-                                                                                        let tournamentData = {
-                                                                                                tournament: tournament.tourneyName,
-                                                                                                ID: tournament.ID,
-                                                                                                countryID: country.ID,
-                                                                                                countryName: country.text,
-                                                                                                games: []
-                                                                                            } 
-                                                                                            game.tournaments.push(tournamentData)
-                                                                                        })
-                                                                                    })
-                                                                            )
-                                                                        })
-                                                                    }
-                                                                })
-                                                                axios.all(tournamentsPromises).then(() => {
-                                                                    this.liveGames.gamesData.forEach(game => {
-                                                                        let totalGame = 0
-                                                                        if (game.countries) {
-                                                                            game.tournaments.forEach(tournament => {
-                                                                                gamesPromises.push(
-                                                                                    axios
-                                                                                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/events/sport${game.sportID}/country${tournament.countryID}/tourney${tournament.ID}`)
-                                                                                        .then(games => {
-                                                                                            games.data.forEach(gamesItem => {
-                                                                                                if(gamesItem.teams[2] === '') {
-                                                                                                    totalGame++
-                                                                                                    game.total = totalGame
-                                                                                                    // tournament.games.push(gamesItem)
-                                                                                                    let gameData = gamesItem
-                                                                                                    gameData.correctCoefs = []
-                                                                                                    gameData.correctCoefCount = 0
-                                                                                                    gameData.coefs.find(coef => {
-                                                                                                        if(coef.ID === '111' || coef.ID === '112' || coef.ID === '113') {
-                                                                                                            gameData.correctCoefCount += 1
-                                                                                                            gameData.correctCoefs.push(coef)
-                                                                                                        }
-                                                                                                    })
-                                                                                                    gameData.correctCoefs.sort(function(a, b) {
-                                                                                                        return a.ID - b.ID
-                                                                                                    })
-                                                                                                    console.log(gameData.correctCoefs)
-                                                                                                    tournament.games.push(gameData)
-                                                                                                }
-                                                                                            })
-                                                                                        })
-                                                                                )
-                                                                            })
-                                                                        }
-                                                                    })
-                                                                })
-                                                                axios.all(gamesPromises).then(() => {
-                                                                    resolve()
-                                                                })
-                                                            })
-                                                        },
-                                                    }
-                                                })
-                                            </script>
+                                            
 
 
 
@@ -943,5 +766,198 @@
     f.parentNode.insertBefore(j, f);
 })(window, document, 'script', 'dataLayer', 'GTM-P9FT69'); -->
 </script><!-- End Google Tag Manager -->
+<script type="text/javascript">
+    var filter = function (text, length, clamp) {
+        clamp = clamp || '...';
+        var node = document.createElement('div');
+        node.innerHTML = text;
+        var content = node.textContent;
+        return content.length > length ? content.slice(0, length) + clamp : content;
+    };
 
+    Vue.filter('truncate', filter);
+    const games = [
+        {
+            sportName: 'Футбол',
+            icon: '07',
+            sorting: 'football',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Тенис',
+            icon: '06',
+            sorting: 'tennis',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Баскетбол',
+            icon: '04',
+            sorting: 'basketball',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Хоккей',
+            icon: '08',
+            sorting: 'ice-hockey',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Волейбол',
+            icon: '09',
+            sorting: 'volleyball',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Бадминтон',
+            icon: '03',
+            sportID: null,
+            sorting: 'badminton',
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+        {
+            sportName: 'Бейсбол',
+            icon: '05',
+            sorting: 'baseball',
+            sportID: null,
+            countries: null,
+            tournaments: [],
+            total: null
+        },
+    ]
+    let sportWrapper = new Vue({
+        el: '#sport-wrapper',
+        data: {
+            liveGames: {
+                gamesData: games,
+            },
+            ApiKey: 'be381439933d5c2fa3f9a71dbf1fd2cf',
+            mode: 'live', // 'live' or 'line'
+            lang: 'ru',
+            hoster: 'https://data.incub.space',
+        },
+        async created() {
+            await this.getApiSports()
+            await this.getApiCounties()
+            await this.getApiTournaments()
+        },
+        methods: {
+            getApiSports() {
+                return new Promise(resolve => {
+                    axios
+                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/sports`)
+                        .then(sports => {
+                            sports.data.forEach(sport => {
+                                games.map(obj => {
+                                    if (obj.sportName === sport.text) {
+                                        obj.sportID = sport.ID
+                                    }
+                                }
+                                )
+                            })
+                            resolve()
+                        })
+                })
+            },
+            getApiCounties() {
+                return new Promise(resolve => {
+                    this.liveGames.gamesData.forEach((game, i, arr) => {
+                        axios
+                            .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/countries/sport${game.sportID}`)
+                            .then(countries => {
+                                !!game.sportID ? game.countries = countries.data : false;
+                                (i == arr.length - 1) ? resolve() : false;
+                            })
+                    })
+                })
+            },
+            getApiTournaments() {
+                return new Promise(resolve => {
+                    let tournamentsPromises = []
+                    let tournaments = []
+                    let gamesPromises = []
+                    this.liveGames.gamesData.forEach(game => {
+                        if (game.countries) {
+                            game.countries.forEach((country, i, arr) => {
+                                tournamentsPromises.push(
+                                    axios
+                                        .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/tournaments/sport${game.sportID}/country${country.ID}`)
+                                        .then(tournaments => {
+                                            tournaments.data.forEach(tournament => {
+                                                let tournamentData = {
+                                                    tournament: tournament.tourneyName,
+                                                    ID: tournament.ID,
+                                                    countryID: country.ID,
+                                                    countryName: country.text,
+                                                    games: []
+                                                }
+                                                game.tournaments.push(tournamentData)
+                                            })
+                                        })
+                                )
+                            })
+                        }
+                    })
+                    axios.all(tournamentsPromises).then(() => {
+                        this.liveGames.gamesData.forEach(game => {
+                            let totalGame = 0
+                            if (game.countries) {
+                                game.tournaments.forEach(tournament => {
+                                    gamesPromises.push(
+                                        axios
+                                            .get(`${this.hoster}/api/pkg:${this.ApiKey}/${this.mode}/${this.lang}/events/sport${game.sportID}/country${tournament.countryID}/tourney${tournament.ID}`)
+                                            .then(games => {
+                                                games.data.forEach(gamesItem => {
+                                                    if (gamesItem.teams[2] === '') {
+                                                        let gameData = gamesItem
+                                                        gameData.correctCoefs = []
+                                                        gameData.correctCoefCount = 0
+                                                        gameData.coefs.find(coef => {
+                                                            if (coef.ID === '111' || coef.ID === '112' || coef.ID === '113') {
+                                                                gameData.correctCoefs.push(coef)
+                                                                if (coef.ID === '111' || coef.ID === '113') {
+                                                                    gameData.correctCoefCount += 1
+                                                                }
+                                                            }
+                                                        })
+                                                        gameData.correctCoefs.sort(function (a, b) {
+                                                            return a.ID - b.ID
+                                                        })
+                                                        if (gameData.correctCoefCount >= 2) {
+                                                            tournament.games.push(gameData)
+                                                            totalGame++
+                                                            game.total = totalGame
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                    )
+                                })
+                            }
+                        })
+                    })
+                    axios.all(gamesPromises).then(() => {
+                        resolve()
+                    })
+                })
+            },
+        }
+    })
+</script>
 </html>

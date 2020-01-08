@@ -13959,13 +13959,13 @@ span.page-link:hover, span.page-link:focus, span.page-link:active {
 * Sport table
 */
 .sport-table-header {
-	padding: 12px 23px 8px 23px;
+	padding: 6px 23px 5px 23px;
 	font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	font-size: 14px;
+	font-size: 11px;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	color: #fff;
-	background-color: #616161;
+	background-color: rgba(97, 97, 97, 0.7);
 }
 
 .heading-component + .sport-table-header {
@@ -14017,6 +14017,7 @@ span.page-link:hover, span.page-link:focus, span.page-link:active {
 	font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.2;
+	font-weight: bold;
 }
 
 .sport-table-title-team {
@@ -14069,6 +14070,7 @@ span.page-link:hover, span.page-link:focus, span.page-link:active {
 .sport-table-wager-button-count {
 	font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-weight: 600;
+	font-size: 14px;
 }
 
 .sport-table-wager-button span {
@@ -14094,20 +14096,24 @@ span.page-link:hover, span.page-link:focus, span.page-link:active {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 30px;
 }
 
 .sport-table-bonus-count {
 	font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 500;
 	letter-spacing: 0.05em;
 	color: #151515;
+	text-align: center;
+	line-height: 14px;
 }
 
 .sport-table-bonus-icon {
 	display: flex;
 	font-size: 20px;
 	color: #9b9b9b;
+	line-height: 12px;
 }
 
 @media (min-width: 576px) {
@@ -26860,3 +26866,15 @@ html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
 .matches-wrapper::-webkit-scrollbar-track  {
 	background: rgba(125, 125, 125, .1);
 }
+
+
+
+#sport-wrapper * {
+	user-select: none;
+}
+
+/* .isotope-item, .isotope {
+	height: auto !important;
+	position: static !important;
+	transform: none !important;
+} */
