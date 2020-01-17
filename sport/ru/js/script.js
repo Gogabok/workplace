@@ -2483,6 +2483,7 @@ let sportWrapper = new Vue({
 		},
 		prettyTime(time) {
 			let newTime = time * 1000
+			let year = new Date(newTime).getFullYear()
 			let month = new Date(newTime).getMonth() + 1
 			let date = new Date(newTime).getDate()
 			let hours = new Date(newTime).getHours()
@@ -2499,7 +2500,7 @@ let sportWrapper = new Vue({
 			} else {
 				newMinutes = minutes
 			}
-			return `${newHours}:${newMinutes}, ${newDate}.${newMonth}`
+			return `${newHours}:${newMinutes}, ${newDate}.${newMonth}.${year}`
 		}
 	}
 })
