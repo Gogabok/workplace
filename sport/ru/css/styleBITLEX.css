@@ -3990,6 +3990,14 @@ html {
 			font-size: 10px;
 		}
 	}
+	@media screen and (max-width: 576px) {
+		.sport-table-bonus-count {
+			display: flex;
+		}
+		.sport-table-bonus-count div {
+			margin-right: 5px;
+		}
+	}
 		.profile-wrapper {
 		max-width: 70%;
 		width: 100%;
