@@ -6739,8 +6739,8 @@ textarea.form-input {
 	display: none;
 	transition: all .3s;
 }
-.list-inline-custom .icon::before {
-	/* margin-top: 10px; */
+.list-inline-custom .icon-main::before {
+	margin-top: 10px;
 }
 
 
