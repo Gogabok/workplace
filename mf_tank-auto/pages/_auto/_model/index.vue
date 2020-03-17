@@ -26,15 +26,22 @@ export default {
   },
   name: "model-modifications",
   // middleware: 'autoGuard',
+  head() {
+    return {
+      title: this.title
+    }
+  },
   data() {
     return {
       currentModifications: [],
-      loading: true
+      loading: true,
+      title: ''
     };
   },
   created() {
     let model = this.$store.getters["getSelectedModel"];
-    this.loading = true
+    this.title = `Запчасти для ${model.fulldescription} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
+    this.loading = true;
     if (model) {
       api
         .getModifications(model.id)
@@ -53,14 +60,88 @@ export default {
     routeToGarage(selectedModification) {
       const manufacturer = this.$store.getters.getSelectedManufacturer;
       this.$store.commit("setSelectedModification", selectedModification);
-      this.$router.push({
-        name: "garage",
-        // params: {
-          selectedManufacturer: manufacturer,
-          selectedModel: this.selectedModel,
-          selectedModification: selectedModification
-        // }
-      });
+      let garageRoute = this.transliterate(selectedModification.fulldescription)
+      this.$router.push(this.$route.fullPath + '/' + garageRoute)
+    },
+    transliterate(payload) {
+      let word = payload
+        .toLowerCase()
+        .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, "")
+        .replace(/ /g, "_");
+      let a = {
+        Ё: "YO",
+        Й: "I",
+        Ц: "TS",
+        У: "U",
+        К: "K",
+        Е: "E",
+        Н: "N",
+        Г: "G",
+        Ш: "SH",
+        Щ: "SCH",
+        З: "Z",
+        Х: "H",
+        Ъ: "'",
+        ё: "yo",
+        й: "i",
+        ц: "ts",
+        у: "u",
+        к: "k",
+        е: "e",
+        н: "n",
+        г: "g",
+        ш: "sh",
+        щ: "sch",
+        з: "z",
+        х: "h",
+        ъ: "'",
+        Ф: "F",
+        Ы: "I",
+        В: "V",
+        А: "a",
+        П: "P",
+        Р: "R",
+        О: "O",
+        Л: "L",
+        Д: "D",
+        Ж: "ZH",
+        Э: "E",
+        ф: "f",
+        ы: "i",
+        в: "v",
+        а: "a",
+        п: "p",
+        р: "r",
+        о: "o",
+        л: "l",
+        д: "d",
+        ж: "zh",
+        э: "e",
+        Я: "Ya",
+        Ч: "CH",
+        С: "S",
+        М: "M",
+        И: "I",
+        Т: "T",
+        Ь: "'",
+        Б: "B",
+        Ю: "YU",
+        я: "ya",
+        ч: "ch",
+        с: "s",
+        м: "m",
+        и: "i",
+        т: "t",
+        ь: "'",
+        б: "b",
+        ю: "yu"
+      };
+      return word
+        .split("")
+        .map(function(char) {
+          return a[char] || char;
+        })
+        .join("");
     }
   }
 };

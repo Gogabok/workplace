@@ -53,7 +53,7 @@
                     <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}">
                       <div class="products-list products-list-2">
                         <div class="products-list-title">
-                          <span>{{product.supplier_name}} {{product.part_number}} {{product.product_name}}</span>
+                          <h1>{{product.supplier_name}} {{product.part_number}} {{product.product_name}}</h1>
                         </div>
                         <div class="products-list-img">
                           <img :src="productImage(product)">
@@ -100,6 +100,11 @@
     components: {
       BasketPrice,
       SectionTree, Loader
+    },
+    head() {
+      return {
+        title: this.title
+      }
     },
     data() {
       return {
@@ -148,10 +153,15 @@
           })
       }
     },
-    mounted() {},
+    mounted() {
+     
+    },
     computed: {
       page () {
         return this.$route.query.page || 1
+      },
+      title() {
+        return `${this.currentSection && this.currentSection.description} для ${this.carInfo && this.carInfo.modification.fulldescription}`
       },
       sectionName() {
         return ''
@@ -187,8 +197,11 @@
 
 <style lang="scss">
   .products-list-title {
-    span {
+    h1 {
       height: 72px;
+      font-size: 16px;
+      text-decoration: underline;
+      font-weight: 700;
     }
   }
   .products-list-img {

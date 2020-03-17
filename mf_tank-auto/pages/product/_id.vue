@@ -68,14 +68,16 @@
         <div class="product-footer">
           <div class="row">
             <div class="col-lg-12 col-12">
-              <div class="title title-last">Аналоги (заменители) для запрошенного артикула {{productInfo.view.part_number}}</div>
+              <div class="title title-last">
+                <h2>Аналоги (заменители) для запрошенного артикула {{productInfo.view.part_number}}</h2>
+              </div>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-12 col-12">
               <table class="product-footer-table-last">
                 <tr v-for="cross in productInfo.crosses" :key="cross.part_number">
-                  <td>{{cross.supplier_name}}</td>
+                  <td><h3>{{cross.supplier_name}}</h3></td>
                   <td>{{cross.part_number}}</td>
                   <td><nuxt-link class="art-mob" :to="'/product/' + cross.part_number">{{cross.product_name}}</nuxt-link></td>
                   <td><nuxt-link class="art-mob" :to="'/product/' + cross.part_number">Доп. информация</nuxt-link></td>
@@ -131,6 +133,11 @@
     BasketPrice,
     Loader
   },
+  head() {
+    return {
+      title: this.title
+    }
+  },
   data() {
     return {
       productInfo: {
@@ -138,7 +145,8 @@
       },
       loading: false,
       userCart: null,
-      alreadyInCart: false
+      alreadyInCart: false,
+      title: ''
     }
   },
   computed: {},
@@ -149,6 +157,12 @@
         this.productInfo = response;
         this.loading = false;
         console.log(response)
+        console.log(this.$store.getters['getSelectedModification'])
+        if(this.$store.getters['getSelectedModification'].fulldescription) {
+          this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid}`
+        } else {
+          this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid}`
+        }
       })
   },
   mounted() {
@@ -237,5 +251,12 @@
   .button-cart-mob {
     width: 130px;
     height: 50px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
   }
 </style>

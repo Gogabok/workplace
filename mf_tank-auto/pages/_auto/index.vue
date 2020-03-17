@@ -14,11 +14,18 @@
   import api from '~/assets/js/api.js'
   import Loader from '~/components/Loader.vue'
   export default {
+    head() {
+      return {
+        title: this.title
+      }
+    },
     components: {
       Loader
     },
     created() {
       const manufacturer = this.$store.getters.getSelectedManufacturer
+      let pageTitle = manufacturer.description
+      this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
       api.getModels(manufacturer.id)
         .then(response => {
           this.currentModels = [...response]
@@ -31,7 +38,8 @@
     data() {
       return {
         currentModels: [],
-        loading: true
+        loading: true,
+        title: ''
       }
     },
     mounted() {
