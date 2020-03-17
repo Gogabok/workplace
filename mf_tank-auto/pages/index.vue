@@ -134,6 +134,9 @@ import Loader from '~/components/Loader.vue'
 import BasketPrice from '~/components/BasketPrice'
 
 export default {
+  head: {
+    title: 'Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ'
+  },
   components: {
     Loader,
     BasketPrice
@@ -235,7 +238,8 @@ export default {
     routeSearchAuto(manufacturer, event) {
       event.preventDefault();
       this.$store.commit('setSelectedManufacturer', manufacturer);
-      this.$router.push({name: 'search-auto'})
+      let pageParams = manufacturer.description.toLowerCase().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').replace(/ /g, '_')
+      this.$router.push(`${pageParams}`)
     }
   }
 }
