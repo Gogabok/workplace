@@ -50,7 +50,8 @@
               <div class="products-page">
                 <div class="row">
                   <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.part_nubmer">
-                    <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}">
+                    <!-- <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}"> -->
+                      <nuxt-link :to="{name: 'product-id', params: {id: product.id, code: product.part_number}}">
                       <div class="products-list products-list-2">
                         <div class="products-list-title">
                           <h1>{{product.supplier_name}} {{product.part_number}} {{product.product_name}}</h1>
@@ -119,13 +120,15 @@
     created() {
       this.loading = true;
       if(!this.$route.query.page) {
+        console.log(this.$route.params.modification, this.$route.params.id);
+        
         api.getChildSection(this.$route.params.modification, this.$route.params.id)
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
             console.log('created', this.productCount);
             delete this.currentGoods.count;
-            return api.getSectionById(this.$route.params.id)
+            return api.getSectionById(this.$route.params.id, this.$route.params.modification)
           })
           .then(response => {
             this.currentSection = response;
@@ -134,6 +137,7 @@
           .then(response => {
             this.carInfo = response;
             this.loading = false
+            console.log(this.carInfo)
           })
       } else {
         api.getChildSection(this.$route.params.modification, this.$route.params.id, this.$route.query.page)
@@ -141,7 +145,7 @@
             this.currentGoods = response;
             this.productCount  = response.count;
             delete this.currentGoods.count;
-            return api.getSectionById(this.$route.params.id)
+            return api.getSectionById(this.$route.params.id, this.$route.params.modification)
           })
           .then(response => {
             this.currentSection = response;

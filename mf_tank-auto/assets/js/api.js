@@ -43,8 +43,8 @@ export default {
   getProductByCode(code) {
     return http.get(`/details/view?code=${code}`)
   },
-  getSectionById(sectionId) {
-    return http.get(`/sections/view?id=${sectionId}`)
+  getSectionById(sectionId, modificationId) {
+    return http.get(`/sections/view?id=${sectionId}&modification_id=${modificationId}`)
   },
   getCarInfoByModificationId(modificationId) {
     return http.get(`/passanger-cars/view?id=${modificationId}`)

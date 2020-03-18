@@ -152,7 +152,7 @@
   computed: {},
   created() {
     this.loading = true;
-    api.getProductByCode(this.$route.params.id)
+    api.getProductByCode(this.$route.params.code)
       .then(response => {
         this.productInfo = response;
         this.loading = false;
