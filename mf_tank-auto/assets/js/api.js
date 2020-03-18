@@ -29,19 +29,24 @@ export default {
     return http.get('/sections/main')
   },
   getModels(manufacturerId) {
-    return http.get(`/models/passengers?make_id=${manufacturerId}`)
+    return http.get(`/models/passengers?description=${manufacturerId}`)
   },
-  getModifications(modelId) {
-    return http.get(`/passanger-cars/modifications?model_id=${modelId}`)
+  getModifications(manufacturer, modelId) {
+    return http.get(`/passanger-cars/modifications?brand_description=${manufacturer}&model_description=${modelId}`)
   },
-  getGarageSections(modificationId) {
-    return http.get(`/sections/all?modification_id=${modificationId}`)
+  getGarageSections(manufacturer, model, modificationId) {
+    return http.get(`/sections/all?brand_description=${manufacturer}&model_description=${model}&modification_description=${modificationId}`)
   },
   getChildSection(modificationId, childId, page) {
-    return http.get(`/details/section-children?modification_id=${modificationId}&section_id=${childId}${page ? '&page=' + page : ''}`)
+    return http.get(`/details/list?modification_id=${modificationId}&section_id=${childId}${page ? '&page=' + page : ''}`)
   },
+  // ??
   getProductByCode(code) {
     return http.get(`/details/view?code=${code}`)
+  },
+  // ??
+  getProductById(id) {
+    return http.get(`/details/view?id=${id}`)
   },
   getSectionById(sectionId, modificationId) {
     return http.get(`/sections/view?id=${sectionId}&modification_id=${modificationId}`)

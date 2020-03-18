@@ -42,9 +42,11 @@ export default {
     let model = this.$store.getters["getSelectedModel"];
     this.title = `Запчасти для ${model.fulldescription} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
     this.loading = true;
+    // console.log(model, this.$store.getters['getSelectedManufacturer'])
+    let selectedManufacturer = this.$store.getters['getSelectedManufacturer']
     if (model) {
       api
-        .getModifications(model.id)
+        .getModifications(selectedManufacturer.description, model.description)
         .then(response => {
           this.currentModifications = response;
           this.loading = false;
@@ -60,7 +62,8 @@ export default {
     routeToGarage(selectedModification) {
       const manufacturer = this.$store.getters.getSelectedManufacturer;
       this.$store.commit("setSelectedModification", selectedModification);
-      let garageRoute = this.transliterate(selectedModification.fulldescription)
+      // let garageRoute = this.transliterate(selectedModification.fulldescription)
+      let garageRoute = selectedModification.fulldescription
       this.$router.push(this.$route.fullPath + '/' + garageRoute)
     },
     transliterate(payload) {

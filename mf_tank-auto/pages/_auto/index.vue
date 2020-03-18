@@ -26,7 +26,8 @@
       const manufacturer = this.$store.getters.getSelectedManufacturer
       let pageTitle = manufacturer.description
       this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
-      api.getModels(manufacturer.id)
+      console.log(manufacturer.description)
+      api.getModels(manufacturer.description)
         .then(response => {
           this.currentModels = [...response]
           this.loading = false
@@ -50,7 +51,8 @@
         this.selectedModel = model
         this.$store.commit('setSelectedModel', model)
         this.loading = true
-        let modelRoute = this.transliterate(model.description)
+        // let modelRoute = this.transliterate(model.description)
+        let modelRoute = model.description
         this.$router.push(this.$route.fullPath + '/' + modelRoute)
       },
       transliterate(payload) {

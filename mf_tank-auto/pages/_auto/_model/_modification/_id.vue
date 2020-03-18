@@ -119,9 +119,12 @@
     },
     created() {
       this.loading = true;
+      let selectedManufacturer = this.$route.params.auto
+      let selectedModel = this.$route.params.model
+      let selectedModification = this.$route.params.modification
+      let selectedProduct = this.$route.params.id
       if(!this.$route.query.page) {
-        
-        api.getChildSection(this.$route.params.modification, this.$route.params.id)
+        api.getChildSection(selectedModification, selectedProduct)
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);

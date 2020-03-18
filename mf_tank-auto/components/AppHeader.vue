@@ -52,11 +52,12 @@ header.header
                 .col-sm-12
                   .sub-menu-title {{category.parent.description}}
                   ul
-                    li(v-for="child in category.children" :key="child.id")
-                      nuxt-link(:to="'/catalog/' + child.passangercarid + '/section/' + child.number") {{child.description}}
+                    li(@click.prevent="linkTo(child)" v-for="child in category.children" :key="child.id")
+                      nuxt-link(to="/") {{child.description}}
   call-back-modal(v-if="showCallBack" @closeModal="toggleCallBackModal")
 </template>
 <script>
+  import api from '~/assets/js/api'
   import CallBackModal from '~/components/CallBackModal.vue'
   export default {
     name: 'AppHeader',
@@ -77,6 +78,17 @@ header.header
       },
       openMenu() {
         this.$store.commit('setMobileMenuOpened', true)
+      },
+      linkTo(item) {
+        api.getCarInfoByModificationId(item.passangercarid)
+        .then(response => {
+          let currentCar = response
+          console.log(`/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.description}/${item.number}`);
+          
+          this.$router.push({
+            path: `/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.id}/${item.number}`,
+          })
+        })
       }
     }
   }
