@@ -161,7 +161,12 @@
         return this.$route.query.page || 1
       },
       title() {
-        return `${this.currentSection && this.currentSection.description} для ${this.carInfo && this.carInfo.modification.fulldescription}`
+        if(this.currentSection && this.currentSection.description) {
+          return `${this.currentSection && this.currentSection.description} для ${this.carInfo && this.carInfo.modification.fulldescription}`
+        }
+        else {
+          return 'Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ'
+        }
       },
       sectionName() {
         return ''

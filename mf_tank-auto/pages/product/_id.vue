@@ -158,10 +158,10 @@
         this.loading = false;
         console.log(response)
         console.log(this.$store.getters['getSelectedModification'])
-        if(this.$store.getters['getSelectedModification'].fulldescription) {
-          this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid}`
+        if(this.$store.getters['getSelectedModification'] && this.$store.getters['getSelectedModification'].fulldescription) {
+          this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
         } else {
-          this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid}`
+          this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
         }
       })
   },
