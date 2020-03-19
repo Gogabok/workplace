@@ -38,31 +38,38 @@ export default {
       title: ''
     };
   },
-  created() {
-    let model = this.$store.getters["getSelectedModel"];
-    this.title = `Запчасти для ${model.fulldescription} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
-    this.loading = true;
-    // console.log(model, this.$store.getters['getSelectedManufacturer'])
-    let selectedManufacturer = this.$store.getters['getSelectedManufacturer']
-    if (model) {
-      api
-        .getModifications(selectedManufacturer.description, model.description)
-        .then(response => {
-          this.currentModifications = response;
-          this.loading = false;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    } else {
-      this.$router.push("/");
+  mounted() {
+    let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
+    let selectedManufacturer = this.$route.params.auto
+      if (model) {
+        api
+          .getModifications(selectedManufacturer, model.description)
+          .then(response => {
+            this.currentModifications = response;
+            this.loading = false;
+              this.title = `Запчасти для ${model.fulldescription} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        this.$router.push("/");
+      }
+    if(!this.$store.getters["getSelectedModel"] && !this.$store.getters.getSelectedManufacturer) {
+      let manufacturerObj = JSON.parse(localStorage.getItem(this.$route.params.auto))
+
+      this.$store.commit('setSelectedModel', model)
+      this.$store.commit('setSelectedManufacturer', manufacturerObj)
     }
+  },
+  created() {
+    this.loading = true;
   },
   methods: {
     routeToGarage(selectedModification) {
       const manufacturer = this.$store.getters.getSelectedManufacturer;
       this.$store.commit("setSelectedModification", selectedModification);
-      // let garageRoute = this.transliterate(selectedModification.fulldescription)
+      localStorage.setItem(selectedModification.fulldescription, JSON.parse(selectedModification))
       let garageRoute = selectedModification.fulldescription
       this.$router.push(this.$route.fullPath + '/' + garageRoute)
     },

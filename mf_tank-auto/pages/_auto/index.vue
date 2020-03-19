@@ -23,11 +23,10 @@
       Loader
     },
     created() {
-      const manufacturer = this.$store.getters.getSelectedManufacturer
-      let pageTitle = manufacturer.description
-      this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
-      console.log(manufacturer.description)
-      api.getModels(manufacturer.description)
+      const manufacturer = this.$store.getters.getSelectedManufacturer ? this.$store.getters.getSelectedManufacturer.description : this.$route.params.auto
+
+      this.title = `Запчасти для ${manufacturer} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
+      api.getModels(manufacturer)
         .then(response => {
           this.currentModels = [...response]
           this.loading = false
@@ -44,11 +43,15 @@
       }
     },
     mounted() {
-
+      if(!this.$store.getters.getSelectedManufacturer) {
+        let manufacturerObj = JSON.parse(localStorage.getItem(this.$route.params.auto))
+        this.$store.commit('setSelectedManufacturer', manufacturerObj)
+      }
     },
     methods: {
       loadModifications(model) {
         this.selectedModel = model
+        localStorage.setItem(model.description, JSON.stringify(model))
         this.$store.commit('setSelectedModel', model)
         this.loading = true
         // let modelRoute = this.transliterate(model.description)
@@ -63,7 +66,7 @@
         }).join("");
       }
     },
-    middleware: 'autoGuard'
+    // middleware: 'autoGuard'
   }
 </script>
 

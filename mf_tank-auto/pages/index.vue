@@ -237,8 +237,9 @@ export default {
     },
     routeSearchAuto(manufacturer, event) {
       event.preventDefault();
+      localStorage.setItem(manufacturer.description, JSON.stringify(manufacturer))
       this.$store.commit('setSelectedManufacturer', manufacturer);
-      let pageParams = manufacturer.description.toLowerCase().replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '').replace(/ /g, '_')
+      let pageParams = manufacturer.description
       this.$router.push(`${pageParams}`)
     }
   }

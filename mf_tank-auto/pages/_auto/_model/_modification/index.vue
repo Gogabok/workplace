@@ -118,28 +118,58 @@ export default {
     };
   },
   created() {
-    this.loading = true;
-    let pageTitle = this.$store.getters.getSelectedModification.fulldescription;
-    this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`;
-    let selectedManufacturer = this.$store.getters["getSelectedManufacturer"]
-      .description;
-    let selectedModel = this.$store.getters["getSelectedModel"].description;
-    let selectedModification = this.$store.getters["getSelectedModification"]
-      .description;
-    api
-      .getGarageSections(
-        selectedManufacturer,
-        selectedModel,
-        selectedModification
-      )
-      .then(response => {
-        this.$store.commit("setSections", response);
-        this.currentSections = response;
-        this.loading = false;
-      });
+    let manufacturer = this.$store.getters["getSelectedManufacturer"] ? this.$store.getters["getSelectedManufacturer"] : JSON.parse(localStorage.getItem(this.$route.params.auto))
+    let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
+    let modification = this.$store.getters["getSelectedModification"] ? this.$store.getters["getSelectedModification"] : JSON.parse(localStorage.getItem(this.$route.params.modification))
   },
-  mounted() {},
-  middleware: "garageGuard",
+  mounted() {
+    this.loading = true;
+    let manufacturer = this.$store.getters["getSelectedManufacturer"] ? this.$store.getters["getSelectedManufacturer"] : JSON.parse(localStorage.getItem(this.$route.params.auto))
+    let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
+    let modification = this.$store.getters["getSelectedModification"] ? this.$store.getters["getSelectedModification"] : JSON.parse(localStorage.getItem(this.$route.params.modification))
+    
+    if(!this.$store.getters["getSelectedManufacturer"]) {
+      this.$store.commit('setSelectedManufacturer', manufacturer)
+    }
+    if(!this.$store.getters["getSelectedModel"]) {
+      this.$store.commit('setSelectedModel', model)
+    }
+    if(!this.$store.getters["getSelectedModification"]) {
+      this.$store.commit('setSelectedModification', modification)
+    }
+    console.log(manufacturer.description, model.description, modification.description);
+    
+    let pageTitle = modification.fulldescription;
+    this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`;
+    api.getGarageSections(manufacturer.description, model.description, modification.description)
+    .then(response => {
+      this.$store.commit("setSections", response);
+      this.currentSections = response;
+      this.loading = false;
+    });
+
+
+
+    // let pageTitle = this.$store.getters.getSelectedModification.fulldescription;
+    // this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`;
+    // let selectedManufacturer = this.$store.getters["getSelectedManufacturer"]
+    //   .description;
+    // let selectedModel = this.$store.getters["getSelectedModel"].description;
+    // let selectedModification = this.$store.getters["getSelectedModification"]
+    //   .description;
+    // api
+    //   .getGarageSections(
+    //     selectedManufacturer,
+    //     selectedModel,
+    //     selectedModification
+    //   )
+    //   .then(response => {
+    //     this.$store.commit("setSections", response);
+    //     this.currentSections = response;
+    //     this.loading = false;
+    //   });
+  },
+  // middleware: "garageGuard",
   computed: {},
   methods: {
     routeToChildrenProducts(sectionChildId, parentId, sectionDescription) {
