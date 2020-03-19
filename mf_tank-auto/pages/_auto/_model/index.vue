@@ -71,6 +71,7 @@ export default {
       this.$store.commit("setSelectedModification", selectedModification);
       localStorage.setItem(selectedModification.fulldescription, JSON.stringify(selectedModification))
       let garageRoute = selectedModification.fulldescription
+      console.log
       this.$router.push(this.$route.fullPath + '/' + garageRoute)
     },
     transliterate(payload) {

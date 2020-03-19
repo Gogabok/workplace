@@ -51,6 +51,7 @@
                 <div class="row">
                   <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.part_nubmer">
                     <!-- <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}"> -->
+                      
                       <nuxt-link :to="{name: 'product-id', params: {id: product.id, code: product.part_number}}">
                       <div class="products-list products-list-2">
                         <div class="products-list-title">

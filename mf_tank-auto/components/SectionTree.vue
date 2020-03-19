@@ -58,6 +58,7 @@
         if(!this.$store.getters["getSelectedModification"]) {
           this.$store.commit('setSelectedModification', modification)
         }
+        console.log(JSON.parse(localStorage.getItem(this.$route.params.modification)))
         setTimeout(() => {
           api.getGarageSections(manufacturer.description, model.description, modification.description)
           .then(response => {

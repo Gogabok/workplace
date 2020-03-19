@@ -1,14 +1,24 @@
-<template lang="pug">
-  main.main
-    .container
-      .column-models
-        .column-models__title Модели
-        .column-models__inner
-          a(@click.prevent="loadModifications(model)" href="#" v-for="model in currentModels" :key="model.description") {{model.description}}
-        //- .column-models__inner(v-if="selectedTab === 'modifications'")
-        //-   a(@click.prevent="routeToGarage(modification)" href="#" v-for="modification in currentModifications" :key="modification.description") {{modification.fulldescription}}
-    loader(v-if="loading")
+<template>
+    <main class="main">
+      <div class="container">
+        <div class="column-models">
+          <div class="column-models__title">Модели</div>
+          <div class="column-models__inner" v-if="currentModels.length > 0">
+            <a @click.prevent="loadModifications(model)" href="#" v-for="model in currentModels" :key="model.description">
+              {{model.description}}
+            </a>
+          </div>
+          <div class="column-models__inner" v-else>
+            <p>Извините, для данного бренда отсутсвуют модели</p>
+            <nuxt-link to="/" tag="a" style="text-decoration: underline;">Вернуться</nuxt-link>
+          </div>
+        </div>
+      </div>
+      <loader v-if="loading"></loader>
+    </main>
 </template>
+
+
 
 <script>
   import api from '~/assets/js/api.js'

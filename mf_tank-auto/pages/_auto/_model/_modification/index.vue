@@ -163,7 +163,12 @@ export default {
       // let modification = this.transliterate(this.selectedModel.id);
       let manufacturer = this.selectedManufacturer.description
       let model = this.selectedModel.description;
-      let modification = this.selectedModel.id;
+      let modification = this.selectedModification.id;
+      console.log(manufacturer, model, modification);
+      
+      // localStorage.setItem(manufacturer, JSON.stringify(this.selectedManufacturer))
+      // localStorage.setItem(model, JSON.stringify(this.selectedManufacturer))
+      // localStorage.setItem(modification, JSON.stringify(this.selectedManufacturer))
 
       this.$router.push(
         `/${manufacturer}/${model}/${modification}/${parentId}`

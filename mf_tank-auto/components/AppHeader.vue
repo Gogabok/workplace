@@ -40,7 +40,7 @@ header.header
               span.mobile-btn__line
               span.mobile-btn__line
               span.mobile-btn__line
-  .header__bottom
+  .header__bottom(v-if="$route.fullPath === '/'")
     .container
       nav.header__nav
         ul
@@ -86,7 +86,14 @@ header.header
         .then(response => {
           let currentCar = response
           console.log(response);
-          
+          localStorage.setItem(currentCar.manufacturers.description, JSON.stringify(currentCar.manufacturers))
+          localStorage.setItem(currentCar.model.description, JSON.stringify(currentCar.model))
+          localStorage.setItem(currentCar.modification.id, JSON.stringify(currentCar.modification))
+
+          this.$store.commit('setSelectedManufacturer', currentCar.manufacturers)
+          this.$store.commit('setSelectedModel', currentCar.model)
+          this.$store.commit('setSelectedModification', currentCar.modification)
+
           console.log(`/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.description}/${item.number}`);
           this.$router.push({
             path: `/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.id}/${item.number}`,
