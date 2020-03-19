@@ -6,11 +6,12 @@
           <img :src="section.treeActive ? '/images/prod/minus.png' : '/images/prod/plus.png'" alt="">
         </div>
         <div class="section-name">
-          <nuxt-link :to="{name: 'catalog-modification-section-id', params: {id: section.parent.number, parentId: section.parent.parentid, modification: modificationId, sectionDescription: section.parent.description}}">
+          <!-- <nuxt-link :to="{name: 'catalog-modification-section-id', params: {id: section.parent.number, parentId: section.parent.parentid, modification: modificationId, sectionDescription: section.parent.description}}"> -->
+          <a href="#" @click.prevent="linkTo(section)">
             <span :class="section.parent.number === $store.getters.getExpandedSectionIds[0] ? 'node-selected' : ''">
               {{section.parent.description}}
             </span>
-          </nuxt-link>
+          </a>
         </div>
       </div>
       <section-tree :modificationId="modificationId" :selectedSectionId="selectedSectionId" :style="{paddingLeft: (15 * (depth + 1)) + 'px'}" v-if="depth < 3 && section.treeActive" :depth="depth + 1" :nestedSection="section.children" ></section-tree>
@@ -45,7 +46,20 @@
     },
     mounted() {
       if(!this.nestedSection) {
-        api.getGarageSections(Number.parseInt(this.modificationId))
+        let manufacturer = this.$store.getters["getSelectedManufacturer"] ? this.$store.getters["getSelectedManufacturer"] : JSON.parse(localStorage.getItem(this.$route.params.auto))
+        let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
+        let modification = this.$store.getters["getSelectedModification"] ? this.$store.getters["getSelectedModification"] : JSON.parse(localStorage.getItem(this.$route.params.modification))
+        if(!this.$store.getters["getSelectedManufacturer"]) {
+          this.$store.commit('setSelectedManufacturer', manufacturer)
+        }
+        if(!this.$store.getters["getSelectedModel"]) {
+          this.$store.commit('setSelectedModel', model)
+        }
+        if(!this.$store.getters["getSelectedModification"]) {
+          this.$store.commit('setSelectedModification', modification)
+        }
+        setTimeout(() => {
+          api.getGarageSections(manufacturer.description, model.description, modification.description)
           .then(response => {
             this.$store.commit('setSections', response)
             this.currentSections.push(...response)
@@ -56,10 +70,23 @@
                 this.$set(section, 'treeActive', true)
               }
             })
+            console.log(response)
           })
+          .catch(error => {
+            console.log(error)
+          })
+        }, 0);
       }
     },
     methods: {
+      linkTo (section) {
+        console.log(section)
+        let manufacturer = this.$store.getters["getSelectedManufacturer"]
+        let model = this.$store.getters["getSelectedModel"]
+        let modification = this.$store.getters["getSelectedModification"]
+        this.$router.push(`/${manufacturer.description}/${model.description}/${modification.id}/${section.parent.number}`)
+        // :to="{name: 'catalog-modification-section-id', params: {id: section.parent.number, parentId: section.parent.parentid, modification: modificationId, sectionDescription: section.parent.description}}"
+      },
       toggleSection(section) {
         if(this.depth < 3) {
           section.treeActive = !section.treeActive

@@ -80,11 +80,14 @@ header.header
         this.$store.commit('setMobileMenuOpened', true)
       },
       linkTo(item) {
+        console.log(item);
+        
         api.getCarInfoByModificationId(item.passangercarid)
         .then(response => {
           let currentCar = response
-          console.log(`/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.description}/${item.number}`);
+          console.log(response);
           
+          console.log(`/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.description}/${item.number}`);
           this.$router.push({
             path: `/${currentCar.manufacturers.description}/${currentCar.model.description}/${currentCar.modification.id}/${item.number}`,
           })

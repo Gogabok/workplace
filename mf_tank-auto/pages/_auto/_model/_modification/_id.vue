@@ -39,7 +39,7 @@
                 <div class="sidebar-filter-menu">
                   <a href="#">Вернуться в каталог</a>
                   <div class="sidebar-filter-menu-ul" id="sidebar-filter-menu">
-                    <section-tree :depth="0" :modificationId="$route.params.modification" :selectedSectionId="$route.params.id"></section-tree>
+                    <section-tree :depth="0" :modificationId="$route.params.modification.id" :selectedSectionId="$route.params.id"></section-tree>
                   </div>
                 </div>
               </div>

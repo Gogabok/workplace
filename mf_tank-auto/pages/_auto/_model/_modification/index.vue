@@ -33,9 +33,9 @@
           <div class="col-sm-6">
             <div class="garage-info">
               <div class="garage-info-car">
-                <span>{{selectedManufacturer.description}}</span>
-                <span>{{selectedModel.description}}</span>
-                <span>{{selectedModification.fulldescription}}</span>
+                <span v-if="selectedManufacturer">{{selectedManufacturer.description}}</span>
+                <span v-if="selectedModel">{{selectedModel.description}}</span>
+                <span v-if="selectedModification">{{selectedModification.fulldescription}}</span>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="inner__top">
-              <h1 class="inner__title">{{selectedModification.fulldescription}}</h1>
+              <h1 class="inner__title" v-if="selectedModification">{{selectedModification.fulldescription}}</h1>
               <ul class="breadcrumbs">
                 <li>
                   <nuxt-link to="/">Главная</nuxt-link>
@@ -109,25 +109,21 @@ export default {
   },
   data() {
     return {
-      selectedManufacturer: this.$store.getters.getSelectedManufacturer,
-      selectedModel: this.$store.getters.getSelectedModel,
-      selectedModification: this.$store.getters.getSelectedModification,
+      selectedManufacturer: null,
+      selectedModel: null,
+      selectedModification: null,
       currentSections: [],
       loading: false,
       title: ""
     };
   },
   created() {
-    let manufacturer = this.$store.getters["getSelectedManufacturer"] ? this.$store.getters["getSelectedManufacturer"] : JSON.parse(localStorage.getItem(this.$route.params.auto))
-    let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
-    let modification = this.$store.getters["getSelectedModification"] ? this.$store.getters["getSelectedModification"] : JSON.parse(localStorage.getItem(this.$route.params.modification))
+    this.loading = true;
   },
   mounted() {
-    this.loading = true;
     let manufacturer = this.$store.getters["getSelectedManufacturer"] ? this.$store.getters["getSelectedManufacturer"] : JSON.parse(localStorage.getItem(this.$route.params.auto))
     let model = this.$store.getters["getSelectedModel"] ? this.$store.getters["getSelectedModel"] : JSON.parse(localStorage.getItem(this.$route.params.model))
     let modification = this.$store.getters["getSelectedModification"] ? this.$store.getters["getSelectedModification"] : JSON.parse(localStorage.getItem(this.$route.params.modification))
-    
     if(!this.$store.getters["getSelectedManufacturer"]) {
       this.$store.commit('setSelectedManufacturer', manufacturer)
     }
@@ -137,8 +133,9 @@ export default {
     if(!this.$store.getters["getSelectedModification"]) {
       this.$store.commit('setSelectedModification', modification)
     }
-    console.log(manufacturer.description, model.description, modification.description);
-    
+    this.selectedManufacturer = manufacturer
+    this.selectedModel = model
+    this.selectedModification = modification
     let pageTitle = modification.fulldescription;
     this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`;
     api.getGarageSections(manufacturer.description, model.description, modification.description)
@@ -146,39 +143,28 @@ export default {
       this.$store.commit("setSections", response);
       this.currentSections = response;
       this.loading = false;
+
+      api.getPassengers()
+      .then(passengers => {
+        this.$store.commit('setPassengers', passengers);
+        api.getPartsCategories().then(partsCategories => {
+          this.$store.commit('setPartsCategories', partsCategories);
+        })
+      })
     });
-
-
-
-    // let pageTitle = this.$store.getters.getSelectedModification.fulldescription;
-    // this.title = `Запчасти для ${pageTitle} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`;
-    // let selectedManufacturer = this.$store.getters["getSelectedManufacturer"]
-    //   .description;
-    // let selectedModel = this.$store.getters["getSelectedModel"].description;
-    // let selectedModification = this.$store.getters["getSelectedModification"]
-    //   .description;
-    // api
-    //   .getGarageSections(
-    //     selectedManufacturer,
-    //     selectedModel,
-    //     selectedModification
-    //   )
-    //   .then(response => {
-    //     this.$store.commit("setSections", response);
-    //     this.currentSections = response;
-    //     this.loading = false;
-    //   });
   },
-  // middleware: "garageGuard",
   computed: {},
   methods: {
     routeToChildrenProducts(sectionChildId, parentId, sectionDescription) {
-      let manufacturer = this.transliterate(
-        this.selectedManufacturer.description
-      );
-      let model = this.transliterate(this.selectedModel.description);
-      let modification = this.transliterate(this.selectedModel.id);
-      console.log(parentId);
+      // let manufacturer = this.transliterate(
+      //   this.selectedManufacturer.description
+      // );
+      // let model = this.transliterate(this.selectedModel.description);
+      // let modification = this.transliterate(this.selectedModel.id);
+      let manufacturer = this.selectedManufacturer.description
+      let model = this.selectedModel.description;
+      let modification = this.selectedModel.id;
+
       this.$router.push(
         `/${manufacturer}/${model}/${modification}/${parentId}`
       );
