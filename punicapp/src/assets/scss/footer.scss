@@ -15,7 +15,9 @@
 }
 
 .footer {
-	img {
-		width: 100%;
+	text-align: center;
+	& .title {
+		font-size: 2rem;
+		
 	}
 }

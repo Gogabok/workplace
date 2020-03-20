@@ -89,6 +89,9 @@
         <footer class="footer">
             <img src="images/footer.jpg" alt="">
         </footer>
+        <footer class="footer">
+            123321123211332132123132132132321
+        </footer>
     </div>
 </template>
 
