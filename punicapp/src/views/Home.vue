@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <price-calculate></price-calculate>
+    <section-one></section-one>
+    <section-two></section-two>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import PriceCalculate from "../components/pages/PriceCalculate";
+
+import sectionOne from '../components/pages/home-sections/section-1'
+import sectionTwo from '../components/pages/home-sections/section-2'
 
 export default {
   name: 'Home',
   components: {
-    PriceCalculate,
+    sectionOne, sectionTwo
   }
 }
 </script>

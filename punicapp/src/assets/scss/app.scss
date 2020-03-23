@@ -3,6 +3,9 @@
 
 body {
   background-color: #F2F2F2;
+  & p {
+    margin: 0px;
+  }
 }
 
 // header {
@@ -312,4 +315,97 @@ body {
   background-size: cover;
   background-position: center;
   background-image: url("data:image/svg+xml,%3Csvg width='9' height='16' viewBox='0 0 9 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.67619 8.79208L1.88741 15.6716C1.45556 16.1095 0.755394 16.1095 0.323755 15.6716C-0.107918 15.2342 -0.107918 14.5246 0.323755 14.0872L6.33078 7.99989L0.32393 1.91276C-0.107744 1.47513 -0.107744 0.765684 0.32393 0.328226C0.755604 -0.109409 1.45574 -0.109409 1.88759 0.328226L8.67637 7.20786C8.8922 7.4267 9 7.7132 9 7.99985C9 8.28664 8.89199 8.57335 8.67619 8.79208Z' fill='%23333230'/%3E%3C/svg%3E%0A");
+}
+
+html::-webkit-scrollbar {
+  background: #e4e4e4;
+  width: 8px;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgba(45, 45, 45, 0.7);
+  // border-radius: 5px;
+}
+
+.section {
+  background: #F4F2F4;
+}
+
+.section-1 {
+  padding: 92px 88px 32px 88px;
+  min-height: 100vh;
+  position: relative;
+  border-bottom: 2px solid #D9D9D9;
+  & .container {
+    max-width: 1200px;
+    width: 100%;
+    & .title {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      z-index: 2;
+      & .subtitle {
+        font-family: 'g-SemiBold';
+        max-width: 400px;
+        color: #545351;
+        font-size: 2rem;
+        margin: 0px auto 32px auto;
+      }
+      & .main-title {
+        color: #333230;
+        text-transform: uppercase;
+        font-size: 4.5rem;
+        font-weight: 800;
+        max-width: 600px;
+        margin: 0px auto 0px auto;
+        font-family: 'g-Bold';
+        line-height: 4rem;
+        & span {
+          color: #E61818;
+        }
+      }
+    }
+  }
+  & .bg-illustration {
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    transform: translate(-100%, -50%);
+    z-index: 1;
+    width: 500px;
+  }
+  & .icon-wrapper {
+    position: absolute;
+    left: calc(50% - 75px);
+    bottom: -26px;
+    width: 150px;
+    margin: 0px auto 0px auto;
+    text-align: center;
+    z-index: 2;
+    background: #F4F2F4;
+  }
+}
+
+.section-2 {
+  padding: 92px 88px 32px 88px;
+  & .title {
+    font-size: 4.5rem;
+    line-height: 4rem;
+    text-align: center;
+    color: #333230;
+    text-transform: uppercase;
+    font-family: 'g-Bold';
+    margin: 50px 0px 20px 0px;
+  }
+  & .subtitle {
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 70px auto 30px auto;
+    color: #8B8985;
+    font-family: 'g-SemiBold';
+  }
 }
