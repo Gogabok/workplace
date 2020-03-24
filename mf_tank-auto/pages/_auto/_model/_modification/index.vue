@@ -4,7 +4,7 @@
       <basket-price></basket-price>
       <div class="container">
         <div class="hero__inner">
-          <h1 class="hero__title">МОЙ ГАРАЖ</h1>
+          <h1 class="hero__title">{{ title }}</h1>
           <form class="hero__search">
             <div class="form__group">
               <div class="form__group-input">
@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="inner__top">
-              <h1 class="inner__title">Мой гараж</h1>
+              <h2 class="inner__title">{{ title }}</h2>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
                 @click="routeToChildrenProducts(child.parent.passangercarid, child.parent.number, child.parent.description)"
               >
                 <div class="garage-catalog-product">
-                  <h6>{{child.parent.description}}</h6>
+                  <h3>{{child.parent.description}}</h3>
                   <div class="garage-catalog-product-img">
                     <img src="/images/garage/product.png" />
                   </div>
@@ -267,6 +267,13 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style>
+  .garage-catalog-product h3 {
+    font-size: 14px;
+    text-align: center;
+    color: #1d1d1d;
+    text-decoration: underline;
+    min-height: 36px;
+}
 </style>
 

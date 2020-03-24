@@ -4,7 +4,8 @@
       <basket-price></basket-price>
       <div class="container">
         <div class="hero__inner">
-          <h1 class="hero__title">{{currentSection && currentSection.description}}</h1>
+          <!-- <h1 class="hero__title">{{currentSection && currentSection.description}}</h1> -->
+          <h1 class="hero__title">{{ title }}</h1>
           <form class="hero__search">
             <div class="form__group">
               <div class="form__group-input"><input type="text" name="hero-search" placeholder="Поиск по артикулу или названию товара"></div>
@@ -19,7 +20,7 @@
           <div class="row">
             <div class="col-sm-9">
               <div class="inner__top">
-                <h1 class="inner__title">{{currentSection && currentSection.description}} для {{carInfo && carInfo.modification.fulldescription}}</h1>
+                <h2 class="inner__title">{{currentSection && currentSection.description}} для {{carInfo && carInfo.modification.fulldescription}}</h2>
                 <ul class="breadcrumbs">
                   <li><nuxt-link to="/">Главная</nuxt-link></li>
                   <li><nuxt-link :to="`/${$route.params.auto}/${$route.params.model}/${$route.params.modification}`">Гараж</nuxt-link></li>
@@ -55,7 +56,7 @@
                       <nuxt-link :to="{name: 'product-id', params: {id: product.id, code: product.part_number}}">
                       <div class="products-list products-list-2">
                         <div class="products-list-title">
-                          <h1>{{product.supplier_name}} {{product.part_number}} {{product.product_name}}</h1>
+                          <h3>{{product.supplier_name}} {{product.part_number}} {{product.product_name}}</h3>
                         </div>
                         <div class="products-list-img">
                           <img :src="productImage(product)">
@@ -105,7 +106,7 @@
     },
     head() {
       return {
-        title: this.title
+        title: this.title + ' - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ'
       }
     },
     data() {
@@ -208,7 +209,7 @@
 
 <style lang="scss">
   .products-list-title {
-    h1 {
+    h3 {
       height: 72px;
       font-size: 16px;
       text-decoration: underline;

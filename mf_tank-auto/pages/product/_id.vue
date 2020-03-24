@@ -4,7 +4,8 @@
       <basket-price></basket-price>
       <div class="container">
         <div class="hero__inner">
-          <h1 class="hero__title">{{productInfo.view.supplier_name}} {{productInfo.view.product_name}}</h1>
+          <!-- <h1 class="hero__title">{{productInfo.view.supplier_name}} {{productInfo.view.product_name}}</h1> -->
+          <h1 class="hero__title">{{ title }}</h1>
           <form class="hero__search">
             <div class="form__group">
               <div class="form__group-input"><input type="text" name="hero-search" placeholder="Поиск по артикулу или названию товара"></div>
@@ -16,7 +17,8 @@
     <section class="product-page">
       <div class="container">
         <div class="inner__top">
-          <h1 class="inner__title">{{productInfo.view.supplier_name}} {{productInfo.view.product_name}}</h1>
+          <!-- <h2 class="inner__title">{{productInfo.view.supplier_name}} {{productInfo.view.product_name}}</h2> -->
+          <h2 class="inner__title">{{ title }}</h2>
           <ul class="breadcrumbs">
             <li><nuxt-link to="/">Главная</nuxt-link></li>
             <li><a href="#" @click.prevent='$router.go(-1)'>Список товаров</a></li>
@@ -77,14 +79,15 @@
                 <tr v-for="cross in productInfo.crosses" :key="cross.part_number">
                   <td><h3>{{cross.supplier_name}}</h3></td>
                   <td>{{cross.part_number}}</td>
-                  <td><nuxt-link class="art-mob" :to="'/product/' + cross.part_number">{{cross.product_name}}</nuxt-link></td>
-                  <td><nuxt-link class="art-mob" :to="'/product/' + cross.part_number">Доп. информация</nuxt-link></td>
+                  <td><nuxt-link class="art-mob" :to="'/product/' + cross.id">{{cross.product_name}}</nuxt-link></td>
+                  <td><nuxt-link class="art-mob" :to="'/product/' + cross.id">Доп. информация</nuxt-link></td>
                   <td style="display: none"><button>Купить</button></td>
                 </tr>
               </table>
               <div class="product-footer-table-mob">
                 <table class="mobile-cross-table" v-for="cross in productInfo.crosses" :key="cross.part_number">
                   <tbody>
+              
                   <tr class="cross-mobile-name">
                     <th scope="col">Бренд</th>
                     <th scope="col">{{cross.supplier_name}}</th>
@@ -95,11 +98,11 @@
                   </tr>
                   <tr>
                     <th scope="col">Артикул</th>
-                    <th scope="col" class="art-mob"><nuxt-link :to="'/product/' + cross.part_number">{{cross.part_number}}</nuxt-link></th>
+                    <th scope="col" class="art-mob"><nuxt-link :to="'/product/' + cross.id">{{cross.part_number}}</nuxt-link></th>
                   </tr>
                   <tr>
                     <th scope="col">Доп. информация</th>
-                    <th scope="col" class="art-mob"><nuxt-link :to="'/product/' + cross.part_number">Посмотреть</nuxt-link></th>
+                    <th scope="col" class="art-mob"><nuxt-link :to="'/product/' + cross.id">Посмотреть</nuxt-link></th>
                   </tr>
                   </tbody>
                 </table>
@@ -133,7 +136,7 @@
   },
   head() {
     return {
-      title: this.title
+      title: this.title + ' - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ'
     }
   },
   data() {
@@ -157,9 +160,9 @@
         console.log(response)
         console.log(this.$store.getters['getSelectedManufacturer'], this.$store.getters['getSelectedModel'], this.$store.getters['getSelectedModification'])
         if(this.$store.getters['getSelectedModification'] && this.$store.getters['getSelectedModification'].fulldescription) {
-          this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
+          this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid}`
         } else {
-          this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
+          this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid}`
         }
       })
   },
