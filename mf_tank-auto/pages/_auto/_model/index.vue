@@ -73,7 +73,6 @@ export default {
       localStorage.setItem(selectedModification.fulldescription, JSON.stringify(selectedModification))
       let garageRoute = selectedModification.fulldescription.replace(/\//g, '%2F')
       
-      // console.log(this.transliterate(garageRoute));
       
       this.$router.push(this.$route.fullPath + '/' + garageRoute)
     },

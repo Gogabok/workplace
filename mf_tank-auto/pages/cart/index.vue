@@ -180,7 +180,6 @@
         })
         .then((response) => {
           response.forEach(productInfo => {
-            console.log(productInfo);
             this.userCart.forEach(productInCart => {
               if(productInCart.article === productInfo.view.part_number) {
                 Object.keys(productInfo.view).forEach(key => {
@@ -229,7 +228,6 @@
               })
               .catch(error => {
                 this.loading = false;
-                console.log(error)
               })
           } break;
           case 'minus' : {
@@ -240,7 +238,6 @@
               })
               .catch(error => {
                 this.loading = false;
-                console.log(error)
               })
           } break;
         }

@@ -167,7 +167,6 @@ export default {
       let manufacturer = this.selectedManufacturer.description.replace(/\//g, '%2F')
       let model = this.selectedModel.description.replace(/\//g, '%2F');
       let modification = this.selectedModification.fulldescription.replace(/\//g, '%2F');
-      console.log(this.selectedModification, `/${manufacturer}/${model}/${modification}/${parentId}`);
       
       // localStorage.setItem(manufacturer, JSON.stringify(this.selectedManufacturer))
       // localStorage.setItem(model, JSON.stringify(this.selectedManufacturer))
@@ -184,7 +183,6 @@ export default {
       // }})
     },
     transliterate(payload) {
-      console.log(payload)
       
       let word = payload
         .toString()

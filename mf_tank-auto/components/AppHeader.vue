@@ -132,11 +132,8 @@ export default {
       this.$store.commit("setMobileMenuOpened", true);
     },
     linkTo(item) {
-      console.log(item);
-
       api.getCarInfoByModificationId(item.passangercarid).then(response => {
         let currentCar = response;
-        console.log(response);
         localStorage.setItem(
           currentCar.manufacturers.description,
           JSON.stringify(currentCar.manufacturers)

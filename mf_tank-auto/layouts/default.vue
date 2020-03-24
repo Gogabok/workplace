@@ -1,6 +1,9 @@
 <template>
   <div class="page flex fd-c jc-sb" id="page">
-    123
+    <AppHeader></AppHeader>
+    <nuxt/>
+    <AppFooter></AppFooter>
+    <Hidden></Hidden>
   </div>
 </template>
 <script>

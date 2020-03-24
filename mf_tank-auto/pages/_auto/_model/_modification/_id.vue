@@ -50,7 +50,7 @@
             <div class="product__content">
               <div class="products-page">
                 <div class="row">
-                  <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.part_nubmer + Math.random()">
+                  <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.id + Math.random()">
                     <!-- <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}"> -->
                       
                       <nuxt-link :to="{name: 'product-id', params: {id: product.id, code: product.part_number}}">
@@ -132,7 +132,6 @@
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
-            console.log('created', this.productCount);
             delete this.currentGoods.count;
             return api.getSectionById(selectedProduct, selectedModification.id)
           })
@@ -143,7 +142,6 @@
           .then(response => {
             this.carInfo = response;
             this.loading = false
-            console.log(this.carInfo)
           })
           .catch(error => {
             return this.$nuxt.error({ statusCode: 404, message: error })
@@ -204,7 +202,6 @@
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
-            console.log('watch', this.productCount);
             delete this.currentGoods.count;
             this.loading = false
           })

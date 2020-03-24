@@ -157,8 +157,6 @@
       .then(response => {
         this.productInfo = response;
         this.loading = false;
-        console.log(response)
-        console.log(this.$store.getters['getSelectedManufacturer'], this.$store.getters['getSelectedModel'], this.$store.getters['getSelectedModification'])
         if(this.$store.getters['getSelectedModification'] && this.$store.getters['getSelectedModification'].fulldescription) {
           this.title = `${response.view.supplier_name} ${response.view.product_name} для ${this.$store.getters['getSelectedModification'].fulldescription}, ${response.view.supplierid}`
         } else {

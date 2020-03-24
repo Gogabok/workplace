@@ -71,7 +71,6 @@
                 this.$set(section, 'treeActive', true)
               }
             })
-            console.log(response)
           })
           .catch(error => {
             console.log(error)
@@ -81,7 +80,6 @@
     },
     methods: {
       linkTo (section) {
-        console.log(section)
         let manufacturer = this.$store.getters["getSelectedManufacturer"]
         let model = this.$store.getters["getSelectedModel"]
         let modification = this.$store.getters["getSelectedModification"]

@@ -125,7 +125,6 @@
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
-            console.log('created', this.productCount);
             delete this.currentGoods.count;
             return api.getSectionById(this.$route.params.id, this.$route.params.modification)
           })
@@ -136,7 +135,6 @@
           .then(response => {
             this.carInfo = response;
             this.loading = false
-            console.log(this.carInfo)
           })
       } else {
         api.getChildSection(this.$route.params.modification, this.$route.params.id, this.$route.query.page)
@@ -194,7 +192,6 @@
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
-            console.log('watch', this.productCount);
             delete this.currentGoods.count;
             this.loading = false
           })
