@@ -49,7 +49,7 @@
             <div class="product__content">
               <div class="products-page">
                 <div class="row">
-                  <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.part_nubmer">
+                  <div class="col-sm-4 prod-col" v-for="product in currentGoods" :key="product.part_nubmer + Math.random()">
                     <!-- <nuxt-link :to="{name: 'product-id', params: {id: product.part_number}}"> -->
                       <nuxt-link :to="{name: 'product-id', params: {id: product.id, code: product.part_number}}">
                       <div class="products-list products-list-2">

@@ -52,7 +52,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="inner__top">
-              <h1 class="inner__title" v-if="selectedModification">{{selectedModification.fulldescription}}</h1>
+              <h2 class="inner__title" v-if="selectedModification">{{ title }}</h2>
               <ul class="breadcrumbs">
                 <li>
                   <nuxt-link to="/">Главная</nuxt-link>
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="row" v-for="section in currentSections" :key="section.parent.id">
+        <div class="row" v-for="section in currentSections" :key="section.parent.id + Math.random()">
           <div class="col-sm-12">
             <div class="garage-catalog-title">
               <h4>{{section.parent.description}}</h4>
@@ -73,7 +73,7 @@
               <div
                 class="col-sm-2"
                 v-for="child in section.children"
-                :key="child.parent.id"
+                :key="child.parent.id + Math.random()"
                 @click="routeToChildrenProducts(child.parent.passangercarid, child.parent.number, child.parent.description)"
               >
                 <div class="garage-catalog-product">
@@ -151,7 +151,10 @@ export default {
           this.$store.commit('setPartsCategories', partsCategories);
         })
       })
-    });
+    })
+    .catch(error => {
+      return this.$nuxt.error({ statusCode: 404, message: error })
+    })
   },
   computed: {},
   methods: {

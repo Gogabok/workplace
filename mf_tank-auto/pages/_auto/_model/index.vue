@@ -8,7 +8,7 @@
             @click.prevent="routeToGarage(modification)"
             href="#"
             v-for="modification in currentModifications"
-            :key="modification.description"
+            :key="modification.description + Math.random()"
           >{{modification.fulldescription}}</a>
         </div>
       </div>
@@ -50,10 +50,11 @@ export default {
               this.title = `Запчасти для ${model.fulldescription} - Интернет-магазин автозапчастей в Казани - ТЕЛЕФОНПОМЕНЯТЬ`
           })
           .catch(error => {
-            console.log(error);
+            return this.$nuxt.error({ statusCode: 404, message: error })
           });
       } else {
-        this.$router.push("/");
+        // this.$router.push("/");
+        return this.$nuxt.error({ statusCode: 404, message: 'Страница не найдена!' })
       }
     if(!this.$store.getters["getSelectedModel"] && !this.$store.getters.getSelectedManufacturer) {
       let manufacturerObj = JSON.parse(localStorage.getItem(this.$route.params.auto))

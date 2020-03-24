@@ -17,7 +17,7 @@
         <ul>
           <li
             v-for="category in $store.getters.getPartsCategories.slice(0, 8)"
-            :key="category.id"
+            :key="category.parent.description + category.id"
           >
             <nuxt-link to="/">
               <span>{{category.parent.description}}</span>

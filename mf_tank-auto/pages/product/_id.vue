@@ -48,7 +48,7 @@
               <div class="product-attribute">
                 <table>
                   <tbody>
-                  <tr v-for="attribute in productInfo.attributes" :key="attribute.id">
+                  <tr v-for="attribute in productInfo.attributes" :key="attribute.id + Math.random()">
                     <td>{{attribute.description}}</td>
                     <td>{{attribute.displayvalue}}</td>
                   </tr>
@@ -76,7 +76,7 @@
           <div class="row">
             <div class="col-lg-12 col-12">
               <table class="product-footer-table-last">
-                <tr v-for="cross in productInfo.crosses" :key="cross.part_number">
+                <tr v-for="cross in productInfo.crosses" :key="cross.part_number + Math.random()">
                   <td><h3>{{cross.supplier_name}}</h3></td>
                   <td>{{cross.part_number}}</td>
                   <td><nuxt-link class="art-mob" :to="'/product/' + cross.id">{{cross.product_name}}</nuxt-link></td>
@@ -85,7 +85,7 @@
                 </tr>
               </table>
               <div class="product-footer-table-mob">
-                <table class="mobile-cross-table" v-for="cross in productInfo.crosses" :key="cross.part_number">
+                <table class="mobile-cross-table" v-for="cross in productInfo.crosses" :key="cross.part_number + Math.random()">
                   <tbody>
               
                   <tr class="cross-mobile-name">
@@ -164,6 +164,9 @@
         } else {
           this.title = `${response.view.supplier_name} ${response.view.product_name}, ${response.view.supplierid}`
         }
+      })
+      .catch(error => {
+        return this.$nuxt.error({ statusCode: 404, message: error })
       })
   },
   mounted() {

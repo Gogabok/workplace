@@ -4,7 +4,7 @@
         <div class="column-models">
           <div class="column-models__title">Модели</div>
           <div class="column-models__inner" v-if="currentModels.length > 0">
-            <a @click.prevent="loadModifications(model)" href="#" v-for="model in currentModels" :key="model.description">
+            <a @click.prevent="loadModifications(model)" href="#" v-for="model in currentModels" :key="model.description + Math.random()">
               {{model.description}}
             </a>
           </div>
@@ -42,7 +42,7 @@
           this.loading = false
         })
         .catch(error => {
-          console.log(error)
+          return this.$nuxt.error({ statusCode: 404, message: error })
         })
     },
     data() {

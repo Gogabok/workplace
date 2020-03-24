@@ -47,7 +47,7 @@
               </div>
               <div class="choose__tab-body scrollbar-outer select-scrollbar-mobile top-tabs">
                 <div class="top-tabs-wrapper">
-                  <div class="choose__tab-car-wrapper-column" v-for="(pass_key, pass_key_index) in Object.keys(groupedPassengers)" :key="pass_key_index + Math.random()">
+                  <div class="choose__tab-car-wrapper-column" v-for="(pass_key, pass_key_index) in Object.keys(groupedPassengers)" :key="pass_key_index">
                     <a
                       href="#"
                       @click="formattedModels(passenger, $event)"

@@ -1,9 +1,6 @@
 <template>
   <div class="page flex fd-c jc-sb" id="page">
-    <app-header></app-header>
-    <nuxt></nuxt>
-    <app-footer></app-footer>
-    <hidden></hidden>
+    123
   </div>
 </template>
 <script>

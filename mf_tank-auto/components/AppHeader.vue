@@ -79,7 +79,7 @@
           <ul>
             <li
               v-for="category in $store.getters.getPartsCategories.slice(0, 8)"
-              :key="category.id"
+              :key="category.toString() + Math.random()"
             >
               <nuxt-link to="/">
                 <span>{{category.parent.description}}</span>
@@ -92,7 +92,7 @@
                       <li
                         @click.prevent="linkTo(child)"
                         v-for="child in category.children"
-                        :key="child.id"
+                        :key="child.id + Math.random()"
                       >
                         <nuxt-link to="/">{{child.description}}</nuxt-link>
                       </li>

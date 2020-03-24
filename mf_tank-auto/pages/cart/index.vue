@@ -40,7 +40,7 @@
                         <th scope="col">Количество</th>
                         <th scope="col">Сумма</th>
                       </tr>
-                      <tr v-for="product in userCart" :key="product.article">
+                      <tr v-for="product in userCart" :key="product.article + Math.random()">
                         <td scope="col"><img :src="product.image" alt=""></td>
                         <td scope="col">{{product.supplier_name}}</td>
                         <td scope="col">{{product.article}}</td>
@@ -59,7 +59,7 @@
                       </tr>
                     </table>
                   </div>
-                  <div class="cart-tb-mob" v-if="userCart.length > 0" v-for="product in userCart" :key="product.article + 'mob-2'">
+                  <div class="cart-tb-mob" v-if="userCart.length > 0" v-for="product in userCart" :key="product.article + 'mob-2' + Math.random()">
                     <div class="cart-tb-mob-head">
                       Наименование<br>
                       <span>{{product.product_name}} </span>
@@ -200,7 +200,7 @@
         })
         .catch(error => {
           this.loading = false;
-          console.log(error)
+          return this.$nuxt.error({ statusCode: 404, message: error })
         })
     },
     computed: {

@@ -1,6 +1,6 @@
 <template>
   <div class="sections-tree">
-    <div class="section-node" v-for="section in currentSections" :key="section.parent.number">
+    <div class="section-node" v-for="section in currentSections" :key="section.parent.number + Math.random()">
       <div :class="`node-wrapper ${section.children.length === 0 || depth === 2 ? 'no-expand-image' : ''}`">
         <div class="image-state" @click="toggleSection(section)">
           <img :src="section.treeActive ? '/images/prod/minus.png' : '/images/prod/plus.png'" alt="">
