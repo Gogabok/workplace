@@ -306,7 +306,6 @@ export default {
       loading: false
     };
   },
-  mounted() {},
   computed: {
     groupedPassengers() {
       const result = {};
