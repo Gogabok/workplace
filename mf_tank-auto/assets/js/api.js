@@ -40,11 +40,6 @@ export default {
   getChildSection(modificationId, childId, page) {
     return http.get(`/details/list?modification_id=${modificationId}&section_id=${childId}${page ? '&page=' + page : ''}`)
   },
-  // ??
-  getProductByCode(code) {
-    return http.get(`/details/view?code=${code}`)
-  },
-  // ??
   getProductById(id) {
     return http.get(`/details/view?id=${id}`)
   },
