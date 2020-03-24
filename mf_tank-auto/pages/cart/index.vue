@@ -199,7 +199,7 @@
         })
         .catch(error => {
           this.loading = false;
-          return this.$nuxt.error({ statusCode: 404, message: error })
+          // return this.$nuxt.error({ statusCode: 404, message: error })
         })
     },
     computed: {
