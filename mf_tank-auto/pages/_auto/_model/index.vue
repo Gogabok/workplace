@@ -70,7 +70,7 @@ export default {
       const manufacturer = this.$store.getters.getSelectedManufacturer;
       this.$store.commit("setSelectedModification", selectedModification);
       localStorage.setItem(selectedModification.fulldescription, JSON.stringify(selectedModification))
-      let garageRoute = selectedModification.fulldescription.replace('/', '%2F')
+      let garageRoute = selectedModification.fulldescription.replace(/\//g, '%2F')
       
       // console.log(this.transliterate(garageRoute));
       

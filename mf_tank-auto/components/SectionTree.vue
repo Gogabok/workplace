@@ -85,7 +85,7 @@
         let manufacturer = this.$store.getters["getSelectedManufacturer"]
         let model = this.$store.getters["getSelectedModel"]
         let modification = this.$store.getters["getSelectedModification"]
-        this.$router.push(`/${manufacturer.description.replace('/', '%2F')}/${model.description.replace('/', '%2F')}/${modification.fulldescription.replace('/', '%2F')}/${section.parent.number}`)
+        this.$router.push(`/${manufacturer.description.replace(/\//g, '%2F')}/${model.description.replace(/\//g, '%2F')}/${modification.fulldescription.replace(/\//g, '%2F')}/${section.parent.number}`)
         // :to="{name: 'catalog-modification-section-id', params: {id: section.parent.number, parentId: section.parent.parentid, modification: modificationId, sectionDescription: section.parent.description}}"
       },
       toggleSection(section) {

@@ -1,10 +1,7 @@
-<template lang="pug">
-    nuxt-link.hero__cart(to="/cart")
-        i.hero__cart-icon
-          img(src="/images/cart.png" alt="cart")
-        p.hero__cart-total Корзина (
-          span {{getTotalSum}}
-          |  руб)
+<template>
+    <nuxt-link class="hero__cart" to="/cart"><i class="hero__cart-icon"><img src="/images/cart.png" alt="cart"/></i>
+        <p class="hero__cart-total">Корзина (<span>{{getTotalSum}}</span> руб)</p>
+    </nuxt-link>
 </template>
 
 

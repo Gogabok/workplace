@@ -161,9 +161,9 @@ export default {
       // );
       // let model = this.transliterate(this.selectedModel.description);
       // let modification = this.transliterate(this.selectedModel.id);
-      let manufacturer = this.selectedManufacturer.description.replace('/', '%2F')
-      let model = this.selectedModel.description.replace('/', '%2F');
-      let modification = this.selectedModification.fulldescription.replace('/', '%2F');
+      let manufacturer = this.selectedManufacturer.description.replace(/\//g, '%2F')
+      let model = this.selectedModel.description.replace(/\//g, '%2F');
+      let modification = this.selectedModification.fulldescription.replace(/\//g, '%2F');
       console.log(this.selectedModification, `/${manufacturer}/${model}/${modification}/${parentId}`);
       
       // localStorage.setItem(manufacturer, JSON.stringify(this.selectedManufacturer))

@@ -65,7 +65,7 @@
         this.$store.commit('setSelectedModel', model)
         this.loading = true
         // let modelRoute = this.transliterate(model.description)
-        let modelRoute = model.description.replace('/', '%2F')
+        let modelRoute = model.description.replace(/\//g, '%2F')
         this.$router.push(this.$route.fullPath + '/' + modelRoute)
       },
       // transliterate(text, engToRus) {

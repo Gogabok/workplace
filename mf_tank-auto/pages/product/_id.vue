@@ -19,7 +19,7 @@
           <h1 class="inner__title">{{productInfo.view.supplier_name}} {{productInfo.view.product_name}}</h1>
           <ul class="breadcrumbs">
             <li><nuxt-link to="/">Главная</nuxt-link></li>
-            <li><a href="#" @click.prevent='$router.go(-1)'>Вернуться</a></li>
+            <li><a href="#" @click.prevent='$router.go(-1)'>Список товаров</a></li>
             <li><nuxt-link :to="`/product/${$route.params.id}`">{{productInfo.view.supplier_name}}</nuxt-link></li>
           </ul>
         </div>
