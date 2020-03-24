@@ -1,6 +1,6 @@
 <template>
   <section class="section section-1">
-    <div class="container">
+    <div class="container-custom">
       <div class="title">
         <p class="subtitle">
           Разработка мобильных приложений для бизнеса

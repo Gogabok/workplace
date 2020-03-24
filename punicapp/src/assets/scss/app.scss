@@ -327,7 +327,12 @@ html::-webkit-scrollbar-thumb {
 }
 
 .section {
-  background: #F4F2F4;
+  background-color: #F4F2F4;
+}
+.container-custom {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0px auto;
 }
 
 .section-1 {
@@ -335,9 +340,11 @@ html::-webkit-scrollbar-thumb {
   min-height: 100vh;
   position: relative;
   border-bottom: 2px solid #D9D9D9;
-  & .container {
-    max-width: 1200px;
-    width: 100%;
+  background-image: url("../images/section-1/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  // background-size: 100%;
+  & .container-custom {
     & .title {
       text-align: center;
       position: absolute;
@@ -371,10 +378,9 @@ html::-webkit-scrollbar-thumb {
   & .bg-illustration {
     position: absolute;
     top: 50%;
-    left: 46%;
+    left: 44%;
     transform: translate(-100%, -50%);
     z-index: 1;
-    width: 500px;
   }
   & .icon-wrapper {
     position: absolute;
@@ -389,9 +395,15 @@ html::-webkit-scrollbar-thumb {
 }
 
 .section-2 {
-  padding: 92px 10px 32px 10px;
+  padding: 92px 10px 0px 10px;
   position: relative;
   overflow: hidden;
+  & .container-custom {
+    border-bottom: 1px solid #D9D9D9;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+  }
   & .title {
     font-size: 4.5rem;
     line-height: 4rem;
@@ -453,7 +465,7 @@ html::-webkit-scrollbar-thumb {
       width: calc((100% / 3) + 20px);
       & .card-decor-1 {
         position: absolute;
-        bottom: -13.5px;
+        bottom: -13px;
         right: -13px;
       }
       & .card-decor-2 {
@@ -542,6 +554,7 @@ html::-webkit-scrollbar-thumb {
     position: relative;
     z-index: 5;
     margin-top: 150px;
+    padding: 40px 0px;
     & .info {
       max-width: 500px;
       margin: 0px auto;
@@ -551,6 +564,7 @@ html::-webkit-scrollbar-thumb {
         color: #545351;
         line-height: 3.1rem;
         font-family: 'g-Bold';
+        text-transform: none;
       }
       & .calculate {
         font-size: 1.5rem;
@@ -574,19 +588,81 @@ html::-webkit-scrollbar-thumb {
   & .calculator {
     position: absolute;
     bottom: -20px;
-    left: 100px;
+    left: 0px;
     z-index: 4;
   }
   & .bg-1 {
     position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: 150px;
     z-index: 2;
   }
   & .bg-2 {
     position: absolute;
     bottom: 0px;
-    left: 150px;
+    left: 350px;
     z-index: 3;
+  }
+  & .bg-3 {
+    position: absolute;
+    top: 80px;
+    right: 60px;
+  }
+}
+
+
+.section-3 {
+  padding: 176px 10px 32px 10px;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  & .title {
+    font-size: 4.5rem;
+    line-height: 4rem;
+    text-align: center;
+    color: #333230;
+    text-transform: uppercase;
+    font-family: 'g-Bold';
+    margin: 50px auto 20px auto;
+  }
+  & .wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 30px 0px;
+    & .item {
+      max-width: calc((100% / 3) - 90px);
+      width: 100%;
+      margin: 50px 0px;
+      position: relative;
+      &-text {
+        font-family: 'g-SemiBold';
+        font-size: 1.5rem;
+        line-height: 1.7rem;
+        color: #333230;
+        margin-top: 32px;
+      }
+      & .icon-1 {
+        position: absolute;
+        left: -40px;
+        top: 50px;
+      }
+      & .icon-2 {
+        position: absolute;
+        left: -40px;
+        bottom: -30px;
+      }
+      & .icon-3 {
+        position: absolute;
+        right: -30px;
+        top: 50px;
+      }
+    }
+  }
+  & .bg-icon-1 {
+    position: absolute;
+    top: 200px;
+    right: 60px;
   }
 }

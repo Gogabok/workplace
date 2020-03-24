@@ -2,6 +2,7 @@
   <div class="home">
     <section-one></section-one>
     <section-two></section-two>
+    <section-three></section-three>
   </div>
 </template>
 
@@ -9,11 +10,12 @@
 
 import sectionOne from '../components/pages/home-sections/section-1'
 import sectionTwo from '../components/pages/home-sections/section-2'
+import sectionThree from '../components/pages/home-sections/section-3'
 
 export default {
   name: 'Home',
   components: {
-    sectionOne, sectionTwo
+    sectionOne, sectionTwo, sectionThree
   }
 }
 </script>

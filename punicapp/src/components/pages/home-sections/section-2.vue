@@ -1,6 +1,6 @@
 <template>
   <section class="section section-2">
-    <div class="container">
+    <div class="container-custom">
       <p class="title">Наши услуги</p>
       <p class="subtitle">Разработка мобильных приложений и веб-проектов для бизнеса и стартапов</p>
       <div class="icons">
@@ -51,18 +51,21 @@
           <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
         </div>
       </div>
-    </div>
-    <div class="howMuch">
-      <div class="info">
-        <p class="title">Сколько стоит разработка?</p>
-        <button class="calculate">Рассчитать стоимость</button>
+      <div class="howMuch">
+        <div class="info">
+          <p class="title">Сколько стоит разработка?</p>
+          <button class="calculate">Рассчитать стоимость</button>
+        </div>
+      </div>
+      <div class="calculator">
+        <img src="../../../assets/images/section-2/calculator.png" alt="">
       </div>
     </div>
-    <div class="calculator">
-      <img src="../../../assets/images/section-2/calculator.png" alt="">
-    </div>
+    
     <img ondragstart="return false" class="bg-1" src="../../../assets/images/section-2/calculatorBackground.png" alt="">
     <img ondragstart="return false" class="bg-2" src="../../../assets/images/section-2/calculatorDecor.png" alt="">
+    <img ondragstart="return false" class="bg-3" src="../../../assets/images/section-2/bg-icon-1.svg" alt="">
+    
   </section>
 </template>
 
