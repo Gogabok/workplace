@@ -331,7 +331,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .section-1 {
-  padding: 92px 88px 32px 88px;
+  padding: 92px 10px 32px 10px;
   min-height: 100vh;
   position: relative;
   border-bottom: 2px solid #D9D9D9;
@@ -389,7 +389,9 @@ html::-webkit-scrollbar-thumb {
 }
 
 .section-2 {
-  padding: 92px 88px 32px 88px;
+  padding: 92px 10px 32px 10px;
+  position: relative;
+  overflow: hidden;
   & .title {
     font-size: 4.5rem;
     line-height: 4rem;
@@ -425,10 +427,61 @@ html::-webkit-scrollbar-thumb {
   }
   & .cards-services {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: flex-start;
+    &-item-1 {
+      margin-top: -80px;
+      width: calc((100% / 3) - 25px);
+      & .card-decor-1 {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+      & .card-decor-2 {
+        position: absolute;
+        bottom: -13px;
+        right: -13px;
+      }
+      & .card-decor-3 {
+        position: absolute;
+        top: 250px;
+        right: -2px;
+      }
+    }
+    &-item-2 {
+      margin-top: -160px;
+      width: calc((100% / 3) + 20px);
+      & .card-decor-1 {
+        position: absolute;
+        bottom: -13.5px;
+        right: -13px;
+      }
+      & .card-decor-2 {
+        position: absolute;
+        top: 379px;
+        right: -13px;
+      }
+      & .card-decor-3 {
+        position: absolute;
+        top: 379px;
+        right: -2px;
+      }
+      & .card-decor-4 {
+        position: absolute;
+        top: 379px;
+        left: -1px;
+      }
+    }
+    &-item-3 {
+      margin-top: -80px;
+      width: calc((100% / 3) - 25px);
+      & .card-decor-1 {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+    }
     &-item {
-      width: calc((100% / 3) - 20px);
       background: #F4F2F4;
       border: 1px solid #D9D9D9;
       box-sizing: border-box;
@@ -436,11 +489,104 @@ html::-webkit-scrollbar-thumb {
       border-radius: 4px;
       padding: 40px;
       position: relative;
+      user-select: none;
+      z-index: 1;
       & .title {
         font-family: 'g-Bold';
         font-size: 2rem;
         line-height: 2.1rem;
+        color: #FFA949;
+        text-align: center;
+        text-transform: none;
+        margin: 0px;
+      }
+      & .subtitle {
+        font-size: 1.3rem;
+        font-family: 'g-SemiBold';
+        line-height: 1.3rem;
+        text-align: center;
+        color: #FFA949;
+        margin: 15px 0px;
+      }
+      & .icon {
+        margin: 0px auto;
+        display: block;
+      }
+      &.opened {
+        & .title {
+          color: #8B8985;
+        }
+        & .subtitle {
+          color: #8B8985;
+          margin: 30px 0px;
+        }
+        & .desc {
+          color: #545351;
+          font-family: 'g-SemiBold';
+          font-size: 1rem;
+          // line-height: 1rem;
+          margin: 10px 0px;
+        }
+        & .link {
+          color: #E61818;
+          font-family: 'g-Bold';
+          font-size: 1rem;
+          margin: 35px 0px 5px 0px;
+          cursor: pointer;
+          text-align: center;
+        }
       }
     }
+  }
+  & .howMuch {
+    position: relative;
+    z-index: 5;
+    margin-top: 150px;
+    & .info {
+      max-width: 500px;
+      margin: 0px auto;
+      text-align: center;
+      & .title {
+        font-size: 3rem;
+        color: #545351;
+        line-height: 3.1rem;
+        font-family: 'g-Bold';
+      }
+      & .calculate {
+        font-size: 1.5rem;
+        color: #fff;
+        line-height: 1.6rem;
+        font-family: 'g-SemiBold';
+        text-align: center;
+        padding: 34px 55px;
+        background: #E61818;
+        border: none;
+        border-radius: 2px;
+        transition-duration: .2s;
+        outline: none;
+        margin: 20px 0px;
+        &:hover {
+          box-shadow: 0px 2px 16px rgba(230, 24, 24, 0.5);
+        }
+      }
+    }
+  }
+  & .calculator {
+    position: absolute;
+    bottom: -20px;
+    left: 100px;
+    z-index: 4;
+  }
+  & .bg-1 {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
+  }
+  & .bg-2 {
+    position: absolute;
+    bottom: 0px;
+    left: 150px;
+    z-index: 3;
   }
 }
