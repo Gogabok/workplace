@@ -116,7 +116,13 @@
         loading: false,
         maxProductPerPage: 15,
         currentSection: null,
-        carInfo: null
+        carInfo: null,
+        info: {
+          selectedManufacturer: null,
+          selectedModel: null,
+          selectedModification: null,
+          selectedProduct: null,
+        }
       }
     },
     created() {
@@ -127,6 +133,9 @@
       let selectedModel = this.$route.params.model
       let selectedModification = JSON.parse(localStorage.getItem(this.$route.params.modification))
       let selectedProduct = this.$route.params.id
+
+      this.info.selectedModification = selectedModification
+      this.info.selectedProduct = selectedProduct
       if(!this.$route.query.page) {
         api.getChildSection(selectedModification.id, selectedProduct)
           .then(response => {
@@ -198,7 +207,7 @@
     watch: {
       page() {
         this.loading = true;
-        api.getChildSection(this.$route.params.modification, this.$route.params.id, this.page)
+        api.getChildSection(this.info.selectedModification.id, this.info.selectedProduct, this.page)
           .then(response => {
             this.currentGoods = response;
             this.productCount  = parseInt(response.count);
