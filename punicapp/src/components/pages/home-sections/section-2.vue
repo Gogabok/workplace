@@ -37,7 +37,8 @@
             </p>
             <p class="link">Читать далее...</p>
           </div>
-          
+          <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-2-icon.svg" alt="">
+
           <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
           <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
           <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">

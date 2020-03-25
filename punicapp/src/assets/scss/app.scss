@@ -8,6 +8,17 @@ body {
   }
 }
 
+.scaleY-enter,
+.scaleY-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.scaleY-enter-active,
+.scaleY-leave-active {
+  transition-duration: 0.5s;
+}
+
 // header {
 //   height: 80px;
 //   background-color: red;
@@ -328,6 +339,11 @@ html::-webkit-scrollbar-thumb {
 
 .section {
   background-color: #F4F2F4;
+  // @media screen and (max-width: 968px) {
+  //   & {
+  //     zoom: .8;
+  //   }
+  // }
 }
 .container-custom {
   max-width: 1200px;
@@ -343,7 +359,12 @@ html::-webkit-scrollbar-thumb {
   background-image: url("../images/section-1/bg.png");
   background-repeat: no-repeat;
   background-position: center;
-  // background-size: 100%;
+  @media screen and (max-width: 968px) {
+    & {
+      display: flex;
+      flex-direction: column;
+    }
+  }
   & .container-custom {
     & .title {
       text-align: center;
@@ -353,12 +374,26 @@ html::-webkit-scrollbar-thumb {
       transform: translate(-50%, -50%);
       user-select: none;
       z-index: 2;
+      @media screen and (max-width: 968px) {
+        & {
+          max-width: 100%;
+          width: 100%;
+          padding: 0px 20px;
+        }
+      }
       & .subtitle {
         font-family: 'g-SemiBold';
         max-width: 400px;
         color: #545351;
         font-size: 2rem;
         margin: 0px auto 32px auto;
+        @media screen and (max-width: 968px) {
+          & {
+            max-width: 100%;
+            width: 100%;
+            font-size: 1.5rem;
+          }
+        }
       }
       & .main-title {
         color: #333230;
@@ -372,6 +407,13 @@ html::-webkit-scrollbar-thumb {
         & span {
           color: #E61818;
         }
+        @media screen and (max-width: 968px) {
+          & {
+            font-size: 2.5rem;
+            line-height: 2.5rem;
+            margin-top: 30px;
+          }
+        }
       }
     }
   }
@@ -381,6 +423,23 @@ html::-webkit-scrollbar-thumb {
     left: 44%;
     transform: translate(-100%, -50%);
     z-index: 1;
+    @media screen and (min-width: 969px) {
+      &.bg-illustration-mobile {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 968px) {
+      & {
+        position: static;
+        top: 0px;
+        left: 0px;
+        transform: none;
+        width: 270px;
+      }
+      &.bg-illustration-desktop {
+        display: none;
+      }
+    }
   }
   & .icon-wrapper {
     position: absolute;
@@ -398,6 +457,7 @@ html::-webkit-scrollbar-thumb {
   padding: 92px 10px 0px 10px;
   position: relative;
   overflow: hidden;
+  user-select: none;
   & .container-custom {
     border-bottom: 1px solid #D9D9D9;
     position: relative;
@@ -412,6 +472,12 @@ html::-webkit-scrollbar-thumb {
     text-transform: uppercase;
     font-family: 'g-Bold';
     margin: 50px 0px 20px 0px;
+    @media screen and (max-width: 968px) {
+      & {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+      }
+    }
   }
   & .subtitle {
     font-size: 3rem;
@@ -421,6 +487,12 @@ html::-webkit-scrollbar-thumb {
     margin: 70px auto 30px auto;
     color: #8B8985;
     font-family: 'g-SemiBold';
+    @media screen and (max-width: 968px) {
+      & {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+      }
+    }
   }
   & .icons {
     display: flex;
@@ -441,6 +513,11 @@ html::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @media screen and (max-width: 968px) {
+      & {
+        display: block;
+      }
+    }
     &-item-1 {
       margin-top: -80px;
       width: calc((100% / 3) - 25px);
@@ -463,6 +540,12 @@ html::-webkit-scrollbar-thumb {
     &-item-2 {
       margin-top: -160px;
       width: calc((100% / 3) + 20px);
+      & .icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
       & .card-decor-1 {
         position: absolute;
         bottom: -13px;
@@ -503,6 +586,16 @@ html::-webkit-scrollbar-thumb {
       position: relative;
       user-select: none;
       z-index: 1;
+      @media screen and (max-width: 968px) {
+        & {
+          width: calc(100% - 200px);
+          margin: 20px auto;
+        }
+        &-1 {
+          margin-top: -70px;
+        }
+      }
+
       & .title {
         font-family: 'g-Bold';
         font-size: 2rem;
@@ -612,7 +705,7 @@ html::-webkit-scrollbar-thumb {
 
 
 .section-3 {
-  padding: 176px 10px 32px 10px;
+  padding: 176px 10px 62px 10px;
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -664,5 +757,191 @@ html::-webkit-scrollbar-thumb {
     position: absolute;
     top: 200px;
     right: 60px;
+  }
+}
+
+.section-4 {
+  position: relative;
+  border-top: 1px solid #D9D9D9;
+  user-select: none;
+  margin-top: 80px;
+  & .title {
+    font-size: 3rem;
+    line-height: 1rem;
+    text-align: center;
+    color: #545351;
+    font-family: 'g-Bold';
+    margin: 0px auto 0px auto;
+    position: relative;
+    top: -1.2rem;
+  }
+  & .wrapper {
+    padding: 140px 70px 60px 70px;
+    & .item {
+      height: 200px;
+      position: relative;
+      padding: 10px;
+      text-align: left;
+      & .folder {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      & .text {
+        background: #fff;
+        padding: 30px 40px;
+        margin-top: -50px;
+        margin-left: 150px;
+        max-width: 500px;
+        z-index: 99;
+        box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        right: 0;
+        & p {
+          font-family: 'g-SemiBold';
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          color: #333230;
+          margin: 10px 0px;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          top: 46px;
+          background: url('../images/section-4/triangle.svg');
+          left: -16px;
+          width: 16px;
+          height: 32px;
+        }
+      }
+      & .title {
+        font-size: 2rem;
+        margin: 0px;
+        line-height: 2.25rem;
+        text-align: left;
+        color: #FFA949;
+        font-family: 'g-Bold';
+        cursor: pointer;
+        top: 0px;
+        max-width: 250px;
+        transition-duration: .3s;
+        &.active {
+          color: #FFCC92;
+        }
+      }
+      & .icons {
+        width: 300px;
+        position: relative;
+        & .item-1 {
+          &.icon-1 {
+            position: absolute;
+            top: 5px;
+            left: 40px;
+          }
+          &.icon-2 {
+            position: absolute;
+            top: 50px;
+            left: -35px;
+          }
+          &.icon-3 {
+            position: absolute;
+            bottom: -50px;
+            right: 40px;
+          }
+        }
+
+        & .item-2 {
+          &.icon-1 {
+            position: absolute;
+            top: 0px;
+            left: 45px;
+          }
+        }
+
+        & .item-3 {
+          &.icon-1 {
+            position: absolute;
+            top: -170px;
+            left: -60px;
+          }
+          &.icon-2 {
+            position: absolute;
+            top: 30px;
+            left: -70px;
+          }
+          &.icon-3 {
+            position: absolute;
+            top: 25px;
+            left: 50px;
+          }
+          &.icon-4 {
+            position: absolute;
+            top: 30px;
+            right: 20px;
+          }
+        }
+
+        & .item-4 {
+          &.icon-1 {
+            position: absolute;
+            top: 0px;
+            left: -50px;
+          }
+          &.icon-2 {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+          }
+        }
+
+        & .item-5 {
+          &.icon-1 {
+            position: absolute;
+            top: 20px;
+            left: -70px;
+          }
+          &.icon-2 {
+            position: absolute;
+            top: 30px;
+            right: 120px;
+          }
+        }
+
+        & .item-6 {
+          &.icon-1 {
+            position: absolute;
+            top: 60px;
+            left: -70px;
+          }
+          &.icon-2 {
+            position: absolute;
+            top: 40px;
+            left: 130px;
+          }
+          &.icon-3 {
+            position: absolute;
+            top: 20px;
+            right: -50px;
+          }
+        }
+
+      }
+    }
+  }
+  & .bg-icon-1 {
+    position: absolute;
+    left: 50%;
+    top: 127px;
+    transform: translate(0, -50%);
+  }
+  & .bg-icon-2 {
+    position: absolute;
+    right: 200px;
+    top: 200px;
+  }
+  & .bg-icon-3 {
+    position: absolute;
+    right: 200px;
+    top: 750px;
   }
 }

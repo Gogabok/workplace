@@ -5,12 +5,13 @@
         <p class="subtitle">
           Разработка мобильных приложений для бизнеса
         </p>
+        <img ondragstart="return false" class="bg-illustration bg-illustration-mobile" src="../../../assets/images/section-1/bg-illustration.png" alt="">
         <p class="main-title">
           Качественно и <span>точно в срок</span>
         </p>
       </div>
     </div>
-    <img ondragstart="return false" class="bg-illustration" src="../../../assets/images/section-1/bg-illustration.png" alt="">
+    <img ondragstart="return false" class="bg-illustration bg-illustration-desktop" src="../../../assets/images/section-1/bg-illustration.png" alt="">
     <div class="icon-wrapper">
       <img ondragstart="return false" class="bg-illustration-2" src="../../../assets/images/section-1/bg-illustration-2.svg" alt="">
     </div>
