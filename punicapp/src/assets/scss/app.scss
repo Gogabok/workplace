@@ -821,14 +821,62 @@ html::-webkit-scrollbar-thumb {
   }
   & .calculator {
     position: absolute;
-    bottom: -20px;
-    left: 0px;
+    bottom: 0px;
+    left: 110px;
     z-index: 4;
-    @media screen and (max-width: 968px) {
-      & {
-        position: static;
-        margin-bottom: -20px;
-      } 
+    width: 280px;
+    height: 360px;
+    background: url("../images/section-2/calculator.png");
+    & .buttons {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 0px 30px;
+      & .value {
+        width: 100%;
+        text-align: right;
+        outline: none;
+        border: none;
+        font-family: 'g-Bold';
+        font-size: 2rem;
+        color: #F3AD5B;
+      }
+      & .buttons-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 7px 0px; 
+        &-last {
+          justify-content: initial;
+          margin-bottom: 5px;
+          & .btn-last-1 {
+            margin: 0px auto;
+          }
+          & .btn-last-2 {
+            margin-left: auto;
+            margin-right: 19px;
+          }
+        }
+        & .btn {
+          height: 40px;
+          width: 40px;
+          font-family: 'g-Bold';
+          font-size: 1rem;
+          line-height: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0px;
+          &.method {
+            background: #F2F2F2;
+          }
+          &.equal {
+            background: #EA3223;
+          }
+        }
+      }
     }
   }
   & .bg-1 {

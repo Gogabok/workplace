@@ -93,7 +93,32 @@
         <div class="info">
           <p class="title">Сколько стоит разработка?</p>
           <div class="calculator">
-            <img ondragstart="return false" src="../../../assets/images/section-2/calculator.png" alt="">
+            <div class="buttons">
+              <input @input="inputValue($event.target)" class="value" :value="value">
+              <div class="buttons-row">
+                <div @click="calculate('num', '7')" class="btn num">7</div>
+                <div @click="calculate('num', '8')" class="btn num">8</div>
+                <div @click="calculate('num', '9')" class="btn num">9</div>
+                <div @click="calculate('method', '*')" class="btn method">×</div>
+              </div>
+              <div class="buttons-row">
+                <div @click="calculate('num', '4')" class="btn num">4</div>
+                <div @click="calculate('num', '5')" class="btn num">5</div>
+                <div @click="calculate('num', '6')" class="btn num">6</div>
+                <div @click="calculate('method', '-')" class="btn method">-</div>
+              </div>
+              <div class="buttons-row">
+                <div @click="calculate('num', '1')" class="btn num">1</div>
+                <div @click="calculate('num', '2')" class="btn num">2</div>
+                <div @click="calculate('num', '3')" class="btn num">3</div>
+                <div @click="calculate('method', '+')" class="btn method">+</div>
+              </div>
+              <div class="buttons-row buttons-row-last">
+                <div @click="calculate('num', '0')" class="btn btn-last-1 num">0</div>
+                <div @click="calculate('num', '.')" class="btn btn-last-2 num">.</div>
+                <div @click="calculate('method', '=')" class="btn btn-last-3 equal"> = </div>
+              </div>
+            </div>
           </div>
           <button class="calculate">Рассчитать стоимость</button>
         </div>
@@ -110,6 +135,46 @@
 
 <script>
 export default {
-  name: "Section-2"
+  name: "Section-2",
+  data: () => ({
+    values: [''],
+    valueHistory: ''
+  }),
+  computed: {
+    value() {
+      return this.values.join(' ')
+    }
+  },
+  methods: {
+    calculate (type, value) {
+      let previusValue = this.values[this.values.length - 1]
+      this.values.splice([this.values.length - 1], 1)
+      if(type === 'num') {
+
+        this.valueHistory = previusValue + value.toString()
+        this.values.push(this.valueHistory)
+      } else if (type === 'method') {
+        if(value !== '=') {
+          if(Number(this.values[this.values.length - 1])) {
+            console.log(1)
+            this.values.push(this.valueHistory)
+            this.values.push(value)
+          } else {
+            console.log(2)
+            this.values.push(this.valueHistory)
+            this.values.push(value)
+          }
+        } else {
+          // this.values = []
+          // let calculatedValue = ''
+          // console.log(typeof *)
+        }
+      }
+    },
+    inputValue(e) {
+      let str = e.value.toString()
+      this.values = str.split(' ')
+    }
+  }
 };
 </script>
