@@ -8,8 +8,15 @@
           <span></span>
         </div>
         <router-link tag="p" to="/" class="logo">punic<span>app</span></router-link>
+        <ul class="list list-desktop">
+          <a href="#" class="item">Услуги</a>
+          <a href="#" class="item">Портфолио</a>
+          <a href="#" class="item">О компании</a>
+          <a href="#" class="item">Контакты</a>
+          <a href="#" class="item">Блог</a>
+        </ul>
         <transition mode="out-in" name="fade">
-          <ul v-show="isMenuOpen" class="list">
+          <ul v-show="isMenuOpen" class="list list-mobile">
             <a href="#" class="item">Услуги</a>
             <a href="#" class="item">Портфолио</a>
             <a href="#" class="item">О компании</a>
