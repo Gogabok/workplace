@@ -128,9 +128,9 @@
         </div>
       </div>
     </div>
-    <img class="bg-icon-1" src="../../../assets/images/section-4/element-1.png" alt="">
-    <img class="bg-icon-2" src="../../../assets/images/section-4/bg-code.png" alt="">
-    <img class="bg-icon-3" src="../../../assets/images/section-4/bg-code.png" alt="">
+    <img ondragstart="return false" class="bg-icon-1" src="../../../assets/images/section-4/element-1.png" alt="">
+    <img ondragstart="return false" class="bg-icon-2" src="../../../assets/images/section-4/bg-code.png" alt="">
+    <img ondragstart="return false" class="bg-icon-3" src="../../../assets/images/section-4/bg-code.png" alt="">
   </section>
 </template>
 
@@ -142,7 +142,11 @@ export default {
   }),
   methods: {
     selectCategory (category) {
-      this.currentCategory = category
+      if(this.currentCategory === category) {
+        this.currentCategory = null
+      } else {
+        this.currentCategory = category
+      }
     }
   }
 };
