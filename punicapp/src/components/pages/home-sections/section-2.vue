@@ -120,7 +120,7 @@
               </div>
             </div>
           </div>
-          <button class="calculate">Рассчитать стоимость</button>
+          <router-link tag="button" to="/calculator" class="calculate">Рассчитать стоимость</router-link>
         </div>
       </div>
     </div>
