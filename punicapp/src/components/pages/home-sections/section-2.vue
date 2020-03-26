@@ -148,26 +148,33 @@ export default {
   methods: {
     calculate (type, value) {
       let previusValue = this.values[this.values.length - 1]
-      this.values.splice([this.values.length - 1], 1)
       if(type === 'num') {
-
-        this.valueHistory = previusValue + value.toString()
+        if(Number(previusValue)) {
+          this.values.splice([this.values.length - 1], 1)
+          this.valueHistory = previusValue + value.toString()
+        } else {
+          this.valueHistory = value.toString()
+        }
         this.values.push(this.valueHistory)
       } else if (type === 'method') {
         if(value !== '=') {
           if(Number(this.values[this.values.length - 1])) {
-            console.log(1)
-            this.values.push(this.valueHistory)
             this.values.push(value)
           } else {
-            console.log(2)
-            this.values.push(this.valueHistory)
+            this.values.splice([this.values.length - 1], 1)
             this.values.push(value)
           }
         } else {
           // this.values = []
           // let calculatedValue = ''
           // console.log(typeof *)
+          let arr = []
+          let val = eval(this.value)
+          arr.push(val)
+          this.values = arr
+          // setTimeout(() => {
+          //   this.values.push(val)
+          // }, 100);
         }
       }
     },
