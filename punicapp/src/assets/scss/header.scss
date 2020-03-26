@@ -2,4 +2,156 @@
 	width: 100%;
 	position: fixed;
 	z-index: 999;
+	background: #313131;
+	user-select: none;
+	padding: 16px 10px 12px 10px;
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.menu-burger {
+	display: none;
+}
+
+.logo {
+	color: #fff;
+	font-family: 'g-Bold';
+	font-size: 1.8rem;
+	line-height: 1.8rem;
+	margin-right: 20px;
+	cursor: pointer;
+	& span {
+		color: #D5613C;
+	}
+}
+
+.list {
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	margin: 0px;
+	margin-left: 100px;
+	& .item {
+		color: #B3B3B3;
+		font-family: 'g-Bold';
+		font-size: 1.1rem;
+		line-height: 1.1rem;
+		margin: 0px 15px;
+		list-style-type: none;
+		cursor: pointer;
+		text-decoration: none;
+	}
+}
+
+.info {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	& .phone {
+		color: #B3B3B3;
+		font-family: 'g-Bold';
+		font-size: 1.1rem;
+		line-height: 1.1rem;
+		margin: 0px 10px;
+		text-decoration: none;
+	}
+	& .email {
+		color: #DBA66A;
+		font-family: 'g-Bold';
+		font-size: 1.1rem;
+		line-height: 1.1rem;
+		margin: 0px 10px;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		& img {
+			width: 14px;
+			margin-left: 10px;
+			margin-top: -3px;
+		}
+	}
+}
+
+@media screen and (max-width: 1130px) {
+	.list {
+		margin-left: 20px;
+		& .item {
+			font-size: 1rem;
+			line-height: 1rem;
+			margin: 0px 10px;
+		}
+	}
+	.info {
+		& .phone {
+			font-size: 1rem;
+			line-height: 1rem;
+			margin: 0px 5px;
+		}
+		& .email {
+			font-size: 1rem;
+			line-height: 1rem;
+			margin: 0px 5px;
+		}
+	}
+}
+
+@media screen and (max-width: 950px) {
+	.info {
+		& .email span {
+			display: none;
+		}
+	}
+	.list {
+		position: absolute;
+		left: -10px;
+		top: 40px;
+		background: #313131;
+		display: block;
+		padding: 0px 20px;
+		margin: 0px;
+		& .item {
+			display: block;
+			color: #B3B3B3;
+			font-family: 'g-Bold';
+			font-size: 1.3rem;
+			line-height: 1.3rem;
+			margin: 15px 0px;
+			list-style-type: none;
+			cursor: pointer;
+			text-decoration: none;
+		}
+	}
+	.menu-burger {
+		display: block;
+		cursor: pointer;
+		margin: 0px 30px 0px 20px;
+		& span {
+			display: block;
+			width: 20px;
+			height: 2px;
+			border-radius: 10px;
+			background: #fff;
+			margin: 3px 0px;
+		}
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.menu-burger {
+		margin: 0px 10px 0px 0px;
+	}
+	.logo {
+		font-size: 1.5rem;
+		margin-right: 5px;
+	}
+	.info {
+		& .phone {
+			font-size: .9rem;
+			line-height: .9rem;
+		}
+	}
 }
