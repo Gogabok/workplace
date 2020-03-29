@@ -3,13 +3,14 @@ const filters = document.getElementById("filters");
 const folderItems = document.getElementById("folder_items")
 const folderPagination = document.getElementById("folder_pagination")
 let items = null
+let allItems = null
 let currentPage = 1
 const pageRangeValue = 5
 let filtersValues = {
   name: '',
   price: {
     min: 0,
-    max: 0
+    max: 1000
   },
   isAvaliable: false
 }
@@ -27,7 +28,7 @@ document.getElementById("filters-switchers").addEventListener('click', () => {
 document.getElementById("filtersSubmit").addEventListener('click', () => {
   filters.style.visibility = 'hidden';
   filters.style.opacity = '0';
-  console.log(filtersValues)
+  sortItems()
 });
 
 function pageSelecting (e) {
@@ -57,6 +58,23 @@ function isAvaliableInputSelecting(e) {
   filtersValues.isAvaliable = e.checked
 }
 
+function sortItems () {
+  items = allItems.filter(function(item) {
+    let isFiltered = false
+    isFiltered = !!item.title.toLowerCase().match(filtersValues.name.toLowerCase())
+    if (isFiltered) {
+      isFiltered = item.price >= filtersValues.price.min && item.price <= filtersValues.price.max
+    }
+    if (isFiltered && filtersValues.isAvaliable) {
+      isFiltered = item.available === filtersValues.isAvaliable
+    }
+    return isFiltered
+  })
+  currentPage = 1
+  RENDER_ITEMS()
+  RENDER_PAGINATION()
+}
+
 
 fetch("https://my-json-server.typicode.com/Gogabok/workplace/db")
   .then(response => {
@@ -67,6 +85,7 @@ fetch("https://my-json-server.typicode.com/Gogabok/workplace/db")
   })
   .then(response => {
     items = JSON.parse(JSON.stringify(response.items))
+    allItems = items
     RENDER_ITEMS()
     RENDER_PAGINATION()
   })
@@ -77,58 +96,67 @@ function RENDER_ITEMS() {
   // Реализация пагинации не очень, хотелось бы сделать через параметр запроса к api
   let arrayPagesRange = [(currentPage - 1) * pageRangeValue, currentPage * pageRangeValue]
   for (let i = arrayPagesRange[0]; i < arrayPagesRange[1]; i++) {
-    HTML +=
+    if(items[i]) {
+      HTML +=
+        `
+        <div class="folder-main-side-catalog-item">
+          <img ondragstart="return false" class="folder-main-side-catalog-item-preview"
+            src="${items[i].image}" alt="">
+          <div class="folder-main-side-catalog-item-text">
+            <p class="folder-main-side-catalog-item-text-title">${items[i].title}</p>
+            <p class="folder-main-side-catalog-item-text-price">Стоимость: <span class="text-primary">${items[i].price}₽</span></p>
+            <p class="folder-main-side-catalog-item-text-desc">${items[i].descr}</p>
+          </div>
+          <div class="addToCart">
+            <button class="addToCart-btn btn btn-success ${items[i].available ? '' : 'disabled'}" ${items[i].available ? '' : 'disabled'}>Добавить в корзину</button>
+            <p class="addToCart-text">В корзине: 0</p>
+          </div>
+        </div>
       `
-      <div class="folder-main-side-catalog-item">
-        <img ondragstart="return false" class="folder-main-side-catalog-item-preview"
-          src="${items[i].image}" alt="">
-        <div class="folder-main-side-catalog-item-text">
-          <p class="folder-main-side-catalog-item-text-title">${items[i].title}</p>
-          <p class="folder-main-side-catalog-item-text-price">Стоимость: <span class="text-primary">${items[i].price}₽</span></p>
-          <p class="folder-main-side-catalog-item-text-desc">${items[i].descr}</p>
-        </div>
-        <div class="addToCart">
-          <button class="addToCart-btn btn-success">Добавить в корзину</button>
-          <p class="addToCart-text">В корзине: 0</p>
-        </div>
-      </div>
-    `
+    }
   }
   folderItems.innerHTML = HTML
 }
 
-function RENDER_PAGINATION () {
-  let pages = [currentPage - 1, currentPage, (currentPage + 1)];
-  let HTML = ''
+function RENDER_PAGINATION() {
   folderPagination.innerHTML = ''
-  if ((items.length / pageRangeValue) > 1) {
-    for (let i = 0; i < pages.length; i++) {
-      if (pages[i] > 0 && pages[i] <= (items.length / pageRangeValue)) {
-        HTML += 
-        `
-          <li class="page-item btn ${pages[i] === currentPage ? 'btn-primary' : 'btn-outline-primary'} text-white mx-1" onclick="pageSelecting(event.target)" data-page="${pages[i]}">${pages[i]}</li>
-        `
+  document.getElementById("first-page").innerHTML = ''
+  document.getElementById("last-page").innerHTML = ''
+  let amountPages = Math.ceil(items.length / pageRangeValue)
+  if (amountPages >= 2) {
+    let pages = [currentPage - 1, currentPage, (currentPage + 1)];
+    let HTML = ''
+    if (amountPages > 1) {
+      for (let i = 0; i < pages.length; i++) {
+        if (pages[i] > 0 && pages[i] <= amountPages) {
+          HTML += 
+          `
+            <li class="page-item btn ${pages[i] === currentPage ? 'btn-primary' : 'btn-outline-primary'} text-white mx-1" onclick="pageSelecting(event.target)" data-page="${pages[i]}">${pages[i]}</li>
+          `
+        }
       }
+      folderPagination.innerHTML = HTML
+      document.getElementById("last-page").innerHTML =
+        currentPage < amountPages ?
+        `
+        <li class="page-item btn btn-outline-primary text-white" onclick="pageSelecting(event.target)" data-page="${amountPages}">${amountPages}</li>
+        `
+        : 
+        `
+        <li class="page-item btn btn-primary disabled text-white">${amountPages}</li>
+        `
+      
+      document.getElementById("first-page").innerHTML =
+        currentPage > 1 ?
+        `
+        <li class="page-item btn btn-outline-primary text-white" onclick="pageSelecting(event.target)" data-page="1">1</li>
+        `
+        :
+        `
+        <li class="page-item btn btn-primary disabled text-white">1</li>
+        `
     }
-    folderPagination.innerHTML = HTML
+  } else {
 
-    document.getElementById("last-page").innerHTML =
-      currentPage < (items.length / pageRangeValue) ?
-      `
-      <li class="page-item btn btn-outline-primary text-white" onclick="pageSelecting(event.target)" data-page="${items.length / pageRangeValue}">${items.length / pageRangeValue}</li>
-      `
-      : 
-      `
-      <li class="page-item btn btn-primary disabled text-white">${items.length / pageRangeValue}</li>
-      `
-    document.getElementById("first-page").innerHTML =
-      currentPage > 1 ?
-      `
-      <li class="page-item btn btn-outline-primary text-white" onclick="pageSelecting(event.target)" data-page="1">1</li>
-      `
-      :
-      `
-      <li class="page-item btn btn-primary disabled text-white">1</li>
-      `
   }
 }
