@@ -16,3 +16,9 @@ document.getElementById("filters-success").addEventListener('click', () => {
   filters.style.opacity = '0';
 })
 
+// fetch("https://github.com/Gogabok/workplace/blob/master/db.json").then(data => {
+//   console.log(data)
+// })
+
+
+
