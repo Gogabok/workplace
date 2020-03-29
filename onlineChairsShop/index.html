@@ -24,52 +24,50 @@
             <button class="filters-btn btn-primary" id="filters-switchers">Фильтры</button>
             <div class="filters-wrapper" id="filters" style="visibility: hidden;">
               <div class="form-group">
-                <input type="article" class="filters-input form-control" id="article" aria-describedby="article"
+                <input oninput="nameInputSelecting(event.target)" type="article" class="filters-input form-control" id="article" aria-describedby="article"
                   placeholder="Название товара">
               </div>
               <div class="form-group mb-0">
                 <label class="filters-input-title" for="formControlRange">
-                  <p class="m-0">Фильтрация цены</p>
+                  <p class="m-0">Цена:</p>
                   <p class="m-0">
                     От:
-                    <span id="priceDownValue">0</span> 
+                    <span id="minValue">0</span> 
                     ₽
                     До: 
-                    <span id="priceUpValue">1000</span>
+                    <span id="maxValue">1000</span>
                     ₽
                   </p>
                 </label>
-                <input class="form-control-range my-1" min="0" max="1000" step="5" value="0" id="priceDown" type="range" name="priceDown">
-                <input class="form-control-range my-1" min="0" max="1000" step="5" value="1000" id="priceUp" type="range" name="priceUp">
+                <input oninput="priceInputSelecting(event.target)" class="form-control-range my-1" min="0" max="1000" step="5" value="0" id="min" type="range" name="priceDown">
+                <input oninput="priceInputSelecting(event.target)" class="form-control-range my-1" min="0" max="1000" step="5" value="1000" id="max" type="range" name="priceUp">
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="isAvaliable">
+                <input oninput="isAvaliableInputSelecting(event.target)" class="form-check-input" type="checkbox" id="isAvaliable">
                 <label class="filters-input-title" for="isAvaliable">
                   На складе
                 </label>
               </div>
-              <button class="btn btn-success w-100 mt-3" id="filters-success" type="button">Применить</button>
+              <button class="btn btn-success w-100 mt-3" id="filtersSubmit" type="button">Применить</button>
             </div>
           </div>
         </div>
         <div class="folder">
           <main class="folder-main-side">
-            <div class="folder-main-side-catalog">
-              <div class="folder-main-side-catalog-item">
-                <img ondragstart="return false" class="folder-main-side-catalog-item-preview"
-                  src="https://d37kg2ecsrm74.cloudfront.net/web/ikea4/images/382/0238233_PE377690_S5.jpg" alt="">
-                <div class="folder-main-side-catalog-item-text">
-                  <p class="folder-main-side-catalog-item-text-title">Стул_1</p>
-                  <p class="folder-main-side-catalog-item-text-price">Стоимость: <span class="text-primary">330₽</span></p>
-                  <p class="folder-main-side-catalog-item-text-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-                    laboriosam.</p>
-                </div>
-                <div class="addToCart">
-                  <button class="addToCart-btn btn-success">Добавить в корзину</button>
-                  <p class="addToCart-text">В корзине: 0</p>
-                </div>
-              </div>
+            <div id="folder_items" class="folder-main-side-catalog">
+              <!-- Items conainer -->
             </div>
+            <ul class="pagination mb-0 mt-3">
+              <div id="first-page">
+                <!-- Last Page Container -->
+              </div>
+              <div class="d-flex mx-3" id="folder_pagination">
+                <!-- Pagination conainer main pages -->
+              </div>
+              <div id="last-page">
+                <!-- Last Page Container -->
+              </div>
+            </ul>
           </main>
           <aside class="folder-aside-cart">
 
