@@ -1,0 +1,139 @@
+.main--section {
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: url("../images/shattered-bg.gif");
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  user-select: none;
+  color: #fff;
+  margin: 0px;
+  width: 100%;
+}
+
+.filters {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.filters-btn {
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  user-select: none;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.filters-btn:focus {
+  outline: none;
+}
+
+.filters-wrapper {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  max-width: 300px;
+  right: 0;
+  top: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Rubik', sans-serif;
+  user-select: none;
+  transition-duration: .3s;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.filters-input {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 3px 0px;
+}
+
+.filters-input-title {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0px;
+}
+
+.filters-input-desc {
+  font-weight: 300;
+  font-size: .7rem;
+  margin: 0px;
+}
+
+.folder {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.folder-main-side {
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 5px;
+  padding: 20px 15px;
+}
+
+.folder-aside-cart {
+  background: #fff;
+  height: 600px;
+  width: 100%;
+  max-width: 300px;
+  margin-left: 30px;
+}
+
+.folder-main-side-catalog {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.folder-main-side-catalog-item {
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  user-select: none;
+}
+
+.folder-main-side-catalog-item-text-title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0px;
+}
+
+.folder-main-side-catalog-item-text-price {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0px;
+}
+
+.folder-main-side-catalog-item-text-desc {
+  
+}
+
+.folder-main-side-catalog-item-preview {
+  width: 100px;
+}

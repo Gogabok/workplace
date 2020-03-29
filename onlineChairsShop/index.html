@@ -4,9 +4,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online chairs shop</title>
-  <link rel="stylesheet" href="/assets/scss/style.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700&display=swap&subset=cyrillic" rel="stylesheet">
+
 </head>
 <body>
-  213
+  <section class="main--section">
+    <div class="container">
+      <div class="row">
+        <div class="caption">
+          <h1 class="title">Интернет-магазин стульев</h1>
+          <div class="filters">
+            <button class="filters-btn btn-primary" id="filters-switchers">Фильтры</button>
+            <div class="filters-wrapper" id="filters" style="visibility: hidden;">
+              <div class="form-group">
+                <input type="article" class="filters-input form-control" id="article" aria-describedby="article"
+                  placeholder="Название товара">
+              </div>
+              <div class="form-group mb-0">
+                <label class="filters-input-title" for="formControlRange">
+                  <p class="m-0">Фильтрация цены</p>
+                  <p class="m-0">
+                    От:
+                    <span id="priceDownValue">0</span> 
+                    ₽
+                    До: 
+                    <span id="priceUpValue">1000</span>
+                    ₽
+                  </p>
+                </label>
+                <input class="form-control-range my-1" min="0" max="1000" step="5" value="0" id="priceDown" type="range" name="priceDown">
+                <input class="form-control-range my-1" min="0" max="1000" step="5" value="1000" id="priceUp" type="range" name="priceUp">
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="isAvaliable">
+                <label class="filters-input-title" for="isAvaliable">
+                  На складе
+                </label>
+              </div>
+              <button class="btn btn-success w-100 mt-3" id="filters-success" type="button">Применить</button>
+            </div>
+          </div>
+        </div>
+        <div class="folder">
+          <main class="folder-main-side">
+            <div class="folder-main-side-catalog">
+              <div class="folder-main-side-catalog-item">
+                <img ondragstart="return false" class="folder-main-side-catalog-item-preview" src="https://d37kg2ecsrm74.cloudfront.net/web/ikea4/images/382/0238233_PE377690_S5.jpg" alt="">
+                <div class="folder-main-side-catalog-item-text">
+                  <p class="folder-main-side-catalog-item-text-title">Стул_1</p>
+                  <p class="folder-main-side-catalog-item-text-price">Стоимость: 330 p</p>
+                  <p class="folder-main-side-catalog-item-text-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur quasi inventore nulla debitis exercitationem! Earum dolore iure dignissimos eligendi dolorum.</p>
+                </div>
+              </div>
+            </div>
+          </main>
+          <aside class="folder-aside-cart">
+
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
