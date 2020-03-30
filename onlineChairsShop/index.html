@@ -6,7 +6,6 @@
   <title>Online chairs shop</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./assets/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -69,13 +68,21 @@
               </div>
             </ul>
           </main>
-          <aside class="folder-aside-cart">
-
+          <aside id="folder-aside-cart" class="folder-aside-cart">
+            <div id="cart-items" class="cart-items">
+              
+            </div>
+            <div class="summary">
+              <p class="summary-title">Итого: <span id="summaryPrice" class="text-primary">123₽</span></p>
+            </div>
+            <div class="toBuy">
+              <button class="buy-btn btn btn-outline-primary">Заказать</button>
+            </div>
           </aside>
         </div>
       </div>
     </div>
   </section>
-  <script src="assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
