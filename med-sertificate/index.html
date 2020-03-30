@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Центр повышения квалификации и переподготовки медицинских работников</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/reset.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap&subset=cyrillic"
+    rel="stylesheet">
+</head>
+<body>
+  
+  <section class="section-1">
+    <div class="container">
+      <div class="contacts">
+        <div class="logo">
+          <img ondragstart="return false" src="./assets/images/logo.png" alt="">
+        </div>
+        <div class="phone">
+          <a href="tel:89697775231" class="phone-title"><img class="phone-icon" src="./assets/images/phone.svg" alt="">8-969-777-52-31</a>
+        </div>
+      </div>
+      <h1 class="main-title"><span>Повышение квалификации</span> медицинских работников. Профессиональная переподготовка <span>из любой точки России и СНГ</span></h1>
+      <div class="our-advantages">
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-1.svg" alt="">
+          <h2 class="our-advantages-item-text">Государственного образца</h2>
+        </div>
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-2.svg" alt="">
+          <h2 class="our-advantages-item-text">Возможность ускоренного обучения</h2>
+        </div>
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-3.svg" alt="">
+          <h2 class="our-advantages-item-text">Быстрый расчёт стоимости обучения</h2>
+        </div>
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-4.svg" alt="">
+          <h2 class="our-advantages-item-text">Оперативная доставка за наш счет</h2>
+        </div>
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-5.svg" alt="">
+          <h2 class="our-advantages-item-text">100% гарантия качества и легитимности</h2>
+        </div>
+        <div class="our-advantages-item">
+          <img ondragstart="return false" class="our-advantages-item-image" src="./assets/images/advatages-icon-6.svg" alt="">
+          <h2 class="our-advantages-item-text">Индивидуальный подход</h2>
+        </div>
+      </div>
+      <div class="calculation">
+        <p class="calculation-title">Расчет стоимости обучения</p>
+
+        <div class="step" id="step-1">
+          <p class="calculation-subtitle">Интересующий вид обучения:</p>
+          <div class="options">
+            <div id="step-1-option-1" class="options-item" data-value="Повышение квалификации (144 часа)">
+              <p class="options-item-text">Повышение квалификации (144 часа)</p>
+            </div>
+            <div id="step-1-option-2" class="options-item" data-value="Профессиональная переподготовка (от 250 часов)">
+              <p class="options-item-text">Профессиональная переподготовка (от 250 часов)</p>
+            </div>
+            <div id="step-1-option-3" class="options-item" data-value="Тематическое усовершенствование (от 72 часов)">
+              <p class="options-item-text">Тематическое усовершенствование (от 72 часов)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="step-2">
+          <p class="calculation-subtitle">Количество человек:</p>
+          <div class="options">
+            <div id="step-2-option-1" class="options-item" data-value="1 человек">
+              <p class="options-item-text">1 человек</p>
+            </div>
+            <div id="step-2-option-2" class="options-item" data-value="2-5 человек">
+              <p class="options-item-text">2-5 человек</p>
+            </div>
+            <div id="step-2-option-3" class="options-item" data-value="Больше 5 человек">
+              <p class="options-item-text">Больше 5 человек</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="step-3">
+          <p class="calculation-subtitle">Ваше образование:</p>
+          <div class="options">
+            <div id="step-3-option-1" class="options-item" data-value="Высшее профессиональное">
+              <p class="options-item-text">Высшее профессиональное</p>
+            </div>
+            <div id="step-3-option-2" class="options-item" data-value="Среднее профессиональное">
+              <p class="options-item-text">Среднее профессиональное</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step" id="step-4">
+          <p class="calculation-subtitle">Введите номер телефона для получения
+          бесплатного СМС-сообщения с расчетом:</p>
+          <input class="calculation-phone-input" type="text" name="phone" autocomplete="off" placeholder="Номер телефона">
+          <input class="calculation-phone-input" type="text" name="name" autocomplete="off" placeholder="Имя">
+        </div>
+
+        <button class="calculation-btn">
+          Продолжить
+        </button>
+        <button class="calculation-btn-back">
+          Назад
+        </button>
+        <p class="calculation-steps">Шаг <span class="calculation-currentPage">1</span> из 4</p>
+      </div>
+    </div>
+    <a href="#section-2" class="scroll-down-btn"></a>
+  </section>
+  <section id="section-2" class="section-2">
+    <div class="container">
+      <h3 class="section-2-title">О нас</h3>
+      <div class="section-2-text">
+        <p class="section-2-text-item">
+          Центр Повышения квалификации и переподготовки мед работников была создана 9 июля 2014 года.
+          Наш учебный центр работает на основании лицензии Департамента образования г. Москвы
+        </p>
+        <p class="section-2-text-item">
+          На сегодняшний день учебный центр ЦПКПМ это из ведущих учреждений, занимающееся дистанционной профессиональной
+          переподготовкой и
+          повышением квалификации врачей по всей России и СНГ по множеству специализациям.
+          Мы сотрудничаем с крупнейшими мед учреждениями. Хорошо себя зарекомендовали на протяжение многих лет
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="section-3" class="section-3">
+    <div class="container">
+      <h3 class="section-3-title">Преимущества Академии</h3>
+      <div class="section-3-list">
+        <div class="section-3-list-item left">
+          <img class="section-3-list-item-image" ondragstart="return false" src="./assets/images/section-3-list-icon-1.svg"
+            alt="">
+          <p class="section-3-list-item-text">
+            Образовательные программы разрабатываются с учетом действующей нормативно-правовой базы, профессиональных
+            стандартов,
+            квалификационных требований
+          </p>
+        </div>
+        <div class="section-3-list-item right">
+          <p class="section-3-list-item-text">
+            Дистанционное обучение позволяет слушателю самостоятельно формировать свой образовательный процесс
+          </p>
+          <img class="section-3-list-item-image" ondragstart="return false" src="./assets/images/section-3-list-icon-2.svg"
+            alt="">
+        </div>
+        <div class="section-3-list-item left">
+          <img class="section-3-list-item-image" ondragstart="return false" src="./assets/images/section-3-list-icon-3.svg"
+            alt="">
+          <p class="section-3-list-item-text">
+            В учебную программу слушателя могут быть внесены индивидуальные изменения в зависимости от его потребностей (изменения
+            количества часов,
+            корректировка образовательных модулей)
+          </p>
+        </div>
+        <div class="section-3-list-item right">
+          <p class="section-3-list-item-text">
+            Гибкая система лояльности к клиентам
+          </p>
+          <img class="section-3-list-item-image" ondragstart="return false" src="./assets/images/section-3-list-icon-4.svg"
+            alt="">
+        </div>
+        <div class="section-3-list-item left">
+          <img class="section-3-list-item-image" ondragstart="return false" src="./assets/images/section-3-list-icon-5.svg"
+            alt="">
+          <p class="section-3-list-item-text">
+            Круглосуточная консультация по любым возникающим вопросам
+          </p>
+        </div>
+      </div>
+    </div>
+    <img ondragstart="return false" class="section-3-icon-1" src="./assets/images/section-2-icon-1.svg" alt="">
+  </section>
+
+  <section id="section-4" class="section-4">
+    <div class="container">
+      <h3 class="section-4-title">Образцы документов</h3>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/1.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/2.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/3.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/4.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section-5" class="section-5">
+    <div class="container">
+      <h3 class="section-5-title">Отзывы о нас</h3>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/1.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/2.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/3.png" alt="">
+          <img class="swiper-slide swiper-image" src="./assets/images/examples/4.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section-6" class="section-6">
+    <div class="container">
+      <h3 class="section-6-title">Часто задаваемые вопросы</h3>
+      <div class="section-6-questions">
+        <div class="section-6-questions-item">
+          <p class="section-6-questions-item-title">Какой комплект документов требуется для поступления? <img
+              class="section-6-questions-item-close" src="./assets/images/down-arrow.svg" alt=""></p>
+          <div class="section-6-questions-item-text">
+            <p class="bold">Комплект документов для граждан Российской Федерации:</p>
+            <p class="regular">1. Копия паспорта гражданина РФ (первая страница и регистрация).</p>
+            <p class="regular">2. Копия диплом о высшем или среднем образовании.</p>
+            <p class="regular">3. Копия ординатуры или интернатуры (для специалистов с высшем медицинским образованием).</p>
+            <p class="regular">4. Последний документ о повышении квалификации (сертификат/удостоверение/свидетельство).</p>
+            <p class="regular">5. Копия трудовой или документа подтверждающего трудовой стаж.</p>
+            <p class="regular">6. Документ о изменении ФИО (при наличии).</p>
+        
+            <p class="bold">Комплект документов для иностранных граждан:</p>
+            <p class="regular">1. Копия паспорта (нотариально заверенный перевод, в случае отсутствия разделов на русском
+              языке).</p>
+            <p class="regular">2. Копию документа, удостоверяющего личность иностранного гражданина в Российской Федерации.</p>
+            <p class="regular">3. иплом и приложение ( заверенный перевод). Для специалистов получивших медицинское образование
+              за пределами Российской
+              Федерации, действует другая процедура получения документов об образовании, для консультации позвоните нам по
+              телефону:
+              Для регионов 8 (800) 222-61-62, для Москвы и области 8(495) 252-08-80 и наш специалист подробно расскажет, что Вам
+              нужно
+              делать, что бы официально работать на территории РФ в качестве медицинского работника.</p>
+            <p class="regular">4. Документ о смене ФИО (заверенный перевод).</p>
+          </div>
+        </div>
+
+        <div class="section-6-questions-item">
+          <p class="section-6-questions-item-title">Каким образом возможно получение документов для регионов? <img
+              class="section-6-questions-item-close" ondragstart="return false" src="./assets/images/down-arrow.svg" alt=""></p>
+          <div class="section-6-questions-item-text">
+            <p class="regular">Для своевременной доставки документов нашим слушателям в регионы требуется заблаговременного
+              сообщить вашему куратору
+              точный адрес доставки. После завершения обучения ваши документы будут подготовлены в течении от 1 до 5 рабочих
+              дней,
+              куратор свяжется с вами по готовности, сверит адрес и уточнит способ доставки.</p>
+            <p class="regular">1. Почтовое отправление заказным письмом. Осуществляется за наш счет. По факту отправления Вам
+              будет предоставлен номер
+              отслеживания (ТРЕК), на сайте почты.рф Вы сможете отследить ваши документы и вовремя их получить.</p>
+            <p class="regular">2. Курьерская доставка, осуществляется за счет клиента. Оговаривается индивидуально.</p>
+          </div>
+        </div>
+
+        <div class="section-6-questions-item">
+          <p class="section-6-questions-item-title">Как я могу оплатить обучение? <img class="section-6-questions-item-close"
+              ondragstart="return false" src="./assets/images/down-arrow.svg" alt=""></p>
+          <div class="section-6-questions-item-text">
+            <p class="bold">Оплатить обучение можно несколькими способами:</p>
+            <p class="regular">1. платить обучение может ваш работодатель. Для этого Вам потребуется предоставить нашему
+              менеджеру реквизиты (карточку
+              компании) вашего работодателя, а так же ваше личное дело. Менеджер подготовит весь необходимый комплект документов
+              (договор, акт и счет).</p>
+            <p class="regular">2. Обучение можно оплатить самостоятельно, после подачи документов и заявления на обучение с вами
+              будет заключен договор.
+              Оплату Вы сможете совершить по реквизитам нашей организации в любом отделении банка или через онлайн. Менеджер
+              предоставит квитанцию.</p>
+            <p class="regular">3. Оплатить обучение в рассрочку возможно для физических и юридических лиц.</p>
+          </div>
+        </div>
+
+        <div class="section-6-questions-item">
+          <p class="section-6-questions-item-title">Возможно ли получить налоговый вычет после обучения? <img class="section-6-questions-item-close"
+              ondragstart="return false" src="./assets/images/down-arrow.svg" alt=""></p>
+          <div class="section-6-questions-item-text">
+            <p class="regular">Да, возможно.</p>
+            <p class="regular">Для получения налогового вычета наша компания предоставляет весь необходимый комплект документов, с которым Вы сможете
+            обратиться в налоговую службу для получения вычета.</p>
+            <p class="regular">Налоговый вычет возможно вернуть при соблюдении следующих условий:</p>
+            <p class="regular">1. Вы оплатили обучение самостоятельно и у Вас сохранился документ подтверждающий оплату.</p>
+            <p class="regular">2. На момент оплаты обучения Вы официально трудоустроены.</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Scripts -->
+  <script src="./assets/js/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
+</body>
+</html>
