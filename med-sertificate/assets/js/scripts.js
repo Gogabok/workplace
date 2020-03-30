@@ -11,7 +11,13 @@ $(document).ready(function () {
     },
   }
 
-  var mySwiper = new Swiper('.swiper-container', {
+  var swiper1 = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    slidesPerView: 2,
+    spaceBetween: 20
+  })
+
+  var swiper2 = new Swiper('.swiper-parthers-container', {
     direction: 'horizontal',
     slidesPerView: 2,
     spaceBetween: 20
@@ -20,6 +26,7 @@ $(document).ready(function () {
   $(".section-6-questions-item-text").slideUp()
 
   $(".section-6-questions-item").on("click", function (e) {
+    $('img.section-6-questions-item-close').css("transform", "rotate(0deg)")
     $(".section-6-questions-item-text").slideUp(300)
     let item = $(this).find('div.section-6-questions-item-text')
     item.stop(true)
@@ -73,7 +80,11 @@ $(document).ready(function () {
 
   $(".calculation-btn").on('click', function () {
     if (currentOption === 4) {
-      alert(JSON.stringify(calculation))
+      if (calculation[4].phone.length > 0 && calculation[4].name > 0) {
+        alert(JSON.stringify(calculation))
+      } else {
+        alert("Пожалуйста, заполните поля")
+      }
     }
     if (currentOption < 4) {
       if (calculation[currentOption].length > 0) {
