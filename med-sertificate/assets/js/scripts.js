@@ -12,7 +12,13 @@ $(document).ready(function () {
     },
   }
 
-  var swiper1 = new Swiper('.swiper-parthers-container', {
+  var swiper1 = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    slidesPerView: 4,
+    spaceBetween: 30,
+  })
+
+  var swiper2 = new Swiper('.swiper-parthers-container', {
     direction: 'horizontal',
     slidesPerView: 5,
     spaceBetween: 60,
@@ -117,6 +123,14 @@ $(document).ready(function () {
   })
 
   $(".scroll-down-btn").on("click", function (e) {
+    e.preventDefault();
+    let target = $(this).attr('href');
+    let destination = $(target).offset().top;
+
+    $('body,html').animate({ scrollTop: destination }, 200);
+  })
+
+  $(".contacts-list-item").on("click", function (e) {
     e.preventDefault();
     let target = $(this).attr('href');
     let destination = $(target).offset().top;

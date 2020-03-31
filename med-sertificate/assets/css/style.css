@@ -27,7 +27,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 2;
 }
 
@@ -362,11 +362,12 @@ body {
 .section-2 {
   position: relative;
   padding: 50px 0px;
-  background: url("../images/section-2-bg.png") no-repeat center center;
-  background-size: cover;
+  /* background: url("../images/section-2-bg.png") no-repeat center center;
+  background-size: cover; */
+  background: #f5f5f5;
 }
 
-.section-2:after {
+/* .section-2:after {
   content: '';
   position: absolute;
   top: 0;
@@ -375,7 +376,7 @@ body {
   right: 0;
   background: rgba(255, 255, 255, 0.9);
   z-index: 2;
-}
+} */
 
 .section-2-title {
   font-size: 2.7rem;
@@ -405,6 +406,7 @@ body {
 .section-3 {
   position: relative;
   padding: 50px 0px;
+  background: #f5f5f5;
 }
 
 
@@ -457,7 +459,7 @@ body {
 
 .section-4 {
   position: relative;
-  padding: 60px 0px;
+  padding: 30px 0px;
   background: #f5f5f5;
 }
 
@@ -475,14 +477,20 @@ body {
   margin: 40px 0px;
 }
 
-.docs-item {
-  width: 260px;
-  height: 400px;
+.docs-item img {
+  width: 160px;
+  /* height: 400px; */
   margin: 30px;
-  background-size: cover;
+  background-size: 80%;
+  transition-duration: .3s;
+  overflow: hidden;
 }
 
-.docs-item-1 {
+/* .docs-item:hover {
+  transform: scale(1.1);
+} */
+
+/* .docs-item-1 {
   background: url("../images/examples/1.png") no-repeat  center;
 }
 .docs-item-2 {
@@ -499,7 +507,7 @@ body {
 }
 .docs-item-6 {
   background: url("../images/examples/6.png") no-repeat  center;
-}
+} */
 
 
 .swiper-container {
@@ -510,6 +518,7 @@ body {
 .section-5 {
   position: relative;
   padding: 60px 0px;
+  background: #f5f5f5;
 }
 
 .section-5-title {
@@ -620,6 +629,7 @@ body {
 .section-7 {
   position: relative;
   padding: 60px 0px;
+  background: #f5f5f5;
 }
 
 .section-7-title {
@@ -771,4 +781,26 @@ body {
   .section-3 .container {
     padding: 0px 10px;
   }
+}
+
+
+.section-8 {
+  position: relative;
+  padding: 30px 0px;
+  background: #f5f5f5;
+}
+
+.section-8-text {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.section-8-text-item {
+  font-weight: 400;
+  margin: 20px 0px;
+  font-size: 1.4rem;
+}
+
+.section-8-text-item span {
+  font-weight: 500;
 }
