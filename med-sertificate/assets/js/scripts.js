@@ -7,20 +7,37 @@ $(document).ready(function () {
     3: '',
     4: {
       name: '',
-      phone: ''
+      phone: '',
+      programm: ''
     },
   }
 
-  var swiper1 = new Swiper('.swiper-container', {
+  var swiper1 = new Swiper('.swiper-parthers-container', {
     direction: 'horizontal',
-    slidesPerView: 2,
-    spaceBetween: 20
-  })
-
-  var swiper2 = new Swiper('.swiper-parthers-container', {
-    direction: 'horizontal',
-    slidesPerView: 2,
-    spaceBetween: 20
+    slidesPerView: 5,
+    spaceBetween: 60,
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      460: {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      620: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      800: {
+        slidesPerView: 4,
+        spaceBetween: 40
+      },
+      1100: {
+        slidesPerView: 5,
+        spaceBetween: 60
+      }
+    }
   })
 
   $(".section-6-questions-item-text").slideUp()
@@ -80,7 +97,7 @@ $(document).ready(function () {
 
   $(".calculation-btn").on('click', function () {
     if (currentOption === 4) {
-      if (calculation[4].phone.length > 0 && calculation[4].name > 0) {
+      if (calculation[4].phone.length > 0 && calculation[4].name > 0 && calculation[4].programm > 0) {
         alert(JSON.stringify(calculation))
       } else {
         alert("Пожалуйста, заполните поля")
@@ -105,5 +122,15 @@ $(document).ready(function () {
     let destination = $(target).offset().top;
 
     $('body,html').animate({ scrollTop: destination }, 200);
+  })
+
+  $(".login-form-btn").on("click", function () {
+    let name = $("#form-login").val()
+    let pass = $("#form-pass").val()
+    if(name.length < 1 && pass.length < 1) {
+      $("#form-login").css("border", "1px solid red")
+      $("#form-pass").css("border", "1px solid red")
+      alert('Ошибка!')
+    }
   })
 })
