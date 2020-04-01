@@ -103,9 +103,9 @@ $(document).ready(function () {
 
   $(".calculation-btn").on('click', function () {
     if (currentOption === 4) {
-      if (calculation[4].phone.length !== '' && calculation[4].name !== '' && calculation[4].programm !== '') {
+      if (calculation[4].phone !== '' && calculation[4].name !== '' && calculation[4].programm !== '') {
         let token = '933209183:AAEvaow7dnnLvlTFNN0b_aO6TiuASfVhDdw'
-        let chatid = '-410372176'
+        let chatid = '-1001208157407'
         let text = `
 Вид обучения: <b>${calculation[1]}</b> 
 Количество человек: <b>${calculation[2]}</b> 
@@ -115,12 +115,14 @@ $(document).ready(function () {
 Программа обучения: <b>${calculation[4].programm}</b> 
         `
         $.ajax({
-          type: "POST",
-          url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatid,
-          data: "parse_mode=HTML&text=" + encodeURIComponent(text),
-        }); 
-      alert("Спасибо за вашу заявку!")
-
+          url: "send.php",
+          type: "post",
+          dataType: "html",
+          data: {text: text},
+          success: function () {
+            alert("Спасибо за вашу заявку!")
+          }
+        });
       } else {
         alert("Пожалуйста, заполните поля")
       }
