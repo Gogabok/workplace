@@ -18,7 +18,7 @@
             <p class="title">Разработка мобильных приложений <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
             <p class="subtitle">iOS, Android</p>
             <transition name="zoom-out" mode="out-in">
-              <div class="text" v-show="cards[1].isOpen || document.body.clientWidth < 969">
+              <div class="text" v-show="cards[1].isOpen">
                 <p class="desc">
                   Мы создаём мобильные приложения, которые помогают вам зарабатывать. Уникальный дизайн, понятный функционал, удобный интерфейс привлекают пользователей и увеличивают число ваших клиентов.
                 </p>
@@ -63,7 +63,7 @@
 
 
 
-        <div @click="open(2)" :class="cards[2].isOpen ? 'openedTop' : ''" class="cards-services-item cards-services-item-1">
+        <div @click="open(2)" :class="cards[2].isOpen ? 'openedTop' : ''" class="cards-services-item cards-services-item-2">
           <div v-show="cards[2].isOpen" class="opened">
             <p class="title">Web разработка <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
             <p class="subtitle">Frontend, Backend</p>
@@ -184,7 +184,7 @@
           <p class="title">Сколько стоит разработка?</p>
           <div class="calculator">
             <div class="buttons">
-              <input @input="inputValue($event.target)" class="value" :value="value">
+              <input @input="inputValue($event.target)" type="text" class="value" :value="value">
               <div class="buttons-row">
                 <div @click="calculate('num', '7')" class="btn num">7</div>
                 <div @click="calculate('num', '8')" class="btn num">8</div>
@@ -239,24 +239,33 @@ export default {
       3: {
         isOpen: false
       },
-    }
+    },
+    width: null
   }),
   computed: {
     value() {
       return this.values.join(' ')
     }
   },
+  created() {
+    window.addEventListener('resize', this.updateWidth());
+  }, 
   methods: {
     open(item) {
-      let isOpen = this.cards[item].isOpen
-      this.cards[item].isOpen = true
-      setTimeout(() => {
-        for(let i = 0; i < Object.keys(this.cards).length; i++) {
-          if(Object.keys(this.cards)[i] != item) {
-            this.cards[Object.keys(this.cards)[i]].isOpen = false
+      if(this.width > 969) {
+        let isOpen = this.cards[item].isOpen
+        this.cards[item].isOpen = true
+        setTimeout(() => {
+          for(let i = 0; i < Object.keys(this.cards).length; i++) {
+            if(Object.keys(this.cards)[i] != item) {
+              this.cards[Object.keys(this.cards)[i]].isOpen = false
+            }
           }
-        }
-      }, 1);
+        }, 1);
+      }
+    },
+    updateWidth() {
+      this.width = window.innerWidth;
     },
     calculate (type, value) {
       let previusValue = this.values[this.values.length - 1]
@@ -291,6 +300,8 @@ export default {
       }
     },
     inputValue(e) {
+      e.value = e.value.replace(/[^0-9, *, \-, +, .]/g, '')
+      
       let str = e.value.toString()
       this.values = str.split(' ')
     }

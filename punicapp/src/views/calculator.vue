@@ -16,6 +16,9 @@ export default {
   name: "Calculator",
   components: {
     PriceCalculate, AppHeader, AppFooter
+  },
+  created() {
+      window.scrollTo(0, 0)
   }
 };
 </script>

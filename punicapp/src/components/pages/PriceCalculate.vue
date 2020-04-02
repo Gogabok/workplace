@@ -58,6 +58,7 @@
                                     <path fill-rule="evenodd" clip-rule="evenodd" width="40" :d="item2.icon" height="40" rx="20" :fill="[item2.active ? '#fff' :  '#D8D8D8']"/>
                                 </svg>
                                 <span>{{ item2.text}}</span>
+                                <p v-if="item2.helperText" class="helper-text" :class="item2.id">{{item2.helperText}}</p>
                             </div>
                         </div>
                     </div>
@@ -133,6 +134,8 @@
                                 text: 'Количество экранов 7',
                                 price: 60,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -140,6 +143,8 @@
                                 text: 'Количество экранов 15',
                                 price: 120,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -147,6 +152,8 @@
                                 text: 'Количество экранов 25',
                                 price: 200,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             }
                         ]
                     },
@@ -161,6 +168,8 @@
                                 text: 'прототип',
                                 price: 24,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -168,6 +177,8 @@
                                 text: 'обычный',
                                 price: 60,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -175,6 +186,8 @@
                                 text: 'Кастомный',
                                 price: 120,
                                 active: false,
+                                type: 'radio',
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             }
                         ]
                     },
@@ -189,6 +202,7 @@
                                 text: 'e-mail',
                                 price: 8,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -196,6 +210,7 @@
                                 text: 'телефон',
                                 price: 8,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -203,6 +218,7 @@
                                 text: 'соцсети',
                                 price: 8,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                         ]
                     },
@@ -217,6 +233,7 @@
                                 text: 'Загрузка медиафайлов',
                                 price: 18,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -224,6 +241,7 @@
                                 text: 'Профили пользователей',
                                 price: 10,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -231,6 +249,7 @@
                                 text: 'рейтинги, оценки, обзоры',
                                 price: 16,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 4,
@@ -238,6 +257,7 @@
                                 text: 'Редактирование фото-видео (манипуляции с файлом)',
                                 price: 60,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 5,
@@ -245,6 +265,7 @@
                                 text: 'Тэги',
                                 price: 14,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 6,
@@ -252,6 +273,7 @@
                                 text: 'Новостная лента',
                                 price: 10,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 7,
@@ -259,6 +281,7 @@
                                 text: 'Поиск фильтрация',
                                 price: 12,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 8,
@@ -266,6 +289,7 @@
                                 text: 'Каталоги, категории',
                                 price: 22,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                         ]
                     },
@@ -280,6 +304,7 @@
                                 text: 'Календарь',
                                 price: 14,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -287,6 +312,7 @@
                                 text: 'Бронирование(букинг)',
                                 price: 24,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -294,6 +320,7 @@
                                 text: 'Локация карты',
                                 price: 10,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 4,
@@ -301,6 +328,7 @@
                                 text: 'Кастомные метки/районы на карте',
                                 price: 10,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             }
                         ]
                     },
@@ -315,6 +343,7 @@
                                 text: 'Oбмен сообщениями',
                                 price: 22,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -322,6 +351,7 @@
                                 text: 'Форум или комментарии',
                                 price: 16,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -329,6 +359,7 @@
                                 text: 'Поделиться в соцсетях',
                                 price: 10,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 4,
@@ -336,6 +367,7 @@
                                 text: 'Push - ннотификации',
                                 price: 12,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                         ]
                     },
@@ -350,6 +382,7 @@
                                 text: 'Интеграция с одним или более сторонних сервисов',
                                 price: 110,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 2,
@@ -357,6 +390,7 @@
                                 text: 'Создание API для интеграции с вашим сервисом',
                                 price: 130,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             },
                             {
                                 id: 3,
@@ -364,6 +398,7 @@
                                 text: 'SMS функционал',
                                 price: 140,
                                 active: false,
+                                helperText: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus distinctio molestiae reiciendis fugiat quidem quo neque sunt corrupti similique ratione.'
                             }
                         ]
                     },
@@ -375,8 +410,20 @@
                 this.current_id = item;
             },
             getTotal(item) {
-                item.active = !item.active;
-                item.active ? this.total += item.price : this.total -= item.price
+                if(item.type === 'radio') {
+                    let currentList = this.items.find(i => i.id === this.current_id).items
+                    currentList.forEach(itemInList => {
+                        if(itemInList.active) {
+                            this.total -= itemInList.price
+                        }
+                        itemInList.active = false
+                    })
+                    item.active = !item.active
+                    item.active ? this.total += item.price : this.total -= item.price
+                } else {
+                    item.active = !item.active;
+                    item.active ? this.total += item.price : this.total -= item.price
+                }
             },
             nextStep() {
                 if (this.current_id !== this.items.length) {
