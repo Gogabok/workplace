@@ -32,6 +32,16 @@ body {
 .fade-leave-active {
   transition-duration: 0.3s;
 }
+.zoom-out-enter,
+.zoom-out-leave-to {
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+}
+.zoom-out-enter-active,
+.zoom-out-leave-active {
+  transition-duration: .5s;
+}
 
 // header {
 //   height: 80px;
@@ -540,6 +550,71 @@ html::-webkit-scrollbar-thumb {
         display: block;
       }
     }
+    &-item.openedTop {
+      margin-top: -160px;
+    }
+    &-item {
+      margin-top: -80px;
+      min-height: 311px;
+      cursor: pointer;
+      transition-duration: .3s;
+      & * {
+        transition-duration: .3s;
+      }
+      @media screen and (max-width: 969px) {
+        & {
+          margin-top: 20px !important;
+        }
+      }
+      & .opened {
+        & .icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        & .card-decor-1 {
+          position: absolute;
+          bottom: -13px;
+          right: -13px;
+        }
+        & .card-decor-2 {
+          position: absolute;
+          top: 379px;
+          right: -13px;
+        }
+        & .card-decor-3 {
+          position: absolute;
+          top: 379px;
+          right: -2px;
+        }
+        & .card-decor-4 {
+          position: absolute;
+          top: 379px;
+          left: -1px;
+        }
+      }
+      & .closed {
+        & .icon {
+          width: 70px;
+        }
+        & .card-decor-1 {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+        }
+        & .card-decor-2 {
+          position: absolute;
+          bottom: -13px;
+          right: -13px;
+        }
+        & .card-decor-3 {
+          position: absolute;
+          top: 250px;
+          right: -2px;
+        }
+      }
+    }
     &-item-1 {
       margin-top: -80px;
       width: calc((100% / 3) - 25px);
@@ -560,34 +635,53 @@ html::-webkit-scrollbar-thumb {
       }
     }
     &-item-2 {
-      margin-top: -160px;
+      // margin-top: -160px;
       width: calc((100% / 3) + 20px);
-      & .icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      & .card-decor-1 {
-        position: absolute;
-        bottom: -13px;
-        right: -13px;
-      }
-      & .card-decor-2 {
-        position: absolute;
-        top: 379px;
-        right: -13px;
-      }
-      & .card-decor-3 {
-        position: absolute;
-        top: 379px;
-        right: -2px;
-      }
-      & .card-decor-4 {
-        position: absolute;
-        top: 379px;
-        left: -1px;
-      }
+      // & .opened {
+      //   & .icon {
+      //     position: absolute;
+      //     top: 50%;
+      //     left: 50%;
+      //     transform: translate(-50%, -50%);
+      //   }
+      //   & .card-decor-1 {
+      //     position: absolute;
+      //     bottom: -13px;
+      //     right: -13px;
+      //   }
+      //   & .card-decor-2 {
+      //     position: absolute;
+      //     top: 379px;
+      //     right: -13px;
+      //   }
+      //   & .card-decor-3 {
+      //     position: absolute;
+      //     top: 379px;
+      //     right: -2px;
+      //   }
+      //   & .card-decor-4 {
+      //     position: absolute;
+      //     top: 379px;
+      //     left: -1px;
+      //   }
+      // }
+      // & .closed {
+      //   & .card-decor-1 {
+      //     position: absolute;
+      //     bottom: 0px;
+      //     right: 0px;
+      //   }
+      //   & .card-decor-2 {
+      //     position: absolute;
+      //     bottom: -13px;
+      //     right: -13px;
+      //   }
+      //   & .card-decor-3 {
+      //     position: absolute;
+      //     top: 250px;
+      //     right: -2px;
+      //   }
+      // }
     }
     &-item-3 {
       margin-top: -80px;
@@ -642,7 +736,7 @@ html::-webkit-scrollbar-thumb {
           }
         }
       }
-      &.opened {
+      & .opened {
         & .text {
           display: block;
         }

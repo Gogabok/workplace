@@ -13,79 +13,169 @@
         </div>
       </div>
       <div class="cards-services">
-        <div class="cards-services-item cards-services-item-1">
-          <p class="title">Разработка мобильных приложений <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
-          <p class="subtitle">iOS, Android</p>
-          <div class="text">
-            <p class="desc">
-              Мы создаём мобильные приложения, которые помогают вам зарабатывать. Уникальный дизайн, понятный функционал, удобный интерфейс привлекают пользователей и увеличивают число ваших клиентов.
-            </p>
-            <p class="desc">
-              Качественное мобильное приложение укрепляет имидж вашей компании и лояльность клиентов, делает бизнес более узнаваемым и положительно влияет на увеличение прибыли.  
-            </p>
+        <div @click="open(1)" :class="cards[1].isOpen ? 'openedTop' : ''" class="cards-services-item cards-services-item-1">
+          <div v-show="cards[1].isOpen" class="opened">
+            <p class="title">Разработка мобильных приложений <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">iOS, Android</p>
+            <transition name="zoom-out" mode="out-in">
+              <div class="text" v-show="cards[1].isOpen || document.body.clientWidth < 969">
+                <p class="desc">
+                  Мы создаём мобильные приложения, которые помогают вам зарабатывать. Уникальный дизайн, понятный функционал, удобный интерфейс привлекают пользователей и увеличивают число ваших клиентов.
+                </p>
+                <p class="desc">
+                  Качественное мобильное приложение укрепляет имидж вашей компании и лояльность клиентов, делает бизнес более узнаваемым и положительно влияет на увеличение прибыли.  
+                </p>
+                <p class="link">Читать далее...</p>
+              </div>
+            </transition>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-1-icon-big.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+              <img ondragstart="return false" class="card-decor-4" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-2-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-2-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-2-mobile-icons/3.png" alt="">
+            </div>
           </div>
-          <div class="desktop">
-            <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-1-icon.svg" alt="">
-            <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
-            <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
-            <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
-          </div>
-          <div class="mobile">
-            <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-1-mobile-icons/1.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-1-mobile-icons/2.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-1-mobile-icons/3.png" alt="">
-          </div>
-        </div>
-        <div class="cards-services-item cards-services-item-2 opened">
-          <p class="title">Web разработка <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
-          <p class="subtitle">Frontend, Backend</p>
-          <div class="text">
-            <p class="desc">
-              Разрабатываем сайты персонально под ваш бизнес. Анализируем рынок и целевую аудиторию в соответствии с задачами, которые вы хотите решить с помощью веб-сайта.
-            </p>
-            <p class="desc">
-              Создаём web-сервисы для любого направления бизнеса: продажи, коммуникации, управление, серверную часть и API, гибкие административные инструменты для управления приложениями и сбора статистики.
-            </p>
-            <p class="desc">
-              Вы получаете продукт, привлекательный для пользователей и функциональный для вас.
-            </p>
-            <p class="link">Читать далее...</p>
-          </div>
-          <div class="desktop">
-            <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-2-icon.svg" alt="">
-            <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
-            <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
-            <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
-            <img ondragstart="return false" class="card-decor-4" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
-          </div>
-          <div class="mobile">
-            <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-2-mobile-icons/1.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-2-mobile-icons/2.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-2-mobile-icons/3.png" alt="">
+          <div v-show="!cards[1].isOpen" class="closed">
+            <p class="title">Разработка мобильных приложений <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">iOS, Android</p>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-1-icon-small.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-1-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-1-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-1-mobile-icons/3.png" alt="">
+            </div>
           </div>
         </div>
-        <div class="cards-services-item cards-services-item-3">
-          <p class="title">Проектирование мобильного приложения <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
-          <p class="subtitle">Дизайн, ТЗ</p>
-          <div class="text">
-            <p class="desc">
-              Разрабатываем концепцию дизайна мобильного приложения, учитывая особенности продукта и фирменный стиль компании.
-            </p>
-            <p class="desc">
-              Вы получите функциональный, интуитивно понятный интерфейс. Уникальный и качественный дизайн повысят интерес к приложению, сделают его запоминающимся. 
-            </p>
-            <p class="desc">
-При разработке дизайна руководствуемся рекоммендациями Google и Apple, благодаря чему пользователи получают дизайн, основанный на знакомых им принципах.
-            </p>
+
+
+
+
+
+
+        <div @click="open(2)" :class="cards[2].isOpen ? 'openedTop' : ''" class="cards-services-item cards-services-item-1">
+          <div v-show="cards[2].isOpen" class="opened">
+            <p class="title">Web разработка <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">Frontend, Backend</p>
+            <transition name="zoom-out" mode="out-in">
+              <div class="text" v-show="cards[2].isOpen">
+                <p class="desc">
+                  Разрабатываем сайты персонально под ваш бизнес. Анализируем рынок и целевую аудиторию в соответствии с задачами, которые вы хотите решить с помощью веб-сайта.
+                </p>
+                <p class="desc">
+                  Создаём web-сервисы для любого направления бизнеса: продажи, коммуникации, управление, серверную часть и API, гибкие административные инструменты для управления приложениями и сбора статистики.
+                </p>
+                <p class="desc">
+                  Вы получаете продукт, привлекательный для пользователей и функциональный для вас.
+                </p>
+                <p class="link">Читать далее...</p>
+              </div>
+            </transition>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-2-icon-big.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+              <img ondragstart="return false" class="card-decor-4" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-2-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-2-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-2-mobile-icons/3.png" alt="">
+            </div>
           </div>
-          <div class="desktop">
-            <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-3-icon.svg" alt="">
-            <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
+          <div v-show="!cards[2].isOpen" class="closed">
+            <p class="title">Web разработка <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">Frontend, Backend</p>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-2-icon-small.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-1-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-1-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-1-mobile-icons/3.png" alt="">
+            </div>
           </div>
-          <div class="mobile">
-            <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-3-mobile-icons/1.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-3-mobile-icons/2.png" alt="">
-            <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-3-mobile-icons/3.png" alt="">
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div @click="open(3)" :class="cards[3].isOpen ? 'openedTop' : ''" class="cards-services-item cards-services-item-1">
+          <div v-show="cards[3].isOpen" class="opened">
+            <p class="title">Проектирование мобильного приложения <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">Дизайн, ТЗ</p>
+            <transition name="zoom-out" mode="out-in">
+              <div class="text" v-show="cards[3].isOpen">
+                <p class="desc">
+                  Мы создаём мобильные приложения, которые помогают вам зарабатывать. Уникальный дизайн, понятный функционал, удобный интерфейс привлекают пользователей и увеличивают число ваших клиентов.
+                </p>
+                <p class="desc">
+                  Качественное мобильное приложение укрепляет имидж вашей компании и лояльность клиентов, делает бизнес более узнаваемым и положительно влияет на увеличение прибыли.  
+                </p>
+                <p class="link">Читать далее...</p>
+              </div>
+            </transition>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-3-icon-big.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+              <img ondragstart="return false" class="card-decor-4" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-2-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-2-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-2-mobile-icons/3.png" alt="">
+            </div>
+          </div>
+          <div v-show="!cards[3].isOpen" class="closed">
+            <p class="title">Проектирование мобильного приложения <img ondragstart="return false" src="../../../assets/images/section-2/arrow-mobile.svg" alt=""></p>
+            <p class="subtitle">Дизайн, ТЗ</p>
+            <div class="desktop">
+              <img class="icon" ondragstart="return false" src="../../../assets/images/section-2/services-3-icon-small.svg" alt="">
+              <img ondragstart="return false" class="card-decor-1" src="../../../assets/images/section-2/card-decor-1.svg" alt="">
+              <img ondragstart="return false" class="card-decor-2" src="../../../assets/images/section-2/card-decor-2.svg" alt="">
+              <img ondragstart="return false" class="card-decor-3" src="../../../assets/images/section-2/card-decor-3.svg" alt="">
+            </div>
+            <div class="mobile">
+              <img ondragstart="return false" class="card-mobile-decor-1" src="../../../assets/images/section-2/sec-1-mobile-icons/1.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-2" src="../../../assets/images/section-2/sec-1-mobile-icons/2.png" alt="">
+              <img ondragstart="return false" class="card-mobile-decor-3" src="../../../assets/images/section-2/sec-1-mobile-icons/3.png" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -138,7 +228,18 @@ export default {
   name: "Section-2",
   data: () => ({
     values: [''],
-    valueHistory: ''
+    valueHistory: '',
+    cards: {
+      1: {
+        isOpen: false
+      },
+      2: {
+        isOpen: true
+      },
+      3: {
+        isOpen: false
+      },
+    }
   }),
   computed: {
     value() {
@@ -146,6 +247,17 @@ export default {
     }
   },
   methods: {
+    open(item) {
+      let isOpen = this.cards[item].isOpen
+      this.cards[item].isOpen = true
+      setTimeout(() => {
+        for(let i = 0; i < Object.keys(this.cards).length; i++) {
+          if(Object.keys(this.cards)[i] != item) {
+            this.cards[Object.keys(this.cards)[i]].isOpen = false
+          }
+        }
+      }, 1);
+    },
     calculate (type, value) {
       let previusValue = this.values[this.values.length - 1]
       if(type === 'num') {
