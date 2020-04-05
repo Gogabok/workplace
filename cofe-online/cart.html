@@ -40,7 +40,21 @@
       <div class="container">
         <h1 class="cart-title">Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></h1>
         <div class="table">
-          <div class="table-head"></div>
+          <ul class="table-head">
+            <li class="table-head-item">Товар</li>
+            <li class="table-head-item">Название</li>
+            <li class="table-head-item">Цена</li>
+            <li class="table-head-item">Количество</li>
+            <li class="table-head-item">Итого</li>
+          </ul>
+          <ul class="table-body" v-for="(item, index) in items" :key="index + Math.random()">
+            <li class="table-body-item"><img ondragstart="return false" :src="`./assets/images/catalog-items/${item.image}`" alt=""></li>
+            <li class="table-body-item">{{ item.title }}</li>
+            <li class="table-body-item">{{ item.price }} ₽</li>
+            <li class="table-body-item">{{ item.inCartAmount }}</li>
+            <li class="table-body-item">{{ item.price * item.inCartAmount }} ₽</li>
+            <i class="delete-item-icon fa fa-trash" aria-hidden="true"></i>
+          </ul>
         </div>
       </div>
     </main>

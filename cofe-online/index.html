@@ -64,7 +64,7 @@
           <p class="modal-left-side-title">Продукт был добавлен в корзину!</p>
           <div class="item">
             <div class="image">
-              <img ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
+              <img ondragstart="return false" :src="`./assets/images/catalog-items/${modal.lastItem.image}`" alt="">
             </div>
             <div class="item-text">
               <p class="item-text-title"><span>Название:</span> {{ modal.lastItem.title }} {{ modal.lastItem.volume }}</p>

@@ -369,4 +369,52 @@ BODY {
     font-size: 2.5rem;
     margin-left: 15px;
   }
+  & .table {
+    padding: 20px;
+    & .table-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      &-item {
+        width: calc(100% / 5);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, .2);
+        font-size: 1.2rem;
+        font-weight: 300;
+        font-style: italic;
+      }
+    }
+    & .table-body {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      & .delete-item-icon {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: -30px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:hover {
+          color: red;
+          transition-duration: .2s;
+        }
+      }
+      &-item {
+        width: calc(100% / 5);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, .2);
+        font-size: 1.2rem;
+        font-weight: 300;
+        font-style: italic;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 0px;
+        & img {
+          width: 80px;
+        }
+      }
+    }
+  }
 }
