@@ -14,6 +14,7 @@ HTML {
   height: 100%;
   }
 BODY {
+  padding: 0px 20px;
   background: 
     linear-gradient(90deg,
       $transparent 93%,
@@ -95,7 +96,7 @@ BODY {
 }
 
 .header {
-  border-bottom: 1px solid #164A60;
+  border-bottom: 1px solid rgba(22, 73, 96, 0.2);
   & .header-container {
     padding: 20px 0px;
     display: flex;
@@ -113,8 +114,9 @@ BODY {
           cursor: pointer;
           font-size: 1.2rem;
           color: #000;
+          text-decoration: none;
           line-height: 1.2rem;
-          margin: 3px 0px 6px 0px;
+          margin: 3px 0px;
           &:hover {
             color: #ffd05c;
             transition-duration: .2s;
@@ -148,7 +150,6 @@ BODY {
           font-size: 1.2rem;
           color: #000;
           line-height: 1.2rem;
-          margin: 6px 0px 3px 0px;
           &:hover {
             color: #ffd05c;
             transition-duration: .2s;
@@ -175,7 +176,8 @@ BODY {
     margin: 0px 0px 0px 0px;
     & .item {
       width: calc((100% / 4) - 30px);
-      background: #fff6e3;
+      background: #fffff5;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .5);
       border-radius: 5px;
       margin: 20px 15px;
       & .item-image {
@@ -201,7 +203,7 @@ BODY {
         text-align: center;
       }
       & .item-addToCart {
-        margin: 10px auto;
+        margin: 10px auto 10px auto;
         display: block;
         width: calc(100% - 20px);
         font-size: 1.1rem;
@@ -216,6 +218,155 @@ BODY {
           background: $hoverColor;
         }
       }
+      & .item-inCart-text {
+        font-weight: 400;
+        font-size: 1.2rem;
+        text-align: center;
+        display: block;
+        color: #000;
+        margin: -5px 0px 0px 0px;
+        &:hover {
+          color: $hoverColor;
+          transition-duration: .2s;
+        }
+      }
     }
+  }
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  & .modal-wrapper {
+    max-width: 1000px;
+    width: calc(100% - 20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    display: flex;
+    border-radius: 5px;
+    cursor: default;
+    & .close-icon {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    & .modal-left-side {
+      padding: 10px 15px;
+      width: 100%;
+      border-right: 1px solid rgba(0, 0, 0, .4);
+      & .modal-left-side-title {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #28A745;
+      }
+      & .item {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 20px;
+        & .image {
+          border: 1px solid rgba(0, 0, 0, 0.4);
+          padding: 2px;
+          & img {
+            width: 120px;
+          }
+        }
+        & .item-text {
+          margin-left: 10px;
+          &-title {
+            font-size: 1.2rem;
+            line-height: 1rem;
+            margin: 10px 0px;
+            font-weight: 600;
+            &:nth-child(1) {
+              margin-top: 0px;
+            }
+            & span {
+              font-weight: 300;
+              font-style: italic;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+    & .modal-right-side {
+      padding: 10px 15px;
+      width: 100%;
+      & .modal-right-side-title {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #000;
+        & span {
+          color: #28A745;
+        }
+      }
+      & .item {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 20px;
+        & .image {
+          border: 1px solid rgba(0, 0, 0, 0.4);
+          padding: 2px;
+          & img {
+            width: 120px;
+          }
+        }
+        & .item-text {
+          &-title {
+            font-size: 1.2rem;
+            line-height: 1rem;
+            margin: 10px 0px;
+            font-weight: 600;
+            &:nth-child(1) {
+              margin-top: 0px;
+            }
+            & span {
+              font-weight: 300;
+              font-style: italic;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      & .btn {
+        font-size: 1.1rem;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 3px;
+        background: #007BFF;
+        color: #fff;
+        margin-top: 20px;
+        &:hover {
+          transition-duration: .2s;
+          background: $hoverColor;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+.cart-main-wrapper {
+  margin-top: 70px;
+  & .cart-title {
+    font-size: 2.5rem;
+    margin-left: 15px;
   }
 }

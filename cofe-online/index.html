@@ -13,80 +13,85 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
-  <div class="content">
-    <header class="header">
-      <div class="container">
-        <div class="header-container">
-          <div class="logo">
-            <img ondragstart="return false" src="./assets/images/logo.png" alt="">
-          </div>
-          <div class="info">
-            <div class="cart">
-              <p class="cart-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Корзина</p>
+  <div id="app">
+    <div class="content">
+      <header class="header">
+        <div class="container">
+          <div class="header-container">
+            <div class="logo">
+              <img ondragstart="return false" src="./assets/images/logo.png" alt="">
             </div>
-            <div class="phone">
-              <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
-                699-86</a>
-            </div>
-            <div class="adress">
-              <p class="adress-text"><i class="fa fa-location-arrow" aria-hidden="true"></i>г. Н. Новгород, ул. Пожарского,
-                9А</p>
+            <div class="info">
+              <div class="cart">
+                <a href="./cart.html" target="_blank" class="cart-text"><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽
+                    )</span></a>
+              </div>
+              <div class="phone">
+                <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
+                  699-86</a>
+              </div>
+              <div class="adress">
+                <p class="adress-text"><i class="fa fa-location-arrow" aria-hidden="true"></i>г. Н. Новгород, ул.
+                  Пожарского,
+                  9А</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <main class="catalog">
-      <div class="container">
-        <h1 class="catalog-title">Каталог</h1>
-        <div class="items-wrapper">
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
-          </div>
-          <div class="item">
-            <img class="item-image" ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
-            <h2 class="item-title">Капучино 400мл</h2>
-            <h3 class="item-price">300₽</h3>
-            <button class="item-addToCart">Добавить в корзину</button>
+      </header>
+      <main class="catalog">
+        <div class="container">
+          <h1 class="catalog-title">Каталог</h1>
+          <div class="items-wrapper">
+            <div class="item" v-for="(item, index) in items" :key="index + Math.random()">
+              <img class="item-image" ondragstart="return false" :src="`./assets/images/catalog-items/${item.image}`"
+                alt="">
+              <h2 class="item-title">{{item.title}} {{ item.volume }}</h2>
+              <h3 class="item-price">{{ item.price }}₽</h3>
+              <button class="item-addToCart" @click.prevent="addToCart(item)">Добавить в корзину</button>
+              <a v-if="item.inCartAmount > 0" href="./cart.html" target="_blank" class="item-inCart-text">В корзине:
+                {{ item.inCartAmount }}</a>
+            </div>
           </div>
         </div>
+      </main>
+    </div>
+    
+    <div v-if="modal.isActive" class="modal" @click.self="closeModal">
+      <div class="modal-wrapper">
+        <div class="modal-left-side">
+          <p class="modal-left-side-title">Продукт был добавлен в корзину!</p>
+          <div class="item">
+            <div class="image">
+              <img ondragstart="return false" src="./assets/images/catalog-items/1.jpg" alt="">
+            </div>
+            <div class="item-text">
+              <p class="item-text-title"><span>Название:</span> {{ modal.lastItem.title }} {{ modal.lastItem.volume }}</p>
+              <p class="item-text-title"><span>Количество:</span> {{ modal.lastItem.inCartAmount }}</p>
+              <p class="item-text-title"><span>Цена:</span> {{ modal.lastItem.price * modal.lastItem.inCartAmount }}₽</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="modal-right-side">
+          <p class="modal-right-side-title">В корзине: <span>{{ itemsInCart }} товаров</span></p>
+          <div class="item">
+            <div class="item-text">
+              <p class="item-text-title"><span>Стоимость товаров:</span> {{ itemsPriceInCart }}₽</p>
+              <p class="item-text-title"><span>Стоимость доставки:</span> {{ deliveryPrice }}₽</p>
+              <p class="item-text-title"><span>*Бесплатная доставка при заказе от 400₽</span></p>
+              <p class="item-text-title"><span>Итого:</span> {{ itemsPriceInCart + deliveryPrice }}₽</p>
+            </div>
+          </div>
+         <a href="./cart.html" target="_blank"><button class="btn">Оформить заказ</button></a>
+        </div>
+        <i @click="closeModal" class="close-icon fa fa-times" aria-hidden="true"></i>
       </div>
-    </main>
+    </div>
   </div>
   <!-- Scripts -->
   <script src="./assets/js/vue@2.6.11.js"></script>
+  <script src="./assets/js/app.js"></script>
 </body>
 </html>

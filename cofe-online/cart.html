@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кофе корзина</title>
+  <!-- Links -->
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/style.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,400i,300i,700&display=swap&subset=cyrillic"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+  <div id="app" class="content">
+    <header class="header">
+      <div class="container">
+        <div class="header-container">
+          <a class="logo" href="./index.html">
+            <img ondragstart="return false" src="./assets/images/logo.png" alt="">
+          </a>
+          <div class="info">
+            <div class="cart">
+              <p class="cart-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></p>
+            </div>
+            <div class="phone">
+              <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
+                699-86</a>
+            </div>
+            <div class="adress">
+              <p class="adress-text"><i class="fa fa-location-arrow" aria-hidden="true"></i>г. Н. Новгород, ул. Пожарского,
+                9А</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="cart-main-wrapper">
+      <div class="container">
+        <h1 class="cart-title">Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></h1>
+        <div class="table">
+          <div class="table-head"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- Scripts -->
+  <script src="./assets/js/vue@2.6.11.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
