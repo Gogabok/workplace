@@ -76,6 +76,18 @@ var app = new Vue({
     modal: {
       isActive: false,
       lastItem: null
+    },
+    modalSuccessIsActive: true,
+    form: {
+      name: {
+        value: '',
+        isError: false
+      },
+      phone: {
+        value: '',
+        isError: false
+      },
+      isAgree: false
     }
   }),
   mounted() {
@@ -84,6 +96,20 @@ var app = new Vue({
     }
   },
   methods: {
+    makeOrder() {
+      var xhr = new XMLHttpRequest();
+      let formData = 
+      `
+      123
+      `
+      xhr.open('POST', 'send.php', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) { 
+          
+        }
+      }
+      xhr.send(formData);
+    },
     addToCart(item) {
       let itemInList = this.items.find(i => i === item)
       if (itemInList.inCartAmount > 0) {
@@ -95,12 +121,56 @@ var app = new Vue({
       this.modal.lastItem = itemInList
       localStorage.setItem("inCart", JSON.stringify(this.items))
     },
+    deleteInCartItem(item) {
+      let itemInList = this.items.find(i => i === item)
+      itemInList.inCartAmount = 0
+      localStorage.setItem("inCart", JSON.stringify(this.items))
+    },
+    changeAmountOfItem(item, e) {
+      let itemInList = this.items.find(i => i === item)
+      if(+e.value > 1) {
+        itemInList.inCartAmount = +e.value
+      } else {
+        itemInList.inCartAmount = 1
+      }
+      if (+e.value < 99) {
+        itemInList.inCartAmount = +e.value
+      } else {
+        itemInList.inCartAmount = 99
+      }
+      localStorage.setItem("inCart", JSON.stringify(this.items))
+    },
     closeModal() {
       this.modal.isActive = false
       this.modal.lastItem = null
+      this.modalSuccessIsActive = false
+    },
+    isError(input) {
+      if(input !== 'phone') {
+       this.form[input].isError = this.form[input].value.length <= 3
+      } else {
+        let phonePattern = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+        this.form.phone.isError = !phonePattern.test(this.form.phone.value)
+      }
     }
   },
   computed: {
+    inCart() {
+      let inCart = []
+      for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].inCartAmount > 0) {
+          inCart.push(this.items[i])
+        }
+      }
+      return inCart
+    },
+    isBtnActive () {
+      if (!this.form.name.isError && this.form.name.value.length > 0 && this.form.phone.value.length > 0 && !this.form.phone.isError && this.form.isAgree) {
+        return false
+      } else {
+        return true
+      }
+    },
     itemsInCart() {
       let acc = 0
       for(let i = 0; i < this.items.length; i++) {

@@ -13,51 +13,106 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 <body>
-  <div id="app" class="content">
-    <header class="header">
-      <div class="container">
-        <div class="header-container">
-          <a class="logo" href="./index.html">
-            <img ondragstart="return false" src="./assets/images/logo.png" alt="">
-          </a>
-          <div class="info">
-            <div class="cart">
-              <p class="cart-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></p>
-            </div>
-            <div class="phone">
-              <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
-                699-86</a>
-            </div>
-            <div class="adress">
-              <p class="adress-text"><i class="fa fa-location-arrow" aria-hidden="true"></i>г. Н. Новгород, ул. Пожарского,
-                9А</p>
+  <div id="app">
+    <div class="content">
+      <header class="header">
+        <div class="container">
+          <div class="header-container">
+            <a class="logo" href="./index.html">
+              <img ondragstart="return false" src="./assets/images/logo.png" alt="">
+            </a>
+            <div class="info">
+              <div class="cart">
+                <p class="cart-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Корзина <span
+                    v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></p>
+              </div>
+              <div class="phone">
+                <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
+                  699-86</a>
+              </div>
+              <div class="adress">
+                <p class="adress-text"><i class="fa fa-location-arrow" aria-hidden="true"></i>г. Н. Новгород, ул.
+                  Пожарского,
+                  9А</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <main class="cart-main-wrapper">
-      <div class="container">
-        <h1 class="cart-title">Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></h1>
-        <div class="table">
-          <ul class="table-head">
-            <li class="table-head-item">Товар</li>
-            <li class="table-head-item">Название</li>
-            <li class="table-head-item">Цена</li>
-            <li class="table-head-item">Количество</li>
-            <li class="table-head-item">Итого</li>
-          </ul>
-          <ul class="table-body" v-for="(item, index) in items" :key="index + Math.random()">
-            <li class="table-body-item"><img ondragstart="return false" :src="`./assets/images/catalog-items/${item.image}`" alt=""></li>
-            <li class="table-body-item">{{ item.title }}</li>
-            <li class="table-body-item">{{ item.price }} ₽</li>
-            <li class="table-body-item">{{ item.inCartAmount }}</li>
-            <li class="table-body-item">{{ item.price * item.inCartAmount }} ₽</li>
-            <i class="delete-item-icon fa fa-trash" aria-hidden="true"></i>
-          </ul>
+      </header>
+      <main class="cart-main-wrapper">
+        <div class="container">
+          <h1 class="cart-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Корзина <span
+              v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></h1>
+          <div class="table" v-if="inCart.length > 0">
+            <ul class="table-head">
+              <li class="table-head-item">Товар</li>
+              <li class="table-head-item">Название</li>
+              <li class="table-head-item">Цена</li>
+              <li class="table-head-item">Количество</li>
+              <li class="table-head-item">Итого</li>
+            </ul>
+            <ul class="table-body" v-for="(item, index) in inCart" :key="index + Math.random()">
+              <li class="table-body-item"><img ondragstart="return false"
+                  :src="`./assets/images/catalog-items/${item.image}`" alt=""></li>
+              <li class="table-body-item">{{ item.title }} {{ item.volume }}</li>
+              <li class="table-body-item">{{ item.price }} ₽</li>
+              <li class="table-body-item">
+                <input @input="changeAmountOfItem(item, $event.target)" min="1" max="99" type="number"
+                  :value="item.inCartAmount" name="">
+              </li>
+              <li class="table-body-item">{{ item.price * item.inCartAmount }} ₽</li>
+              <i @click="deleteInCartItem(item)" class="delete-item-icon fa fa-trash" aria-hidden="true"></i>
+            </ul>
+            <ul class="table-info">
+              <li class="table-info-item">
+                <p>Стоимость товаров:</p>
+                <p class="price">{{ itemsPriceInCart }} ₽</p>
+              </li>
+              <li class="table-info-item">
+                <p>Стоимость доставки:</p>
+                <p class="price">{{ deliveryPrice }} ₽</p>
+              </li>
+              <li class="table-info-item">
+                <p>Итого:</p>
+                <p class="price">{{ itemsPriceInCart + deliveryPrice }} ₽</p>
+              </li>
+            </ul>
+            <p class="cart-title"><i class="fa fa-rocket" aria-hidden="true"></i> Доставка</p>
+            <label class="label" for="delivery-1">
+              <input class="delivery-input" id="delivery-1" type="radio" name="delivery">
+              <p class="label-title">Доставка курьером до квартиры от 40 до 60 минут - {{ deliveryPrice }} ₽</p>
+            </label>
+            <label class="label" for="delivery-2">
+              <input class="delivery-input" id="delivery-2" type="radio" name="delivery">
+              <p class="label-title">Доставка на определенное время по вашему адресу - {{ deliveryPrice }} ₽</p>
+            </label>
+            <p class="label-desc">* Бесплатная доставка от 400 ₽</p>
+            <button @click="modalSuccessIsActive = true" class="btn-success">Заказать</button>
+          </div>
+          <p class="cart-is-empty" v-else>Ваша корзина пуста</p>
         </div>
+      </main>
+    </div>
+    <div v-if="modalSuccessIsActive" class="modal" @click.self="closeModal">
+      <div class="modal-container">
+        <i @click="closeModal" class="close-icon fa fa-times" aria-hidden="true"></i>
+        <label for="modal-name-input">
+          <p class="modal-name-input-title">Ваше имя: <i v-show="form.name.isError" class="fa icon fa-exclamation-triangle" aria-hidden="true"></i></p>
+          <input @input="isError('name')" v-model="form.name.value" id="modal-name-input" class="modal-success-input" placeholder="Имя" type="text" name="name"
+            autocomplete="off">
+        </label>
+        <label for="modal-name-input-2">
+          <p class="modal-name-input-title">Ваш телефон: <i v-show="form.phone.isError" class="fa icon fa-exclamation-triangle" aria-hidden="true"></i></p>
+          <input @input="isError('phone')" v-model="form.phone.value" id="modal-name-input-2" class="modal-success-input" placeholder="Телефон" type="text" name="phone"
+            autocomplete="off">
+        </label>
+        <label class="checkbox-input" for="modal-name-input-3">
+          <input v-model="form.isAgree" id="modal-name-input-3" type="checkbox">
+          <p class="checkbox-title">Я согласен на обработку персональных данных</p>
+        </label>
+        <button :disabled="isBtnActive" @click="makeOrder" class="btn-success">Заказать</button>
       </div>
-    </main>
+    </div>
   </div>
   <!-- Scripts -->
   <script src="./assets/js/vue@2.6.11.js"></script>
