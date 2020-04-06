@@ -182,7 +182,7 @@
       <div class="howMuch">
         <div class="info">
           <p class="title">Сколько стоит разработка?</p>
-          <div class="calculator">
+          <div @click="animatingCalc(true)" class="calculator">
             <div class="buttons">
               <input @input="inputValue($event.target)" type="text" class="value" :value="value">
               <div class="buttons-row">
@@ -240,7 +240,8 @@ export default {
         isOpen: false
       },
     },
-    width: null
+    width: null,
+    int: null
   }),
   computed: {
     value() {
@@ -249,8 +250,26 @@ export default {
   },
   created() {
     window.addEventListener('resize', this.updateWidth());
+    this.animatingCalc()
   }, 
   methods: {
+    animatingCalc(isStop) {
+      let randomValues = ['134020', '12240120', '410', '928', '7501', '92964']
+      if(!isStop) {
+        this.int = setInterval(() => {
+          let rand = Math.floor(Math.random() * randomValues.length);
+          this.values.splice(0, 1)
+          this.values.push(randomValues[rand])
+        }, 30);
+      } else {
+        if(this.int) {
+          this.values.splice(0, 1)
+        }
+        clearInterval(this.int)
+        this.int = null
+      }
+      
+    },
     open(item) {
       if(this.width > 969) {
         let isOpen = this.cards[item].isOpen
@@ -261,7 +280,7 @@ export default {
               this.cards[Object.keys(this.cards)[i]].isOpen = false
             }
           }
-        }, 1);
+        }, 100);
       }
     },
     updateWidth() {

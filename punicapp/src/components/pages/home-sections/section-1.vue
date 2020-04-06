@@ -1,4 +1,5 @@
 <template>
+<div class="sec-1-div">
   <section class="section section-1">
     <div class="container-custom">
       <div class="title">
@@ -13,9 +14,12 @@
     </div>
     <img ondragstart="return false" class="bg-illustration bg-illustration-desktop" src="../../../assets/images/section-1/bg-illustration.png" alt="">
     <div class="icon-wrapper">
-      <img ondragstart="return false" class="bg-illustration-2" src="../../../assets/images/section-1/bg-illustration-2.svg" alt="">
     </div>
   </section>
+  <video class="video-bg" loop autoplay muted>
+    <source type="video/webm" src="../../../assets/images/section-1/carousel_background.mp4">
+  </video>
+</div>
 </template>
 
 <script>
