@@ -14,7 +14,7 @@ HTML {
   height: 100%;
   }
 BODY {
-  padding: 0px 20px;
+  padding: 0px 10px;
   background: 
     linear-gradient(90deg,
       $transparent 93%,
@@ -89,6 +89,9 @@ BODY {
   box-sizing: border-box;
   background: #fff;
   min-height: 100vh;
+  @media screen and (max-width: 550px) {
+    padding: 0px 5px;
+  }
   & * {
     font-family: 'Rubik', sans-serif;
     box-sizing: border-box;
@@ -161,6 +164,22 @@ BODY {
         }
       }
     }
+    @media screen and(max-width: 700px) {
+      & {
+        display: block;
+      }
+      & .logo {
+        text-align: center;
+        margin-bottom: 20px;
+        & img {
+          width: 220px;
+          margin: 0px auto;
+        }
+      }
+      & .info {
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -181,6 +200,26 @@ BODY {
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .5);
       border-radius: 5px;
       margin: 20px 15px;
+      @media screen and(max-width: 800px) {
+        & {
+          width: calc((100% / 3) - 30px);
+        }
+      }
+      @media screen and(max-width: 650px) {
+        & {
+          width: calc((100% / 2) - 30px);
+        }
+      }
+      @media screen and(max-width: 450px) {
+        & {
+          width: calc((100% / 1) - 30px);
+          text-align: center;
+        }
+        & .item-image {
+          margin: 0px auto;
+          width: 100%;
+        }
+      }
       & .item-image {
         max-width: 100%;
         border-top-left-radius: 5px;
@@ -258,6 +297,35 @@ BODY {
     display: flex;
     border-radius: 5px;
     cursor: default;
+    @media screen and(max-width: 810px) {
+      & {
+        display: block;
+        max-width: 400px;
+        padding-top: 20px;
+      }
+      & .modal-left-side {
+        padding: 0px;
+        box-sizing: border-box;
+      }
+       & .modal-right-side {
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      & .modal-left-side .item {
+        width: 100%;
+        margin: 0px auto;
+      }
+      & .modal-right-side .item {
+        width: 100%;
+        margin: 0px auto;
+      }
+      & .modal-left-side-title {
+        text-align: center;
+      }
+      & .modal-right-side-title {
+        text-align: center;
+      }
+    }
     & .close-icon {
       position: absolute;
       top: 5px;
@@ -372,6 +440,11 @@ BODY {
     & i {
       margin-right: 15px;
     }
+    @media screen and (max-width: 600px) {
+      & {
+        font-size: 1.5rem;
+      }
+    }
   }
   & .cart-is-empty {
     font-size: 1.5rem;
@@ -381,16 +454,33 @@ BODY {
   & .table {
     padding: 20px;
     width: 100%;
+    @media screen and (max-width: 700px) {
+      & {
+        padding: 20px 20px 20px 0px;
+      }
+    }
+    @media screen and (max-width: 550px) {
+      & {
+        padding: 20px 0px 20px 0px;
+      }
+    }
     & .label {
       width: 100%;
       display: flex;
       align-items: center;
+      margin: 10px 0px;
       & input {
         width: 20px;
       }
       & .label-title {
         font-size: 1.6rem;
+        line-height: 1.6rem;
         margin-left: 10px;
+        @media screen and (max-width: 700px) {
+          & {
+            font-size: 1.2rem;
+          }
+        }
       }
     }
     & .label-desc {
@@ -398,6 +488,7 @@ BODY {
       font-weight: 300;
       font-style: italic;
       margin-left: 10px;
+      line-height: 1rem;
     }
     .btn-success {
       font-size: 1.6rem;
@@ -418,7 +509,6 @@ BODY {
       margin-left: auto;
       &-item {
         display: flex;
-        align-items: center;
         margin-left: -1px;
         margin-top: -1px;
         & p {
@@ -430,10 +520,20 @@ BODY {
           font-weight: 300;
           text-align: center;
           font-style: italic;
+          line-height: 1.2rem;
           &.price {
             font-style: normal;
             font-weight: 400;
           }
+        }
+      }
+      @media screen and (max-width: 700px) {
+        & {
+          width: 100%;
+        }
+        &-item {
+          font-size: 1rem;
+          line-height: 1rem;
         }
       }
     }
@@ -448,6 +548,25 @@ BODY {
         font-size: 1.2rem;
         font-weight: 300;
         font-style: italic;
+      }
+      @media screen and (max-width: 700px) {
+        &-item {
+          font-size: .8rem;
+        }
+      }
+      @media screen and (max-width: 550px) {
+        &-item:nth-child(1) {
+          display: none;
+        }
+        &-item {
+          width: calc(100% / 4);
+        }
+      }
+      @media screen and (max-width: 400px) {
+        &-item {
+          font-size: .6rem;
+          text-align: left;
+        }
       }
     }
     & .table-body {
@@ -465,6 +584,18 @@ BODY {
           color: red;
           transition-duration: .2s;
         }
+        @media screen and (max-width: 700px) {
+          & {
+            font-size: 1rem;
+            right: -25px;
+          }
+        }
+        @media screen and (max-width: 550px) {
+          & {
+            font-size: .9rem;
+            right: 10px;
+          }
+        }
       }
       &-item {
         width: calc(100% / 5);
@@ -477,12 +608,38 @@ BODY {
         justify-content: center;
         align-items: center;
         padding: 5px 0px;
+        line-height: 1.2rem;
         & img {
           width: 80px;
         }
         & input {
           width: 50px;
           border: none;
+        }
+        @media screen and (max-width: 700px) {
+          & img {
+            width: 40px;
+          }
+          & {
+            font-size: .8rem;
+          line-height: .8rem;
+          }
+        }
+        @media screen and (max-width: 550px) {
+          &:nth-child(1) {
+            display: none;
+          }
+          & {
+            width: calc(100% / 4);
+          }
+        }
+        @media screen and (max-width: 400px) {
+          & {
+            font-size: .6rem;
+            text-align: left;
+            justify-content: left;
+            line-height: .6rem;
+          }
         }
       }
     }

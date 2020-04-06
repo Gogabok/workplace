@@ -77,7 +77,7 @@ var app = new Vue({
       isActive: false,
       lastItem: null
     },
-    modalSuccessIsActive: true,
+    modalSuccessIsActive: false,
     form: {
       name: {
         value: '',
@@ -97,18 +97,27 @@ var app = new Vue({
   },
   methods: {
     makeOrder() {
-      var xhr = new XMLHttpRequest();
-      let formData = 
+      let xhr = new XMLHttpRequest();
+      let text = `
+Имя: ${this.form.name.value};
+Телефон: ${this.form.phone.value};
+Стоимость доставки: ${this.deliveryPrice}р;
+Итог: ${this.itemsPriceInCart + this.deliveryPrice}р;
+Товары:
       `
-      123
-      `
-      xhr.open('POST', 'send.php', true);
+      for (let i = 0; i < this.inCart.length; i++) {
+        text += `
+${this.inCart[i].title} ${this.inCart[i].volume}, ${this.inCart[i].inCartAmount} шт., ${this.inCart[i].price * this.inCart[i].inCartAmount}р.`
+      }
+
+        xhr.open('POST', 'send.php', true);
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) { 
-          
+
         }
       }
-      xhr.send(formData);
+      xhr.send('text=' + encodeURIComponent(text));
     },
     addToCart(item) {
       let itemInList = this.items.find(i => i === item)
