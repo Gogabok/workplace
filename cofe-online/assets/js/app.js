@@ -87,8 +87,9 @@ var app = new Vue({
         value: '',
         isError: false
       },
-      isAgree: false
-    }
+      isAgree: false,
+    },
+    deliveryMethod: ''
   }),
   mounted() {
     if (localStorage.getItem("inCart")) {
@@ -99,9 +100,10 @@ var app = new Vue({
     makeOrder() {
       let xhr = new XMLHttpRequest();
       let text = `
-Имя: ${this.form.name.value};
+Имя: ${this.form.name.value}; \n
 Телефон: ${this.form.phone.value};
 Стоимость доставки: ${this.deliveryPrice}р;
+Метод доставки: ${this.deliveryMethod};
 Итог: ${this.itemsPriceInCart + this.deliveryPrice}р;
 Товары:
       `
@@ -114,7 +116,12 @@ ${this.inCart[i].title} ${this.inCart[i].volume}, ${this.inCart[i].inCartAmount}
       xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) { 
-
+          document.getElementById("modal-1").style.display = "none"
+          document.getElementById("modal-2").style.display = "block"
+          localStorage.setItem("inCart", '')
+          setTimeout(() => {
+            window.location.replace('./index.html');
+          }, 3000);
         }
       }
       xhr.send('text=' + encodeURIComponent(text));
@@ -166,9 +173,11 @@ ${this.inCart[i].title} ${this.inCart[i].volume}, ${this.inCart[i].inCartAmount}
   computed: {
     inCart() {
       let inCart = []
-      for (let i = 0; i < this.items.length; i++) {
-        if (this.items[i].inCartAmount > 0) {
-          inCart.push(this.items[i])
+      if(this.items) {
+        for (let i = 0; i < this.items.length; i++) {
+          if (this.items[i].inCartAmount > 0) {
+            inCart.push(this.items[i])
+          }
         }
       }
       return inCart
@@ -182,27 +191,33 @@ ${this.inCart[i].title} ${this.inCart[i].volume}, ${this.inCart[i].inCartAmount}
     },
     itemsInCart() {
       let acc = 0
-      for(let i = 0; i < this.items.length; i++) {
-        if(this.items[i].inCartAmount > 0) {
-          acc += this.items[i].inCartAmount
+      if (this.items) {
+        for(let i = 0; i < this.items.length; i++) {
+          if(this.items[i].inCartAmount > 0) {
+            acc += this.items[i].inCartAmount
+          }
         }
       }
       return acc 
     },
     itemsPriceInCart() {
       let acc = 0
-      for (let i = 0; i < this.items.length; i++) {
-        if (this.items[i].inCartAmount > 0) {
-          acc += this.items[i].inCartAmount * this.items[i].price
+      if (this.items) {
+        for (let i = 0; i < this.items.length; i++) {
+          if (this.items[i].inCartAmount > 0) {
+            acc += this.items[i].inCartAmount * this.items[i].price
+          }
         }
       }
       return acc 
     },
     deliveryPrice() {
       let acc = 0
-      for (let i = 0; i < this.items.length; i++) {
-        if (this.items[i].inCartAmount > 0) {
-          acc += this.items[i].inCartAmount * this.items[i].price
+      if (this.items) {
+        for (let i = 0; i < this.items.length; i++) {
+          if (this.items[i].inCartAmount > 0) {
+            acc += this.items[i].inCartAmount * this.items[i].price
+          }
         }
       }
       if(acc >= 400) {

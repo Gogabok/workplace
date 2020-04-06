@@ -290,6 +290,14 @@ BODY {
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+  & .modal-thanks-title {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+  }
+  & .btn-href {
+    text-decoration: none;
+  }
   & .modal-wrapper {
     max-width: 1000px;
     width: calc(100% - 20px);
