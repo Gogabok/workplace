@@ -1,6 +1,6 @@
 <template>
     <div class="calculator-component">
-        <main class="main">
+        <main class="main" id="top">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -645,6 +645,7 @@
                 if (this.current_id !== this.items.length) {
                     this.$refs.calcSwiper.swiper.slideTo(this.current_id);
                     ++this.current_id;
+                    document.getElementById("top").scrollIntoView({ behavior: 'smooth' })
                 } else {
                     this.endModal = true
                 }

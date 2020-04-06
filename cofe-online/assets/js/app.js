@@ -97,6 +97,19 @@ var app = new Vue({
     }
   },
   methods: {
+    amountChange(item, method) {
+      if (method === 'minus') {
+        if (item.inCartAmount > 1) {
+          item.inCartAmount--
+        }
+      }
+      if (method === 'plus') {
+        if (item.inCartAmount < 99) {
+          item.inCartAmount++
+        }
+      }
+      localStorage.setItem("inCart", JSON.stringify(this.items))
+    },
     makeOrder() {
       let xhr = new XMLHttpRequest();
       let text = `
@@ -140,20 +153,6 @@ ${this.inCart[i].title} ${this.inCart[i].volume}, ${this.inCart[i].inCartAmount}
     deleteInCartItem(item) {
       let itemInList = this.items.find(i => i === item)
       itemInList.inCartAmount = 0
-      localStorage.setItem("inCart", JSON.stringify(this.items))
-    },
-    changeAmountOfItem(item, e) {
-      let itemInList = this.items.find(i => i === item)
-      if(+e.value > 1) {
-        itemInList.inCartAmount = +e.value
-      } else {
-        itemInList.inCartAmount = 1
-      }
-      if (+e.value < 99) {
-        itemInList.inCartAmount = +e.value
-      } else {
-        itemInList.inCartAmount = 99
-      }
       localStorage.setItem("inCart", JSON.stringify(this.items))
     },
     closeModal() {

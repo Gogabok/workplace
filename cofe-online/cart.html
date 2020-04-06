@@ -59,8 +59,13 @@
               <li class="table-body-item">{{ item.title }} {{ item.volume }}</li>
               <li class="table-body-item">{{ item.price }} ₽</li>
               <li class="table-body-item">
-                <input @input="changeAmountOfItem(item, $event.target)" min="1" max="99" type="number"
-                  :value="item.inCartAmount" name="">
+                  <div class="value">
+                    <p class="value-text">{{ item.inCartAmount }}</p>
+                    <div class="controls">
+                      <div @click="amountChange(item, 'plus')" class="plus">+</div>
+                      <div @click="amountChange(item, 'minus')"class="minus">-</div>
+                    </div>
+                  </div>
               </li>
               <li class="table-body-item">{{ item.price * item.inCartAmount }} ₽</li>
               <i @click="deleteInCartItem(item)" class="delete-item-icon fa fa-trash" aria-hidden="true"></i>

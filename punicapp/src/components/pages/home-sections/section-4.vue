@@ -3,7 +3,7 @@
     <div class="container-custom">
       <div class="title">Этапы разработки</div>
       <div class="wrapper">
-        <div class="item">
+        <div ref="item-1" data-value="idea" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'idea' ? 'active' : ''" @click="selectCategory('idea')">Идея</p>
             <transition mode="out-in" name="scaleY">
@@ -20,7 +20,7 @@
             <img class="item-1 icon-3" src="../../../assets/images/section-4/item-1/icon-3.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-2" data-value="analitics" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'analitics' ? 'active' : ''" @click="selectCategory('analitics')">Аналитика</p>
             <transition mode="out-in" name="scaleY">
@@ -38,7 +38,7 @@
             <img class="item-2 icon-1" src="../../../assets/images/section-4/item-2/icon-1.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-3" data-value="design" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'design' ? 'active' : ''" @click="selectCategory('design')">Проектирование и дизайн</p>
             <transition mode="out-in" name="scaleY">
@@ -56,7 +56,7 @@
             <img class="item-3 icon-4" src="../../../assets/images/section-4/item-3/icon-4.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-4" data-value="development" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'development' ? 'active' : ''" @click="selectCategory('development')">Разработка</p>
             <transition mode="out-in" name="scaleY">
@@ -75,7 +75,7 @@
             <img class="item-4 icon-2" src="../../../assets/images/section-4/item-4/icon-2.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-5" data-value="test" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'test' ? 'active' : ''" @click="selectCategory('test')">Тестирование</p>
             <transition mode="out-in" name="scaleY">
@@ -94,7 +94,7 @@
             <img class="item-5 icon-2" src="../../../assets/images/section-4/item-5/icon-2.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-6" data-value="publish" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'publish' ? 'active' : ''" @click="selectCategory('publish')">Публикация</p>
             <transition mode="out-in" name="scaleY">
@@ -114,7 +114,7 @@
             <img class="item-6 icon-3" src="../../../assets/images/section-4/item-6/icon-3.png" alt="" ondragstart="return false">
           </div>
         </div>
-        <div class="item">
+        <div ref="item-7" data-value="support" class="item">
           <div class="folder">
             <p class="title" :class="currentCategory === 'support' ? 'active' : ''" @click="selectCategory('support')">Поддержка и развитие</p>
             <transition mode="out-in" name="scaleY">
@@ -138,10 +138,30 @@
 export default {
   name: "Section-4",
   data: () => ({
-    currentCategory: 'idea'
+    currentCategory: 'idea',
   }),
+  mounted() {
+    let vm = this;
+    window.addEventListener("scroll", function(){
+      if(document.documentElement.clientWidth > 840) {
+        let windowHeight = document.documentElement.clientHeight
+        let windowRange = parseInt(windowHeight / 2)
+        for(let i = 1; i <= 7; i++) {
+          let el = vm.$refs[`item-${i}`]
+          if(el) {
+            if(el.getBoundingClientRect().top < windowRange && el.getBoundingClientRect().top > -200 + windowRange) {
+              if(vm.currentCategory !== el.dataset.value.toString()) {
+                vm.currentCategory = el.dataset.value.toString()
+              }
+            }
+          }
+        }
+      }
+    }, false);
+  },
   methods: {
     selectCategory (category) {
+      console.log(category)
       if(this.currentCategory === category) {
         this.currentCategory = null
       } else {
