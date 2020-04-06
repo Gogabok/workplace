@@ -98,14 +98,15 @@ var app = new Vue({
   },
   methods: {
     amountChange(item, method) {
+      let itemInList = this.items.find(i => i === item)
       if (method === 'minus') {
-        if (item.inCartAmount > 1) {
-          item.inCartAmount--
+        if (itemInList.inCartAmount > 1) {
+          itemInList.inCartAmount--
         }
       }
       if (method === 'plus') {
-        if (item.inCartAmount < 99) {
-          item.inCartAmount++
+        if (itemInList.inCartAmount < 99) {
+          itemInList.inCartAmount++
         }
       }
       localStorage.setItem("inCart", JSON.stringify(this.items))

@@ -24,7 +24,7 @@
             <div class="info">
               <div class="cart">
                 <a href="./cart.html" class="cart-text"><i class="fa fa-shopping-cart"
-                    aria-hidden="true"></i>Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽
+                    aria-hidden="true"></i>Корзина <span v-if="itemsInCart > 0">( {{ itemsInCart }}шт. на {{ itemsPriceInCart }}руб.
                     )</span></a>
               </div>
               <div class="phone">
@@ -48,7 +48,7 @@
               <img class="item-image" ondragstart="return false" :src="`./assets/images/catalog-items/${item.image}`"
                 alt="">
               <h2 class="item-title">{{item.title}} {{ item.volume }}</h2>
-              <h3 class="item-price">{{ item.price }}₽</h3>
+              <h3 class="item-price">{{ item.price }}руб.</h3>
               <button class="item-addToCart" @click.prevent="addToCart(item)">Добавить в корзину</button>
               <a v-if="item.inCartAmount > 0" href="./cart.html" class="item-inCart-text">В корзине:
                 {{ item.inCartAmount }}</a>
@@ -68,8 +68,16 @@
             </div>
             <div class="item-text">
               <p class="item-text-title"><span>Название:</span> {{ modal.lastItem.title }} {{ modal.lastItem.volume }}</p>
-              <p class="item-text-title"><span>Количество:</span> {{ modal.lastItem.inCartAmount }}</p>
-              <p class="item-text-title"><span>Цена:</span> {{ modal.lastItem.price * modal.lastItem.inCartAmount }}₽</p>
+              <div class="item-amount item-text-title"><span>Количество:</span> 
+                <div class="value">
+                  <p class="value-text">{{ modal.lastItem.inCartAmount }}</p>
+                  <div class="controls">
+                    <div @click="amountChange(modal.lastItem, 'plus')" class="plus">+</div>
+                    <div @click="amountChange(modal.lastItem, 'minus')" class="minus">-</div>
+                  </div>
+                </div>
+              </div>
+              <p class="item-text-title"><span>Цена:</span> {{ modal.lastItem.price * modal.lastItem.inCartAmount }}руб.</p>
             </div>
           </div>
         </div>
@@ -78,10 +86,10 @@
           <p class="modal-right-side-title">В корзине: <span>{{ itemsInCart }} товаров</span></p>
           <div class="item">
             <div class="item-text">
-              <p class="item-text-title"><span>Стоимость товаров:</span> {{ itemsPriceInCart }}₽</p>
-              <p class="item-text-title"><span>Стоимость доставки:</span> {{ deliveryPrice }}₽</p>
-              <p class="item-text-title"><span>*Бесплатная доставка при заказе от 400₽</span></p>
-              <p class="item-text-title"><span>Итого:</span> {{ itemsPriceInCart + deliveryPrice }}₽</p>
+              <p class="item-text-title"><span>Стоимость товаров:</span> {{ itemsPriceInCart }}руб.</p>
+              <p class="item-text-title"><span>Стоимость доставки:</span> {{ deliveryPrice }}руб.</p>
+              <p class="item-text-title"><span>*Бесплатная доставка при заказе от 400руб.</span></p>
+              <p class="item-text-title"><span>Итого:</span> {{ itemsPriceInCart + deliveryPrice }}руб.</p>
             </div>
           </div>
          <a href="./cart.html"><button class="btn">Оформить заказ</button></a>
@@ -116,8 +124,8 @@
           <span>Условия и время доставки:</span>
         </p>
         <p class="text-desc-item">
-          При сумме заказа от 400 рублей по городу доставка <span>БЕСПЛАТНАЯ</span>, при сумме заказа менее 400 рублей стоимость доставки
-          составит 100 рублей. В отдаленные районы города стоимость доставки уточняйте у оператора. Робин Ролл старается
+          При сумме заказа от 400 руб.лей по городу доставка <span>БЕСПЛАТНАЯ</span>, при сумме заказа менее 400 руб.лей стоимость доставки
+          составит 100 руб.лей. В отдаленные районы города стоимость доставки уточняйте у оператора. Робин Ролл старается
           доставить
           Вам заказ в течение одного часа, однако иногда время доставки может быть увеличено (большое количество заказов,
           отдаленный район доставки, большой заказ). Вы можете сделать заказ прямо на сайте, он будет доставлен после того, как

@@ -26,7 +26,7 @@
             <div class="info">
               <div class="cart">
                 <p class="cart-text"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Корзина <span
-                    v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></p>
+                    v-if="itemsInCart > 0">( {{ itemsInCart }}шт. на {{ itemsPriceInCart }}руб. )</span></p>
               </div>
               <div class="phone">
                 <a href="tel:83425369986" class="phone-text"><i class="fa fa-phone" aria-hidden="true"></i>8 (34253)
@@ -44,7 +44,7 @@
       <main class="cart-main-wrapper">
         <div class="container">
           <h1 class="cart-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Корзина <span
-              v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}₽ )</span></h1>
+              v-if="itemsInCart > 0">( {{ itemsInCart }}, {{ itemsPriceInCart }}руб. )</span></h1>
           <div class="table" v-if="inCart.length > 0">
             <ul class="table-head">
               <li class="table-head-item">Товар</li>
@@ -57,45 +57,45 @@
               <li class="table-body-item"><img ondragstart="return false"
                   :src="`./assets/images/catalog-items/${item.image}`" alt=""></li>
               <li class="table-body-item">{{ item.title }} {{ item.volume }}</li>
-              <li class="table-body-item">{{ item.price }} ₽</li>
+              <li class="table-body-item">{{ item.price }} руб.</li>
               <li class="table-body-item">
-                  <div class="value">
-                    <p class="value-text">{{ item.inCartAmount }}</p>
-                    <div class="controls">
-                      <div @click="amountChange(item, 'plus')" class="plus">+</div>
-                      <div @click="amountChange(item, 'minus')"class="minus">-</div>
-                    </div>
+                <div class="value">
+                  <p class="value-text">{{ item.inCartAmount }}</p>
+                  <div class="controls">
+                    <div @click="amountChange(item, 'plus')" class="plus">+</div>
+                    <div @click="amountChange(item, 'minus')"class="minus">-</div>
                   </div>
+                </div>
               </li>
-              <li class="table-body-item">{{ item.price * item.inCartAmount }} ₽</li>
+              <li class="table-body-item">{{ item.price * item.inCartAmount }} руб.</li>
               <i @click="deleteInCartItem(item)" class="delete-item-icon fa fa-trash" aria-hidden="true"></i>
             </ul>
             <ul class="table-info">
               <li class="table-info-item">
                 <p>Стоимость товаров:</p>
-                <p class="price">{{ itemsPriceInCart }} ₽</p>
+                <p class="price">{{ itemsPriceInCart }} руб.</p>
               </li>
               <li class="table-info-item">
                 <p>Стоимость доставки:</p>
-                <p class="price">{{ deliveryPrice }} ₽</p>
+                <p class="price">{{ deliveryPrice }} руб.</p>
               </li>
               <li class="table-info-item">
                 <p>Итого:</p>
-                <p class="price">{{ itemsPriceInCart + deliveryPrice }} ₽</p>
+                <p class="price">{{ itemsPriceInCart + deliveryPrice }} руб.</p>
               </li>
             </ul>
             <p class="cart-title"><i class="fa fa-rocket" aria-hidden="true"></i> Доставка</p>
             <label class="label" for="delivery-1">
               <input v-model="deliveryMethod" value="Доставка курьером до квартиры от 40 до 60 минут"
                 class="delivery-input" id="delivery-1" type="radio" name="delivery">
-              <p class="label-title">Доставка курьером до квартиры от 40 до 60 минут - {{ deliveryPrice }} ₽</p>
+              <p class="label-title">Доставка курьером до квартиры от 40 до 60 минут - {{ deliveryPrice }} руб.</p>
             </label>
             <label class="label" for="delivery-2">
               <input v-model="deliveryMethod" value="Доставка на определенное время по вашему адресу"
                 class="delivery-input" id="delivery-2" type="radio" name="delivery">
-              <p class="label-title">Доставка на определенное время по вашему адресу - {{ deliveryPrice }} ₽</p>
+              <p class="label-title">Доставка на определенное время по вашему адресу - {{ deliveryPrice }} руб.</p>
             </label>
-            <p class="label-desc">* Бесплатная доставка от 400 ₽</p>
+            <p class="label-desc">* Бесплатная доставка от 400 руб.</p>
             <button @click="modalSuccessIsActive = true" class="btn-success">Заказать</button>
           </div>
           <p class="cart-is-empty" v-else>Ваша корзина пуста</p>
@@ -157,9 +157,9 @@
           <span>Условия и время доставки:</span>
         </p>
         <p class="text-desc-item">
-          При сумме заказа от 400 рублей по городу доставка <span>БЕСПЛАТНАЯ</span>, при сумме заказа менее 400 рублей
+          При сумме заказа от 400 руб.лей по городу доставка <span>БЕСПЛАТНАЯ</span>, при сумме заказа менее 400 руб.лей
           стоимость доставки
-          составит 100 рублей. В отдаленные районы города стоимость доставки уточняйте у оператора. Робин Ролл старается
+          составит 100 руб.лей. В отдаленные районы города стоимость доставки уточняйте у оператора. Робин Ролл старается
           доставить
           Вам заказ в течение одного часа, однако иногда время доставки может быть увеличено (большое количество
           заказов,

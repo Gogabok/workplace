@@ -621,40 +621,6 @@ BODY {
         align-items: center;
         padding: 5px 0px;
         line-height: 1.2rem;
-        & .value {
-          display: block;
-          &-text {
-            padding: 3px 0px;
-            border: 1px solid rgba(0, 0, 0, .2);
-            border-bottom-width: 0px;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-          }
-          & .controls {
-          display: flex;
-          border: 1px solid rgba(0, 0, 0, .2);
-          border-radius: 2px;
-            & .minus {
-              font-size: 1.4rem;
-              font-weight: 700;
-              color: #4766ff;
-              padding: 5px;
-              cursor: pointer;
-              width: 27px;
-              text-align: center;
-            }
-            & .plus {
-              font-size: 1.4rem;
-              font-weight: 700;
-              color: #4766ff;
-              padding: 5px;
-              cursor: pointer;
-              width: 27px;
-              text-align: center;
-              border-right: 1px solid rgba(0, 0, 0, .2);
-            }
-          }
-        }
         & img {
           width: 80px;
         }
@@ -845,6 +811,54 @@ BODY {
       & i {
         transform: scale(-1, 1);
       }
+    }
+  }
+}
+
+.item-amount {
+  display: flex;
+  align-items: center;
+  & .value {
+    margin-left: 15px;
+  }
+}
+
+.value {
+  display: block;
+  max-width: 75px;
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+  &-text {
+    padding: 3px 0px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-bottom-width: 0px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  & .controls {
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 2px;
+    & .minus {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #4766ff;
+      padding: 5px;
+      cursor: pointer;
+      width: 27px;
+      text-align: center;
+    }
+    & .plus {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #4766ff;
+      padding: 5px;
+      cursor: pointer;
+      width: 27px;
+      text-align: center;
+      border-right: 1px solid rgba(0, 0, 0, .2);
     }
   }
 }
