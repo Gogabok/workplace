@@ -14,7 +14,7 @@ HTML {
   height: 100%;
   }
 BODY {
-  padding: 0px 10px;
+  padding: 0px 0px;
   background: 
     linear-gradient(90deg,
       $transparent 93%,
@@ -80,6 +80,10 @@ BODY {
   background-color: $bgcolor;
   font: 10px/2 'Trebuchet MS', Verdana, sans-serif;
   }
+
+#app {
+  padding: 0px 10px;
+}
 
 .content {
   max-width: 1200px;
@@ -732,5 +736,73 @@ BODY {
           background: rgba(0, 123, 255, 0.3);
         }
       }
+  }
+}
+
+.footer {
+  background: #191919;
+  padding: 30px 0px 10px 0px;
+  font-family: "Rubik", sans-serif;
+  user-select: none;
+  & .footer-container {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 40px;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media screen and (max-width: 750px) {
+      & {
+        display: block;
+      }
+      & .text-desc {
+        margin-top: 30px;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      & {
+        padding: 0px 10px;
+      }
+    }
+    & .text-desc {
+      max-width: 800px;
+      text-align: left;
+      &-item {
+        font-size: .9rem;
+        line-height: .9rem;
+        margin: 5px 0px;
+        font-weight: 300;
+        & span {
+          font-weight: 400;
+        }
+      }
+    }
+    & .cart a, & .phone a, & .adress {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8rem;
+      transition-duration: .2;
+      cursor: pointer;
+      &:hover {
+        color: $hoverColor;
+      }
+      & i {
+        margin-right: 10px;
+      }
+    }
+    & .adress {
+      cursor: default;
+      &:hover {
+        color: #fff;
+      }
+    }
+    & .phone a {
+      & i {
+        transform: scale(-1, 1);
+      }
+    }
   }
 }
