@@ -1,0 +1,990 @@
+* {
+    font-family: 'Circe' !important;
+}
+
+.header__logo a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #fff !important;
+    font-family: 'YesevaOne' !important;
+}
+
+.s-content__header h1,
+.featured .entry h1 a {
+    font-family: 'YesevaOne' !important;
+}
+
+.form {
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.error:not(.input-group),
+.success {
+    text-align: center;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+header {
+    z-index: 1;
+}
+
+.header__nav li.current > a {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.s-content__main {
+    font-weight: 300 !important;
+}
+
+.s-content__header-title {
+    margin-bottom: 1.7rem;
+}
+
+p.lead,
+.s-content__header-meta li {
+    font-weight: 500 !important;
+}
+
+strong {
+    font-weight: 700 !important;
+}
+
+.s-content--narrow .s-content__main,
+p.lead {
+    line-height: 1.6;
+}
+
+.s-content__next {
+    text-align: right;
+    padding-right: 0;
+}
+
+.form-description {
+    font-weight: bold;
+    line-height: normal;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: #0054a5;
+    text-align: center;
+}
+
+.s-content--narrow .s-content__main {
+    color: #000;
+    /*font-size: 16px;*/
+    /*line-height: 25px;*/
+    font-size: 18px;
+    line-height: 1.58;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    min-height: -webkit-fill-available;
+    background-color: #fff;
+    padding: 0 16px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-button-container {
+    margin-right: 20px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.menu-button {
+    display: block;
+    position: relative;
+    width: 27px;
+    height: 28px;
+    top: -2px;
+}
+
+.menu-button:before,
+.menu-button:after {
+    content: '';
+    width: 24px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+    background-color: #fff;
+    position: absolute;
+}
+
+.menu-button:before {
+    margin-top: -4px;
+}
+
+.menu-button:after {
+    margin-top: 4px;
+    transition: width ease 0.3s;
+}
+
+body.active-menu {
+    /*overflow: hidden;*/
+    /*height: 100%;*/
+}
+
+body.active-menu .menu {
+    display: flex;
+}
+
+body.active-menu .main-content {
+    display: none;
+}
+
+body.active-menu .menu-button:before,
+body.active-menu .menu-button:after {
+    background-color: #000;
+}
+
+body.active-menu .menu-button:after {
+    width: 12px;
+}
+
+body.active-menu .menu {
+    display: flex;
+}
+
+body.active-menu {
+    background: #fff;
+}
+
+body.active-menu .header {
+    z-index: 999;
+    height: 100px;
+}
+
+body.active-menu .s-pageheader--home {
+    min-height: auto;
+}
+
+body.active-menu .header__content a {
+    color: #000 !important;
+}
+
+body.active-menu .s-content,
+body.active-menu .s-footer,
+body.active-menu .header__nav-wrap,
+body.active-menu .featured__column {
+    display: none;
+}
+
+.col-full {
+    transition: none !important;
+}
+
+.main-nav {
+    font-family: 'YesevaOne' !important;
+    font-size: 48px;
+    line-height: 55px;
+    color: #111;
+    padding-top: 100px;
+}
+
+.main-nav a {
+    font-family: 'YesevaOne' !important;
+}
+
+body.active-menu .menu {
+    padding-left: 0;
+}
+
+.pageheader-content {
+    padding: 0;
+}
+
+@media only screen and (min-width: 800px) {
+    body.active-menu .menu {
+        padding-left: 40px;
+    }
+}
+
+.main-nav li {
+    margin-top: 24px;
+}
+
+/*.header .profile {
+    left: 65px;
+}
+@media only screen and (max-width:800px) {
+    .header .profile {
+        display: none;
+    }
+}*/
+.main-nav li:first-child {
+    margin-top: 0;
+}
+
+.main-nav li a {
+    color: #111;
+    transition: color ease 0.3s;
+}
+
+.main-nav li:nth-child(1) a:hover,
+.main-nav li:nth-child(1) a.active {
+    color: #38ce55;
+}
+
+.main-nav li:nth-child(2) a:hover,
+.main-nav li:nth-child(2) a.active {
+    color: #149FED;
+}
+
+.main-nav li:nth-child(3) a:hover,
+.main-nav li:nth-child(3) a.active {
+    color: #EDB014;
+}
+
+.main-nav li:nth-child(4) a:hover,
+.main-nav li:nth-child(4) a.active {
+    color: #ED66A1;
+}
+
+.sub-nav-container {
+    padding-bottom: 30px;
+}
+
+.sub-nav li:first-child {
+    margin-top: 0;
+}
+
+.sub-nav li {
+    margin-top: 10px;
+}
+
+.sub-nav li a {
+    transition: opacity ease 0.3s;
+    font-size: 14px;
+    line-height: 16px;
+    color: #111;
+    opacity: 0.5;
+}
+
+.sub-nav li a:hover {
+    opacity: 1;
+}
+
+li {
+    list-style: none;
+}
+
+.login, .user-pic {
+    height: 28px;
+    width: 27px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.user-pic {
+    background-image: url('../images/user.svg');
+}
+
+.login {
+    background-image: url('../images/login.svg');
+}
+
+.active-menu .login {
+    background-image: url('../images/login-black.svg');
+}
+
+.active-color-tab {
+    display: none;
+    padding: 10px 12px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 12px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 5;
+    margin: 0 auto;
+}
+
+.active-color-tab.active {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.active-color-tab.blue {
+    background: #149FED;
+}
+
+.active-color-tab.green {
+    background: #38ce55;
+}
+
+.active-color-tab.gold {
+    background: #EDB014;
+}
+
+.active-color-tab.pink {
+    background: #ED66A1;
+}
+
+.active-color-tab a.close {
+    transition: transform .3s ease;
+    width: 12px;
+    height: 12px;
+    display: block;
+    background-image: url('../images/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.active-color-tab a.close:hover {
+    transform: rotate(90deg);
+}
+
+
+/* PROFILE */
+
+.profile-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 16px;
+}
+
+.profile-container .account-container {
+    position: relative;
+    background: #FFF;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 0 16px;
+    padding-top: 80px;
+    padding-bottom: 16px;
+    margin-bottom: 12px;
+}
+
+@media only screen and (max-width: 640px) {
+    .profile-container .account-container {
+        margin-top: 40px;
+    }
+}
+
+.profile-container .status {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.profile-container .status.green {
+    background: #18CE56;
+    box-shadow: 0px 0px 8px #18CE56;
+}
+
+.profile-container .status.yellow {
+    background: #EDB014;
+    box-shadow: 0px 0px 8px #EDB014;
+}
+
+.profile-container .status.red {
+    background: #DB1616;
+    box-shadow: 0px 0px 8px #DB1616;
+}
+
+.profile-container .profile-picture-container {
+    position: absolute;
+    top: -84px;
+    left: 50%;
+    margin-left: -84px;
+}
+
+.profile-container .profile-picture {
+    width: 168px;
+    height: 168px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.profile-container .profile-picture-0 {
+    background-image: url('../images/profile-picture-0.svg');
+}
+
+.profile-container .profile-picture-1 {
+    background-image: url('../images/profile-picture-1.png');
+}
+
+.profile-container .profile-picture-2 {
+    background-image: url('../images/profile-picture-2.png');
+}
+
+.profile-container .phone-number {
+    font-family: 'YesevaOne' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 140%;
+    color: #111;
+    text-align: center;
+}
+
+.profile-container .phone-number a {
+    text-decoration: none;
+    color: #111;
+}
+
+.profile-container .account-container .description {
+    text-align: center;
+    color: #808080;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.profile-container .account-container .sub-description {
+    color: #808080;
+    opacity: 0.5;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 12px;
+    padding-bottom: 4px;
+}
+
+.profile-container .button {
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 3px;
+    color: #fff;
+    padding: 13px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.profile-container .account-container .button {
+    margin-top: 32px;
+}
+
+.profile-container .button.green {
+    background: #18CE56;
+}
+
+.profile-container .button.outlined {
+    border-color: #fff;
+}
+
+.js-cancel-button {
+    margin-top: 10px;
+}
+
+.profile-container .button.blue {
+    background: #149FED;
+}
+
+.profile-container .button.black {
+    background: #111111;
+}
+
+.profile-container .button.red {
+    background: #DB1616;
+}
+
+.s-content.black {
+    background: #181818;
+}
+
+footer {
+    text-align: center;
+}
+
+
+.modal-container {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    height: 100%;
+}
+
+.modal-wrapper {
+    /*padding-top: 58px;*/
+    /*padding-left: 16px;*/
+    /*padding-right: 16px;*/
+    /*padding-bottom: 50px;*/
+
+    ox-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    margin: 0 auto;
+    border-radius: 4px;
+    background-color: #fff;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    max-width: 600px;
+    width: 420px;
+}
+
+.modal form {
+    margin-bottom: 0;
+}
+
+.modal .caption {
+    color: #111111;
+    font-family: 'YesevaOne';
+    text-align: center;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.show-password {
+    position: absolute;
+    width: 19px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0;
+    top: 50%;
+    margin-top: -8px;
+    cursor: pointer;
+    display: none;
+}
+
+.show-password.active {
+    display: block;
+}
+
+.show-password {
+    background-image: url('../images/eye-open.svg');
+}
+
+.hide-password {
+    background-image: url('../images/eye-close.svg');
+}
+
+.change-password-modal form .input-groups {
+    position: relative;
+}
+
+.change-password-modal form.success .input-containers .input-group {
+    opacity: 0;
+}
+
+.change-password-modal form.success .input-containers .success-container {
+    display: block;
+}
+
+.success-container {
+    display: none;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    left: 50%;
+    top: 50%;
+    margin-top: -60px;
+    margin-left: -60px;
+    background: linear-gradient(180deg, #149FED 0%, #18CE56 100%);
+}
+
+.success-container:before {
+    content: '';
+    background-image: url('../images/check-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.input-containers {
+    position: relative;
+}
+
+.exit-buttons-container {
+    display: flex;
+}
+
+.exit-buttons-container .button:first-child {
+    margin-right: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-top: 30px;
+}
+
+.relative {
+    position: relative;
+}
+
+.mt-30px {
+    margin-top: 30px;
+}
+
+.modal-container.profile-container {
+    max-width: none;
+}
+
+.modal .caption {
+    color: #111111;
+    font-family: 'YesevaOne' !important;
+    text-align: center;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+
+.modal input[type='text'],
+.modal input[type='tel'],
+.modal input[type='password'] {
+    color: #000;
+    border: none;
+    border-bottom: 2px solid #808080;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.modal input[type='text']:focus,
+.modal input[type='tel']:focus,
+.modal input[type='password']:focus {
+    border-color: #149FED;
+}
+
+.error input[type='text'],
+.error input[type='tel'],
+.error input[type='password'] {
+    border-color: #DB1616;
+}
+
+form:not(.enter-form) .error:before,
+form:not(.enter-form) .error:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: #DB1616;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+
+form:not(.enter-form) .input-group.error:before {
+    transform: rotate(45deg);
+}
+
+form:not(.enter-form) .input-group.error:after {
+    transform: rotate(-45deg);
+}
+
+.button-group input[type='submit'] {
+    margin-bottom: 12px;
+}
+
+.show-password {
+    position: absolute;
+    width: 19px;
+    height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0;
+    top: 50%;
+    margin-top: -8px;
+    cursor: pointer;
+    display: none;
+}
+
+.show-password.active {
+    display: block;
+}
+
+.show-password {
+    background-image: url('../images/eye-open.svg');
+}
+
+.hide-password {
+    background-image: url('../images/eye-close.svg');
+}
+
+.change-password-modal form .input-groups {
+    position: relative;
+}
+
+.contacts-description {
+    margin-top: 20px;
+    transition: opacity ease 0.3s;
+    font-size: 14px;
+    line-height: 16px;
+    color: #111;
+    opacity: 0.5;
+}
+
+.contacts-description a {
+    color: #111;
+}
+
+.menu-copyright {
+    margin-top: 20px;
+    transition: opacity ease 0.3s;
+    font-size: 14px;
+    line-height: 16px;
+    color: #111;
+    opacity: 0.5;
+    padding: 20px 0;
+    margin-right: 4px;
+    margin-left: 20px;
+    border-top: 1px solid #888;
+}
+
+form.enter-form .input-group .checked-icon,
+form.enter-form .input-group .error-icon {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+form.enter-form .input-group .checked-icon {
+    color: #149FED;
+}
+
+form.enter-form .input-group .error-icon {
+    color: #DB1616;
+}
+
+form.enter-form .input-containers-error .error-icon {
+    display: block;
+}
+
+form.enter-form .input-containers-error .show-password {
+    right: 20px;
+}
+
+form.enter-form .button {
+    border: none;
+}
+
+form.enter-form .button.blue {
+    color: #fff;
+    background: #149FED;
+}
+
+.profile-container .account-container.enter-container {
+    padding-top: 24px;
+    color: #000;
+    background-image: url('../images/enter-bg.svg');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 110px;
+    background-size: 100%;
+    margin-top: 0;
+}
+
+footer .button, footer .button:hover {
+    color: #fff !important;
+}
+
+.profile-container .account-container.enter-container input[type='text'],
+.profile-container .account-container.enter-container input[type='tel'],
+.profile-container .account-container.enter-container input[type='password'] {
+    color: #000;
+    border: none;
+    border-bottom: 2px solid #808080;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    height: auto;
+    line-height: normal;
+}
+
+.enter-caption {
+    font-size: 24px;
+    text-align: center;
+    font-family: 'YesevaOne' !important;
+    line-height: normal;
+}
+
+.enter-description {
+    color: #555;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+form.enter-form .input-group .checked-icon,
+form.enter-form .input-group .error-icon {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+form.enter-form .input-group .checked-icon {
+    color: #149FED;
+}
+
+form.enter-form .input-group .error-icon {
+    color: #DB1616;
+}
+
+svg {
+    display: inline-block;
+}
+
+form.enter-form .text-input:focus {
+    border-color: #149FED;
+}
+
+form.enter-form .error .text-input {
+    border-color: #DB1616;
+}
+
+form.enter-form .complete:not(.error) .text-input {
+    border-color: #555;
+}
+
+form.enter-form .complete:not(.error) .checked-icon {
+    display: block;
+}
+
+form.enter-form .input-containers-error .error-icon {
+    display: block;
+}
+
+form.enter-form .input-containers-error .show-password {
+    right: 20px;
+}
+
+form.enter-form .input-containers-error input[type="submit"] {
+    background: #DB1616;
+}
+
+form.enter-form .button-group a {
+    margin-top: 24px;
+    text-align: center;
+    color: #149FED;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+}
+
+form.enter-form .button-group a:hover {
+    color: #000;
+}
+
+form.enter-form .input-containers-error input[type="submit"] {
+    background: #DB1616;
+}
+
+.input-containers-error input[type='text'],
+.input-containers-error input[type='tel'],
+.input-containers-error input[type='password'],
+.profile-container .account-container.enter-container .input-containers-error input[type='text'],
+.profile-container .account-container.enter-container .input-containers-error input[type='tel'],
+.profile-container .account-container.enter-container .input-containers-error input[type='password'] {
+    border-color: #DB1616;
+}
+
+form.enter-form .button[disabled] {
+    background: #808080;
+    cursor: default;
+}
+
+body.login-page .profile-container,
+body.profile-page .profile-container,
+body.article-page .profile-container {
+    padding: 0;
+}
+
+body.login-page .form,
+body.profile-page .form {
+    max-width: 420px;
+}
+
+body.article-page .form,
+body.article-page .profile-container {
+    max-width: 100%;
+}
+
+footer {
+    padding: 0 16px;
+    padding-top: 70px;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: auto;
+}
+
+footer .offer {
+    margin-bottom: 16px;
+}
+
+.footer-text a {
+    color: #149FED;
+    text-decoration: underline !important;
+}
+
+.footer-text a:hover {
+    color: #fff;
+}
+
+footer .offer a:hover {
+    text-decoration: underline !important;
+    color: #fff;
+}
