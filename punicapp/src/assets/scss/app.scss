@@ -351,6 +351,20 @@ body {
       letter-spacing: -1.5px;
       color: #333230;
     }
+    @media screen and (max-width: 450px) {
+      & {
+        display: block;
+      }
+      & .overlay-settings-text {
+        text-align: left;
+      }
+      & b {
+        margin-top: 15px;
+      }
+      & .overlay-settings-text, & b {
+        display: block;
+      }
+    }
   }
 }
 .my-active-swiper{
