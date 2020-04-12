@@ -4,33 +4,99 @@ Vue.component('line-chart', {
   data: function () {
     return {
       config: this.info,
-      opitions: ''
+      opitions: { 
+        responsive: true, 
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              id: 'y-axis-1'
+            },
+            {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              id: 'y-axis-2',
+              gridLines: {
+                drawOnChartArea: false,
+              },
+            },
+          ]
+        }
+      },
+      renderData: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Рефракция',
+            backgroundColor: '#f87979',
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+            borderColor: "green",
+            backgroundColor: "green",
+            borderWidth: 1,
+            pointRadius: 0,
+            fill: false,
+            yAxisID: 'y-axis-1'
+          },
+          {
+            label: 'ПЗО',
+            backgroundColor: '#f87979',
+            data: [10, -20, 112, 69, 20, 30, 39, 80, 40, 20, 12, 61],
+            borderColor: "red",
+            backgroundColor: "red",
+            borderWidth: 1,
+            pointRadius: 0,
+            fill: false,
+            yAxisID: 'y-axis-2'
+          },
+        ]
+      }
     }
   },
   mounted() {
-    this.renderChart({
-      labels: [6, this.info.sex],
-      datasets: [
-        {
-          label: 'Левый глаз',
-          backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
-          borderColor: "rgba(57, 181, 74, 1)",
-          backgroundColor: "rgba(57, 181, 74, 0.4)",
-          borderWidth: 1,
-          pointRadius: 0
-        },
-      ]
-    }, { responsive: true, maintainAspectRatio: false })
+    // this.renderChart({
+    //   labels: [6, this.info.sex],
+    //   datasets: [
+    //     {
+    //       label: 'Левый глаз',
+    //       backgroundColor: '#f87979',
+    //       data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+    //       borderColor: "rgba(57, 181, 74, 1)",
+    //       backgroundColor: "rgba(57, 181, 74, 0.4)",
+    //       borderWidth: 1,
+    //       pointRadius: 0
+    //     },
+    //   ]
+    // }, { responsive: true, maintainAspectRatio: false })
+  },
+  methods: {
+    xAxesGenerate () {
+      let startAge = +this.config.age
+      let endAge = this.config.sex === 'sex-1' ? 18 : 17
+      let agesArr = []
+      for (let i = startAge; i <= endAge; i++) {
+        agesArr.push(i)
+      }
+      this.renderData.labels = agesArr
+    },
+    yAxesGenerate() {
+      // let y0 = this.eye.right.myopia
+    }
   },
   watch: {
     info: {
      handler: function () {
-        console.log(this.info)
-        this.renderChart()
+        this.xAxesGenerate()
+        this.yAxesGenerate()
+
+        console.log(this.renderData)
+        this.renderChart(this.renderData, this.opitions)
      }, 
      deep: true 
-    }
+    },
   }
 })
 
@@ -48,17 +114,17 @@ var vm = new Vue({
         eye: {
           left: {
             isTrue: false,
-            myopia: '',
-            eyeSize: '',
-            keratometries: '',
+            myopia: 0,
+            eyeSize: 0,
+            keratometries: 0,
             annualIncr: false,
             annualIncrNumb: ''
           },
           right: {
             isTrue: false,
-            myopia: '',
-            eyeSize: '',
-            keratometries: '',
+            myopia: 0,
+            eyeSize: 0,
+            keratometries: 0,
             annualIncr: false,
             annualIncrNumb: ''
           },
