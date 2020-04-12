@@ -12,18 +12,8 @@ Vue.component('line-chart', {
             {
               type: 'linear',
               display: true,
-              position: 'left',
-              id: 'y-axis-1'
-            },
-            {
-              type: 'linear',
-              display: true,
-              position: 'right',
-              id: 'y-axis-2',
-              gridLines: {
-                drawOnChartArea: false,
-              },
-            },
+              position: 'left'
+            }
           ]
         }
       },
@@ -31,46 +21,30 @@ Vue.component('line-chart', {
         labels: [],
         datasets: [
           {
-            label: 'Рефракция',
+            label: 'Левый глаз',
             backgroundColor: '#f87979',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+            data: [],
             borderColor: "green",
             backgroundColor: "green",
-            borderWidth: 1,
+            borderWidth: 2,
             pointRadius: 0,
             fill: false,
-            yAxisID: 'y-axis-1'
+            dataId: 'left',
           },
           {
-            label: 'ПЗО',
+            label: 'Правый глаз',
             backgroundColor: '#f87979',
-            data: [10, -20, 112, 69, 20, 30, 39, 80, 40, 20, 12, 61],
+            data: [],
             borderColor: "red",
             backgroundColor: "red",
-            borderWidth: 1,
+            borderWidth: 2,
             pointRadius: 0,
             fill: false,
-            yAxisID: 'y-axis-2'
+            dataId: 'right'
           },
         ]
       }
     }
-  },
-  mounted() {
-    // this.renderChart({
-    //   labels: [6, this.info.sex],
-    //   datasets: [
-    //     {
-    //       label: 'Левый глаз',
-    //       backgroundColor: '#f87979',
-    //       data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
-    //       borderColor: "rgba(57, 181, 74, 1)",
-    //       backgroundColor: "rgba(57, 181, 74, 0.4)",
-    //       borderWidth: 1,
-    //       pointRadius: 0
-    //     },
-    //   ]
-    // }, { responsive: true, maintainAspectRatio: false })
   },
   methods: {
     xAxesGenerate () {
@@ -82,17 +56,84 @@ Vue.component('line-chart', {
       }
       this.renderData.labels = agesArr
     },
-    yAxesGenerate() {
-      // let y0 = this.eye.right.myopia
+    getNUMB_myopiaDegree(eyeSide) {
+      let myopiaDegree = null;
+      if (this.info.eye[eyeSide].myopia <= 3) {
+        myopiaDegree = 0.1
+      } else if (this.info.eye[eyeSide].myopia > 3) {
+        myopiaDegree = 0.2
+      }
+      return myopiaDegree
+    },
+    NUMB_riskFactors() {
+      let NUMB_riskFactors = null;
+      if (this.info.risksFactors.length === 1) {
+        NUMB_riskFactors = 0.1
+      } else if (this.info.risksFactors.length >= 2) {
+        NUMB_riskFactors = 0.22
+      } else {
+        NUMB_riskFactors = 0;
+      }
+      return NUMB_riskFactors
+    },
+    NUMB_controlMethods(eyeSide) {
+      let myopiaDegree = null;
+      let cMethod = this.info.controlMethods
+      let numb_control = null
+      if (this.info.eye[eyeSide].myopia <= 3) {
+        myopiaDegree = 1
+      } else if (this.info.eye[eyeSide].myopia > 3 && this.info.eye[eyeSide].myopia < 6.25) {
+        myopiaDegree = 2
+      } else if (this.info.eye[eyeSide].myopia >= 6.25) {
+        myopiaDegree = 3
+      }
+
+      if (cMethod == 1 && myopiaDegree == 1) {
+        numb_control = 0.2
+      } else if (cMethod == 1 && myopiaDegree == 2) {
+        numb_control = 0.3
+      } else if (cMethod == 1 && myopiaDegree == 3) {
+        numb_control = 0.3
+      } else if (cMethod == 2 && myopiaDegree == 1) {
+        numb_control = 0.15
+      } else if (cMethod == 2 && myopiaDegree == 2) {
+        numb_control = 0.11
+      } else if (cMethod == 2 && myopiaDegree == 3) {
+        numb_control = 0.111
+      } else if (cMethod == 3) {
+        numb_control = 0
+      }
+
+      return numb_control
+    },
+    getAnnualIncrNumb(eyeSide) {
+      if (!this.info.eye[eyeSide].annualIncr) {
+        let NUMB_myopiaDegree = this.getNUMB_myopiaDegree(eyeSide)
+        let NUMB_riskFactors = this.NUMB_riskFactors()
+        let NUMB_controlMethods = this.NUMB_controlMethods(eyeSide)
+        this.info.eye[eyeSide].annualIncrNumb = (NUMB_myopiaDegree + NUMB_riskFactors - NUMB_controlMethods).toFixed(2)
+        this.yAxesGenerateAnnualData(eyeSide)
+      } else {
+        this.yAxesGenerateAnnualData(eyeSide)
+      }
+    },
+    yAxesGenerateAnnualData(eyeSide) {
+      let y0 = +this.info.eye[eyeSide].eyeSize
+      let arrOfSizes = [y0]
+
+      for(let i = 1; i < this.renderData.labels.length; i++) {
+        y0 += +this.info.eye[eyeSide].annualIncrNumb
+        arrOfSizes.push(y0)
+      }
+      this.renderData.datasets.find(item => item.dataId === eyeSide).data = arrOfSizes
     }
   },
   watch: {
     info: {
      handler: function () {
         this.xAxesGenerate()
-        this.yAxesGenerate()
-
-        console.log(this.renderData)
+        this.info.eye.right.isTrue ? this.getAnnualIncrNumb('right') : false;
+        this.info.eye.left.isTrue ? this.getAnnualIncrNumb('left') : false;
         this.renderChart(this.renderData, this.opitions)
      }, 
      deep: true 

@@ -8,7 +8,7 @@
 <body>
   <div id="calc-app">
     {{ getYears }}
-    <div>
+    <div style="margin-bottom: 20px;">
       <label for="sex-1">
         <input v-model="info.sex" value="sex-1" type="radio" id="sex-1" name="sex">
         <span>Мужской</span>
@@ -18,7 +18,8 @@
         <span>Женский</span>
       </label>
     </div>
-    <input v-model="info.age" style="margin: 20px 0px; display: block;" type="number" placeholder="Возраст ребенка">
+    Возраст:
+    <input v-model="info.age" style="margin: 0px 0px 20px 0px; display: block;" type="number" placeholder="Возраст ребенка">
     <div style="margin: 20px 0px; display: block;">
       <span>Факторы риска</span></br>
         <input @input="riskFactorsMethod($event.target)" value="1" type="checkbox" name="risksFactors">Время, ежедневно проводимое на открытом воздухе менее 1,5 часов в день </br>
@@ -103,7 +104,7 @@
         </div>
       </div>
     </div>
-    {{ info }}
+    <h1>ПЗО</h1>
     <line-chart :info="info"></line-chart>
   </div>
 
