@@ -4,108 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="calc-app">
-    {{ getYears }}
-    <div style="margin-bottom: 20px;">
-      <label for="sex-1">
-        <input v-model="info.sex" value="sex-1" type="radio" id="sex-1" name="sex">
-        <span>Мужской</span>
-      </label>
-      <label for="sex-2">
-        <input v-model="info.sex" value="sex-2" type="radio" id="sex-2" name="sex">
-        <span>Женский</span>
-      </label>
-    </div>
-    Возраст:
-    <input v-model="info.age" style="margin: 0px 0px 20px 0px; display: block;" type="number" placeholder="Возраст ребенка">
-    <div style="margin: 20px 0px; display: block;">
-      <span>Факторы риска</span></br>
-        <input @input="riskFactorsMethod($event.target)" value="1" type="checkbox" name="risksFactors">Время, ежедневно проводимое на открытом воздухе менее 1,5 часов в день </br>
-        <input @input="riskFactorsMethod($event.target)" value="2" type="checkbox" name="risksFactors">Ребенок затрачивает на работу вблизи более 3х часов в день, ежедневно</br>
-        <input @input="riskFactorsMethod($event.target)" value="3" type="checkbox" name="risksFactors">Длительное использование мобильных девайсов(гаджетов,ПК)</br>
-        <input @input="riskFactorsMethod($event.target)" value="4" type="checkbox" name="risksFactors">У ребенка выявлены аккомодационные нарушения(задержка, слабость аккомодации, низкие показатели ЗОА)</br>
-        <input @input="riskFactorsMethod($event.target)" value="5" type="checkbox" name="risksFactors">У ребенка выявлены бинокулярные нарушения(экзофория, аккомодационная экзотропия, высокое соотношение АК\А)</br>
-        <input @input="riskFactorsMethod($event.target)" value="6" type="checkbox" name="risksFactors">наследственность</br>
-        <input @input="riskFactorsMethod($event.target)" value="7" type="checkbox" name="risksFactors">возраст выявления близорукости менее(или равен) 7 годам</br>
-    </div>
-    <div style="margin: 20px 0px; display: block;">
-      <span>Какой из указанных способов коррекции близорукости и\или контроля используется?</span>
-      <select v-model="info.controlMethods" style="display: block;">
-        <option value="1">Ортокератологические линзы(ночные линзы)</option>
-        <option value="2">Бифокальные контактные линзы</option>
-        <option value="3">Очковая коррекция или коррекция не используется</option>
-      </select>
-    </div>
-    <div>
-      <span>На каком глазу близорукость у ребенка?</span>
-      <label for="eye-1">
-        <input v-model="info.eye.right.isTrue" type="checkbox" id="eye-1" name="eye">
-        <span>правый глаз</span>
-      </label>
-      <label for="eye-2">
-        <input v-model="info.eye.left.isTrue" type="checkbox" id="eye-2" name="eye">
-        <span>левый глаз</span>
-      </label>
-    </div>
-    <div style="display: flex; margin: 60px 0px;">
-      <div v-if="info.eye.right.isTrue" style="margin-right: 120px;" class="right-eye">
-        <span>Для правого глаза:</span>
-      
-        <div style="margin: 20px 0px; display: block;">
-          <span>Какова степень близорукости(дптр)?</span>
-          <input v-model="info.eye.right.myopia" type="number" name="">
+    <div class="tabs">
+      <div class="tab step-1">
+        <h2 class="tab-title">Ваш пол?</h2>
+        <div class="choosing">
+          <div @click="CHOOSING_sex('sex-1')" :class="info.sex === 'sex-1' ? 'active' : ''" class="item">
+            <img ondragstart="return false" src="./images/man.svg" alt="">
+          </div>
+          <div @click="CHOOSING_sex('sex-2')" :class="info.sex === 'sex-2' ? 'active' : ''" class="item">
+            <img ondragstart="return false" src="./images/woman.svg" alt="">
+          </div>
         </div>
-        <div style="margin: 20px 0px; display: block;">
-          <span>Укажите значение аксиального размера глаза(мм)?</span>
-          <input v-model="info.eye.right.eyeSize" type="number" name="">
-        </div>
-        <div style="margin: 20px 0px; display: block;">
-          <span>Укажите показатели кератометрии (Км)?</span>
-          <input v-model="info.eye.right.keratometries" type="number" name="">
-        </div>
-      
-        <div style="margin: 20px 0px; display: block;">
-          <span>Известен ли вам годовой прирост аксиального размера глаза?</span>
-          <input v-model="info.eye.right.annualIncr" :value="true" type="radio" name="incr-right"><span>Да</span>
-          <input v-model="info.eye.right.annualIncr" :value="false" type="radio" name="incr-right"><span>Нет</span>
-        </div>
+        <button class="btn-next">Дальше</button>
+      </div>
 
-        <div v-if="info.eye.right.annualIncr" style="margin: 20px 0px; display: block;">
-          <p>Укажите разницу между показателями переднезаднего размера глаза за 1 год, например 25,6 - 25,0 = 0,6 мм:</p>
-          <input v-model="info.eye.right.annualIncrNumb" type="number">мм
+      <div class="tab step-2">
+        <h2 class="tab-title">Возраст выявления?</h2>
+        <div class="tab-slider">
+          <input class="tab-slider-input" v-model="info.age" type="range" min="6" :max="info.sex === 'sex-1' ? 17 : 16">
         </div>
+        <p class="slider-value">
+          {{ info.age }} лет
+        </p>
+        <button class="btn-next">Дальше</button>
       </div>
-      <div v-if="info.eye.left.isTrue" class="left-eye">
-        <span>Для левого глаза:</span>
-      
-        <div style="margin: 20px 0px; display: block;">
-          <span>Какова степень близорукости(дптр)?</span>
-          <input v-model="info.eye.left.myopia" type="number" name="">
+
+      <div class="tab step-3">
+        <h2 class="tab-title">Факторы риска?</h2>
+        <div class="choosing choosing-risks">
+          <div @click="CHOOSING_riskFactors('1')" :class="info.risksFactors.find(i => i === '1') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors/1.svg" alt="">
+            </div>
+            <p class="item-desc">Время, ежедневно проводимое на открытом воздухе менее 1,5 часов в день</p>
+          </div>
+
+          <div @click="CHOOSING_riskFactors('2')" :class="info.risksFactors.find(i => i === '2') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//2.svg" alt="">
+            </div>
+            <p class="item-desc">Ребенок затрачивает на работу вблизи более 3х часов в день, ежедневно</p>
+          </div>
+
+          <div @click="CHOOSING_riskFactors('3')" :class="info.risksFactors.find(i => i === '3') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//3.svg" alt="">
+            </div>
+            <p class="item-desc">Длительное использование мобильных девайсов(гаджетов,ПК)</p>
+          </div>
+
+          <div @click="CHOOSING_riskFactors('4')" :class="info.risksFactors.find(i => i === '4') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//4.svg" alt="">
+            </div>
+            <p class="item-desc">У ребенка выявлены аккомодационные нарушения(задержка, слабость аккомодации, низкие показатели ЗОА)</p>
+          </div>
+
+          <div @click="CHOOSING_riskFactors('5')" :class="info.risksFactors.find(i => i === '5') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//5.svg" alt="">
+            </div>
+            <p class="item-desc">У ребенка выявлены бинокулярные нарушения(экзофория, аккомодационная экзотропия, высокое соотношение АК\А)</p>
+          </div>
+
+          <div @click="CHOOSING_riskFactors('6')" :class="info.risksFactors.find(i => i === '6') ? 'active-risks' : ''" class="main-item">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//6.svg" alt="">
+            </div>
+            <p class="item-desc">Наследственность</p>
+          </div>
+
+          <div :class="info.risksFactors.find(i => i === '7') ? 'active-risks' : ''" class="main-item main-item-age">
+            <div class="item">
+              <img ondragstart="return false" src="./images/risk-factors//7.svg" alt="">
+            </div>
+            <p class="item-desc">Возраст выявления близорукости менее(или равен) 7 годам</p>
+          </div>
         </div>
-        <div style="margin: 20px 0px; display: block;">
-          <span>Укажите значение аксиального размера глаза(мм)?</span>
-          <input v-model="info.eye.left.eyeSize" type="number" name="">
-        </div>
-        <div style="margin: 20px 0px; display: block;">
-          <span>Укажите показатели кератометрии (Км)?</span>
-          <input v-model="info.eye.left.keratometries" type="number" name="">
-        </div>
-      
-        <div style="margin: 20px 0px; display: block;">
-          <span>Известен ли вам годовой прирост аксиального размера глаза?</span>
-          <input v-model="info.eye.left.annualIncr" :value="true" type="radio" name="incr-left"><span>Да</span>
-          <input v-model="info.eye.left.annualIncr" :value="false" type="radio" name="incr-left"><span>Нет</span>
-        </div>
-        <div v-show="info.eye.left.annualIncr" style="margin: 20px 0px;">
-          <p>Укажите разницу между показателями переднезаднего размера глаза за 1 год, например 25,6 - 25,0 = 0,6 мм:</p>
-          <input v-model="info.eye.left.annualIncrNumb" type="number">мм
-        </div>
+        <button class="btn-next">Дальше</button>
       </div>
     </div>
-    <h1>ПЗО</h1>
-    <line-chart :info="info"></line-chart>
+
+
+
+
+
+
+
+
+
+
+    <!-- <line-chart @refractio-method="refractioMethod" :info="info"></line-chart>
+    <line-chart-refractio :info="info"></line-chart-refractio> -->
   </div>
 
 

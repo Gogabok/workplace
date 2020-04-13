@@ -4,8 +4,8 @@ Vue.component('line-chart', {
   data: function () {
     return {
       config: this.info,
-      opitions: { 
-        responsive: true, 
+      opitions: {
+        responsive: true,
         maintainAspectRatio: false,
         scales: {
           yAxes: [
@@ -47,7 +47,7 @@ Vue.component('line-chart', {
     }
   },
   methods: {
-    xAxesGenerate () {
+    xAxesGenerate() {
       let startAge = +this.config.age
       let endAge = this.config.sex === 'sex-1' ? 18 : 17
       let agesArr = []
@@ -116,12 +116,13 @@ Vue.component('line-chart', {
       } else {
         this.yAxesGenerateAnnualData(eyeSide)
       }
+      this.$emit('refractio-method', { eyeSide: eyeSide, annualIncrNumb: this.info.eye[eyeSide].annualIncrNumb})
     },
     yAxesGenerateAnnualData(eyeSide) {
       let y0 = +this.info.eye[eyeSide].eyeSize
       let arrOfSizes = [y0]
 
-      for(let i = 1; i < this.renderData.labels.length; i++) {
+      for (let i = 1; i < this.renderData.labels.length; i++) {
         y0 += +this.info.eye[eyeSide].annualIncrNumb
         arrOfSizes.push(y0)
       }
@@ -130,13 +131,99 @@ Vue.component('line-chart', {
   },
   watch: {
     info: {
-     handler: function () {
+      handler: function () {
         this.xAxesGenerate()
         this.info.eye.right.isTrue ? this.getAnnualIncrNumb('right') : false;
         this.info.eye.left.isTrue ? this.getAnnualIncrNumb('left') : false;
         this.renderChart(this.renderData, this.opitions)
-     }, 
-     deep: true 
+      },
+      deep: true
+    },
+  }
+})
+
+
+
+
+Vue.component('line-chart-refractio', {
+  extends: VueChartJs.Line,
+  props: ['info'],
+  data: function () {
+    return {
+      config: this.info,
+      opitions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [
+            {
+              type: 'linear',
+              display: true,
+              position: 'left'
+            }
+          ]
+        }
+      },
+      renderData: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Левый глаз',
+            backgroundColor: '#f87979',
+            data: [],
+            borderColor: "green",
+            backgroundColor: "green",
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: false,
+            dataId: 'left',
+          },
+          {
+            label: 'Правый глаз',
+            backgroundColor: '#f87979',
+            data: [],
+            borderColor: "red",
+            backgroundColor: "red",
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: false,
+            dataId: 'right'
+          },
+        ]
+      }
+    }
+  },
+  methods: {
+    xAxesGenerate() {
+      let startAge = +this.config.age
+      let endAge = this.config.sex === 'sex-1' ? 18 : 17
+      let agesArr = []
+      for (let i = startAge; i <= endAge; i++) {
+        agesArr.push(i)
+      }
+      this.renderData.labels = agesArr
+    },
+    yAxesGenerateAnnualData(eyeSide) {
+      let currentRefractio = +this.info.eye[eyeSide].annualIncrNumb * 0.33 / 0.1
+      let z0 = +this.info.eye[eyeSide].myopia
+      let zArr = [z0]
+      for (let i = 1; i < this.renderData.labels.length; i++) {
+        z0 += +currentRefractio
+        zArr.push(z0)
+      }
+      this.renderData.datasets.find(item => item.dataId === eyeSide).data = zArr
+    }
+  },
+  watch: {
+    info: {
+      handler: function () {
+        this.xAxesGenerate()
+        this.info.eye.right.isTrue ? this.yAxesGenerateAnnualData('right') : false;
+        this.info.eye.left.isTrue ? this.yAxesGenerateAnnualData('left') : false;
+        
+        this.renderChart(this.renderData, this.opitions)
+      },
+      deep: true
     },
   }
 })
@@ -149,7 +236,7 @@ var vm = new Vue({
     return {
       info: {
         sex: '',
-        age: '',
+        age: 11,
         risksFactors: [],
         controlMethods: '',
         eye: {
@@ -180,6 +267,20 @@ var vm = new Vue({
       } else {
         this.info.risksFactors.splice(this.info.risksFactors.findIndex(i => i ===e.value), 1)
       }
+    },
+    refractioMethod (obj) {
+      this.info.eye[obj.eyeSide].annualIncrNumb = obj.annualIncrNumb
+    },
+    CHOOSING_sex(item) {
+      this.info.sex = item
+    },
+    CHOOSING_riskFactors(item) {
+      let isSelected = this.info.risksFactors.find(i => i === item) ? true : false
+      if(isSelected) {
+        this.info.risksFactors.splice(this.info.risksFactors.findIndex(i => i === item), 1)
+      } else {
+        this.info.risksFactors.push(item)
+      }
     }
   },
   computed: {
@@ -190,29 +291,15 @@ var vm = new Vue({
       }
       return arr
     }
+  },
+  watch: {
+    'info.age': function () {
+      let ind = this.info.risksFactors.findIndex(i => i === '7')
+      if(this.info.age <= 7) {
+        this.info.risksFactors.push('7')
+      } else if (this.info.age > 7 && ind >= 0) {
+        this.info.risksFactors.splice(ind, 1)
+      }
+    }
   }
 })
-
-
-
-// А - Пол ребенка 
-// B - Возраст ребенка
-// С - Возраст выявления
-// D - Факторы риска (D1 - D7)
-// K - способ коррекции (K1 - K3)
-// Е - какой глаз (Е1 - правый; Е2 - левый)
-// F - Степень близорукости
-// G - аксиальный размер глаза
-// H - показатель кератометрии
-// L - известин ли прирост аксиаольного размера глаза?
-// M - годовой прирост аксиального размера глаза
-
-
-// Измерение рефракции, если известен ПЗО производится по формуле 
-// R1 = M1 * 0, 33 / 0, 1
-
-// Если нет, то при F1 ---- R1 += 0,1мм, а при F2/F3 ---- R1 += 0,2мм    /год
-
-// - Коррекция (пункт 2.3)
-
-// 
