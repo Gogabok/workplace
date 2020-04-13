@@ -282,3 +282,28 @@ body {
 .btn-last-1 {
   margin-top: 50px;
 }
+
+
+.scale-enter-active, .scale-leave-active {
+  transform: scale(1);
+  transition-duration: .2s;
+}
+.scale-enter, .scale-leave-to {
+  position: absolute;
+  transform: scale(.1);
+  opacity: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition-duration: .2s;
+}
+
+
+
+/* $(`#step-${i + 1}`).css('visibility', 'hidden')
+        $(`#step-${i + 1}`).css('position', 'absolute')
+        $(`#step-${i + 1}`).css('transform', 'scale(.1)')
+        $(`#step-${i + 1}`).css('opacity', '0')
+        $(`#step-${i + 1}`).css('top', '0')
+        $(`#step-${i + 1}`).css('right', '0')
+        $(`#step-${i + 1}`).css('left', '0') */

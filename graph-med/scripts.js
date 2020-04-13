@@ -310,7 +310,7 @@ var vm = new Vue({
       this.currentStep = '6'
     },
     formatting(e, eye, input) {
-      let val = e.value.toFixed(2)
+      let val = (+e.value).toFixed(2)
       this.info.eye[eye][input] = val
     },
     nextStep(nextStep) {
