@@ -139,6 +139,13 @@ Vue.component('line-chart', {
       },
       deep: true
     },
+  },
+  mounted() {
+    console.log(this.info)
+    this.xAxesGenerate()
+    this.info.eye.right.isTrue ? this.getAnnualIncrNumb('right') : false;
+    this.info.eye.left.isTrue ? this.getAnnualIncrNumb('left') : false;
+    this.renderChart(this.renderData, this.opitions)
   }
 })
 
@@ -225,6 +232,13 @@ Vue.component('line-chart-refractio', {
       },
       deep: true
     },
+  },
+  mounted() {
+    this.xAxesGenerate()
+    this.info.eye.right.isTrue ? this.yAxesGenerateAnnualData('right') : false;
+    this.info.eye.left.isTrue ? this.yAxesGenerateAnnualData('left') : false;
+
+    this.renderChart(this.renderData, this.opitions)
   }
 })
 
@@ -234,6 +248,8 @@ var vm = new Vue({
   el: '#calc-app',
   data () {
     return {
+      currentStep: '1',
+      currentEye: null,
       info: {
         sex: '',
         age: 11,
@@ -242,19 +258,19 @@ var vm = new Vue({
         eye: {
           left: {
             isTrue: false,
-            myopia: 0,
-            eyeSize: 0,
-            keratometries: 0,
+            myopia: parseInt(2).toFixed(2),
+            eyeSize: parseInt(15).toFixed(2),
+            keratometries: parseInt(30).toFixed(2),
             annualIncr: false,
-            annualIncrNumb: ''
+            annualIncrNumb: 0.1.toFixed(2)
           },
           right: {
             isTrue: false,
-            myopia: 0,
-            eyeSize: 0,
-            keratometries: 0,
+            myopia: parseInt(2).toFixed(2),
+            eyeSize: parseInt(15).toFixed(2),
+            keratometries: parseInt(30).toFixed(2),
             annualIncr: false,
-            annualIncrNumb: ''
+            annualIncrNumb: 0.1.toFixed(2)
           },
         }
       }
@@ -284,6 +300,30 @@ var vm = new Vue({
     },
     CHOOSING_controlMethods(item) {
       this.info.controlMethods = item
+    },
+    CHOOSING_eye(eye) {
+      this.info.eye.right.isTrue = false
+      this.info.eye.left.isTrue = false
+      this.info.eye[eye].isTrue = true
+
+      this.currentEye = eye
+      this.currentStep = '6'
+    },
+    formatting(e, eye, input) {
+      let val = e.value.toFixed(2)
+      this.info.eye[eye][input] = val
+    },
+    nextStep(nextStep) {
+      this.currentStep = nextStep
+    },
+    chooseEyeAndStep(eye, step) {
+      this.info.eye[eye].isTrue = true
+      this.currentEye = eye
+      this.currentStep = step
+    },
+    calculate() {
+      this.currentEye = 'graph'
+      this.currentStep = 'graph'
     }
   },
   computed: {

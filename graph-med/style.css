@@ -31,6 +31,7 @@ body {
 .tab-title {
   font-size: 2.5rem;
   font-weight: 700;
+  line-height: 2rem;
 }
 
 .choosing {
@@ -80,10 +81,17 @@ body {
   outline: none;
 }
 
-.btn-next:hover {
+.btn-next:hover:enabled {
   background: #23a5f0;
   color: #fff;
 }
+
+.btn-next:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+
 
 .tab-slider {
   width: 100%;
@@ -125,6 +133,11 @@ body {
 .choosing-risks {
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.choosing-eyes {
+  align-items: center;
+  justify-content: center;
 }
 
 .main-item {
@@ -202,4 +215,70 @@ body {
 .active-risks:hover .item {
   color: #ffeb00;
   background: #ffeb00;
+}
+
+.subtitle {
+  font-weight: 300;
+  margin-top: -20px;
+  font-size: 1.5rem;
+}
+
+.input-numb {
+  width: 150px;
+  height: 40px;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  border: 2px solid #fff;
+  background:#23a5f0;
+  outline: none;
+  border-radius: 3px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.btns-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-quest {
+  padding: 8px 20px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  /* color: #23A5F0; */
+  color: #fff;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+  /* background: #fff; */
+  background: #23a5f0;
+  transition-duration: .2s;
+  margin-top: auto;
+  margin: 20px 10px;
+  width: 120px;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-quest:hover {
+  background: #fff;
+  color: #23a5f0;
+}
+
+.btn-quest-active {
+  background: #fff;
+  color: #23a5f0;
+}
+
+.btn-last {
+  width: auto;
+  display: block;
+  margin: 5px auto;
+}
+
+.btn-last-1 {
+  margin-top: 50px;
 }
