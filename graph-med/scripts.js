@@ -281,6 +281,9 @@ var vm = new Vue({
       } else {
         this.info.risksFactors.push(item)
       }
+    },
+    CHOOSING_controlMethods(item) {
+      this.info.controlMethods = item
     }
   },
   computed: {
@@ -293,13 +296,6 @@ var vm = new Vue({
     }
   },
   watch: {
-    'info.age': function () {
-      let ind = this.info.risksFactors.findIndex(i => i === '7')
-      if(this.info.age <= 7) {
-        this.info.risksFactors.push('7')
-      } else if (this.info.age > 7 && ind >= 0) {
-        this.info.risksFactors.splice(ind, 1)
-      }
-    }
+    
   }
 })

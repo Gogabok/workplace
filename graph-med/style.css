@@ -38,6 +38,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .choosing .item {
@@ -45,7 +46,7 @@ body {
   border-radius: 50%;
   background:#fff;
   padding: 15px;
-  margin: 0px 25px;
+  margin: 20px 25px;
   transition-duration: .2s;
   cursor: pointer;
 }
