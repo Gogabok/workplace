@@ -10,7 +10,7 @@
 <body>
   <div id="calc-app">
     <div class="tabs">
-      
+    
       <transition name="scale" mode="out-in">
         <div v-if="currentStep === '1'" class="tab step-1">
           <h2 class="tab-title">Ваш пол?</h2>
@@ -219,7 +219,12 @@
             <input v-if="info.eye.left.annualIncr" class="input-numb" min="0" max="10"
               @input="formatting($event.target, 'left', 'annualIncrNumb')" :value="info.eye.left.annualIncrNumb" type="number"
               name="">
-            <button @click="chooseEyeAndStep('right', '6')" v-if="!info.eye.right.isTrue" class="btn-quest btn-last-1 btn-last">Заполнить данные правого глаза</button>
+            <div @click="chooseEyeAndStep('right', '6')" v-if="!info.eye.right.isTrue" class="eye">
+              <div class="item">
+                <img ondragstart="return false" src="./images/eye.svg" alt="">
+              </div>
+              <p class="item-desc">Заполнить данные правого глаза</p>
+            </div>
             <button @click="calculate" class="btn-quest btn-last">Рассчитать</button>
           </div>
 
@@ -240,7 +245,12 @@
             <input v-if="info.eye.right.annualIncr" class="input-numb" min="0" max="10"
               @input="formatting($event.target, 'right', 'annualIncrNumb')" :value="info.eye.right.annualIncrNumb" type="number"
               name="">
-            <button @click="chooseEyeAndStep('left', '6')" v-if="!info.eye.left.isTrue" class="btn-quest btn-last-1 btn-last">Заполнить данные левого глаза</button>
+            <div @click="chooseEyeAndStep('left', '6')" v-if="!info.eye.left.isTrue" class="eye">
+              <div class="item">
+                <img ondragstart="return false" src="./images/eye.svg" alt="">
+              </div>
+              <p class="item-desc">Заполнить данные левого глаза</p>
+            </div>
             <button @click="calculate" class="btn-quest btn-last">Рассчитать</button>
           </div>
         </div>

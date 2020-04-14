@@ -147,6 +147,36 @@ body {
   margin: 10px 0px;
   width: calc((100% / 4) - 20px)
 }
+
+.eye {
+  max-width: 200px;
+  cursor: pointer;
+  margin: 10px auto;
+  text-align: center;
+}
+.eye .item {
+  background: #fff;
+  border-radius: 50%;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px auto;
+  transition-duration: .2s;
+}
+.eye img {
+  width: 80px;
+}
+
+.eye:hover {
+  color: #ffeb00;
+}
+
+.eye:hover .item {
+  color: #ffeb00;
+  background: #ffeb00;
+}
+
 @media screen and (max-width: 750px) {
   .main-item {
     width: calc((100% / 3) - 20px)
