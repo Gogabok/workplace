@@ -328,12 +328,16 @@ body {
   transition-duration: .2s;
 }
 
+.charts {
+  max-width: 600px;
+  margin: 0px auto;
+}
 
-
-/* $(`#step-${i + 1}`).css('visibility', 'hidden')
-        $(`#step-${i + 1}`).css('position', 'absolute')
-        $(`#step-${i + 1}`).css('transform', 'scale(.1)')
-        $(`#step-${i + 1}`).css('opacity', '0')
-        $(`#step-${i + 1}`).css('top', '0')
-        $(`#step-${i + 1}`).css('right', '0')
-        $(`#step-${i + 1}`).css('left', '0') */
+.charts h3 {
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  line-height: 2rem;
+  font-size: 2rem;
+  margin: 40px 0px 10px 0px;
+}

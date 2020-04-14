@@ -256,9 +256,12 @@
         </div>
       </transition>
 
-
-      <line-chart v-if="currentEye === 'graph'" @refractio-method="refractioMethod" :info="info"></line-chart>
-      <line-chart-refractio v-if="currentStep === 'graph'" :info="info"></line-chart-refractio>
+      <div v-if="currentEye === 'graph' && currentStep === 'graph'" class="charts">
+        <h3>Данные ПЗО</h3>
+        <line-chart @refractio-method="refractioMethod" :info="info"></line-chart>
+        <h3>Данные рефракции</h3>
+        <line-chart-refractio :info="info"></line-chart-refractio>
+      </div>
     </div>
 
 

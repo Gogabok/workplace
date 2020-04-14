@@ -10,9 +10,35 @@ Vue.component('line-chart', {
         scales: {
           yAxes: [
             {
-              type: 'linear',
-              display: true,
-              position: 'left'
+              stacked: true,
+              gridLines: {
+                display: true,
+                color: '#fff',
+                borderDash: [1, 1],
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: "#fff",
+                fontSize: 16,
+                padding: 15,
+                fontFamily: "Rubik",
+              }
+            }
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: '#fff',
+                borderDash: [1, 1],
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: "#fff",
+                fontSize: 16,
+                padding: 15,
+                fontFamily: "Rubik",
+              }
             }
           ]
         }
@@ -22,24 +48,32 @@ Vue.component('line-chart', {
         datasets: [
           {
             label: 'Левый глаз',
-            backgroundColor: '#f87979',
             data: [],
-            borderColor: "green",
-            backgroundColor: "green",
-            borderWidth: 2,
-            pointRadius: 0,
-            fill: false,
-            dataId: 'left',
+            borderColor: '#2B51A7',
+            borderWidth: 3,
+            pointBorderWidth: 3,
+            pointBorderColor: '#fff',
+            pointBackgroundColor: '#2B51A7',
+            pointRadius: 3.5,
+            pointHitRadius: 6.5,
+            backgroundColor: 'rgba(43, 81, 167, 0.3)',
+            pointHoverRadius: 3.5,
+            pointHoverBorderWidth: 3,
+            dataId: 'left'
           },
           {
             label: 'Правый глаз',
-            backgroundColor: '#f87979',
             data: [],
-            borderColor: "red",
-            backgroundColor: "red",
-            borderWidth: 2,
-            pointRadius: 0,
-            fill: false,
+            borderColor: '#F9B400',
+            borderWidth: 3,
+            pointBorderWidth: 3,
+            pointBorderColor: '#fff',
+            pointBackgroundColor: '#F9B400',
+            pointRadius: 3.5,
+            pointHitRadius: 6.5,
+            backgroundColor: 'rgba(249, 180, 0, 0.3)',
+            pointHoverRadius: 3.5,
+            pointHoverBorderWidth: 3,
             dataId: 'right'
           },
         ]
@@ -164,9 +198,35 @@ Vue.component('line-chart-refractio', {
         scales: {
           yAxes: [
             {
-              type: 'linear',
-              display: true,
-              position: 'left'
+              stacked: true,
+              gridLines: {
+                display: true,
+                color: '#fff',
+                borderDash: [1, 1],
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: "#fff",
+                fontSize: 16,
+                padding: 15,
+                fontFamily: "Rubik",
+              }
+            }
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: true,
+                color: '#fff',
+                borderDash: [1, 1],
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: "#fff",
+                fontSize: 16,
+                padding: 15,
+                fontFamily: "Rubik",
+              }
             }
           ]
         }
@@ -176,24 +236,32 @@ Vue.component('line-chart-refractio', {
         datasets: [
           {
             label: 'Левый глаз',
-            backgroundColor: '#f87979',
             data: [],
-            borderColor: "green",
-            backgroundColor: "green",
-            borderWidth: 2,
-            pointRadius: 0,
-            fill: false,
-            dataId: 'left',
+            borderColor: '#2B51A7',
+            borderWidth: 3,
+            pointBorderWidth: 3,
+            pointBorderColor: '#fff',
+            pointBackgroundColor: '#2B51A7',
+            pointRadius: 3.5,
+            pointHitRadius: 6.5,
+            backgroundColor: 'rgba(43, 81, 167, 0.3)',
+            pointHoverRadius: 3.5,
+            pointHoverBorderWidth: 3,
+            dataId: 'left'
           },
           {
             label: 'Правый глаз',
-            backgroundColor: '#f87979',
             data: [],
-            borderColor: "red",
-            backgroundColor: "red",
-            borderWidth: 2,
-            pointRadius: 0,
-            fill: false,
+            borderColor: '#F9B400',
+            borderWidth: 3,
+            pointBorderWidth: 3,
+            pointBorderColor: '#fff',
+            pointBackgroundColor: '#F9B400',
+            pointRadius: 3.5,
+            pointHitRadius: 6.5,
+            backgroundColor: 'rgba(249, 180, 0, 0.3)',
+            pointHoverRadius: 3.5,
+            pointHoverBorderWidth: 3,
             dataId: 'right'
           },
         ]
