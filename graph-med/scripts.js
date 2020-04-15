@@ -318,6 +318,7 @@ var vm = new Vue({
     return {
       currentStep: '1',
       currentEye: null,
+      isBoth: false,
       info: {
         sex: '',
         age: 11,
@@ -327,16 +328,16 @@ var vm = new Vue({
           left: {
             isTrue: false,
             myopia: parseInt(2).toFixed(2),
-            eyeSize: parseInt(15).toFixed(2),
-            keratometries: parseInt(30).toFixed(2),
+            eyeSize: parseInt(23).toFixed(2),
+            keratometries: parseInt(43).toFixed(2),
             annualIncr: false,
             annualIncrNumb: 0.1.toFixed(2)
           },
           right: {
             isTrue: false,
             myopia: parseInt(2).toFixed(2),
-            eyeSize: parseInt(15).toFixed(2),
-            keratometries: parseInt(30).toFixed(2),
+            eyeSize: parseInt(23).toFixed(2),
+            keratometries: parseInt(43).toFixed(2),
             annualIncr: false,
             annualIncrNumb: 0.1.toFixed(2)
           },
@@ -370,15 +371,35 @@ var vm = new Vue({
       this.info.controlMethods = item
     },
     CHOOSING_eye(eye) {
-      this.info.eye.right.isTrue = false
-      this.info.eye.left.isTrue = false
-      this.info.eye[eye].isTrue = true
+      // this.info.eye.right.isTrue = false
+      // this.info.eye.left.isTrue = false
+      this.info.eye[eye].isTrue = !this.info.eye[eye].isTrue
 
-      this.currentEye = eye
+      // this.currentEye = eye
+      // this.currentStep = '6'
+    },
+    nextStepChoosingEye() {
+      if(this.info.eye.left.isTrue && this.info.eye.right.isTrue) {
+        this.isBoth = true
+        this.currentEye = 'left'
+      } else {
+        this.isBoth = false
+        this.currentEye = this.info.eye.left.isTrue ? 'left' : 'right'
+      }
+      this.currentStep = '6'
+    },
+    continueMethod() {
+      this.currentEye = 'right'
       this.currentStep = '6'
     },
     formatting(e, eye, input) {
+      if(+e.value >= 100) {
+        e.value = 99
+      } else if (+e.value <= 0) {
+        e.value = 0
+      }
       let val = (+e.value).toFixed(2)
+      e.value = val
       this.info.eye[eye][input] = val
     },
     nextStep(nextStep) {

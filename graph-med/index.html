@@ -141,6 +141,8 @@
               <p class="item-desc">Правый глаз</p>
             </div>
           </div>
+
+          <button :disabled="!info.eye.left.isTrue && !info.eye.right.isTrue" @click="nextStepChoosingEye" class="btn-next">Дальше</button>
         </div>
       </transition>
 
@@ -168,13 +170,13 @@
           <h2 class="tab-title">Укажите значение аксиального размера глаза(мм)?</h2>
           <div v-if="currentEye === 'left'">
             <p class="subtitle">Для левого глаза</p>
-            <input class="input-numb" min="15" max="40" @input="formatting($event.target, 'left', 'eyeSize')"
+            <input class="input-numb" min="23" max="40" @input="formatting($event.target, 'left', 'eyeSize')"
               :value="info.eye.left.eyeSize" type="number" name="">
           </div>
         
           <div v-if="currentEye === 'right'">
             <p class="subtitle">Для правого глаза</p>
-            <input class="input-numb" min="15" max="40" @input="formatting($event.target, 'right', 'eyeSize')"
+            <input class="input-numb" min="23" max="40" @input="formatting($event.target, 'right', 'eyeSize')"
               :value="info.eye.right.eyeSize" type="number" name="">
           </div>
 
@@ -187,13 +189,13 @@
           <h2 class="tab-title">Укажите показатели кератометрии (Км)?</h2>
           <div v-if="currentEye === 'left'">
             <p class="subtitle">Для левого глаза</p>
-            <input class="input-numb" min="30" max="60" @input="formatting($event.target, 'left', 'keratometries')"
+            <input class="input-numb" min="43" max="60" @input="formatting($event.target, 'left', 'keratometries')"
               :value="info.eye.left.keratometries" type="number" name="">
           </div>
         
           <div v-if="currentEye === 'right'">
             <p class="subtitle">Для правого глаза</p>
-            <input class="input-numb" min="30" max="60" @input="formatting($event.target, 'right', 'keratometries')"
+            <input class="input-numb" min="43" max="60" @input="formatting($event.target, 'right', 'keratometries')"
               :value="info.eye.right.keratometries" type="number" name="">
           </div>
 
@@ -225,7 +227,9 @@
               </div>
               <p class="item-desc">Заполнить данные правого глаза</p>
             </div>
-            <button @click="calculate" class="btn-quest btn-last">Рассчитать</button>
+            
+            <button v-if="info.eye.right.isTrue && isBoth" @click="continueMethod" class="btn-quest btn-last">Далее</button>
+            <button v-else @click="calculate" class="btn-quest btn-last">Рассчитать</button>
           </div>
 
 
