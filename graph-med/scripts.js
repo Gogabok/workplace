@@ -10,7 +10,7 @@ Vue.component('line-chart', {
         scales: {
           yAxes: [
             {
-              stacked: true,
+              // stacked: true,
               gridLines: {
                 display: true,
                 color: '#fff',
@@ -20,7 +20,7 @@ Vue.component('line-chart', {
               ticks: {
                 fontColor: "#fff",
                 fontSize: 16,
-                padding: 15,
+                padding: 8,
                 fontFamily: "Rubik",
               }
             }
@@ -36,7 +36,7 @@ Vue.component('line-chart', {
               ticks: {
                 fontColor: "#fff",
                 fontSize: 16,
-                padding: 15,
+                padding: 8,
                 fontFamily: "Rubik",
               }
             }
@@ -104,7 +104,7 @@ Vue.component('line-chart', {
       if (this.info.risksFactors.length === 1) {
         NUMB_riskFactors = 0.1
       } else if (this.info.risksFactors.length >= 2) {
-        NUMB_riskFactors = 0.22
+        NUMB_riskFactors = 0.20
       } else {
         NUMB_riskFactors = 0;
       }
@@ -123,7 +123,7 @@ Vue.component('line-chart', {
       }
 
       if (cMethod == 1 && myopiaDegree == 1) {
-        numb_control = 0.2
+        numb_control = 0.25
       } else if (cMethod == 1 && myopiaDegree == 2) {
         numb_control = 0.3
       } else if (cMethod == 1 && myopiaDegree == 3) {
@@ -133,7 +133,7 @@ Vue.component('line-chart', {
       } else if (cMethod == 2 && myopiaDegree == 2) {
         numb_control = 0.11
       } else if (cMethod == 2 && myopiaDegree == 3) {
-        numb_control = 0.111
+        numb_control = 0.11
       } else if (cMethod == 3) {
         numb_control = 0
       }
@@ -198,7 +198,7 @@ Vue.component('line-chart-refractio', {
         scales: {
           yAxes: [
             {
-              stacked: true,
+              // stacked: true,
               gridLines: {
                 display: true,
                 color: '#fff',
@@ -208,7 +208,7 @@ Vue.component('line-chart-refractio', {
               ticks: {
                 fontColor: "#fff",
                 fontSize: 16,
-                padding: 15,
+                padding: 8,
                 fontFamily: "Rubik",
               }
             }
@@ -224,7 +224,7 @@ Vue.component('line-chart-refractio', {
               ticks: {
                 fontColor: "#fff",
                 fontSize: 16,
-                padding: 15,
+                padding: 8,
                 fontFamily: "Rubik",
               }
             }
@@ -398,7 +398,8 @@ var vm = new Vue({
       } else if (+e.value <= 0) {
         e.value = 0
       }
-      let val = (+e.value).toFixed(2)
+      // let val = (+e.value).toFixed(2)
+      let val = (Math.round(+e.value * 100) / 100).toFixed(2)
       e.value = val
       this.info.eye[eye][input] = val
     },
