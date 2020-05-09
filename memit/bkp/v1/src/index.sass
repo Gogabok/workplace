@@ -1,0 +1,38 @@
+html
+    background: $color-bg-backface;
+
+a
+    text-decoration: none;
+
+#app 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Segoe UI', SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    min-height: 100%;
+    height: 100%;
+    background: $color-bg-backface;
+
+    .content
+        padding-top : 66px;
+
+    .work
+        margin : 0 auto;
+        padding : 0 4 * $r;
+        max-width: 1280px;
+    
+
+button
+    padding: $r 3 * $r;
+    background: $color-bg-main;
+    color : #fff;
+    text-align: center;
+    outline: none;
+    border : 1px solid  $color-bg-main;
+    font-size: 0.9em;
+    border-radius: 2px;
+    +transition(0.3s);
+    cursor: pointer;
+
+    &:hover
+        border : 1px solid  $color-bg-second;
+        background: $color-bg-second;

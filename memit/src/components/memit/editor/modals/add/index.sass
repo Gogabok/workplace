@@ -1,0 +1,17 @@
+.label
+    text-align: center;
+    
+    
+.item
+    border-bottom : 1px solid $color-text-second;
+    padding : $r 0;
+    color: $color-text-second;
+    +transition(0.3s);
+    cursor: pointer;
+
+    &:hover
+        color : $color-text-main;
+
+    &:nth-last-child(1)
+        border-bottom : 0;
+        

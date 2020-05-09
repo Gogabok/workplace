@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv='expires' content='0'>
+
+  <meta name="description" content="">
+  <meta name="keywords" content="" />
+
+  <title>SPA</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="<%= BASE_URL %>site.webmanifest">
+  <link rel="apple-touch-icon" href="<%= BASE_URL %>icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="<%= BASE_URL %>css/normalize.css">
+  <link rel="stylesheet" href="<%= BASE_URL %>css/main.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="<%= process.env.VUE_APP_FONTAVESOME_INTEGRITY %>" crossorigin="anonymous">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <noscript>
+    <strong>We're sorry but Project doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+
+  <div id="app"></div>
+
+  <script src="<%= BASE_URL %>js/vendor/modernizr-3.8.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="<%= BASE_URL %>js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="<%= BASE_URL %>js/plugins.js"></script>
+
+  <script src="<%= BASE_URL %>js/vendor/pixi.min.js"></script>
+  <script src="<%= BASE_URL %>js/vendor/pixiTextInput.js"></script>
+  <script src="<%= BASE_URL %>js/vendor/viewport.js"></script>
+
+  <script src="<%= BASE_URL %>js/vendor/tracking/tracking-min.js"></script>
+  <script src="<%= BASE_URL %>js/vendor/tracking/data/face-min.js"></script>
+  <script src="<%= BASE_URL %>js/vendor/tracking/data/eye-min.js"></script>
+  <script src="<%= BASE_URL %>js/vendor/tracking/data/mouth-min.js"></script>
+
+
+  <!--
+  <script type="text/javascript">
+
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart=new Date();
+      
+  (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5d49cef27d27204601c99db5/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+  })();
+
+  </script>
+  -->
+</body>
+
+</html>
