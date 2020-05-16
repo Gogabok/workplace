@@ -27,7 +27,7 @@ var errorHandler = function(file, maxsize, extensions){
 
 var read = function(file){
     var reader = new FileReader();
-
+    console.log(file)
     return new Promise(function(resolve, reject) {
 
         reader.onload = (function(theFile) {

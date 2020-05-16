@@ -1,3 +1,4 @@
+import PixiApngAndGif from 'pixi-apngandgif'
 var SpriteLayer = function(pixi, pane, {
 
     image = null
@@ -9,8 +10,19 @@ var SpriteLayer = function(pixi, pane, {
     var set = {
         image : function(image){
            
-            self.pxc = new PIXI.Sprite(image);              
-            self.px.addChild(self.pxc)
+            // self.pxc = new PIXI.Sprite.from('https://isparta.github.io/compare/image/dongtai/gif/1.gif');     
+            // console.log(self.pxc)         
+            // self.px.addChild(self.pxc)
+            // const imgs = {
+            //     gif: "http://isparta.github.io/compare/image/dongtai/gif/1.gif",
+            //     apng: "http://isparta.github.io/compare/image/dongtai/apng/1.png"
+            // };
+
+            // let gif = new PixiApngAndGif("http://isparta.github.io/compare/image/dongtai/gif/1.gif");
+            // console.log(gif)
+            // gif.sprite.x = 0;
+            // gif.sprite.y = 0;
+            // self.px.addChild(gif.sprite);
         }
     }
 
@@ -21,16 +33,17 @@ var SpriteLayer = function(pixi, pane, {
         return new Promise(function(resolve, reject){
 
             try{
-                PIXI.loader.add(self.id, image).load(function(loader, resources){
+                const imgs = {
+                    gif: "http://isparta.github.io/compare/image/dongtai/gif/1.gif",
+                    apng: "http://isparta.github.io/compare/image/dongtai/apng/1.png"
+                };
 
-                    texture = resources[self.id].texture
-
-
-                    set.image(texture)
-    
-                    resolve(self)
-        
-                })
+                let gif = new PixiApngAndGif(imgs.gif);
+                window.gif = gif;
+                gif.sprite.x = 0;
+                gif.sprite.y = 0;
+                self.px.addChild(gif.sprite);
+                resolve(self)
             }
 
 

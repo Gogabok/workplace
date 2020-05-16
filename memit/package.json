@@ -20,6 +20,7 @@
     "moment": "^2.24.0",
     "object-difference-js": "^1.0.4",
     "pixi": "^0.3.1",
+    "pixi-apngandgif": "^1.0.2",
     "pixi-console": "^3.0.1",
     "pixi-textinput-v5": "^4.0.0-beta.10",
     "pixi-viewport": "^4.6.0",

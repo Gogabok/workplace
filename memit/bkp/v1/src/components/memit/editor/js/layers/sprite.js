@@ -23,7 +23,6 @@ var SpriteLayer = function(pixi, pane, {
     self.ini = function(clbk){
 
         return new Promise(function(resolve, reject){
-
             try{
                 PIXI.loader.add('image', image).load(function(loader, resources){
 
