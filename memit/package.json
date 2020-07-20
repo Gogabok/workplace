@@ -16,7 +16,7 @@
     "deep-diff": "^1.0.2",
     "file-saver": "^2.0.2",
     "fingerprintjs2": "^2.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "object-difference-js": "^1.0.4",
     "pixi": "^0.3.1",
