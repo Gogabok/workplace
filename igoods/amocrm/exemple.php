@@ -17,7 +17,7 @@ session_start();
 $provider = new AmoCRM([
     'clientId' => '528b282a-0152-47f0-b427-e17e533db4a2',
     'clientSecret' => 'lxhQ1gWvPhoK4AqTdg5nbH46cVqpXwmTkRl9vsqzWPLFy1l7KACkHJ6uH4szhu4y',
-    'redirectUri' => 'https://isuperface.website/amocrm/exemple.php',
+    'redirectUri' => 'https://igoodface.website/amocrm/exemple.php',
 ]);
 
 

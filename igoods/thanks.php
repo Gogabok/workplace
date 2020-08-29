@@ -26,7 +26,7 @@
       Доставка <span id="today">1</span> - <span id="tomorrow"></span>
     </p>
     <p class="thanks-desc">
-      Achromin
+      Skin Pro
     </p>
     <p class="thanks-desc">
       Количество: <span id="amount-thanks"></span>
