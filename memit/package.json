@@ -17,7 +17,7 @@
     "file-saver": "^2.0.2",
     "fingerprintjs2": "^2.1.0",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "object-difference-js": "^1.0.4",
     "pixi": "^0.3.1",
     "pixi-apngandgif": "^1.0.2",
